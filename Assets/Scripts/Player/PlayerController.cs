@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     public TrailRenderer fireTrail;
     public TrailRenderer ElectricityTrail;
+    public GameObject fireBall;
+    public Transform firePoint;
 
     [Header("Dash")]
     public float dashSpeed = 20f;
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
         _fsm.AddState(TypeFSM.Default, new DefaultState(_fsm, this));
         _fsm.AddState(TypeFSM.Fire, new FireState(_fsm, this));
         _fsm.AddState(TypeFSM.Electricity, new ElectricityState(_fsm, this));
+        _fsm.AddState(TypeFSM.Ice, new IceState(_fsm, this));
 
         _fsm.ChangeState(TypeFSM.Default);
     }
@@ -119,6 +122,7 @@ public class PlayerController : MonoBehaviour
                 {
                     _playerVelocity.y = Mathf.Sqrt(_jumpFire * -3.0f * _gravityValue);
                     StartCoroutine(ActivateTrail(fireTrail));
+                    Instantiate(fireBall, firePoint.transform.position, Quaternion.identity);
                 }
 
                 jumpCount++;
@@ -146,10 +150,8 @@ public class PlayerController : MonoBehaviour
         if(value.isPressed) _fsm.ChangeState(TypeFSM.Fire);
     }
 
-    public void OnElement2(InputValue value)
-    {
-        if (value.isPressed) _fsm.ChangeState(TypeFSM.Electricity);
-    }
+    public void OnElement2(InputValue value){ if (value.isPressed) _fsm.ChangeState(TypeFSM.Electricity); }
+    public void OnElement3(InputValue value){ if (value.isPressed) _fsm.ChangeState(TypeFSM.Ice); }
 }
 
 public enum TypeFSM
@@ -157,6 +159,6 @@ public enum TypeFSM
     Default,
     Fire,
     Electricity,
-    Cold,
+    Ice,
     Slime
 }
