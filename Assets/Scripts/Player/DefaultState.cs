@@ -13,8 +13,6 @@ public class DefaultState : State
 
     public void OnEnter()
     {
-        _player.canDash = false;
-        _player.maxJumps = 1;
         _player.GetComponent<MeshRenderer>().material.color = Color.black;
     }
     public void OnUpdate()

@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
-using UnityEngine.InputSystem;
 
 public class FireState : State
 {
@@ -15,8 +13,8 @@ public class FireState : State
 
     public void OnEnter()
     {
-        _player.maxJumps = 2;
         _player.GetComponent<MeshRenderer>().material.color = Color.red;
+        _player.OnJumpPressed += JumpFire;
     }
     public void OnUpdate()
     {
@@ -25,6 +23,16 @@ public class FireState : State
 
     public void OnExit()
     {
-        _player.maxJumps = 1;
+        _player.OnJumpPressed -= JumpFire;
+    }
+
+    void JumpFire()
+    {
+        if (_player.jumpCount < 1 || _player.jumpCount > _player.maxJumps) return;
+        _player._playerVelocity.y = Mathf.Sqrt(_player._jumpFire * -3.0f * _player._gravityValue);
+        _player.StartCoroutine(_player.ActivateTrail(_player.fireTrail));
+        GameObject.Instantiate(_player.fireBall, _player.firePoint.transform.position, Quaternion.identity);
+
+        _player.jumpCount++;
     }
 }

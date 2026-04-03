@@ -3,6 +3,7 @@ using UnityEngine;
 public class FireBall : MonoBehaviour
 {
     public float speed = 6;
+
     void Start()
     {
         Destroy(gameObject, 5);
