@@ -29,10 +29,19 @@ public class ElectricityState : State
 
     void Dash()
     {
+        if (_player.dashCount >= 1)
+        {
+            if (_player.boost < 1)
+            return;
+
+            else _player.AddBoost(-1);
+        }
+
         if (!isDashing)
         {
             _player.StartCoroutine(ExecuteDash());
             _player.StartCoroutine(_player.ActivateTrail(_player.ElectricityTrail));
+            _player.dashCount++;
         }
     }
 

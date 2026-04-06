@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public int jumpCount = 0;
     [HideInInspector] public int maxJumps = 1;
 
+    [Header("Skills")]
+    public int boost {get; private set; }
+
+
     [Header("References")]
     public TrailRenderer fireTrail;
     public TrailRenderer ElectricityTrail;
@@ -31,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed = 20f;
     public float dashTime = 0.2f;
     public float dashCooldown = 1f;
+    [HideInInspector] public int dashCount = 0;
 
     public event Action OnDashPressed;
     public event Action OnJumpPressed;
@@ -57,6 +62,7 @@ public class PlayerController : MonoBehaviour
         {
             _playerVelocity.y = -2f;
             jumpCount = 0;
+            dashCount = 0;
         }
 
         MovePlayer();
@@ -76,7 +82,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    public void AddBoost(int newBoost)
+    {
+        boost += newBoost;
+        GameManager.instance.boostText.text = $"Boost: {boost}";
+    }
 
     public IEnumerator ActivateTrail(TrailRenderer trail)
     {

@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public TMP_Text pointsText;
+    public TMP_Text boostText;
     int pointsCount;
 
     private void Awake()
