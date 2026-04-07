@@ -122,6 +122,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnBoost(InputValue value) { AddBoost(1); }
+
+
     public void OnMove(InputValue value) { _moveInput = value.Get<Vector2>(); }
     public void OnDash(InputValue value) { if (value.isPressed) OnDashPressed?.Invoke(); }
 
