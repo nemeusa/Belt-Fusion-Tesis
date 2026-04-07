@@ -1,7 +1,8 @@
-using System.Collections;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -96,6 +97,16 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+    public void OnReload(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            SceneManager.LoadScene(NextLevel._nextLevel);
+            Debug.Log("Se cargo xd");
+        }
+
+    }
 
     public void OnJump(InputValue value)
     {
