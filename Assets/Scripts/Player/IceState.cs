@@ -13,7 +13,7 @@ public class IceState : State
 
     public void OnEnter()
     {
-        _player.GetComponent<MeshRenderer>().material.color = Color.blue;
+        _player.meshColors.color = Color.blue;
     }
     public void OnUpdate()
     {

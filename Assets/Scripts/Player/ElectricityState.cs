@@ -15,7 +15,7 @@ public class ElectricityState : State
 
     public void OnEnter()
     {
-        _player.GetComponent<MeshRenderer>().material.color = Color.yellow;
+        _player.meshColors.color = Color.yellow;
         _player.OnDashPressed += Dash;
     }
     public void OnUpdate()

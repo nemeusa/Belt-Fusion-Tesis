@@ -23,14 +23,17 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public int maxJumps = 1;
 
     [Header("Skills")]
-    public int boost {get; private set; }
+    public int boost { get; private set; }
 
 
     [Header("References")]
+    [SerializeField] GameObject meshChildren;
+    public Animator animator;
     public TrailRenderer fireTrail;
     public TrailRenderer ElectricityTrail;
     public GameObject fireBall;
     public Transform firePoint;
+    [HideInInspector] public Material meshColors;
 
     [Header("Dash")]
     public float dashSpeed = 20f;
@@ -45,6 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         maxJumps = 1;
         _controller = GetComponent<CharacterController>();
+        meshColors = meshChildren.GetComponent<SkinnedMeshRenderer>().material;
 
         _fsm = new FSM<TypeFSM>();
         _fsm.AddState(TypeFSM.Default, new DefaultState(_fsm, this));
@@ -65,8 +69,14 @@ public class PlayerController : MonoBehaviour
             jumpCount = 0;
             dashCount = 0;
         }
-
         MovePlayer();
+
+        if (animator != null)
+        {
+            animator.SetFloat("Speed", _moveInput.magnitude);
+            animator.SetBool("IsGrounded", _controller.isGrounded);
+
+        }
     }
 
     void MovePlayer()
@@ -128,10 +138,10 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputValue value) { _moveInput = value.Get<Vector2>(); }
     public void OnDash(InputValue value) { if (value.isPressed) OnDashPressed?.Invoke(); }
 
-    public void OnElement0(InputValue value){ if (value.isPressed) _fsm.ChangeState(TypeFSM.Default); }
-    public void OnElement1(InputValue value){ if(value.isPressed) _fsm.ChangeState(TypeFSM.Fire); }
-    public void OnElement2(InputValue value){ if (value.isPressed) _fsm.ChangeState(TypeFSM.Electricity); }
-    public void OnElement3(InputValue value){ if (value.isPressed) _fsm.ChangeState(TypeFSM.Ice); }
+    public void OnElement0(InputValue value) { if (value.isPressed) _fsm.ChangeState(TypeFSM.Default); }
+    public void OnElement1(InputValue value) { if (value.isPressed) _fsm.ChangeState(TypeFSM.Fire); }
+    public void OnElement2(InputValue value) { if (value.isPressed) _fsm.ChangeState(TypeFSM.Electricity); }
+    public void OnElement3(InputValue value) { if (value.isPressed) _fsm.ChangeState(TypeFSM.Ice); }
 }
 
 public enum TypeFSM

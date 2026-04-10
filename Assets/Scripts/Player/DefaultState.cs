@@ -13,7 +13,7 @@ public class DefaultState : State
 
     public void OnEnter()
     {
-        _player.GetComponent<MeshRenderer>().material.color = Color.black;
+        _player.meshColors.color = Color.black;
     }
     public void OnUpdate()
     {

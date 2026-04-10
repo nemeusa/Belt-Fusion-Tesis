@@ -13,7 +13,7 @@ public class FireState : State
 
     public void OnEnter()
     {
-        _player.GetComponent<MeshRenderer>().material.color = Color.red;
+        _player.meshColors.color = Color.red;
         _player.OnJumpPressed += JumpFire;
     }
     public void OnUpdate()
