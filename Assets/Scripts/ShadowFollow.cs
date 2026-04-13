@@ -9,7 +9,7 @@ public class ShadowFollow : MonoBehaviour
     void LateUpdate()
     {
         RaycastHit hit;
-        if (Physics.Raycast(playerTransform.position, Vector3.down, out hit, 50f, capasSuelo))
+        if (Physics.Raycast(playerTransform.position, Vector3.down, out hit, 1000f, capasSuelo))
         {
             transform.position = hit.point + Vector3.up * offsetDelSuelo;
 
