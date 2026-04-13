@@ -18,7 +18,7 @@ public class FireState : State
     }
     public void OnUpdate()
     {
-
+        if (_player._controller.isGrounded) _player.speed = _player.initialSpeed;
     }
 
     public void OnExit()
@@ -33,7 +33,9 @@ public class FireState : State
             if (_player.jumpCount > _player.maxJumps) return;
         }
         else if (_player.boost > 0 && _player.jumpCount > _player.maxJumps) _player.AddBoost(-1);
-        if (_player._controller.isGrounded) return;
+        if (_player.coyoteCounter > 0) return;
+
+        if (_player.initialSpeed == _player.speed) _player.speed *= 1.2f;
 
         _player._playerVelocity.y = Mathf.Sqrt(_player._jumpFire * -3.0f * _player._gravityValue);
         _player.StartCoroutine(_player.ActivateTrail(_player.fireTrail));

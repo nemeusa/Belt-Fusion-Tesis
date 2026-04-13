@@ -15,11 +15,14 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Vector3 _playerVelocity;
 
     [Header("Move")]
-    [SerializeField] float _speed = 6f;
+    public float speed = 6f;
     [SerializeField] float _jumpHeight = 3f;
     public float _jumpFire = 3f;
     public float _gravityValue = -9.8f;
-    [HideInInspector] public int jumpCount = 0;
+    [HideInInspector] public float coyoteTime = 0.2f;
+    [HideInInspector] public float coyoteCounter;
+    [HideInInspector] public float initialSpeed;
+    public int jumpCount = 0;
     [HideInInspector] public int maxJumps = 1;
 
     [Header("Skills")]
@@ -46,7 +49,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        maxJumps = 1;
         _controller = GetComponent<CharacterController>();
         meshColors = meshChildren.GetComponent<SkinnedMeshRenderer>().material;
 
@@ -59,30 +61,44 @@ public class PlayerController : MonoBehaviour
         _fsm.ChangeState(TypeFSM.Default);
     }
 
+    private void Start()
+    {
+        coyoteTime = 0.2f;
+        maxJumps = 1;
+        initialSpeed = speed;
+
+    }
+
     void Update()
     {
         _fsm.Execute();
 
-        if (_controller.isGrounded && _playerVelocity.y < 0)
+        if (_controller.isGrounded)
         {
-            _playerVelocity.y = -2f;
-            jumpCount = 0;
-            dashCount = 0;
+            if (_playerVelocity.y < 0)
+            {
+                _playerVelocity.y = -2f;
+                jumpCount = 0;
+                dashCount = 0;
+
+            }
+            coyoteCounter = coyoteTime;
         }
+        else coyoteCounter -= Time.deltaTime;
+
         MovePlayer();
 
         if (animator != null)
         {
             animator.SetFloat("Speed", _moveInput.magnitude);
-            animator.SetBool("IsGrounded", _controller.isGrounded);
-
+            animator.SetBool("IsGrounded", coyoteCounter > 0);
         }
     }
 
     void MovePlayer()
     {
         Vector3 move = new Vector3(_moveInput.x, 0, _moveInput.y);
-        _controller.Move(move * Time.deltaTime * _speed);
+        _controller.Move(move * Time.deltaTime * speed);
 
         _playerVelocity.y += _gravityValue * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
@@ -122,13 +138,17 @@ public class PlayerController : MonoBehaviour
     {
         if (value.isPressed)
         {
+
             OnJumpPressed?.Invoke();
 
-            if (_controller.isGrounded)
+            if (coyoteCounter > 0f && jumpCount == 0)
             {
-                _playerVelocity.y = Mathf.Sqrt(_jumpHeight * -3.0f * _gravityValue);
+                coyoteCounter = 0f;
                 jumpCount++;
+                _playerVelocity.y = Mathf.Sqrt(_jumpHeight * -3.0f * _gravityValue);
+
             }
+
         }
     }
 
