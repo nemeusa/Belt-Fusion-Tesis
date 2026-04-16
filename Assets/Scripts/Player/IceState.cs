@@ -13,6 +13,7 @@ public class IceState : State
 
     public void OnEnter()
     {
+        GameManager.instance.BoostContainer.ChangeSymbol(TypeFSM.Ice);
         _player.meshColors.color = Color.blue;
     }
     public void OnUpdate()

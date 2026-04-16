@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public int maxJumps = 1;
 
     [Header("Skills")]
+    [SerializeField] int maxBoost = 3;
     public int boost { get; private set; }
 
 
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.instance.BoostContainer.BoostsActive(boost);
         coyoteTime = 0.2f;
         maxJumps = 1;
         initialSpeed = speed;
@@ -111,8 +113,15 @@ public class PlayerController : MonoBehaviour
 
     public void AddBoost(int newBoost)
     {
+        if (boost + newBoost > maxBoost)
+        {
+            Debug.Log($"Se supero el boost. boost: {boost}");
+            return;
+        }
+
         boost += newBoost;
-        GameManager.instance.boostText.text = $"Boost: {boost}";
+        //GameManager.instance.boostText.text = $"Boost: {boost}";
+        GameManager.instance.BoostContainer.BoostsActive(boost);
     }
 
     public IEnumerator ActivateTrail(TrailRenderer trail)

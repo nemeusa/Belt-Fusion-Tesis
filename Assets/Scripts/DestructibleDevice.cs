@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class DestructibleDevice : MonoBehaviour
 {
-    public TypeElement trampElement;
+    public TypeFSM trampElement;
     [SerializeField] int boost = 1;
 
     private void OnTriggerEnter(Collider collision)
     {
         if (ChooseElement(collision))
         {
-            GameManager.instance.addPoints(1);
             DetElement(collision);
             Destroy(gameObject);
         }
@@ -19,10 +18,10 @@ public class DestructibleDevice : MonoBehaviour
     {
         switch (trampElement)
         {
-            case TypeElement.Fire:
+            case TypeFSM.Fire:
                 return other.gameObject.GetComponent<FireBall>();
 
-            case TypeElement.Electricity:
+            case TypeFSM.Electricity:
                 return other.gameObject.GetComponent<PlayerController>().ElectricityTrail.emitting;
 
             default:
@@ -31,19 +30,12 @@ public class DestructibleDevice : MonoBehaviour
     }
     private void DetElement(Collider other)
     {
-        if (TypeElement.Fire == trampElement)
+        if (TypeFSM.Fire == trampElement)
             other.gameObject.GetComponent<FireBall>().player.AddBoost(boost);
 
-        if (TypeElement.Electricity == trampElement)
+        if (TypeFSM.Electricity == trampElement)
             other.gameObject.GetComponent<PlayerController>().AddBoost(boost);
 
     }
 
-}
-
-public enum TypeElement
-{
-    Fire,
-    Electricity,
-    Ice
 }

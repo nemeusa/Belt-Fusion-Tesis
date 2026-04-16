@@ -13,6 +13,7 @@ public class FireState : State
 
     public void OnEnter()
     {
+        GameManager.instance.BoostContainer.ChangeSymbol(TypeFSM.Fire);
         _player.meshColors.color = Color.red;
         _player.OnJumpPressed += JumpFire;
     }

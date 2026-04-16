@@ -15,6 +15,7 @@ public class ElectricityState : State
 
     public void OnEnter()
     {
+        GameManager.instance.BoostContainer.ChangeSymbol(TypeFSM.Electricity);
         _player.meshColors.color = Color.yellow;
         _player.OnDashPressed += Dash;
     }
