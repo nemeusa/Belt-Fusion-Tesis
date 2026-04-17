@@ -5,7 +5,7 @@ public class DestructibleDevice : MonoBehaviour
     public TypeFSM trampElement;
     [SerializeField] int boost = 1;
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
         if (ChooseElement(collision))
         {
