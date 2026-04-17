@@ -41,7 +41,8 @@ public class FireState : State
         if (_player.initialSpeed == _player.speed) _player.speed *= 1.2f;
 
         _player._playerVelocity.y = Mathf.Sqrt(_player._jumpFire * -3.0f * _player._gravityValue);
-        _player.StartCoroutine(_player.ActivateTrail(_player.fireTrail));
+        //_player.StartCoroutine(_player.ActivateTrail(_player.fireTrail));
+        _player.StartCoroutine(_player.ActivateParticleTrail(_player.fireParticleTrail));
         var ball = GameObject.Instantiate(_player.fireBall, _player.firePoint.transform.position, Quaternion.identity);
         GameObject.Instantiate(_player.explosionJumpPrefab, _player.firePoint.transform.position, Quaternion.identity);
         ball.GetComponent<FireBall>().player = _player;

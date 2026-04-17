@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -34,12 +37,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject meshChildren;
     public Animator animator;
     public TrailRenderer fireTrail;
+    public ParticleSystem fireParticleTrail;
     public TrailRenderer ElectricityTrail;
+    public ParticleSystem electricityParticleTrail;
     public GameObject fireBall;
     public Transform firePoint;
     public GameObject explosionJumpPrefab;
     public GameObject fireAura;
     public GameObject energyAura;
+    public Volume globalVolume;
+    private PaniniProjection panini;
 
     [HideInInspector] public Material meshColors;
 
@@ -52,6 +59,8 @@ public class PlayerController : MonoBehaviour
 
     public event Action OnDashPressed;
     public event Action OnJumpPressed;
+
+    private Coroutine transitionCoroutine;
 
     private void Awake()
     {
@@ -73,6 +82,11 @@ public class PlayerController : MonoBehaviour
         coyoteTime = 0.2f;
         maxJumps = 1;
         initialSpeed = speed;
+        if (globalVolume.profile.TryGet<PaniniProjection>(out var tmpPanini))
+        {
+            Debug.Log("Encontro el panini");
+            panini = tmpPanini;
+        }
 
     }
 
@@ -137,6 +151,55 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void SetPaniniIntensity(float value)
+    {
+        if (panini != null)
+        {
+            panini.distance.overrideState = true;
+            panini.distance.value = value;
+            Debug.Log("cambia lol");
+        }
+    }
+
+    public IEnumerator ActivateParticleTrail(ParticleSystem trail)
+    {
+        ChangePaniniSmooth(0.3f, 0.5f);
+
+        trail.Play();
+        yield return new WaitForSeconds(0.4f);
+        trail.Stop();
+        ChangePaniniSmooth(0, 0.5f);
+
+    }
+
+
+    public void ChangePaniniSmooth(float targetIntensity, float duration)
+    {
+        if (panini == null) return;
+
+        // Si ya hay una transición en curso, la detenemos para empezar la nueva
+        if (transitionCoroutine != null)
+            StopCoroutine(transitionCoroutine);
+
+        transitionCoroutine = StartCoroutine(SmoothTransition(targetIntensity, duration));
+    }
+
+    private IEnumerator SmoothTransition(float target, float duration)
+    {
+        float time = 0;
+        float startValue = panini.distance.value;
+        panini.distance.overrideState = true;
+
+        while (time < duration)
+        {
+            // Interpolación lineal suave
+            panini.distance.value = Mathf.Lerp(startValue, target, time / duration);
+            time += Time.deltaTime;
+            yield return null; // Espera al siguiente frame
+        }
+
+        panini.distance.value = target;
+    }
 
     public void OnReload(InputValue value)
     {

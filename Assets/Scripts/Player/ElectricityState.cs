@@ -42,7 +42,8 @@ public class ElectricityState : State
         if (!_player.isDashing)
         {
             _player.StartCoroutine(ExecuteDash());
-            _player.StartCoroutine(_player.ActivateTrail(_player.ElectricityTrail));
+            //_player.StartCoroutine(_player.ActivateTrail(_player.ElectricityTrail));
+            _player.StartCoroutine(_player.ActivateParticleTrail(_player.electricityParticleTrail));
             _player.dashCount++;
         }
     }
