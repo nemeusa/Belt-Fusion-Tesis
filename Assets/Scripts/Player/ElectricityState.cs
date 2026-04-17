@@ -5,7 +5,6 @@ public class ElectricityState : State
 {
     FSM<TypeFSM> _fsm;
     PlayerController _player;
-    private bool isDashing;
 
     public ElectricityState(FSM<TypeFSM> fsm, PlayerController player)
     {
@@ -16,6 +15,7 @@ public class ElectricityState : State
     public void OnEnter()
     {
         GameManager.instance.BoostContainer.ChangeSymbol(TypeFSM.Electricity);
+        _player.energyAura.SetActive(true);
         _player.meshColors.color = Color.yellow;
         _player.OnDashPressed += Dash;
     }
@@ -25,6 +25,7 @@ public class ElectricityState : State
 
     public void OnExit()
     {
+        _player.energyAura.SetActive(false);
         _player.OnDashPressed -= Dash;
     }
 
@@ -38,7 +39,7 @@ public class ElectricityState : State
             else _player.AddBoost(-1);
         }
 
-        if (!isDashing)
+        if (!_player.isDashing)
         {
             _player.StartCoroutine(ExecuteDash());
             _player.StartCoroutine(_player.ActivateTrail(_player.ElectricityTrail));
@@ -49,7 +50,7 @@ public class ElectricityState : State
 
     IEnumerator ExecuteDash()
     {
-        isDashing = true;
+        _player.isDashing = true;
 
         float originalGravity = _player._playerVelocity.y;
         _player._playerVelocity.y = 0;
@@ -65,7 +66,7 @@ public class ElectricityState : State
             yield return null;
         }
 
-        isDashing = false;
+        _player.isDashing = false;
 
         yield return new WaitForSeconds(_player.dashCooldown);
     }

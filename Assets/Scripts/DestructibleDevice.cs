@@ -22,7 +22,7 @@ public class DestructibleDevice : MonoBehaviour
                 return other.gameObject.GetComponent<FireBall>();
 
             case TypeFSM.Electricity:
-                return other.gameObject.GetComponent<PlayerController>().ElectricityTrail.emitting;
+                return other.gameObject.GetComponent<PlayerController>().isDashing;
 
             default:
                 return false;

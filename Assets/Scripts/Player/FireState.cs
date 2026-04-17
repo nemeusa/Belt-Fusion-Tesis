@@ -14,6 +14,7 @@ public class FireState : State
     public void OnEnter()
     {
         GameManager.instance.BoostContainer.ChangeSymbol(TypeFSM.Fire);
+        _player.fireAura.SetActive(true);
         _player.meshColors.color = Color.red;
         _player.OnJumpPressed += JumpFire;
     }
@@ -24,6 +25,7 @@ public class FireState : State
 
     public void OnExit()
     {
+        _player.fireAura.SetActive(false);
         _player.OnJumpPressed -= JumpFire;
     }
 
@@ -41,6 +43,7 @@ public class FireState : State
         _player._playerVelocity.y = Mathf.Sqrt(_player._jumpFire * -3.0f * _player._gravityValue);
         _player.StartCoroutine(_player.ActivateTrail(_player.fireTrail));
         var ball = GameObject.Instantiate(_player.fireBall, _player.firePoint.transform.position, Quaternion.identity);
+        GameObject.Instantiate(_player.explosionJumpPrefab, _player.firePoint.transform.position, Quaternion.identity);
         ball.GetComponent<FireBall>().player = _player;
 
         _player.jumpCount += 2;

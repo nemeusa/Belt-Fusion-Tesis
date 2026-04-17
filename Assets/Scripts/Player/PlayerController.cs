@@ -37,9 +37,14 @@ public class PlayerController : MonoBehaviour
     public TrailRenderer ElectricityTrail;
     public GameObject fireBall;
     public Transform firePoint;
+    public GameObject explosionJumpPrefab;
+    public GameObject fireAura;
+    public GameObject energyAura;
+
     [HideInInspector] public Material meshColors;
 
     [Header("Dash")]
+    public bool isDashing;
     public float dashSpeed = 20f;
     public float dashTime = 0.2f;
     public float dashCooldown = 1f;
