@@ -1,11 +1,12 @@
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CameraMove : MonoBehaviour
 {
     private CinemachineCameraOffset _offsetExtension;
-    private Vector2 _lookInput;
+    CinemachineFollow _camFollow;
+    PlayerController player;
+    //Vector2 _lookInput;
 
     [Header("Configuración")]
     public float maxOffset = 5f;    // Qué tanto puede subir/bajar
@@ -16,41 +17,38 @@ public class CameraMove : MonoBehaviour
     public float _currentYOffset = 0f;
     public float _returnTimer = 0f;
 
+    Vector2 defaultAlture;
+
     void Start()
     {
-        _offsetExtension = GetComponent<CinemachineCameraOffset>();
+        _camFollow = GetComponent<CinemachineFollow>();
+
+
+        player = GameManager.instance.player;
+        defaultAlture = _camFollow.FollowOffset;
+        _camFollow.FollowOffset.y = defaultAlture.y;
     }
 
-    // Vinculado al Input System (Stick Izquierdo)
-    void OnLook(InputValue value)
-    {
-        _lookInput = value.Get<Vector2>();
-
-        Debug.Log(_lookInput);
-
-        // Si hay movimiento, reseteamos el timer de espera
-        if (_lookInput.y != 0)
-        {
-            _returnTimer = waitBeforeReturn;
-        }
-    }
 
     void Update()
     {
-        //if (_returnTimer > 0)
-        //{
-        // Mientras el timer esté activo, aplicamos el input
-        _currentYOffset += _lookInput.y * sensitivity * Time.deltaTime;
-        _currentYOffset = Mathf.Clamp(_currentYOffset, -maxOffset, maxOffset);
-        _returnTimer -= Time.deltaTime;
-        //}
-        //else
-        //{
-        //    // Cuando el timer llega a 0, vuelve suavemente al centro (0)
-        //    _currentYOffset = Mathf.Lerp(_currentYOffset, 0, returnSpeed * Time.deltaTime);
-        //}
+        if (Mathf.Abs(player.lookInput.y) > 0.1f)
+        {
+            _returnTimer = waitBeforeReturn;
+        }
+        if (_returnTimer > 0)
+        {
+            _currentYOffset += player.lookInput.y * sensitivity * Time.deltaTime;
+            _currentYOffset = Mathf.Clamp(_currentYOffset, 0, 7);
+            _returnTimer -= Time.deltaTime;
+        }
+        else
+        {
+            _currentYOffset = Mathf.Lerp(_currentYOffset, defaultAlture.y, returnSpeed * Time.deltaTime);
+        }
 
-        // Aplicamos el valor final a la extensión de Cinemachine
-        _offsetExtension.Offset.y = _currentYOffset;
+        _camFollow.FollowOffset.y = _currentYOffset;
+        //_camFollow.FollowOffset.y += player.lookInput.y * sensitivity * Time.deltaTime;
+        //_offsetExtension.Offset.y = _currentYOffset;
     }
 }

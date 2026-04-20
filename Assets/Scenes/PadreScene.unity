@@ -1338,7 +1338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13587697, y: 0.000000004598398, z: -6.3066524e-10, w: 0.99072576}
+  m_LocalRotation: {x: 0.13587692, y: -0.000000020203876, z: 0.0000000027709388, w: 0.99072576}
   m_LocalPosition: {x: -72.09999, y: 35.34515, z: -77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1534,6 +1534,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2343237751224706034, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
   m_PrefabInstance: {fileID: 2283348281279896360}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &356109993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+  m_PrefabInstance: {fileID: 2283348281279896360}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb84777bdaf4e34aae168ff746a8403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &397574606
 GameObject:
   m_ObjectHideFlags: 0
@@ -6198,6 +6209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8dcd31b667a9e47b67555fd671fa97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 356109993}
   BoostContainer: {fileID: 4279195343235478184}
 --- !u!4 &1982700367
 Transform:
@@ -6561,6 +6573,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: globalVolume
+      value: 
+      objectReference: {fileID: 832575518}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6860,25 +6876,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 567391947}
     m_Modifications:
-    - target: {fileID: 1609775166493885078, guid: 45150c1f55426e34189072c824abedb2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -114.73698
-      objectReference: {fileID: 0}
-    - target: {fileID: 1609775166493885078, guid: 45150c1f55426e34189072c824abedb2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -46.994114
-      objectReference: {fileID: 0}
     - target: {fileID: 4172335867664768459, guid: 45150c1f55426e34189072c824abedb2, type: 3}
       propertyPath: m_Name
       value: Cameras
-      objectReference: {fileID: 0}
-    - target: {fileID: 7094859650630478947, guid: 45150c1f55426e34189072c824abedb2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -114.73698
-      objectReference: {fileID: 0}
-    - target: {fileID: 7094859650630478947, guid: 45150c1f55426e34189072c824abedb2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -46.994114
       objectReference: {fileID: 0}
     - target: {fileID: 7390928783894159729, guid: 45150c1f55426e34189072c824abedb2, type: 3}
       propertyPath: Target.TrackingTarget
@@ -6932,34 +6932,6 @@ PrefabInstance:
       propertyPath: AnimatedTarget
       value: 
       objectReference: {fileID: 1996789698}
-    - target: {fileID: 9161387207765605066, guid: 45150c1f55426e34189072c824abedb2, type: 3}
-      propertyPath: HashOfParent.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9161387207765605066, guid: 45150c1f55426e34189072c824abedb2, type: 3}
-      propertyPath: HashOfParent.Array.data[0].Hash
-      value: -1047064898
-      objectReference: {fileID: 0}
-    - target: {fileID: 9161387207765605066, guid: 45150c1f55426e34189072c824abedb2, type: 3}
-      propertyPath: HashOfParent.Array.data[1].Hash
-      value: 123112091
-      objectReference: {fileID: 0}
-    - target: {fileID: 9161387207765605066, guid: 45150c1f55426e34189072c824abedb2, type: 3}
-      propertyPath: HashOfParent.Array.data[2].Hash
-      value: 1337147666
-      objectReference: {fileID: 0}
-    - target: {fileID: 9161387207765605066, guid: 45150c1f55426e34189072c824abedb2, type: 3}
-      propertyPath: HashOfParent.Array.data[0].HashOfParent
-      value: 756556552
-      objectReference: {fileID: 0}
-    - target: {fileID: 9161387207765605066, guid: 45150c1f55426e34189072c824abedb2, type: 3}
-      propertyPath: HashOfParent.Array.data[1].HashOfParent
-      value: 756556552
-      objectReference: {fileID: 0}
-    - target: {fileID: 9161387207765605066, guid: 45150c1f55426e34189072c824abedb2, type: 3}
-      propertyPath: HashOfParent.Array.data[2].HashOfParent
-      value: 756556552
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

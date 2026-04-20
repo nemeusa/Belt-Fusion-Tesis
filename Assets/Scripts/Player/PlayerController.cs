@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviour
 
     private Coroutine transitionCoroutine;
 
+    public Vector2 lookInput;
+
+
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
@@ -74,6 +77,8 @@ public class PlayerController : MonoBehaviour
         _fsm.AddState(TypeFSM.Ice, new IceState(_fsm, this));
 
         _fsm.ChangeState(TypeFSM.Default);
+
+        GameManager.instance.player = this;
     }
 
     private void Start()
@@ -231,6 +236,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnBoost(InputValue value) { AddBoost(1); }
 
+
+    public void OnLook(InputValue value)
+    {
+        lookInput = value.Get<Vector2>();
+        Debug.Log(lookInput);
+    }
 
     public void OnMove(InputValue value) { _moveInput = value.Get<Vector2>(); }
     public void OnDash(InputValue value) { if (value.isPressed) OnDashPressed?.Invoke(); }
