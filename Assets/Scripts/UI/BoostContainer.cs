@@ -31,7 +31,18 @@ public class BoostContainer : MonoBehaviour
         int minutos = Mathf.FloorToInt(seconds / 60);
         int segs = Mathf.FloorToInt(seconds % 60);
 
-        counterText.text = string.Format("{0:00}:{1:00}", minutos, segs);
+        // Multiplicamos el resto decimal por 100 para obtener dos dígitos de milisegundos
+        int milisegundos = Mathf.FloorToInt((seconds % 1) * 100);
+
+        // Agregamos el tercer campo {2:00} al formato del string
+        counterText.text = string.Format("{0:00}:{1:00}:{2:00}", minutos, segs, milisegundos);
+
+        //seconds += Time.deltaTime;
+
+        //int minutos = Mathf.FloorToInt(seconds / 60);
+        //int segs = Mathf.FloorToInt(seconds % 60);
+
+        //counterText.text = string.Format("{0:00}:{1:00}", minutos, segs);
     }
     public void BoostsActive(int actualBoost)
     {
