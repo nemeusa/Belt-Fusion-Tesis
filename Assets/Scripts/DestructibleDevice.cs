@@ -6,13 +6,17 @@ public class DestructibleDevice : MonoBehaviour
     [SerializeField] int boost = 1;
 
     [SerializeField] GameObject desObj;
+    bool act;
 
     private void OnTriggerStay(Collider collision)
     {
-        if (ChooseElement(collision))
+        if (ChooseElement(collision) && desObj && !act)
         {
             DetElement(collision);
-            Destroy(desObj);
+            Debug.Log("energia xd");
+            desObj.SetActive(false);
+            act = false;
+            gameObject.GetComponent<Collider>().enabled = false;
         }
     }
 
