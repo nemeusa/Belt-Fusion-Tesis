@@ -7,9 +7,17 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     [HideInInspector]public PlayerController player;
     public BoostContainer BoostContainer;
+    private bool winGame;
 
     private void Awake()
     {
        instance = this;
+    }
+
+    public void WinGame()
+    {
+        winGame = true;
+        player.winGame = true;
+
     }
 }

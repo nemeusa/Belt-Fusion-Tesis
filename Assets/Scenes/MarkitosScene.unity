@@ -1791,6 +1791,7 @@ MonoBehaviour:
   dashCooldown: 1
   dashCount: 0
   lookInput: {x: 0, y: 0}
+  winGame: 0
 --- !u!23 &123066548
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4852,6 +4853,7 @@ MonoBehaviour:
   dashCooldown: 1
   dashCount: 0
   lookInput: {x: 0, y: 0}
+  winGame: 0
 --- !u!114 &356109993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9146,6 +9148,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 161.23
       objectReference: {fileID: 0}
+    - target: {fileID: -874182964123784755, guid: 4dc899057baca454184eb9759c1417f1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 58fbb40ccf41ef04da0adce490d9c37c, type: 2}
     - target: {fileID: 919132149155446097, guid: 4dc899057baca454184eb9759c1417f1, type: 3}
       propertyPath: m_Name
       value: Cueva
@@ -9343,7 +9349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c30ed33c5780a4eb26413c7f8e8e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: PadreScene
+  nextLevel: WaterLevel
 --- !u!65 &684411720
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20651,7 +20657,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ebee6de46acf89142ad365fca06e2743, type: 2}
+  - {fileID: 2100000, guid: 0d810667abeaa5b43ba3d9064d6017fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25750,7 +25756,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 58fbb40ccf41ef04da0adce490d9c37c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

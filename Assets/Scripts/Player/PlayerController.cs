@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
-using UnityEngine.VFX;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -64,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 lookInput;
 
+    public bool winGame;
 
     private void Awake()
     {
@@ -116,8 +116,12 @@ public class PlayerController : MonoBehaviour
 
         if (animator != null)
         {
-            animator.SetFloat("Speed", _moveInput.magnitude);
-            animator.SetBool("IsGrounded", coyoteCounter > 0);
+            if (winGame) animator.SetBool("Win", winGame);
+            else
+            {
+                animator.SetFloat("Speed", _moveInput.magnitude);
+                animator.SetBool("IsGrounded", coyoteCounter > 0);
+            }
         }
     }
 

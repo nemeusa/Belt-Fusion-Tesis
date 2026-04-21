@@ -14,11 +14,6 @@ public class NextLevel : MonoBehaviour
         _nextLevel = nextLevel;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void OnTriggerEnter(Collider other)
     {
