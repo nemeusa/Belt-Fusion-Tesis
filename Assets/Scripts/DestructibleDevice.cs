@@ -5,12 +5,14 @@ public class DestructibleDevice : MonoBehaviour
     public TypeFSM trampElement;
     [SerializeField] int boost = 1;
 
+    [SerializeField] GameObject desObj;
+
     private void OnTriggerStay(Collider collision)
     {
         if (ChooseElement(collision))
         {
             DetElement(collision);
-            Destroy(gameObject);
+            Destroy(desObj);
         }
     }
 
