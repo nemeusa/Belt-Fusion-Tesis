@@ -27,6 +27,10 @@ public class ElectricityState : State
     {
         _player.energyAura.SetActive(false);
         _player.OnDashPressed -= Dash;
+        _player.meshColors.color = Color.yellow;
+        _player.isDashing = false;
+        DashEffects();
+
     }
 
     void Dash()
@@ -75,9 +79,15 @@ public class ElectricityState : State
 
     void DashEffects()
     {
+
         if (_player.isDashing)
         {
-            //var d = GameObject.Instantiate(_player.fbxDash, _player.electricityParticleTrail.transform.position, Quaternion.identity);
+            if (_player.invisibleInDash)
+            {
+                Color col = _player.meshColors.color;
+                col.a = 0;
+                _player.meshColors.color = col;
+            }
 
             _player.fbxDash.SendEvent("OnPlay");
             _player.dashRingPar.Play();
@@ -86,7 +96,8 @@ public class ElectricityState : State
 
         else
         {
-            //GameObject.Destroy(d);
+            if (_player.invisibleInDash)
+            _player.meshColors.color = Color.yellow;
 
             _player.fbxDash.SendEvent("OnStop");
             _player.dashRingPar.Stop();
