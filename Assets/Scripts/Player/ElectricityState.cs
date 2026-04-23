@@ -34,7 +34,7 @@ public class ElectricityState : State
         if (_player.dashCount >= 1)
         {
             if (_player.boost < 1)
-            return;
+                return;
 
             else _player.AddBoost(-1);
         }
@@ -52,7 +52,7 @@ public class ElectricityState : State
     IEnumerator ExecuteDash()
     {
         _player.isDashing = true;
-
+        DashEffects();
         float originalGravity = _player._playerVelocity.y;
         _player._playerVelocity.y = 0;
 
@@ -68,7 +68,30 @@ public class ElectricityState : State
         }
 
         _player.isDashing = false;
+        DashEffects();
 
         yield return new WaitForSeconds(_player.dashCooldown);
+    }
+
+    void DashEffects()
+    {
+        if (_player.isDashing)
+        {
+            //var d = GameObject.Instantiate(_player.fbxDash, _player.electricityParticleTrail.transform.position, Quaternion.identity);
+
+            _player.fbxDash.SendEvent("OnPlay");
+            _player.dashRingPar.Play();
+            _player.fbxDash2.SendEvent("OnPlay");
+        }
+
+        else
+        {
+            //GameObject.Destroy(d);
+
+            _player.fbxDash.SendEvent("OnStop");
+            _player.dashRingPar.Stop();
+            _player.fbxDash2.SendEvent("OnStop");
+        }
+
     }
 }

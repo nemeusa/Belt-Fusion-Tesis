@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -54,6 +55,9 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed = 20f;
     public float dashTime = 0.2f;
     public float dashCooldown = 1f;
+    public ParticleSystem dashRingPar;
+    public VisualEffect fbxDash;
+    public VisualEffect fbxDash2;
     [HideInInspector] public int dashCount = 0;
 
     public event Action OnDashPressed;
@@ -173,7 +177,6 @@ public class PlayerController : MonoBehaviour
     public IEnumerator ActivateParticleTrail(ParticleSystem trail)
     {
         ChangePaniniSmooth(0.3f, 0.5f);
-
         trail.Play();
         yield return new WaitForSeconds(0.4f);
         trail.Stop();
