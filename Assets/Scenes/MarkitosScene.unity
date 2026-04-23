@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.52331793, g: 0.6768829, b: 0.754717, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.001
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -1822,6 +1822,10 @@ MonoBehaviour:
   dashSpeed: 20
   dashTime: 0.5
   dashCooldown: 1
+  invisibleInDash: 0
+  dashRingPar: {fileID: 0}
+  fbxDash: {fileID: 0}
+  fbxDash2: {fileID: 0}
   dashCount: 0
   lookInput: {x: 0, y: 0}
   winGame: 0
@@ -4884,6 +4888,10 @@ MonoBehaviour:
   dashSpeed: 20
   dashTime: 0.5
   dashCooldown: 1
+  invisibleInDash: 0
+  dashRingPar: {fileID: 0}
+  fbxDash: {fileID: 0}
+  fbxDash2: {fileID: 0}
   dashCount: 0
   lookInput: {x: 0, y: 0}
   winGame: 0
@@ -18850,6 +18858,7 @@ GameObject:
   - component: {fileID: 1521650725}
   - component: {fileID: 1521650724}
   - component: {fileID: 1521650726}
+  - component: {fileID: 1521650727}
   m_Layer: 0
   m_Name: Wall invis
   m_TagString: Untagged
@@ -18887,7 +18896,7 @@ Transform:
   m_GameObject: {fileID: 1521650723}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.23, y: 12.450001, z: -263.3313}
+  m_LocalPosition: {x: -22.8, y: 12.450001, z: -263.3313}
   m_LocalScale: {x: 1.2691123, y: 337.5078, z: 1604.9984}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18900,7 +18909,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521650723}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -18938,6 +18947,14 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1521650727
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521650723}
+  m_Mesh: {fileID: 4828373838984873872, guid: 43ddcb1db1c83ff43b968b2820d1dbe9, type: 3}
 --- !u!4 &1528496347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7e9bb8b060155724c934431524b89790, type: 3}
@@ -20703,7 +20720,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0d810667abeaa5b43ba3d9064d6017fa, type: 2}
+  - {fileID: -9103484930961366303, guid: 83aa1803a222fff43a016070240b64f3, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
