@@ -216,6 +216,12 @@ public class PlayerController : MonoBehaviour
         panini.distance.value = target;
     }
 
+    public void DefaultPlayer()
+    {
+        _fsm.ChangeState(TypeFSM.Default);
+        winGame = false;
+    }
+
     public void OnReload(InputValue value)
     {
         if (value.isPressed)

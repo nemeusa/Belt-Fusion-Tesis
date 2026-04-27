@@ -13,7 +13,7 @@ public class CheckpointTrigger : MonoBehaviour
             CheckpointManager.Instance.UpdateCheckpoint(respawnPost.position);
             _activated = true;
 
-            _meshOb.GetComponent<Renderer>().material.color = Color.green;
+            _meshOb.GetComponent<MeshRenderer>().material.color = Color.green;
         }
     }
 }
