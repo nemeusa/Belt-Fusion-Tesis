@@ -8,6 +8,18 @@ public class DestructibleDevice : MonoBehaviour
     [SerializeField] GameObject desObj;
     bool act;
 
+
+    private void Update()
+    {
+        if (CheckpointManager.Instance.respawn)
+        {
+            desObj.SetActive(true);
+            //act = true;
+            gameObject.GetComponent<Collider>().enabled = true;
+        }
+
+    }
+
     private void OnTriggerStay(Collider collision)
     {
         if (ChooseElement(collision) && desObj && !act)
@@ -19,6 +31,8 @@ public class DestructibleDevice : MonoBehaviour
             gameObject.GetComponent<Collider>().enabled = false;
         }
     }
+
+    
 
     private bool ChooseElement(Collider other)
     {

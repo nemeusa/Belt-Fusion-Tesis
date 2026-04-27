@@ -9,7 +9,9 @@ public class Damage : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<PlayerController>())
         {
-            SceneManager.LoadScene(actualSceneName);
+            GameManager.instance.Death(collision.gameObject);
+
+            //SceneManager.LoadScene(actualSceneName);
         }
     }
 }

@@ -102,6 +102,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!_controller.enabled) return;
+
         _fsm.Execute();
 
         if (_controller.isGrounded)

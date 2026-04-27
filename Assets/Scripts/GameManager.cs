@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -8,10 +9,16 @@ public class GameManager : MonoBehaviour
     [HideInInspector]public PlayerController player;
     public BoostContainer BoostContainer;
     private bool winGame;
+    [SerializeField] TransitionCanvas trans;
 
     private void Awake()
     {
        instance = this;
+    }
+
+    private void Start()
+    {
+        CheckpointManager.Instance.UpdateCheckpoint(player.transform.position);
     }
 
     public void WinGame()
@@ -19,5 +26,20 @@ public class GameManager : MonoBehaviour
         winGame = true;
         player.winGame = true;
 
+    }
+
+    public void Death(GameObject target)
+    {
+        //trans.Transition();
+        //CheckpointManager.Instance.Respawn(target);
+        StartCoroutine(DeathCorou(target));
+    }
+
+    IEnumerator DeathCorou(GameObject target)
+    {
+        trans.Transition();
+        yield return new WaitForSeconds(0.5f);
+
+        CheckpointManager.Instance.Respawn(target);
     }
 }
