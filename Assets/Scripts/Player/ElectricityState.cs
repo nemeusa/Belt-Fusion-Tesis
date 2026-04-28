@@ -90,7 +90,7 @@ public class ElectricityState : State
             }
 
             _player.fbxDash.SendEvent("OnPlay");
-            _player.dashRingPar.Play();
+            var d = GameObject.Instantiate(_player.dashRingPar, _player.ElectricityTrail.transform.position, Quaternion.identity);
             _player.fbxDash2.SendEvent("OnPlay");
         }
 
@@ -100,7 +100,6 @@ public class ElectricityState : State
             _player.meshColors.color = Color.yellow;
 
             _player.fbxDash.SendEvent("OnStop");
-            _player.dashRingPar.Stop();
             _player.fbxDash2.SendEvent("OnStop");
         }
 

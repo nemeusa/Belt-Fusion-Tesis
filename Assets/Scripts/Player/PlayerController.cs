@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     public float dashTime = 0.2f;
     public float dashCooldown = 1f;
     public bool invisibleInDash;
-    public ParticleSystem dashRingPar;
+    public GameObject dashRingPar;
     public VisualEffect fbxDash;
     public VisualEffect fbxDash2;
     [HideInInspector] public int dashCount = 0;
