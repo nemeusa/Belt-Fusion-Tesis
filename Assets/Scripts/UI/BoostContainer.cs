@@ -9,6 +9,12 @@ public class BoostContainer : MonoBehaviour
     [SerializeField] GameObject _fireSimbol;
     [SerializeField] GameObject _energySimbol;
     [SerializeField] GameObject _iceSimbol;
+
+    [SerializeField] GameObject _offDefaultSimbol;
+    [SerializeField] GameObject _offFireSimbol;
+    [SerializeField] GameObject _offEnergySimbol;
+    [SerializeField] GameObject _offIceSimbol;
+
     float seconds;
     [SerializeField] TMP_Text counterText;
 
@@ -58,9 +64,11 @@ public class BoostContainer : MonoBehaviour
     {
 
         ActivateSymbol(newElement).SetActive(true);
+        DesactivateSymbol(newElement).SetActive(false);
 
         if (newElement == oldElement) return;
         ActivateSymbol(oldElement).SetActive(false);
+        DesactivateSymbol(oldElement).SetActive(true);
 
         oldElement = newElement;
     }
@@ -80,6 +88,25 @@ public class BoostContainer : MonoBehaviour
 
             default:
                 return _defaultSimbol;
+        }
+
+    }
+
+    GameObject DesactivateSymbol(TypeFSM newElement)
+    {
+        switch (newElement)
+        {
+            case TypeFSM.Fire:
+                return _offFireSimbol;
+
+            case TypeFSM.Electricity:
+                return _offEnergySimbol;
+
+            case TypeFSM.Ice:
+                return _offIceSimbol;
+
+            default:
+                return _offDefaultSimbol;
         }
 
     }

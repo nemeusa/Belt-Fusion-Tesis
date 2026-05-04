@@ -17,7 +17,7 @@ public class CheckpointManager : MonoBehaviour
     public void UpdateCheckpoint(Vector3 newPos)
     {
         _lastCheckpointPosition = newPos;
-        Debug.Log("Checkpoint alcanzado: " + newPos);
+        //Debug.Log("Checkpoint alcanzado: " + newPos);
     }
 
     public void Respawn(GameObject player)

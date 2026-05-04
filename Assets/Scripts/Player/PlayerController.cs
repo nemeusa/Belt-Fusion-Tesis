@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
 
     [HideInInspector] public CharacterController _controller;
-    [HideInInspector] public Vector2 _moveInput;
+    [HideInInspector] public Vector2 moveInput;
     [HideInInspector] public Vector3 _playerVelocity;
 
     [Header("Move")]
@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
             if (winGame) animator.SetBool("Win", winGame);
             else
             {
-                animator.SetFloat("Speed", _moveInput.magnitude);
+                animator.SetFloat("Speed", moveInput.magnitude);
                 animator.SetBool("IsGrounded", coyoteCounter > 0);
             }
         }
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        Vector3 move = new Vector3(_moveInput.x, 0, _moveInput.y);
+        Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
         _controller.Move(move * Time.deltaTime * speed);
 
         _playerVelocity.y += _gravityValue * Time.deltaTime;
@@ -256,10 +256,10 @@ public class PlayerController : MonoBehaviour
     public void OnLook(InputValue value)
     {
         lookInput = value.Get<Vector2>();
-        Debug.Log(lookInput);
+        //Debug.Log(lookInput);
     }
 
-    public void OnMove(InputValue value) { _moveInput = value.Get<Vector2>(); }
+    public void OnMove(InputValue value) { moveInput = value.Get<Vector2>(); }
     public void OnDash(InputValue value) { if (value.isPressed) OnDashPressed?.Invoke(); }
 
     public void OnElement0(InputValue value) { if (value.isPressed) _fsm.ChangeState(TypeFSM.Default); }

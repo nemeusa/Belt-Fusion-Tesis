@@ -1,10 +1,13 @@
 using System.Collections;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class ElectricityState : State
 {
     FSM<TypeFSM> _fsm;
     PlayerController _player;
+
+    Vector3 _direccionDash;
 
     public ElectricityState(FSM<TypeFSM> fsm, PlayerController player)
     {
@@ -60,7 +63,7 @@ public class ElectricityState : State
         float originalGravity = _player._playerVelocity.y;
         _player._playerVelocity.y = 0;
 
-        Vector3 dashDirection = new Vector3(_player._moveInput.x, 0, _player._moveInput.y);
+        Vector3 dashDirection = new Vector3(_player.moveInput.x, 0, _player.moveInput.y);
         if (dashDirection == Vector3.zero) dashDirection = _player.transform.forward;
 
         float startTime = Time.time;
@@ -90,7 +93,7 @@ public class ElectricityState : State
             }
 
             _player.fbxDash.SendEvent("OnPlay");
-            var d = GameObject.Instantiate(_player.dashRingPar, _player.ElectricityTrail.transform.position, Quaternion.identity);
+            IniciarDash();
             _player.fbxDash2.SendEvent("OnPlay");
         }
 
@@ -103,5 +106,23 @@ public class ElectricityState : State
             _player.fbxDash2.SendEvent("OnStop");
         }
 
+    }
+
+    void IniciarDash()
+    {
+        Vector3 inputDireccion = new Vector3(_player.moveInput.x, 0, _player.moveInput.y);
+
+        if (inputDireccion.sqrMagnitude > 0.1f)
+        {
+            _direccionDash = inputDireccion.normalized;
+        }
+        else
+        {
+            _direccionDash = _player.transform.forward;
+        }
+
+        var d = GameObject.Instantiate(_player.dashRingPar, _player.ElectricityTrail.transform.position, Quaternion.identity);
+        d.transform.forward = _direccionDash;
+        GameObject.Destroy(d, 2);
     }
 }
