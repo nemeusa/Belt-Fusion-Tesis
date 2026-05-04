@@ -14674,6 +14674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4384359314134719394}
   - component: {fileID: 6175028980073282379}
+  - component: {fileID: 366375123108807383}
   - component: {fileID: 9032048685769424303}
   - component: {fileID: 4631831396477411773}
   - component: {fileID: 7578872221005493294}
@@ -14722,6 +14723,21 @@ MonoBehaviour:
   trampElement: 2
   boost: 1
   desObj: {fileID: 5842300319214445742}
+--- !u!114 &366375123108807383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737707599261256450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc0799fcb005c8488c52733926d27e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushForce: 20
+  pushDuration: 0.3
+  _shockPrefab: {fileID: 2660343750674182859, guid: cba96971fe1a77e4091e36099a834041, type: 3}
 --- !u!33 &9032048685769424303
 MeshFilter:
   m_ObjectHideFlags: 0

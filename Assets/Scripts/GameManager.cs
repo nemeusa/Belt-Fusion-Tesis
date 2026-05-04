@@ -6,7 +6,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [HideInInspector]public PlayerController player;
+    public PlayerController player;
+    public RobotFollow robot;
     public BoostContainer BoostContainer;
     private bool winGame;
     [SerializeField] TransitionCanvas trans;

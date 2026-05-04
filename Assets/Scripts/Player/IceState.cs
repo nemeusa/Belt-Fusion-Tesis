@@ -13,6 +13,7 @@ public class IceState : State
 
     public void OnEnter()
     {
+        _player.robot.DispararRayo(Color.cyan);
         GameManager.instance.BoostContainer.ChangeSymbol(TypeFSM.Ice);
         _player.meshColors.color = Color.blue;
     }

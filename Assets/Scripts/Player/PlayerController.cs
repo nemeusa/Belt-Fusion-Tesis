@@ -70,10 +70,20 @@ public class PlayerController : MonoBehaviour
 
     public bool winGame;
 
+    private bool _isBeingPushed = false;
+    private Vector3 _pushDirection;
+
+    public bool canMove = true;
+
+    public RobotFollow robot;
+
     private void Awake()
     {
+        //GameManager.instance.player = this;
         _controller = GetComponent<CharacterController>();
         meshColors = meshChildren.GetComponent<SkinnedMeshRenderer>().material;
+        canMove = true;
+        robot = GameManager.instance.robot;
 
         _fsm = new FSM<TypeFSM>();
         _fsm.AddState(TypeFSM.Default, new DefaultState(_fsm, this));
@@ -83,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
         _fsm.ChangeState(TypeFSM.Default);
 
-        GameManager.instance.player = this;
+
     }
 
     private void Start()
@@ -102,7 +112,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!_controller.enabled) return;
+        if (!canMove) return;
 
         _fsm.Execute();
 
@@ -156,6 +166,7 @@ public class PlayerController : MonoBehaviour
 
         boost += newBoost;
         //GameManager.instance.boostText.text = $"Boost: {boost}";
+        if (boost < 0) boost = 0;
         GameManager.instance.BoostContainer.BoostsActive(boost);
     }
 
@@ -176,6 +187,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("cambia lol");
         }
     }
+
+
 
     public IEnumerator ActivateParticleTrail(ParticleSystem trail)
     {
@@ -219,9 +232,37 @@ public class PlayerController : MonoBehaviour
     public void DefaultPlayer()
     {
         _fsm.ChangeState(TypeFSM.Default);
+        AddBoost(-5);
         winGame = false;
     }
 
+
+    public void ApplyKnockback(Vector3 direction, float force, float duration)
+    {
+      
+        if (!_isBeingPushed)
+        {
+            StartCoroutine(KnockbackRoutine(direction, force, duration));
+        }
+    }
+
+    private IEnumerator KnockbackRoutine(Vector3 direction, float force, float duration)
+    {
+        canMove = false;
+        _isBeingPushed = true;
+        float timer = 0;
+
+        while (timer < duration)
+        {
+            _controller.Move(direction * force * Time.deltaTime);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        _isBeingPushed = false;
+        canMove = true;
+    }
     public void OnReload(InputValue value)
     {
         if (value.isPressed)
@@ -234,6 +275,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
+        if (!canMove) return;
+
         if (value.isPressed)
         {
 
@@ -259,13 +302,13 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(lookInput);
     }
 
-    public void OnMove(InputValue value) { moveInput = value.Get<Vector2>(); }
-    public void OnDash(InputValue value) { if (value.isPressed) OnDashPressed?.Invoke(); }
+    public void OnMove(InputValue value) { if (canMove) moveInput = value.Get<Vector2>(); }
+    public void OnDash(InputValue value) { if (value.isPressed && canMove) OnDashPressed?.Invoke(); }
 
-    public void OnElement0(InputValue value) { if (value.isPressed) _fsm.ChangeState(TypeFSM.Default); }
-    public void OnElement1(InputValue value) { if (value.isPressed) _fsm.ChangeState(TypeFSM.Fire); }
-    public void OnElement2(InputValue value) { if (value.isPressed) _fsm.ChangeState(TypeFSM.Electricity); }
-    public void OnElement3(InputValue value) { if (value.isPressed) _fsm.ChangeState(TypeFSM.Ice); }
+    public void OnElement0(InputValue value) { if (value.isPressed && canMove) _fsm.ChangeState(TypeFSM.Default); }
+    public void OnElement1(InputValue value) { if (value.isPressed && canMove) _fsm.ChangeState(TypeFSM.Fire); }
+    public void OnElement2(InputValue value) { if (value.isPressed && canMove) _fsm.ChangeState(TypeFSM.Electricity); }
+    public void OnElement3(InputValue value) { if (value.isPressed && canMove) _fsm.ChangeState(TypeFSM.Ice); }
 }
 
 public enum TypeFSM

@@ -25,7 +25,6 @@ public class DestructibleDevice : MonoBehaviour
         if (ChooseElement(collision) && desObj && !act)
         {
             DetElement(collision);
-            Debug.Log("energia xd");
             desObj.SetActive(false);
             act = false;
             gameObject.GetComponent<Collider>().enabled = false;
