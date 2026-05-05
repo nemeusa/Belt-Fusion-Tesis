@@ -13,9 +13,8 @@ public class DefaultState : State
 
     public void OnEnter()
     {
-        _player.robot.DispararRayo(Color.gray);
+        _player.ChangeElement(TypeFSM.Default);
 
-        if (GameManager.instance != null) GameManager.instance.BoostContainer.ChangeSymbol(TypeFSM.Default);
         _player.meshColors.color = Color.black;
     }
     public void OnUpdate()

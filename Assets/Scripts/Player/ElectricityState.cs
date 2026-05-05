@@ -17,9 +17,7 @@ public class ElectricityState : State
 
     public void OnEnter()
     {
-        _player.robot.DispararRayo(Color.yellow);
-
-        GameManager.instance.BoostContainer.ChangeSymbol(TypeFSM.Electricity);
+        _player.ChangeElement(TypeFSM.Electricity);
         _player.energyAura.SetActive(true);
         _player.meshColors.color = Color.yellow;
         _player.OnDashPressed += Dash;

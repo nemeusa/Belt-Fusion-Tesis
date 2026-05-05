@@ -30,10 +30,30 @@ public class RobotFollow : MonoBehaviour
     }
 
 
-    public void DispararRayo(Color colorElemento)
+    public void DispararRayo(TypeFSM element)
     {
+        Color colorE;
+        switch (element)
+        {
+            case TypeFSM.Fire:
+                colorE = Color.red;
+                break;
+
+            case TypeFSM.Electricity:
+                colorE = Color.yellow;
+                break;
+
+            case TypeFSM.Ice:
+                colorE = Color.cyan;
+                break;
+
+            default:
+                colorE = Color.gray;
+                break;
+        }
+
         StopAllCoroutines();
-        StartCoroutine(RoutineRayo(colorElemento));
+        StartCoroutine(RoutineRayo(colorE));
     }
 
     IEnumerator RoutineRayo(Color color)

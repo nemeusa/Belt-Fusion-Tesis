@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public int jumpCount = 0;
     [HideInInspector] public int maxJumps = 1;
 
+
     [Header("Skills")]
     [SerializeField] int maxBoost = 3;
     public int boost { get; private set; }
@@ -47,6 +49,9 @@ public class PlayerController : MonoBehaviour
     public GameObject energyAura;
     public Volume globalVolume;
     private PaniniProjection panini;
+
+
+    public List<ParticleSystem> changeElementVFX = new List<ParticleSystem>();
 
     [HideInInspector] public Material meshColors;
 
@@ -76,6 +81,7 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
 
     public RobotFollow robot;
+
 
     private void Awake()
     {
@@ -229,6 +235,17 @@ public class PlayerController : MonoBehaviour
         panini.distance.value = target;
     }
 
+    public void ChangeElement(TypeFSM element)
+    {
+        GameManager.instance.BoostContainer.ChangeSymbol(element);
+        robot.DispararRayo(element);
+
+        foreach (var a in changeElementVFX)
+        {
+            a.Play();
+        }
+    }
+
     public void DefaultPlayer()
     {
         _fsm.ChangeState(TypeFSM.Default);
@@ -248,6 +265,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator KnockbackRoutine(Vector3 direction, float force, float duration)
     {
+        //moveInput = Vector2.zero;
+        _fsm.ChangeState(TypeFSM.Default);
+
         canMove = false;
         _isBeingPushed = true;
         float timer = 0;
@@ -302,7 +322,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(lookInput);
     }
 
-    public void OnMove(InputValue value) { if (canMove) moveInput = value.Get<Vector2>(); }
+    public void OnMove(InputValue value) { moveInput = value.Get<Vector2>(); }
     public void OnDash(InputValue value) { if (value.isPressed && canMove) OnDashPressed?.Invoke(); }
 
     public void OnElement0(InputValue value) { if (value.isPressed && canMove) _fsm.ChangeState(TypeFSM.Default); }

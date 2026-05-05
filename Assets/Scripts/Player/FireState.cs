@@ -13,9 +13,8 @@ public class FireState : State
 
     public void OnEnter()
     {
-        _player.robot.DispararRayo(Color.red);
+        _player.ChangeElement(TypeFSM.Fire);
 
-        GameManager.instance.BoostContainer.ChangeSymbol(TypeFSM.Fire);
         _player.fireAura.SetActive(true);
         _player.meshColors.color = Color.red;
         _player.OnJumpPressed += JumpFire;
