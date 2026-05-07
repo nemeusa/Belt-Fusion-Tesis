@@ -7,12 +7,21 @@ public class EnergyKick : MonoBehaviour
 
     [SerializeField] GameObject _shockPrefab;
 
+    AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
             if(player.isDashing) return;
+
+            audioSource.Play();
 
             Vector3 pushDirection = -other.transform.forward;
 

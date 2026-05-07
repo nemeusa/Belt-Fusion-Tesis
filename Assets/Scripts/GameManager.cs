@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-100)]
 public class GameManager : MonoBehaviour
@@ -12,9 +13,12 @@ public class GameManager : MonoBehaviour
     private bool winGame;
     [SerializeField] TransitionCanvas trans;
 
+    AudioSource audioSource;
+
     private void Awake()
     {
        instance = this;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -29,8 +33,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void Death(GameObject target)
+    public void Death(GameObject target, AudioClip deathSound)
     {
+        audioSource.PlayOneShot(deathSound);
         //trans.Transition();
         //CheckpointManager.Instance.Respawn(target);
         StartCoroutine(DeathCorou(target));
@@ -43,5 +48,10 @@ public class GameManager : MonoBehaviour
 
         CheckpointManager.Instance.Respawn(target);
         player.DefaultPlayer();
+    }
+
+    public void PauseGame()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

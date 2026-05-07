@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public GameObject fireAura;
     public GameObject energyAura;
     public Volume globalVolume;
+    public AudioSource audioSource;
     private PaniniProjection panini;
 
 
@@ -82,6 +83,10 @@ public class PlayerController : MonoBehaviour
 
     public RobotFollow robot;
 
+    public AudioClip fireJumpAudio;
+    public AudioClip dashAudio;
+    public AudioClip walkAudio;
+    public AudioClip changeElementAudio;
 
     private void Awake()
     {
@@ -90,6 +95,7 @@ public class PlayerController : MonoBehaviour
         meshColors = meshChildren.GetComponent<SkinnedMeshRenderer>().material;
         canMove = true;
         robot = GameManager.instance.robot;
+        audioSource = gameObject.GetComponent<AudioSource>();
 
         _fsm = new FSM<TypeFSM>();
         _fsm.AddState(TypeFSM.Default, new DefaultState(_fsm, this));
@@ -240,6 +246,8 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.BoostContainer.ChangeSymbol(element);
         robot.DispararRayo(element);
 
+        audioSource.PlayOneShot(changeElementAudio);
+
         foreach (var a in changeElementVFX)
         {
             a.Play();
@@ -329,6 +337,7 @@ public class PlayerController : MonoBehaviour
     public void OnElement1(InputValue value) { if (value.isPressed && canMove) _fsm.ChangeState(TypeFSM.Fire); }
     public void OnElement2(InputValue value) { if (value.isPressed && canMove) _fsm.ChangeState(TypeFSM.Electricity); }
     public void OnElement3(InputValue value) { if (value.isPressed && canMove) _fsm.ChangeState(TypeFSM.Ice); }
+    public void OnPause(InputValue value) { if (value.isPressed) GameManager.instance.PauseGame(); }
 }
 
 public enum TypeFSM

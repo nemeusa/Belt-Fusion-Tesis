@@ -92,6 +92,8 @@ public class ElectricityState : State
                 _player.meshColors.color = col;
             }
 
+            _player.audioSource.PlayOneShot(_player.dashAudio);
+
             _player.fbxDash.SendEvent("OnPlay");
             IniciarDash();
             _player.fbxDash2.SendEvent("OnPlay");
