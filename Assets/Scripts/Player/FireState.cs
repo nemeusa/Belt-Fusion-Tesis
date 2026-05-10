@@ -42,6 +42,7 @@ public class FireState : State
         if (_player.initialSpeed == _player.speed) _player.speed *= 1.2f;
 
         _player.audioSource.PlayOneShot(_player.fireJumpAudio);
+        _player.CountMoves(1);
 
         _player._playerVelocity.y = Mathf.Sqrt(_player._jumpFire * -3.0f * _player._gravityValue);
         //_player.StartCoroutine(_player.ActivateTrail(_player.fireTrail));

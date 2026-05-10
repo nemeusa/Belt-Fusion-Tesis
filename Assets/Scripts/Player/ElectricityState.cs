@@ -59,6 +59,8 @@ public class ElectricityState : State
     IEnumerator ExecuteDash()
     {
         _player.isDashing = true;
+        _player.CountMoves(1);
+
         DashEffects();
         float originalGravity = _player._playerVelocity.y;
         _player._playerVelocity.y = 0;

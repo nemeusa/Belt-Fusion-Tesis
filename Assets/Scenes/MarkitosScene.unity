@@ -8790,6 +8790,7 @@ MonoBehaviour:
   initialSpeed: 0
   jumpCount: 0
   maxJumps: 0
+  dontMove: 0
   maxBoost: 3
   meshChildren: {fileID: 0}
   animator: {fileID: 0}
@@ -8814,10 +8815,12 @@ MonoBehaviour:
   dashRingPar: {fileID: 0}
   fbxDash: {fileID: 0}
   fbxDash2: {fileID: 0}
+  countMovsText: {fileID: 0}
+  countMovs: 0
   dashCount: 0
   lookInput: {x: 0, y: 0}
   winGame: 0
-  canMove: 0
+  isDeath: 1
   robot: {fileID: 0}
   fireJumpAudio: {fileID: 0}
   dashAudio: {fileID: 0}
@@ -93182,6 +93185,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47c0e736c1726c4aaa27e45b4b1f2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1327178073 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1614890629934532286, guid: d4a0830abf24720448834efd30f23c4c, type: 3}
+  m_PrefabInstance: {fileID: 1327178069}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1328099533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134806,6 +134820,10 @@ PrefabInstance:
       propertyPath: globalVolume
       value: 
       objectReference: {fileID: 832575518}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: countMovsText
+      value: 
+      objectReference: {fileID: 1327178073}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

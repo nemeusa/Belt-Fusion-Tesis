@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -11,8 +12,8 @@ using UnityEngine.VFX;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    FSM<TypeFSM> _fsm;
-
+    #region vars
+    [HideInInspector] public FSM<TypeFSM> _fsm;
 
     [HideInInspector] public CharacterController _controller;
     [HideInInspector] public Vector2 moveInput;
@@ -27,7 +28,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public float coyoteCounter;
     [HideInInspector] public float initialSpeed;
     public int jumpCount = 0;
-    [HideInInspector] public int maxJumps = 1;
+    public int maxJumps = 1;
+    public bool dontMove;
 
 
     [Header("Skills")]
@@ -65,6 +67,9 @@ public class PlayerController : MonoBehaviour
     public GameObject dashRingPar;
     public VisualEffect fbxDash;
     public VisualEffect fbxDash2;
+    public TMP_Text countMovsText;
+    [HideInInspector] public int countMovs;
+
     [HideInInspector] public int dashCount = 0;
 
     public event Action OnDashPressed;
@@ -79,21 +84,24 @@ public class PlayerController : MonoBehaviour
     private bool _isBeingPushed = false;
     private Vector3 _pushDirection;
 
-    public bool canMove = true;
+    public bool isDeath = true;
 
     public RobotFollow robot;
 
+    [Header("Audio")]
     public AudioClip fireJumpAudio;
     public AudioClip dashAudio;
     public AudioClip walkAudio;
     public AudioClip changeElementAudio;
+
+    #endregion
 
     private void Awake()
     {
         //GameManager.instance.player = this;
         _controller = GetComponent<CharacterController>();
         meshColors = meshChildren.GetComponent<SkinnedMeshRenderer>().material;
-        canMove = true;
+        isDeath = true;
         robot = GameManager.instance.robot;
         audioSource = gameObject.GetComponent<AudioSource>();
 
@@ -124,23 +132,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!canMove) return;
+        if (!isDeath) return;
 
         _fsm.Execute();
 
-        if (_controller.isGrounded)
-        {
-            if (_playerVelocity.y < 0)
-            {
-                _playerVelocity.y = -2f;
-                jumpCount = 0;
-                dashCount = 0;
-
-            }
-            coyoteCounter = coyoteTime;
-        }
-        else coyoteCounter -= Time.deltaTime;
-
+        JumpLogics(_controller.isGrounded, _playerVelocity.y < 0);
         MovePlayer();
 
         if (animator != null)
@@ -148,14 +144,17 @@ public class PlayerController : MonoBehaviour
             if (winGame) animator.SetBool("Win", winGame);
             else
             {
-                animator.SetFloat("Speed", moveInput.magnitude);
+                if (!dontMove) animator.SetFloat("Speed", moveInput.magnitude);
                 animator.SetBool("IsGrounded", coyoteCounter > 0);
             }
         }
     }
 
+    #region Movement
     void MovePlayer()
     {
+        if (dontMove) return;
+
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
         _controller.Move(move * Time.deltaTime * speed);
 
@@ -167,6 +166,60 @@ public class PlayerController : MonoBehaviour
             transform.forward = move;
         }
     }
+
+    public void JumpLogics(bool condition, bool conditionTwo)
+    {
+
+        if (condition)
+        {
+            if (conditionTwo)
+            {
+                _playerVelocity.y = -2f;
+                jumpCount = 0;
+                dashCount = 0;
+
+            }
+
+            CountMoves(0);
+            coyoteCounter = coyoteTime;
+        }
+        else coyoteCounter -= Time.deltaTime;
+
+    }
+
+    public void ApplyKnockback(Vector3 direction, float force, float duration)
+    {
+
+        if (!_isBeingPushed)
+        {
+            StartCoroutine(KnockbackRoutine(direction, force, duration));
+        }
+    }
+
+    private IEnumerator KnockbackRoutine(Vector3 direction, float force, float duration)
+    {
+        //moveInput = Vector2.zero;
+        _fsm.ChangeState(TypeFSM.Default);
+
+        isDeath = false;
+        _isBeingPushed = true;
+        float timer = 0;
+
+        while (timer < duration)
+        {
+            _controller.Move(direction * force * Time.deltaTime);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        _isBeingPushed = false;
+        isDeath = true;
+    }
+
+    #endregion
+
+    #region Extra
 
     public void AddBoost(int newBoost)
     {
@@ -182,6 +235,96 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.BoostContainer.BoostsActive(boost);
     }
 
+    public void CountMoves(int n)
+    {
+        if (n <= 0)
+        {
+            countMovs = 0;
+            countMovsText.text = "";
+        }
+        else
+        {
+            countMovs += n;
+            countMovsText.text = "combo: " + countMovs;
+
+
+        }
+    }
+
+    public void ChangeElement(TypeFSM element)
+    {
+        GameManager.instance.BoostContainer.ChangeSymbol(element);
+        robot.DispararRayo(element);
+
+        audioSource.PlayOneShot(changeElementAudio);
+
+        foreach (var a in changeElementVFX)
+        {
+            a.Play();
+        }
+    }
+
+    public void DefaultPlayer()
+    {
+        _fsm.ChangeState(TypeFSM.Default);
+        AddBoost(-5);
+        winGame = false;
+    }
+
+    #endregion
+
+    #region Inputs
+    public void OnReload(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            SceneManager.LoadScene(NextLevel._nextLevel);
+            Debug.Log("Se cargo xd");
+        }
+
+    }
+
+    public void OnJump(InputValue value)
+    {
+        if (!isDeath) return;
+
+        if (value.isPressed)
+        {
+
+            OnJumpPressed?.Invoke();
+
+            if (coyoteCounter > 0f && jumpCount == 0)
+            {
+                coyoteCounter = 0f;
+                jumpCount++;
+                _playerVelocity.y = Mathf.Sqrt(_jumpHeight * -3.0f * _gravityValue);
+
+            }
+            Debug.Log("toco origen");
+        }
+    }
+
+    public void OnBoost(InputValue value) { AddBoost(1); }
+
+
+    public void OnLook(InputValue value)
+    {
+        lookInput = value.Get<Vector2>();
+        //Debug.Log(lookInput);
+    }
+
+    public void OnMove(InputValue value) { moveInput = value.Get<Vector2>(); }
+    public void OnDash(InputValue value) { if (value.isPressed && isDeath) OnDashPressed?.Invoke(); }
+
+    public void OnElement0(InputValue value) { if (value.isPressed && isDeath) _fsm.ChangeState(TypeFSM.Default); }
+    public void OnElement1(InputValue value) { if (value.isPressed && isDeath) _fsm.ChangeState(TypeFSM.Fire); }
+    public void OnElement2(InputValue value) { if (value.isPressed && isDeath) _fsm.ChangeState(TypeFSM.Electricity); }
+    public void OnElement3(InputValue value) { if (value.isPressed && isDeath) _fsm.ChangeState(TypeFSM.Ice); }
+    public void OnPause(InputValue value) { if (value.isPressed) GameManager.instance.PauseGame(); }
+
+    #endregion
+
+    #region Visual effects
     public IEnumerator ActivateTrail(TrailRenderer trail)
     {
         trail.emitting = true;
@@ -241,103 +384,7 @@ public class PlayerController : MonoBehaviour
         panini.distance.value = target;
     }
 
-    public void ChangeElement(TypeFSM element)
-    {
-        GameManager.instance.BoostContainer.ChangeSymbol(element);
-        robot.DispararRayo(element);
-
-        audioSource.PlayOneShot(changeElementAudio);
-
-        foreach (var a in changeElementVFX)
-        {
-            a.Play();
-        }
-    }
-
-    public void DefaultPlayer()
-    {
-        _fsm.ChangeState(TypeFSM.Default);
-        AddBoost(-5);
-        winGame = false;
-    }
-
-
-    public void ApplyKnockback(Vector3 direction, float force, float duration)
-    {
-      
-        if (!_isBeingPushed)
-        {
-            StartCoroutine(KnockbackRoutine(direction, force, duration));
-        }
-    }
-
-    private IEnumerator KnockbackRoutine(Vector3 direction, float force, float duration)
-    {
-        //moveInput = Vector2.zero;
-        _fsm.ChangeState(TypeFSM.Default);
-
-        canMove = false;
-        _isBeingPushed = true;
-        float timer = 0;
-
-        while (timer < duration)
-        {
-            _controller.Move(direction * force * Time.deltaTime);
-
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        _isBeingPushed = false;
-        canMove = true;
-    }
-    public void OnReload(InputValue value)
-    {
-        if (value.isPressed)
-        {
-            SceneManager.LoadScene(NextLevel._nextLevel);
-            Debug.Log("Se cargo xd");
-        }
-
-    }
-
-    public void OnJump(InputValue value)
-    {
-        if (!canMove) return;
-
-        if (value.isPressed)
-        {
-
-            OnJumpPressed?.Invoke();
-
-            if (coyoteCounter > 0f && jumpCount == 0)
-            {
-                coyoteCounter = 0f;
-                jumpCount++;
-                _playerVelocity.y = Mathf.Sqrt(_jumpHeight * -3.0f * _gravityValue);
-
-            }
-
-        }
-    }
-
-    public void OnBoost(InputValue value) { AddBoost(1); }
-
-
-    public void OnLook(InputValue value)
-    {
-        lookInput = value.Get<Vector2>();
-        //Debug.Log(lookInput);
-    }
-
-    public void OnMove(InputValue value) { moveInput = value.Get<Vector2>(); }
-    public void OnDash(InputValue value) { if (value.isPressed && canMove) OnDashPressed?.Invoke(); }
-
-    public void OnElement0(InputValue value) { if (value.isPressed && canMove) _fsm.ChangeState(TypeFSM.Default); }
-    public void OnElement1(InputValue value) { if (value.isPressed && canMove) _fsm.ChangeState(TypeFSM.Fire); }
-    public void OnElement2(InputValue value) { if (value.isPressed && canMove) _fsm.ChangeState(TypeFSM.Electricity); }
-    public void OnElement3(InputValue value) { if (value.isPressed && canMove) _fsm.ChangeState(TypeFSM.Ice); }
-    public void OnPause(InputValue value) { if (value.isPressed) GameManager.instance.PauseGame(); }
+    #endregion
 }
 
 public enum TypeFSM

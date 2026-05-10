@@ -43,11 +43,11 @@ public class CheckpointManager : MonoBehaviour
         if (controller != null)
         {
             //controller.enabled = false;
-            player.GetComponent<PlayerController>().canMove = false;
+            player.GetComponent<PlayerController>().isDeath = false;
             player.transform.position = _lastCheckpointPosition;
             yield return new WaitForSeconds(0.53f);
             //controller.enabled = true;
-            player.GetComponent<PlayerController>().canMove = true;
+            player.GetComponent<PlayerController>().isDeath = true;
             respawn = false;
         }
     }

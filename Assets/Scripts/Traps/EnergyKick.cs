@@ -27,6 +27,8 @@ public class EnergyKick : MonoBehaviour
 
             player.ApplyKnockback(pushDirection, pushForce, pushDuration);
 
+            player.CountMoves(0);
+
             var d = Instantiate(_shockPrefab, player.transform.position, Quaternion.identity);
 
             Destroy(d, 2);

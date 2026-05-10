@@ -31,5 +31,13 @@ public class FSM<T>
 
         _CurrentState.OnEnter();
     }
+
+    public bool WhatCurrentState(T newState) 
+    {
+        if (_CurrentState == _states[newState])
+            return true; 
+
+        else return false;
+    }
 }
 
