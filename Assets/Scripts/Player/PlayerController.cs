@@ -99,9 +99,9 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         //GameManager.instance.player = this;
+
         _controller = GetComponent<CharacterController>();
         meshColors = meshChildren.GetComponent<SkinnedMeshRenderer>().material;
-        isDeath = true;
         robot = GameManager.instance.robot;
         audioSource = gameObject.GetComponent<AudioSource>();
 
@@ -118,6 +118,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(StartGame());
+        CountMoves(0);
         GameManager.instance.BoostContainer.BoostsActive(boost);
         coyoteTime = 0.2f;
         maxJumps = 1;
@@ -180,7 +182,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            CountMoves(0);
+            if (!isDashing) CountMoves(0);
             coyoteCounter = coyoteTime;
         }
         else coyoteCounter -= Time.deltaTime;
@@ -217,6 +219,13 @@ public class PlayerController : MonoBehaviour
         isDeath = true;
     }
 
+    IEnumerator StartGame()
+    {
+        isDeath = false;
+        yield return new WaitForSeconds(0.4f);
+        isDeath = true;
+    }
+
     #endregion
 
     #region Extra
@@ -237,24 +246,20 @@ public class PlayerController : MonoBehaviour
 
     public void CountMoves(int n)
     {
-        if (n <= 0)
-        {
-            countMovs = 0;
-            countMovsText.text = "";
-        }
-        else
-        {
-            countMovs += n;
-            countMovsText.text = "combo: " + countMovs;
+        if (n <= 0) countMovs = 0;
+        else  countMovs += n;
 
+        if (countMovs < 2) countMovsText.text = "";
+        else countMovsText.text = "combo: " + countMovs;
 
-        }
     }
 
     public void ChangeElement(TypeFSM element)
     {
         GameManager.instance.BoostContainer.ChangeSymbol(element);
         robot.DispararRayo(element);
+
+        if (!isDeath) return; 
 
         audioSource.PlayOneShot(changeElementAudio);
 

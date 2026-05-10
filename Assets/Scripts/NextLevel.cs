@@ -19,7 +19,7 @@ public class NextLevel : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>())
         {
-            SceneManager.LoadScene(_nextLevel);
+            GameManager.instance.WinGame();
         }
     }
 

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public BoostContainer BoostContainer;
     private bool winGame;
     [SerializeField] TransitionCanvas trans;
+    [SerializeField] Animator startAniCanvas;
 
     AudioSource audioSource;
 
@@ -28,9 +29,17 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
+        StartCoroutine(EndLevel());
+    }
+
+    IEnumerator EndLevel()
+    {
+        startAniCanvas.SetBool("Win", true);
+        yield return new WaitForSeconds(1.1f);
+
         winGame = true;
         player.winGame = true;
-
+        SceneManager.LoadScene(NextLevel._nextLevel);
     }
 
     public void Death(GameObject target, AudioClip deathSound)

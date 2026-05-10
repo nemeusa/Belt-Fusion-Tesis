@@ -4559,6 +4559,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 352794298}
     m_Modifications:
+    - target: {fileID: 228042012845548347, guid: f0341c9198d2b3546af025a4bec8a49f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2805532709026432392, guid: f0341c9198d2b3546af025a4bec8a49f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4639,9 +4643,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4234756797843826797, guid: f0341c9198d2b3546af025a4bec8a49f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4874195706324572201, guid: f0341c9198d2b3546af025a4bec8a49f, type: 3}
       propertyPath: m_Name
       value: Canvas Death transition
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795466520630724372, guid: f0341c9198d2b3546af025a4bec8a49f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -87675,6 +87687,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
   m_PrefabInstance: {fileID: 1658816511}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1227637879 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4234756797843826797, guid: f0341c9198d2b3546af025a4bec8a49f, type: 3}
+  m_PrefabInstance: {fileID: 58450405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1228308753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
@@ -120355,6 +120372,10 @@ PrefabInstance:
       propertyPath: BoostContainer
       value: 
       objectReference: {fileID: 1327178072}
+    - target: {fileID: 6773578459310698188, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
+      propertyPath: startAniCanvas
+      value: 
+      objectReference: {fileID: 1227637879}
     - target: {fileID: 8871777293148774900, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
