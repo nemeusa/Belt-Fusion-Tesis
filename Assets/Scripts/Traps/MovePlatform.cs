@@ -49,9 +49,9 @@ public class MovePlatform : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, end, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(end.x, transform.position.y, end.z), speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, end) < 0.1f)
+        if (Vector3.Distance(transform.position, new Vector3(end.x, transform.position.y, end.z)) < 0.1f)
         {
             end = (end == pointA.position) ? pointB.position : pointA.position;
         }
