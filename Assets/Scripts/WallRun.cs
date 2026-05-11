@@ -76,6 +76,7 @@ public class WallRun : MonoBehaviour
             playerCode.dontMove = true;
             playerCode._gravityValue = 0;
 
+            inUse = true;
 
         }
     }
