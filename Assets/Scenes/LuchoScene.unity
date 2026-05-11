@@ -33825,6 +33825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34aaa2dd1558ba44b5b8dbc9bb50ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathAudio: {fileID: 0}
 --- !u!65 &1509436044
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40007,6 +40008,7 @@ MonoBehaviour:
   robot: {fileID: 0}
   BoostContainer: {fileID: 0}
   trans: {fileID: 0}
+  startAniCanvas: {fileID: 0}
 --- !u!4 &1947555943
 Transform:
   m_ObjectHideFlags: 0
@@ -40051,8 +40053,8 @@ Transform:
   m_GameObject: {fileID: 1991411322}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 81.9, y: -6.55, z: -7.1}
-  m_LocalScale: {x: 43.766953, y: 1, z: 101.553}
+  m_LocalPosition: {x: 70, y: -8.47, z: -251.8}
+  m_LocalScale: {x: 43.766953, y: 24.846, z: 101.553}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2099140440}
@@ -40069,6 +40071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34aaa2dd1558ba44b5b8dbc9bb50ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathAudio: {fileID: 0}
 --- !u!65 &1991411325
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40113,7 +40116,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0d810667abeaa5b43ba3d9064d6017fa, type: 2}
+  - {fileID: 2100000, guid: b530a7abefbebed44a923b79b5ddade5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
