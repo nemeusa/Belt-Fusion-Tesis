@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
         initialSpeed = speed;
         if (globalVolume.profile.TryGet<PaniniProjection>(out var tmpPanini))
         {
-            Debug.Log("Encontro el panini");
+            //Debug.Log("Encontro el panini");
             panini = tmpPanini;
         }
 
@@ -185,8 +185,9 @@ public class PlayerController : MonoBehaviour
             if (!isDashing) CountMoves(0);
             coyoteCounter = coyoteTime;
         }
-        else coyoteCounter -= Time.deltaTime;
+        else if (!isDashing) coyoteCounter -= Time.deltaTime;
 
+        if (coyoteCounter > 0f) dashCount = 0;
     }
 
     public void ApplyKnockback(Vector3 direction, float force, float duration)
@@ -224,6 +225,7 @@ public class PlayerController : MonoBehaviour
         isDeath = false;
         yield return new WaitForSeconds(0.4f);
         isDeath = true;
+        GameManager.instance.BoostContainer.seconds = 0;
     }
 
     #endregion
@@ -305,7 +307,7 @@ public class PlayerController : MonoBehaviour
                 _playerVelocity.y = Mathf.Sqrt(_jumpHeight * -3.0f * _gravityValue);
 
             }
-            Debug.Log("toco origen");
+            //Debug.Log("toco origen");
         }
     }
 

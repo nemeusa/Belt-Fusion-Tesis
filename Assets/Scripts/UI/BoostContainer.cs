@@ -15,7 +15,7 @@ public class BoostContainer : MonoBehaviour
     [SerializeField] GameObject _offEnergySimbol;
     [SerializeField] GameObject _offIceSimbol;
 
-    float seconds;
+    public float seconds;
     [SerializeField] TMP_Text counterText;
 
     TypeFSM oldElement = TypeFSM.Default;

@@ -8,7 +8,7 @@ public class TrapFallDet : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>() && !platform.falling)
         {
-            Debug.Log("fall");
+            //Debug.Log("fall");
             StartCoroutine(platform.DownFall());
         }
     }

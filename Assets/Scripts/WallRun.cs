@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static UnityEngine.UI.Image;
 
 public class WallRun : MonoBehaviour
 {
@@ -16,7 +15,6 @@ public class WallRun : MonoBehaviour
     Vector3 ogVelocity;
     bool isJumping;
 
-    private CharacterController _controller;
     public PlayerController playerCode;
     public bool _isWallRunning = false;
     private RaycastHit _wallHit;
@@ -25,101 +23,120 @@ public class WallRun : MonoBehaviour
 
     Collider[] hitColliders;
 
+    Vector3 _direccionDash;
+
+    WallData data;
+
+    bool inUse;
+
     private void Awake()
     {
-        _controller = GetComponent<CharacterController>();
-        playerCode = GetComponent<PlayerController>();
+        //_controller = GetComponent<CharacterController>();
+        //playerCode = GetComponent<PlayerController>();
     }
 
     void Start()
     {
         playerCode.OnJumpPressed += JumpInWall;
+        playerCode.OnDashPressed += JumpInWall;
         ogGravity = playerCode._gravityValue;
         ogVelocity = playerCode._playerVelocity;
     }
 
     void Update()
     {
-        if(!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity)) return;
+        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity)) if (_isWallRunning) _isWallRunning = false;
 
-        if (_isWallRunning)
-        {
-            playerCode.CountMoves(0);
-            playerCode.coyoteCounter = playerCode.coyoteTime * 2;
-            playerCode.jumpCount = 0;
-            playerCode.dashCount = 0;
-            CheckForWall();
-            playerCode.dontMove = true;
-            playerCode._gravityValue = 0;
-            DoWallRun();
-        }
+        if (_isWallRunning) DoWallRun();
+
         else
         {
-            if (playerCode._gravityValue != ogGravity || playerCode.dontMove)
+            if (data != null || playerCode.dontMove || playerCode._gravityValue != ogGravity)
             {
+                data = null;
                 playerCode.dontMove = false;
                 playerCode._gravityValue = ogGravity;
 
             }
+
         }
     }
 
-    void CheckForWall()
+    private void OnTriggerEnter(Collider other)
     {
-        if (_controller.isGrounded || isJumping)
+        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity)) return;
+
+        if (other.TryGetComponent<WallData>(out WallData wall))
+        {
+            data = wall;
+            _isWallRunning = true;
+            StartCoroutine(DashEffects());
+
+            playerCode.CountMoves(0);
+            playerCode.dontMove = true;
+            playerCode._gravityValue = 0;
+
+
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity) || inUse) return;
+
+        if (other.TryGetComponent<WallData>(out WallData wall))
+        {
+            Debug.Log("usada");
+            data = wall;
+            _isWallRunning = true;
+            StartCoroutine(DashEffects());
+
+            playerCode.CountMoves(0);
+            playerCode.dontMove = true;
+            playerCode._gravityValue = 0;
+
+            inUse = true;
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<WallData>(out WallData wall))
         {
             _isWallRunning = false;
+            data = null;
 
-            return;
+            playerCode.coyoteCounter = playerCode.coyoteTime * 2;
+            playerCode.jumpCount = 0;
+            playerCode.dashCount = 0;
+            playerCode.dontMove = false;
+            playerCode._gravityValue = ogGravity;
+
+            inUse = false;
         }
-        Vector3 origin = transform.position;
-
-
-        hitColliders = Physics.OverlapSphere(transform.position, sphereRadius, wallLayer);
-
-        if (hitColliders.Length > 0)
-        {
-            Vector3 closestPoint = hitColliders[0].ClosestPoint(origin);
-            Vector3 directionToWall = (closestPoint - origin).normalized;
-
-    
-            if (Physics.Raycast(origin, directionToWall, out _wallHit, sphereRadius + 0.5f, wallLayer))
-            {
-
-                wallNormal = _wallHit.normal;
-
-                Physics.Raycast(transform.position, (hitColliders[0].transform.position - transform.position).normalized, out _wallHit, sphereRadius + 0.5f, wallLayer);
-                _isWallRunning = true;
-            }
-        }
-        else
-        {
-            _isWallRunning = false;
-        }
-
-
     }
 
     void DoWallRun()
     {
-        WallData data = null;
-        if (hitColliders.Length > 0)
-            data = hitColliders[0].GetComponent<WallData>();
-
 
         Vector3 wallForward;
 
         if (data != null) wallForward = data.transform.TransformDirection(data.runDirection);
 
-        else  wallForward = Vector3.ProjectOnPlane(transform.forward, _wallHit.normal).normalized;
-        
+        else wallForward = Vector3.ProjectOnPlane(transform.forward, _wallHit.normal).normalized;
+
 
         Vector3 move = wallForward * wallRunSpeed;
 
-        _controller.Move(move * Time.deltaTime);
+        playerCode._controller.Move(move * Time.deltaTime);
 
         transform.forward = move;
 
+
+        playerCode.coyoteCounter = playerCode.coyoteTime * 2;
+        playerCode.jumpCount = 0;
+        playerCode.dashCount = 0;
 
     }
 
@@ -128,7 +145,8 @@ public class WallRun : MonoBehaviour
         if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity)) return;
 
         if (_isWallRunning) StartCoroutine(WaitJump());
-            else CheckForWall();
+        //else
+        //if (!playerCode._controller.isGrounded) CheckForWall();
     }
 
     IEnumerator WaitJump()
@@ -141,13 +159,55 @@ public class WallRun : MonoBehaviour
 
         playerCode._playerVelocity = ogVelocity;
         isJumping = false;
-
     }
 
-    private void OnDrawGizmos()
+    IEnumerator DashEffects()
     {
-        //Gizmos.color = _isWallRunning ? Color.green : Color.red;
+        int createEffects = 0;
+        while (_isWallRunning)
+        {
+            createEffects++;
+            playerCode.audioSource.PlayOneShot(playerCode.dashAudio);
 
-        Gizmos.DrawWireSphere(transform.position, sphereRadius);
+            playerCode.fbxDash.SendEvent("OnPlay");
+            IniciarDash();
+            playerCode.fbxDash2.SendEvent("OnPlay");
+
+            Debug.Log("efecto" + createEffects);
+
+            yield return new WaitForSeconds(0.05f);
+
+            playerCode.fbxDash.SendEvent("OnStop");
+            playerCode.fbxDash2.SendEvent("OnStop");
+
+            yield return null;
+
+        }
+
     }
+
+    void IniciarDash()
+    {
+        Vector3 inputDireccion = new Vector3(playerCode.moveInput.x, 0, playerCode.moveInput.y);
+
+        if (inputDireccion.sqrMagnitude > 0.1f)
+        {
+            _direccionDash = inputDireccion.normalized;
+        }
+        else
+        {
+            _direccionDash = playerCode.transform.forward;
+        }
+
+        var d = GameObject.Instantiate(playerCode.dashRingPar, playerCode.ElectricityTrail.transform.position, Quaternion.identity);
+        d.transform.forward = _direccionDash;
+        GameObject.Destroy(d, 2);
+    }
+
+    //private void OnDrawGizmos()
+    //{
+    //    //Gizmos.color = _isWallRunning ? Color.green : Color.red;
+
+    //    Gizmos.DrawWireSphere(transform.position, sphereRadius);
+    //}
 }

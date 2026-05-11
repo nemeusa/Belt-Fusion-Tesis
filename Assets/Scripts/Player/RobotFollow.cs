@@ -70,7 +70,7 @@ public class RobotFollow : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
-        Debug.Log("rayo");
+        //Debug.Log("rayo");
 
         yield return new WaitForSeconds(0.5f);
         laserLine.enabled = false;
