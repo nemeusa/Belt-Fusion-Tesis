@@ -5005,6 +5005,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6591841858037214192, guid: 98543b778494c4f41a35162fc170cf1e, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6591841858037214192, guid: 98543b778494c4f41a35162fc170cf1e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9120a4dfa78621b49a2c6782c3c78266, type: 2}
+    - target: {fileID: 6591841858037214192, guid: 98543b778494c4f41a35162fc170cf1e, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: abec4163020e3264fb21d5b79b2cb5e6, type: 3}
+    - target: {fileID: 6591841858037214192, guid: 98543b778494c4f41a35162fc170cf1e, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8009f028147d512419642d18eeb564a9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -21225,7 +21241,7 @@ Transform:
   m_GameObject: {fileID: 981058703}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.09, y: 0.24, z: -0.18004861}
+  m_LocalPosition: {x: -0.09, y: 0.24, z: -0.60002553}
   m_LocalScale: {x: 0.602109, y: 0.60210896, z: 0.60210896}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21317,7 +21333,7 @@ ParticleSystem:
   m_GameObject: {fileID: 981058703}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -51470,7 +51486,7 @@ Transform:
   m_GameObject: {fileID: 1338430741}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.09, y: 0.24, z: 0.03}
+  m_LocalPosition: {x: -0.09, y: 0.24, z: -0.39}
   m_LocalScale: {x: 0.602109, y: 0.60210896, z: 0.60210896}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51562,7 +51578,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1338430741}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
