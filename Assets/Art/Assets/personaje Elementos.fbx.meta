@@ -46,7 +46,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
@@ -80,7 +80,37 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: personaje Elementos(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo
+      parentName: personaje Elementos(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cinturon
+      parentName: personaje Elementos(Clone)
+      position: {x: -0.00009934276, y: -0.0011639826, z: 0.0008368036}
+      rotation: {x: 0.048067626, y: -0.014890085, z: -0.0065844455, w: 0.9987114}
+      scale: {x: 0.35130048, y: 0.07618752, z: 0.27264777}
+    - name: polySurface1
+      parentName: personaje Elementos(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere1
+      parentName: personaje Elementos(Clone)
+      position: {x: 0.0029778823, y: 0.023050716, z: 0.009528152}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.19235907, y: 0.26714978, z: 0.19909169}
+    - name: pSphere2
+      parentName: personaje Elementos(Clone)
+      position: {x: -0.0030418572, y: 0.023050716, z: 0.009528152}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.19235907, y: 0.26714978, z: 0.19909169}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
