@@ -11,6 +11,9 @@ public class EnergyKick : MonoBehaviour
 
     AudioSource audioSource;
 
+    Vignette vignette;
+    ChromaticAberration aberration;
+    LensDistortion distortion;
 
 
     private void Start()
@@ -26,12 +29,17 @@ public class EnergyKick : MonoBehaviour
         {
             if(player.isDashing)
             {
-                if (player.globalVolume.profile.TryGet<Vignette>(out var vignette))
-                    StartCoroutine(CongelaFrame(vignette));
+                if (player.globalVolume.profile.TryGet<Vignette>(out var vignetteTmp))
+                    vignette = vignetteTmp;
 
-                return;
+                if (player.globalVolume.profile.TryGet<ChromaticAberration>(out var aberrationTmp)) aberration = aberrationTmp;
+
+                if (player.globalVolume.profile.TryGet<LensDistortion>(out var distortionTmp)) distortion = distortionTmp;
+
+
+                StartCoroutine(CongelaFrame());
+                    return;
             }
-
 
 
 
@@ -51,17 +59,64 @@ public class EnergyKick : MonoBehaviour
     }
 
 
-    IEnumerator CongelaFrame(Vignette vignette)
+    IEnumerator CongelaFrame()
     {
-        vignette.intensity.value = 0.5f;
-        vignette.color.value = Color.yellow;
-        vignette.rounded.value = true;
-        vignette.smoothness.value = 0.5f;
+        StartCoroutine(EffectsCongelation());
         Time.timeScale = 0.01f;
         yield return new WaitForSeconds(0.002f);
         Time.timeScale = 1;
+
+    }
+
+    IEnumerator EffectsCongelation()
+    {
+        // 1. Seteamos los valores iniciales del efecto
+        vignette.intensity.value = 0.2f;
+        vignette.color.value = Color.yellow;
+        vignette.rounded.value = true;
+        vignette.smoothness.value = 0.5f;
+        aberration.intensity.value = 1;
+        distortion.intensity.value = -0.5f;
+
+        // 2. Esperamos el tiempo que el efecto está "al máximo"
+        yield return new WaitForSeconds(1f);
+
+        // 3. Transición suave (Fade Out)
+        float duration = 1.0f; // Duración del suavizado en segundos
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+
+            // Interpolamos los valores de los efectos hacia su estado original (0)
+            distortion.intensity.value = Mathf.Lerp(-0.5f, 0f, t);
+            aberration.intensity.value = Mathf.Lerp(1f, 0f, t);
+            vignette.intensity.value = Mathf.Lerp(0.2f, 0f, t);
+            vignette.smoothness.value = Mathf.Lerp(0.5f, 1f, t);
+
+            yield return null; // Espera al siguiente frame
+        }
+
+        // 4. Aseguramos los valores finales y limpieza
+        distortion.intensity.value = 0;
+        aberration.intensity.value = 0;
         vignette.intensity.value = 0f;
         vignette.rounded.value = false;
-        vignette.smoothness.value = 1f;
+
+        //vignette.intensity.value = 0.2f;
+        //vignette.color.value = Color.yellow;
+        //vignette.rounded.value = true;
+        //vignette.smoothness.value = 0.5f;
+        //aberration.intensity.value = 1;
+        //distortion.intensity.value = -0.5f;
+
+        //yield return new WaitForSeconds(1f);
+        //distortion.intensity.value = 0;
+        //aberration.intensity.value = 0;
+        //vignette.intensity.value = 0f;
+        //vignette.rounded.value = false;
+        //vignette.smoothness.value = 1f;
     }
 }
