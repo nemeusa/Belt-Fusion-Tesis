@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DestructibleDevice : MonoBehaviour
@@ -41,7 +42,10 @@ public class DestructibleDevice : MonoBehaviour
                 return other.gameObject.GetComponent<FireBall>();
 
             case TypeFSM.Electricity:
-                return other.gameObject.GetComponent<PlayerController>().isDashing;
+                if (other.gameObject.GetComponent<PlayerController>() != null)
+                    return other.gameObject.GetComponent<PlayerController>().isDashing;
+                else return false;
+                break;
 
             default:
                 return false;

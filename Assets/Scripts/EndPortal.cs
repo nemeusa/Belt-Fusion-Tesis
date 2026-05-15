@@ -41,6 +41,10 @@ public class EndPortal : MonoBehaviour
     {
         float currentDistance = Vector3.Distance(playerPos.position, transform.position);
 
+        if (currentDistance > distanceEffects) return;
+
+        vignette.color.value = Color.blue;
+
         float factor = 1f - Mathf.Clamp01(currentDistance / distanceEffects);
 
 

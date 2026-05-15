@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class EnergyKick : MonoBehaviour
 {
@@ -9,8 +11,11 @@ public class EnergyKick : MonoBehaviour
 
     AudioSource audioSource;
 
-    private void Awake()
+
+
+    private void Start()
     {
+        
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -19,7 +24,16 @@ public class EnergyKick : MonoBehaviour
 
         if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
-            if(player.isDashing) return;
+            if(player.isDashing)
+            {
+                if (player.globalVolume.profile.TryGet<Vignette>(out var vignette))
+                    StartCoroutine(CongelaFrame(vignette));
+
+                return;
+            }
+
+
+
 
             audioSource.Play();
 
@@ -34,5 +48,20 @@ public class EnergyKick : MonoBehaviour
             Destroy(d, 2);
 
         }
+    }
+
+
+    IEnumerator CongelaFrame(Vignette vignette)
+    {
+        vignette.intensity.value = 0.5f;
+        vignette.color.value = Color.yellow;
+        vignette.rounded.value = true;
+        vignette.smoothness.value = 0.5f;
+        Time.timeScale = 0.01f;
+        yield return new WaitForSeconds(0.002f);
+        Time.timeScale = 1;
+        vignette.intensity.value = 0f;
+        vignette.rounded.value = false;
+        vignette.smoothness.value = 1f;
     }
 }

@@ -11,6 +11,7 @@ public class MovePlatform : MonoBehaviour
 
     private Vector3 beforePosPlatform;
     private CharacterController playerController;
+    private PlayerController playerCode;
 
     void LateUpdate() // Usamos LateUpdate para que la plataforma ya se haya movido
     {
@@ -20,7 +21,7 @@ public class MovePlatform : MonoBehaviour
             Vector3 movimientoPlataforma = transform.position - beforePosPlatform;
 
             // Se lo sumamos "a la fuerza" al CharacterController
-            playerController.Move(movimientoPlataforma);
+            if (!playerCode.isDashing) playerController.Move(movimientoPlataforma);
         }
 
         beforePosPlatform = transform.position;
@@ -30,6 +31,7 @@ public class MovePlatform : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
+            playerCode = other.GetComponent<PlayerController>();
             playerController = other.GetComponent<CharacterController>();
             beforePosPlatform = transform.position;
         }
@@ -39,6 +41,7 @@ public class MovePlatform : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
+            playerCode = null;
             playerController = null;
         }
     }

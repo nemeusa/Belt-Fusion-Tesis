@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class WallRun : MonoBehaviour
 {
@@ -29,11 +30,10 @@ public class WallRun : MonoBehaviour
 
     bool inUse;
 
-    private void Awake()
-    {
-        //_controller = GetComponent<CharacterController>();
-        //playerCode = GetComponent<PlayerController>();
-    }
+    Vignette vignette;
+
+    bool canDetect = true;
+
 
     void Start()
     {
@@ -41,6 +41,7 @@ public class WallRun : MonoBehaviour
         playerCode.OnDashPressed += JumpInWall;
         ogGravity = playerCode._gravityValue;
         ogVelocity = playerCode._playerVelocity;
+
     }
 
     void Update()
@@ -64,39 +65,27 @@ public class WallRun : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity)) return;
+        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity) || !canDetect) return;
 
         if (other.TryGetComponent<WallData>(out WallData wall))
         {
             data = wall;
-            _isWallRunning = true;
-            StartCoroutine(DashEffects());
 
-            playerCode.CountMoves(0);
-            playerCode.dontMove = true;
-            playerCode._gravityValue = 0;
-
-            inUse = true;
-
+            EnterWallCode();
         }
     }
 
+
     private void OnTriggerStay(Collider other)
     {
-        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity) || inUse) return;
+        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity) || inUse || !canDetect) return;
 
         if (other.TryGetComponent<WallData>(out WallData wall))
         {
-            Debug.Log("usada");
             data = wall;
-            _isWallRunning = true;
-            StartCoroutine(DashEffects());
+            EnterWallCode();
 
-            playerCode.CountMoves(0);
-            playerCode.dontMove = true;
-            playerCode._gravityValue = 0;
-
-            inUse = true;
+           
         }
 
     }
@@ -116,6 +105,28 @@ public class WallRun : MonoBehaviour
 
             inUse = false;
         }
+    }
+
+    void EnterWallCode()
+    {
+        StartCoroutine(CanDet());
+        _isWallRunning = true;
+        StartCoroutine(DashEffects());
+
+        playerCode.CountMoves(0);
+        playerCode.dontMove = true;
+        playerCode._gravityValue = 0;
+
+        inUse = true;
+    }
+
+    IEnumerator CanDet()
+    {
+        canDetect = false;
+
+        yield return new WaitForSeconds(0.1f);
+
+        canDetect = true;
     }
 
     void DoWallRun()
