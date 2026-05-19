@@ -2,12 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
+using UnityEngine.Windows;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -51,6 +55,8 @@ public class PlayerController : MonoBehaviour
     public GameObject energyAura;
     public Volume globalVolume;
     public AudioSource audioSource;
+    public CinemachineCamera jumpCamTarget;
+    public Material boostMat;
     private PaniniProjection panini;
 
 
@@ -85,6 +91,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 _pushDirection;
 
     public bool isDeath = true;
+
+    public bool is2Dmoving = false;
 
     public RobotFollow robot;
 
@@ -155,9 +163,16 @@ public class PlayerController : MonoBehaviour
     #region Movement
     void MovePlayer()
     {
+
         if (dontMove) return;
 
-        Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
+        Vector3 move;
+
+        if (is2Dmoving) move = new Vector3(moveInput.x, 0, moveInput.y * 0.8f);
+        
+
+        else 
+            move = new Vector3(moveInput.x, 0, moveInput.y);
         _controller.Move(move * Time.deltaTime * speed);
 
         _playerVelocity.y += _gravityValue * Time.deltaTime;
@@ -179,13 +194,15 @@ public class PlayerController : MonoBehaviour
                 _playerVelocity.y = -2f;
                 jumpCount = 0;
                 dashCount = 0;
-
             }
+                jumpCamTarget.Priority = 1;
 
             if (!isDashing) CountMoves(0);
             coyoteCounter = coyoteTime;
         }
-        else if (!isDashing) coyoteCounter -= Time.deltaTime;
+        else if (!is2Dmoving)jumpCamTarget.Priority = 20;
+
+        if (!isDashing) coyoteCounter -= Time.deltaTime;
 
         if (coyoteCounter > 0f) dashCount = 0;
     }
@@ -244,7 +261,31 @@ public class PlayerController : MonoBehaviour
         //GameManager.instance.boostText.text = $"Boost: {boost}";
         if (boost < 0) boost = 0;
         GameManager.instance.BoostContainer.BoostsActive(boost);
+        if (boost > 0)
+        {
+
+            Material[] nuevosMateriales = new Material[2];
+
+            nuevosMateriales[0] = meshColors; // El de abajo (tu personaje normal)
+            nuevosMateriales[1] = boostMat; // El de arriba (el efecto)
+
+        // Le asignamos la nueva lista al renderer
+        meshChildren.GetComponent<SkinnedMeshRenderer>().materials = nuevosMateriales;
+        }
+
+
+        else
+        {
+
+            // Si desactivamos, volvemos a la lista de un solo material original
+            Material[] originalArray = new Material[1];
+            originalArray[0] = meshColors;
+
+            meshChildren.GetComponent<SkinnedMeshRenderer>().materials = originalArray;
+
+        }
     }
+
 
     public void CountMoves(int n)
     {
@@ -297,7 +338,6 @@ public class PlayerController : MonoBehaviour
 
         if (value.isPressed)
         {
-
             OnJumpPressed?.Invoke();
 
             if (coyoteCounter > 0f && jumpCount == 0)
@@ -307,6 +347,7 @@ public class PlayerController : MonoBehaviour
                 _playerVelocity.y = Mathf.Sqrt(_jumpHeight * -3.0f * _gravityValue);
 
             }
+
             //Debug.Log("toco origen");
         }
     }
