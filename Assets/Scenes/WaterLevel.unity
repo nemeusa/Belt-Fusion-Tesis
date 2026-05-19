@@ -779,6 +779,8 @@ MonoBehaviour:
   energyAura: {fileID: 0}
   globalVolume: {fileID: 0}
   audioSource: {fileID: 0}
+  jumpCamTarget: {fileID: 0}
+  boostMat: {fileID: 0}
   changeElementVFX: []
   meshColors: {fileID: 0}
   isDashing: 0
@@ -795,6 +797,7 @@ MonoBehaviour:
   lookInput: {x: 0, y: 0}
   winGame: 0
   isDeath: 1
+  is2Dmoving: 0
   robot: {fileID: 0}
   fireJumpAudio: {fileID: 0}
   dashAudio: {fileID: 0}
@@ -1580,6 +1583,10 @@ PrefabInstance:
       propertyPath: countMovsText
       value: 
       objectReference: {fileID: 1245324367}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: jumpCamTarget
+      value: 
+      objectReference: {fileID: 690064447}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4233,6 +4240,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8978632986999078493, guid: 45150c1f55426e34189072c824abedb2, type: 3}
   m_PrefabInstance: {fileID: 690064445}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &690064447 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8161401483449564321, guid: 45150c1f55426e34189072c824abedb2, type: 3}
+  m_PrefabInstance: {fileID: 690064445}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &698148645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7e9bb8b060155724c934431524b89790, type: 3}
