@@ -9,9 +9,7 @@ public class CheckpointManager : MonoBehaviour
 
     void Awake()
     {
-        //if (Instance == null) 
         Instance = this;
-        //else Destroy(gameObject);
     }
 
     public void UpdateCheckpoint(Vector3 newPos)
@@ -23,17 +21,7 @@ public class CheckpointManager : MonoBehaviour
     public void Respawn(GameObject player)
     {
         StartCoroutine(ReScene(player));
-        //CharacterController controller = player.GetComponent<CharacterController>();
-        //if (controller != null)
-        //{
-        //    controller.enabled = false;
-        //    player.transform.position = _lastCheckpointPosition;
-        //    controller.enabled = true;
-        //}
-        //else
-        //{
-        //    player.transform.position = _lastCheckpointPosition;
-        //}
+
     }
 
     IEnumerator ReScene(GameObject player)

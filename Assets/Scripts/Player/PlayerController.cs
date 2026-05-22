@@ -3,15 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
-using UnityEngine.Windows;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -89,6 +86,10 @@ public class PlayerController : MonoBehaviour
 
     private bool _isBeingPushed = false;
     private Vector3 _pushDirection;
+
+
+    [SerializeField] GameObject respawnEffectsPrefabs;
+    [SerializeField] Transform respawnEffectsPoint;
 
     public bool isDeath = true;
 
@@ -310,6 +311,12 @@ public class PlayerController : MonoBehaviour
         {
             a.Play();
         }
+    }
+
+    public void DeathPlayer()
+    {
+        DefaultPlayer();
+        Instantiate(respawnEffectsPrefabs, respawnEffectsPoint.position, Quaternion.identity);
     }
 
     public void DefaultPlayer()

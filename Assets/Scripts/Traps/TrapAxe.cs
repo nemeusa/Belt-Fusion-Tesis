@@ -30,14 +30,14 @@ public class TrapAxe : MonoBehaviour
             yield return StartCoroutine(RotateToAngle(angleLimit));
 
             // 2. Pausa en el extremo
-            Debug.Log("Frenando en derecha...");
+            //Debug.Log("Frenando en derecha...");
             yield return new WaitForSeconds(pauseDuration);
 
             // 3. Ir hacia la izquierda (-angleLimit)
             yield return StartCoroutine(RotateToAngle(-angleLimit));
 
             // 4. Pausa en el otro extremo
-            Debug.Log("Frenando en izquierda...");
+            //Debug.Log("Frenando en izquierda...");
             yield return new WaitForSeconds(pauseDuration);
         }
     }

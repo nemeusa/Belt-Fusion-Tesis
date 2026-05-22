@@ -8916,6 +8916,8 @@ MonoBehaviour:
   dashCount: 0
   lookInput: {x: 0, y: 0}
   winGame: 0
+  respawnEffectsPrefabs: {fileID: 0}
+  respawnEffectsPoint: {fileID: 0}
   isDeath: 1
   is2Dmoving: 0
   robot: {fileID: 0}
@@ -42598,7 +42600,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 851931027727011258, guid: 872eadc30dad43b43b497379426f8b90, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 872eadc30dad43b43b497379426f8b90, type: 3}
 --- !u!4 &604510326 stripped
 Transform:
@@ -88205,6 +88210,10 @@ PrefabInstance:
       propertyPath: laserLine
       value: 
       objectReference: {fileID: 276863929}
+    - target: {fileID: 7018156398483752532, guid: 872eadc30dad43b43b497379426f8b90, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 1906817194}
     - target: {fileID: 8401921920815576229, guid: 872eadc30dad43b43b497379426f8b90, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.4673839
@@ -88248,7 +88257,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 851931027727011258, guid: 872eadc30dad43b43b497379426f8b90, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 872eadc30dad43b43b497379426f8b90, type: 3}
 --- !u!1001 &1263285662
 PrefabInstance:

@@ -56,7 +56,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         CheckpointManager.Instance.Respawn(target);
-        player.DefaultPlayer();
+        yield return new WaitForSeconds(0.2f);
+        player.DeathPlayer();
     }
 
     public void PauseGame()

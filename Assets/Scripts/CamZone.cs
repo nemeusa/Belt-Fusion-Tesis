@@ -10,10 +10,10 @@ public class CamZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerController>())
+        if (other.TryGetComponent<PlayerController>(out PlayerController player))
         {
             // Al darle más prioridad, Cinemachine hace el "blend" (transición) sola
-            other.GetComponent<PlayerController>().is2Dmoving = true;
+            player.is2Dmoving = true;
             vCamTarget.Priority = highPriority;
         }
     }
