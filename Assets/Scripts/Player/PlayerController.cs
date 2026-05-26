@@ -264,33 +264,10 @@ public class PlayerController : MonoBehaviour
 
 
         boost += newBoost;
-        //GameManager.instance.boostText.text = $"Boost: {boost}";
-        if (boost < 0) boost = 0;
+        if (boost <= 0) boost = 0;
+        else StartCoroutine(BoostAni());
+
         GameManager.instance.BoostContainer.BoostsActive(boost);
-        if (boost > 0)
-        {
-            StartCoroutine(BoostAni());
-
-            Material[] nuevosMateriales = new Material[2];
-
-            nuevosMateriales[0] = meshColors; // El de abajo (tu personaje normal)
-            nuevosMateriales[1] = boostMat; // El de arriba (el efecto)
-
-        // Le asignamos la nueva lista al renderer
-        meshChildren.GetComponent<SkinnedMeshRenderer>().materials = nuevosMateriales;
-        }
-
-
-        else
-        {
-
-            // Si desactivamos, volvemos a la lista de un solo material original
-            Material[] originalArray = new Material[1];
-            originalArray[0] = meshColors;
-
-            meshChildren.GetComponent<SkinnedMeshRenderer>().materials = originalArray;
-
-        }
     }
 
     IEnumerator BoostAni()
@@ -328,8 +305,10 @@ public class PlayerController : MonoBehaviour
 
     public void DeathPlayer()
     {
+        isDeath = true;
         isWallRunning = false;
         isDashing = false;
+        _controller.Move(Vector3.zero);
         DefaultPlayer();
         Instantiate(respawnEffectsPrefabs, respawnEffectsPoint.position, Quaternion.identity);
     }
