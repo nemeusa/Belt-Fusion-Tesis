@@ -99,6 +99,8 @@ public class PlayerController : MonoBehaviour
 
     public RobotFollow robot;
 
+    [SerializeField] Animator boostCanvasAni;
+
     [Header("Audio")]
     public AudioClip fireJumpAudio;
     public AudioClip dashAudio;
@@ -260,12 +262,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+
         boost += newBoost;
         //GameManager.instance.boostText.text = $"Boost: {boost}";
         if (boost < 0) boost = 0;
         GameManager.instance.BoostContainer.BoostsActive(boost);
         if (boost > 0)
         {
+            StartCoroutine(BoostAni());
 
             Material[] nuevosMateriales = new Material[2];
 
@@ -287,6 +291,13 @@ public class PlayerController : MonoBehaviour
             meshChildren.GetComponent<SkinnedMeshRenderer>().materials = originalArray;
 
         }
+    }
+
+    IEnumerator BoostAni()
+    {
+        boostCanvasAni.SetBool("Intro", true);
+        yield return new WaitForSeconds(0.5f);
+        boostCanvasAni.SetBool("Intro", false);
     }
 
 

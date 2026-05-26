@@ -793,6 +793,7 @@ MonoBehaviour:
   fbxDash2: {fileID: 0}
   countMovsText: {fileID: 0}
   countMovs: 0
+  isWallRunning: 0
   dashCount: 0
   lookInput: {x: 0, y: 0}
   winGame: 0
@@ -801,6 +802,7 @@ MonoBehaviour:
   isDeath: 1
   is2Dmoving: 0
   robot: {fileID: 0}
+  boostCanvasAni: {fileID: 0}
   fireJumpAudio: {fileID: 0}
   dashAudio: {fileID: 0}
   walkAudio: {fileID: 0}
@@ -1589,6 +1591,10 @@ PrefabInstance:
       propertyPath: jumpCamTarget
       value: 
       objectReference: {fileID: 690064447}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: boostCanvasAni
+      value: 
+      objectReference: {fileID: 566878288}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3141,6 +3147,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4a0830abf24720448834efd30f23c4c, type: 3}
+--- !u!95 &566878288 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2815737980312579930, guid: d4a0830abf24720448834efd30f23c4c, type: 3}
+  m_PrefabInstance: {fileID: 566878287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &585668455
 GameObject:
   m_ObjectHideFlags: 0
