@@ -17,7 +17,6 @@ public class WallRun : MonoBehaviour
     bool isJumping;
 
     public PlayerController playerCode;
-    public bool _isWallRunning = false;
     private RaycastHit _wallHit;
 
     Vector3 wallNormal;
@@ -46,9 +45,9 @@ public class WallRun : MonoBehaviour
 
     void Update()
     {
-        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity)) if (_isWallRunning) _isWallRunning = false;
+        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity)) if (playerCode.isWallRunning) playerCode.isWallRunning = false;
 
-        if (_isWallRunning) DoWallRun();
+        if (playerCode.isWallRunning) DoWallRun();
 
         else
         {
@@ -94,7 +93,7 @@ public class WallRun : MonoBehaviour
     {
         if (other.TryGetComponent<WallData>(out WallData wall))
         {
-            _isWallRunning = false;
+            playerCode.isWallRunning = false;
             data = null;
 
             playerCode.coyoteCounter = playerCode.coyoteTime * 2;
@@ -110,7 +109,7 @@ public class WallRun : MonoBehaviour
     void EnterWallCode()
     {
         StartCoroutine(CanDet());
-        _isWallRunning = true;
+        playerCode.isWallRunning = true;
         StartCoroutine(DashEffects());
 
         playerCode.CountMoves(0);
@@ -156,7 +155,7 @@ public class WallRun : MonoBehaviour
     {
         if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity)) return;
 
-        if (_isWallRunning) StartCoroutine(WaitJump());
+        if (playerCode.isWallRunning) StartCoroutine(WaitJump());
         //else
         //if (!playerCode._controller.isGrounded) CheckForWall();
     }
@@ -176,7 +175,7 @@ public class WallRun : MonoBehaviour
     IEnumerator DashEffects()
     {
         int createEffects = 0;
-        while (_isWallRunning)
+        while (playerCode.isWallRunning)
         {
             createEffects++;
             playerCode.audioSource.PlayOneShot(playerCode.dashAudio);

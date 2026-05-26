@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
     public VisualEffect fbxDash2;
     public TMP_Text countMovsText;
     [HideInInspector] public int countMovs;
+    [HideInInspector] public bool isWallRunning = false;
+
 
     [HideInInspector] public int dashCount = 0;
 
@@ -315,6 +317,8 @@ public class PlayerController : MonoBehaviour
 
     public void DeathPlayer()
     {
+        isWallRunning = false;
+        isDashing = false;
         DefaultPlayer();
         Instantiate(respawnEffectsPrefabs, respawnEffectsPoint.position, Quaternion.identity);
     }

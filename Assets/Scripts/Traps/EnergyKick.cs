@@ -62,8 +62,9 @@ public class EnergyKick : MonoBehaviour
     IEnumerator CongelaFrame()
     {
         StartCoroutine(EffectsCongelation());
-        Time.timeScale = 0.01f;
-        yield return new WaitForSeconds(0.002f);
+        //Time.timeScale = 0.01f;
+        //yield return new WaitForSeconds(0.002f);
+        yield return new WaitForSeconds(0.2f);
         Time.timeScale = 1;
 
     }

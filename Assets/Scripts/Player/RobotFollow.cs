@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class RobotFollow : MonoBehaviour
 {
-    public Transform playerPos; 
-    public Vector3 offset = new Vector3(-1f, 1.5f, -1f); 
+    public Transform playerPos;
+    public Vector3 offset = new Vector3(-1f, 1.5f, -1f);
     public float smoothSpeed = 0.125f;
     private Vector3 _velocity = Vector3.zero;
 
@@ -12,8 +12,10 @@ public class RobotFollow : MonoBehaviour
 
     public bool goCheckPoint;
 
-    [SerializeField] GameObject spawnCheckpointPrefab;
+    [SerializeField] GameObject bulletCheckpointPrefab;
     [SerializeField] Transform spawnCheckpointPoint;
+
+
 
     private void Awake()
     {
@@ -22,7 +24,7 @@ public class RobotFollow : MonoBehaviour
 
     private void Start()
     {
-        
+
         playerPos = GameManager.instance.player.transform;
 
     }
@@ -33,7 +35,7 @@ public class RobotFollow : MonoBehaviour
         if (laserLine.enabled) laserLine.SetPosition(0, transform.position);
         laserLine.SetPosition(1, playerPos.position);
 
-        if (!goCheckPoint)
+        //if (!goCheckPoint)
         FollowTarget(playerPos);
     }
 
@@ -49,47 +51,74 @@ public class RobotFollow : MonoBehaviour
     }
 
 
-    public void CheckpointAction(Transform target)
+    public void CheckpointAction(Transform target, CheckpointTrigger checkpointCode)
     {
-        StartCoroutine(WorkCheckpoint(target));
-    }
-
-    IEnumerator WorkCheckpoint(Transform target)
-    {
+        //StartCoroutine(WorkCheckpoint(target));
         goCheckPoint = true;
 
-        while (Vector3.Distance(target.position, transform.position) > 2.5f)
-        {
-            FollowTarget(target);
-            Debug.Log(Vector3.Distance(target.position, transform.position));
-            yield return null;
 
-        }
+        Debug.Log("el robot dispara el checkpoint");
+        var c = Instantiate(bulletCheckpointPrefab, spawnCheckpointPoint.position, Quaternion.identity);
 
-        if (Vector3.Distance(target.position, transform.position) < 2.5f)
-        {
-            Debug.Log("el robot llega al checkpoint");
-            Instantiate(spawnCheckpointPrefab, spawnCheckpointPoint.position, Quaternion.identity);
-            yield return new WaitForSeconds(1);
-            goCheckPoint = false;
-        }
+        c.GetComponentInChildren<BulletCheckpoint>().ConfigurarDestino(target, checkpointCode);
 
+        //StartCoroutine(WorkCheckpoint(Vector3.Distance(target.position, c.transform.position), c, checkpointCode));
 
+        goCheckPoint = false;
 
-        //if (Vector3.Distance(target.position, transform.position) > 0.5f)
-        //{
-        //    FollowTarget(target);
-            
-        //}
-
-        //else
-        //{
-        //    Instantiate(spawnCheckpointPrefab, spawnCheckpointPoint.position, Quaternion.identity);
-        //    yield return new WaitForSeconds(1);
-        //    goCheckPoint = false;
-        //}
 
     }
+
+    //IEnumerator WorkCheckpoint(Transform target, GameObject bullet, CheckpointTrigger checkpointCode)
+    IEnumerator WorkCheckpoint(float dist, GameObject bullet, CheckpointTrigger checkpointCode)
+    {
+        while (bullet != null)
+        {
+            Debug.Log(dist);
+
+           
+            if (dist < 5f)
+            {
+                Debug.Log("llego y se creo el checkpoint");
+
+                checkpointCode.CreateCheckpoint();
+                Destroy(bullet);
+            }
+            yield return null;
+        }
+   
+    }
+
+    //IEnumerator WorkCheckpoint(Transform target)
+    //{
+    //    goCheckPoint = true;
+
+    //    if (Vector3.Distance(target.position, transform.position) < 2.5f)
+    //    {
+    //        Debug.Log("el robot dispara el checkpoint");
+    //        var c = Instantiate(bulletCheckpointPrefab, spawnCheckpointPoint.position, Quaternion.identity);
+
+    //        if (Vector3.Distance(target.position, c.transform.position) < 2.5f)
+
+    //        goCheckPoint = false;
+    //    }
+
+
+
+    //    //if (Vector3.Distance(target.position, transform.position) > 0.5f)
+    //    //{
+    //    //    FollowTarget(target);
+
+    //    //}
+
+    //    //else
+    //    //{
+    //    //    Instantiate(spawnCheckpointPrefab, spawnCheckpointPoint.position, Quaternion.identity);
+    //    //    yield return new WaitForSeconds(1);
+    //    //    goCheckPoint = false;
+    //    //}
+
+    //}
 
     public void DispararRayo(TypeFSM element)
     {
@@ -128,7 +157,7 @@ public class RobotFollow : MonoBehaviour
         while (t < 0.2f)
         {
             // El rayo va desde el robot al centro del player
-  
+
             t += Time.deltaTime;
             yield return null;
         }
