@@ -44,24 +44,33 @@ public class TrapAxe : MonoBehaviour
 
     IEnumerator RotateToAngle(float targetAngle)
     {
-        Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle);
-
-        // Mientras no estemos lo suficientemente cerca del ángulo objetivo
-        while (Quaternion.Angle(transform.localRotation, targetRotation) > 0.1f)
+        if (!GameManager.instance.player.isDeath)
         {
-            transform.localRotation = Quaternion.RotateTowards(
-                transform.localRotation,
-                targetRotation,
-                speed * Time.deltaTime * 50f // Ajustá el multiplicador para la velocidad
-            );
+            Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle);
 
-            // IMPORTANTE: Esto le dice a Unity "pará acá y seguí en el siguiente frame"
-            // Sin esto, Unity explota.
-            yield return null;
+            // Mientras no estemos lo suficientemente cerca del ángulo objetivo
+            while (Quaternion.Angle(transform.localRotation, targetRotation) > 0.1f)
+            {
+                if (!GameManager.instance.player.isDeath)
+                {
+
+                    transform.localRotation = Quaternion.RotateTowards(
+                    transform.localRotation,
+                    targetRotation,
+                    speed * Time.deltaTime * 50f // Ajustá el multiplicador para la velocidad
+                    );
+                }
+
+                // IMPORTANTE: Esto le dice a Unity "pará acá y seguí en el siguiente frame"
+                // Sin esto, Unity explota.
+                yield return null;
+            }
+
+            // Aseguramos que quede exacto al final
+            transform.localRotation = targetRotation;
+            audioSourse.Play();
         }
 
-        // Aseguramos que quede exacto al final
-        transform.localRotation = targetRotation;
-        audioSourse.Play();
+    
     }
 }
