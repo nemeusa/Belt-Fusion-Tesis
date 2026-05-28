@@ -31,11 +31,11 @@ public class CheckpointManager : MonoBehaviour
         if (controller != null)
         {
             //controller.enabled = false;
-            player.GetComponent<PlayerController>().isDeath = false;
+            //player.GetComponent<PlayerController>().isDeath = true;
             player.transform.position = _lastCheckpointPosition;
             yield return new WaitForSeconds(0.53f);
+            //player.GetComponent<PlayerController>().isDeath = false;
             //controller.enabled = true;
-            player.GetComponent<PlayerController>().isDeath = true;
             respawn = false;
         }
     }

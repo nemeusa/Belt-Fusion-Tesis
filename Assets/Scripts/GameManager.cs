@@ -42,22 +42,30 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(NextLevel._nextLevel);
     }
 
-    public void Death(GameObject target, AudioClip deathSound)
+    public void Death(GameObject target, float deathDuration, AudioClip deathSound, ParticleSystem deathEffect)
     {
         audioSource.PlayOneShot(deathSound);
+
+        var a = Instantiate(deathEffect, player.transform.position, Quaternion.identity);
+
+        a.Play();
+
+        Destroy(a, 3);
         //trans.Transition();
         //CheckpointManager.Instance.Respawn(target);
-        StartCoroutine(DeathCorou(target));
+        StartCoroutine(DeathCorou(target, deathDuration));
     }
 
-    IEnumerator DeathCorou(GameObject target)
+    IEnumerator DeathCorou(GameObject target, float deathDuration)
     {
+        player.DeathPlayer();
+        yield return new WaitForSeconds(deathDuration);
         trans.Transition();
         yield return new WaitForSeconds(0.5f);
 
         CheckpointManager.Instance.Respawn(target);
         yield return new WaitForSeconds(0.2f);
-        player.DeathPlayer();
+        player.RespawnPlayer();
     }
 
     public void PauseGame()

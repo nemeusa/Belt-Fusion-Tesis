@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8891737338638538564}
   - component: {fileID: 7836414982356466143}
   - component: {fileID: 4699494255561787847}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,6 +102,7 @@ MonoBehaviour:
   fbxDash2: {fileID: 171567912243803650}
   countMovsText: {fileID: 0}
   countMovs: 0
+  isWallRunning: 0
   dashCount: 0
   lookInput: {x: 0, y: 0}
   winGame: 0
@@ -110,6 +111,7 @@ MonoBehaviour:
   isDeath: 1
   is2Dmoving: 0
   robot: {fileID: 0}
+  boostCanvasAni: {fileID: 0}
   fireJumpAudio: {fileID: 8300000, guid: 03f06b2c0386a4f468378329e03d827c, type: 3}
   dashAudio: {fileID: 8300000, guid: 46dcd6f2b85a21546a3e57e412ed95cb, type: 3}
   walkAudio: {fileID: 0}
@@ -15593,7 +15595,6 @@ MonoBehaviour:
   wallRunSpeed: 9
   jumpForce: 8
   playerCode: {fileID: 3524568294306139675}
-  _isWallRunning: 0
 --- !u!54 &474457406970231385
 Rigidbody:
   m_ObjectHideFlags: 0

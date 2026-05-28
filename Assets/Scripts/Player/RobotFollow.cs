@@ -8,7 +8,7 @@ public class RobotFollow : MonoBehaviour
     public float smoothSpeed = 0.125f;
     private Vector3 _velocity = Vector3.zero;
 
-    public LineRenderer laserLine;
+    //public LineRenderer laserLine;
 
     public bool goCheckPoint;
 
@@ -32,8 +32,8 @@ public class RobotFollow : MonoBehaviour
     void LateUpdate()
     {
 
-        if (laserLine.enabled) laserLine.SetPosition(0, transform.position);
-        laserLine.SetPosition(1, playerPos.position);
+        //if (laserLine.enabled) laserLine.SetPosition(0, transform.position);
+        //laserLine.SetPosition(1, playerPos.position);
 
         //if (!goCheckPoint)
         FollowTarget(playerPos);
@@ -120,50 +120,50 @@ public class RobotFollow : MonoBehaviour
 
     //}
 
-    public void DispararRayo(TypeFSM element)
-    {
-        Color colorE;
-        switch (element)
-        {
-            case TypeFSM.Fire:
-                colorE = Color.red;
-                break;
+    //public void DispararRayo(TypeFSM element)
+    //{
+    //    Color colorE;
+    //    switch (element)
+    //    {
+    //        case TypeFSM.Fire:
+    //            colorE = Color.red;
+    //            break;
 
-            case TypeFSM.Electricity:
-                colorE = Color.yellow;
-                break;
+    //        case TypeFSM.Electricity:
+    //            colorE = Color.yellow;
+    //            break;
 
-            case TypeFSM.Ice:
-                colorE = Color.cyan;
-                break;
+    //        case TypeFSM.Ice:
+    //            colorE = Color.cyan;
+    //            break;
 
-            default:
-                colorE = Color.gray;
-                break;
-        }
+    //        default:
+    //            colorE = Color.gray;
+    //            break;
+    //    }
 
-        StopAllCoroutines();
-        StartCoroutine(RoutineRayo(colorE));
+    //    StopAllCoroutines();
+    //    StartCoroutine(RoutineRayo(colorE));
 
-    }
+    //}
 
-    IEnumerator RoutineRayo(Color color)
-    {
-        laserLine.enabled = true;
-        laserLine.startColor = color;
-        laserLine.endColor = color;
+    //IEnumerator RoutineRayo(Color color)
+    //{
+    //    laserLine.enabled = true;
+    //    laserLine.startColor = color;
+    //    laserLine.endColor = color;
 
-        float t = 0;
-        while (t < 0.2f)
-        {
-            // El rayo va desde el robot al centro del player
+    //    float t = 0;
+    //    while (t < 0.2f)
+    //    {
+    //        // El rayo va desde el robot al centro del player
 
-            t += Time.deltaTime;
-            yield return null;
-        }
-        //Debug.Log("rayo");
+    //        t += Time.deltaTime;
+    //        yield return null;
+    //    }
+    //    //Debug.Log("rayo");
 
-        yield return new WaitForSeconds(0.5f);
-        laserLine.enabled = false;
-    }
+    //    yield return new WaitForSeconds(0.5f);
+    //    laserLine.enabled = false;
+    //}
 }

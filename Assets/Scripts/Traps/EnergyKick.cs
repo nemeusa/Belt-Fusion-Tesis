@@ -27,6 +27,8 @@ public class EnergyKick : MonoBehaviour
 
         if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
+            if (player.isDeath) return;
+
             if(player.isDashing)
             {
                 if (player.globalVolume.profile.TryGet<Vignette>(out var vignetteTmp))

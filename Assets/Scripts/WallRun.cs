@@ -45,6 +45,8 @@ public class WallRun : MonoBehaviour
 
     void Update()
     {
+        if (playerCode.isDeath) return;
+
         if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity)) if (playerCode.isWallRunning) playerCode.isWallRunning = false;
 
         if (playerCode.isWallRunning) DoWallRun();
@@ -64,7 +66,7 @@ public class WallRun : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity) || !canDetect) return;
+        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity) || !canDetect || playerCode.isDeath) return;
 
         if (other.TryGetComponent<WallData>(out WallData wall))
         {
@@ -77,7 +79,7 @@ public class WallRun : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity) || inUse || !canDetect) return;
+        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity) || inUse || !canDetect || playerCode.isDeath) return;
 
         if (other.TryGetComponent<WallData>(out WallData wall))
         {
@@ -96,9 +98,13 @@ public class WallRun : MonoBehaviour
             playerCode.isWallRunning = false;
             data = null;
 
-            playerCode.coyoteCounter = playerCode.coyoteTime * 2;
-            playerCode.jumpCount = 0;
-            playerCode.dashCount = 0;
+            if (playerCode._fsm.WhatCurrentState(TypeFSM.Electricity))
+            {
+
+                playerCode.coyoteCounter = playerCode.coyoteTime * 2;
+                playerCode.jumpCount = 0;
+                playerCode.dashCount = 0;
+            }
             playerCode.dontMove = false;
             playerCode._gravityValue = ogGravity;
 

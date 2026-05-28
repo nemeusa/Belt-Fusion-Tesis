@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public int maxJumps = 1;
     public bool dontMove;
 
+    float ogGravity;
+
 
     [Header("Skills")]
     [SerializeField] int maxBoost = 3;
@@ -93,7 +95,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject respawnEffectsPrefabs;
     [SerializeField] Transform respawnEffectsPoint;
 
-    public bool isDeath = true;
+    public bool isDeath = false;
 
     public bool is2Dmoving = false;
 
@@ -137,6 +139,7 @@ public class PlayerController : MonoBehaviour
         coyoteTime = 0.2f;
         maxJumps = 1;
         initialSpeed = speed;
+        ogGravity = _gravityValue;
         if (globalVolume.profile.TryGet<PaniniProjection>(out var tmpPanini))
         {
             //Debug.Log("Encontro el panini");
@@ -147,7 +150,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!isDeath) return;
+        if (isDeath) return;
 
         _fsm.Execute();
 
@@ -226,7 +229,7 @@ public class PlayerController : MonoBehaviour
         //moveInput = Vector2.zero;
         _fsm.ChangeState(TypeFSM.Default);
 
-        isDeath = false;
+        isDeath = true;
         _isBeingPushed = true;
         float timer = 0;
 
@@ -239,14 +242,14 @@ public class PlayerController : MonoBehaviour
         }
 
         _isBeingPushed = false;
-        isDeath = true;
+        isDeath = false;
     }
 
     IEnumerator StartGame()
     {
-        isDeath = false;
-        yield return new WaitForSeconds(0.4f);
         isDeath = true;
+        yield return new WaitForSeconds(0.4f);
+        isDeath = false;
         GameManager.instance.BoostContainer.seconds = 0;
     }
 
@@ -291,9 +294,9 @@ public class PlayerController : MonoBehaviour
     public void ChangeElement(TypeFSM element)
     {
         GameManager.instance.BoostContainer.ChangeSymbol(element);
-        robot.DispararRayo(element);
+        //robot.DispararRayo(element);
 
-        if (!isDeath) return; 
+        if (isDeath) return; 
 
         audioSource.PlayOneShot(changeElementAudio);
 
@@ -308,15 +311,25 @@ public class PlayerController : MonoBehaviour
         isDeath = true;
         isWallRunning = false;
         isDashing = false;
-        _controller.Move(Vector3.zero);
+        _controller.enabled = false;
+
+        //_controller.Move(Vector3.zero);
+    }
+
+    public void RespawnPlayer()
+    {
+        _controller.enabled = true;
+        isDeath = false;
         DefaultPlayer();
         Instantiate(respawnEffectsPrefabs, respawnEffectsPoint.position, Quaternion.identity);
+
     }
 
     public void DefaultPlayer()
     {
         _fsm.ChangeState(TypeFSM.Default);
         AddBoost(-5);
+        _gravityValue = ogGravity;
         winGame = false;
     }
 
@@ -335,7 +348,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        if (!isDeath) return;
+        if (isDeath) return;
 
         if (value.isPressed)
         {
@@ -363,12 +376,12 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnMove(InputValue value) { moveInput = value.Get<Vector2>(); }
-    public void OnDash(InputValue value) { if (value.isPressed && isDeath) OnDashPressed?.Invoke(); }
+    public void OnDash(InputValue value) { if (value.isPressed && !isDeath) OnDashPressed?.Invoke(); }
 
-    public void OnElement0(InputValue value) { if (value.isPressed && isDeath) _fsm.ChangeState(TypeFSM.Default); }
-    public void OnElement1(InputValue value) { if (value.isPressed && isDeath) _fsm.ChangeState(TypeFSM.Fire); }
-    public void OnElement2(InputValue value) { if (value.isPressed && isDeath) _fsm.ChangeState(TypeFSM.Electricity); }
-    public void OnElement3(InputValue value) { if (value.isPressed && isDeath) _fsm.ChangeState(TypeFSM.Ice); }
+    public void OnElement0(InputValue value) { if (value.isPressed && !isDeath) _fsm.ChangeState(TypeFSM.Default); }
+    public void OnElement1(InputValue value) { if (value.isPressed && !isDeath) _fsm.ChangeState(TypeFSM.Fire); }
+    public void OnElement2(InputValue value) { if (value.isPressed && !isDeath) _fsm.ChangeState(TypeFSM.Electricity); }
+    public void OnElement3(InputValue value) { if (value.isPressed && !isDeath) _fsm.ChangeState(TypeFSM.Ice); }
     public void OnPause(InputValue value) { if (value.isPressed) GameManager.instance.PauseGame(); }
 
     #endregion
