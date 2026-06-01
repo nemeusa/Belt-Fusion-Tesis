@@ -4,7 +4,7 @@ using UnityEngine.VFX;
 
 public class CheckpointTrigger : MonoBehaviour
 {
-    private bool _activated = false;
+    public bool activated = false;
     [SerializeField] GameObject _meshOb;
     [SerializeField] Transform respawnPost;
     //[SerializeField] GameObject meshPlatillo;
@@ -26,22 +26,34 @@ public class CheckpointTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player) && !_activated)
+        if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
+            foreach (var p in effects) p.SendEvent("OnPlay");
+
+            player.robot.goCheckPoint = true;
             player.robot.CheckpointAction(robotPosition, this);
          
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
+        {
+            foreach (var p in effects) p.SendEvent("OnStop");
+            player.robot.goCheckPoint = false;
+
         }
     }
 
     public void CreateCheckpoint()
     {
         //meshPlatillo.SetActive(true);
-        //foreach (var p in effects) p.SendEvent("OnPlay");
         baseCheckpointMesh.material = baseCheckpointMat;
         foreach (var p in palosCheckpointMesh) p.material = paloCheckpointMat;
 
         CheckpointManager.Instance.UpdateCheckpoint(respawnPost.position);
-        _activated = true;
+        activated = true;
 
         _meshOb.GetComponent<MeshRenderer>().material.color = Color.green;
     }

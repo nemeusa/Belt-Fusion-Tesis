@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
     public VisualEffect fbxDash;
     public VisualEffect fbxDash2;
     public TMP_Text countMovsText;
+    public TMP_Text countCrystalsText;
     [HideInInspector] public int countMovs;
     [HideInInspector] public bool isWallRunning = false;
 
@@ -101,7 +102,9 @@ public class PlayerController : MonoBehaviour
 
     public RobotFollow robot;
 
-    [SerializeField] Animator boostCanvasAni;
+    int mount;
+
+   [SerializeField] Animator boostCanvasAni;
 
     [Header("Audio")]
     public AudioClip fireJumpAudio;
@@ -281,6 +284,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public void CountCrystals(int cant)
+    {
+        mount += cant;
+        countCrystalsText.text = "A " + mount;
+    }
+
     public void CountMoves(int n)
     {
         if (n <= 0) countMovs = 0;
@@ -365,6 +374,18 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("toco origen");
         }
     }
+
+
+    public void OnDebbie(InputValue value)
+    {
+        if (value.isPressed && !isDeath && mount >= 10)
+        {
+            //robot.meshRobot.material.color = Color.blue;
+            foreach (var m in robot.meshRobot) m.material.color = UnityEngine.Random.ColorHSV();
+            //CountCrystals(-10);
+        }
+    }
+
 
     public void OnBoost(InputValue value) { AddBoost(1); }
 

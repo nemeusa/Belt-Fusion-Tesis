@@ -8,6 +8,8 @@ public class RobotFollow : MonoBehaviour
     public float smoothSpeed = 0.125f;
     private Vector3 _velocity = Vector3.zero;
 
+    public MeshRenderer[] meshRobot;
+
     //public LineRenderer laserLine;
 
     public bool goCheckPoint;
@@ -15,6 +17,8 @@ public class RobotFollow : MonoBehaviour
     [SerializeField] GameObject bulletCheckpointPrefab;
     [SerializeField] Transform spawnCheckpointPoint;
 
+    Transform _checkpointPoint;
+    CheckpointTrigger _checkpointCode;
 
 
     private void Awake()
@@ -35,8 +39,10 @@ public class RobotFollow : MonoBehaviour
         //if (laserLine.enabled) laserLine.SetPosition(0, transform.position);
         //laserLine.SetPosition(1, playerPos.position);
 
-        //if (!goCheckPoint)
-        FollowTarget(playerPos);
+        if (!goCheckPoint)
+            FollowTarget(playerPos);
+
+        else GoCheckpoint();
     }
 
     public void FollowTarget(Transform target)
@@ -53,19 +59,49 @@ public class RobotFollow : MonoBehaviour
 
     public void CheckpointAction(Transform target, CheckpointTrigger checkpointCode)
     {
-        //StartCoroutine(WorkCheckpoint(target));
         goCheckPoint = true;
 
 
         Debug.Log("el robot dispara el checkpoint");
-        var c = Instantiate(bulletCheckpointPrefab, spawnCheckpointPoint.position, Quaternion.identity);
 
-        c.GetComponentInChildren<BulletCheckpoint>().ConfigurarDestino(target, checkpointCode);
 
-        //StartCoroutine(WorkCheckpoint(Vector3.Distance(target.position, c.transform.position), c, checkpointCode));
 
-        goCheckPoint = false;
+        _checkpointPoint = target;
+        _checkpointCode = checkpointCode;
 
+
+        //var c = Instantiate(bulletCheckpointPrefab, spawnCheckpointPoint.position, Quaternion.identity);
+
+        //c.GetComponentInChildren<BulletCheckpoint>().ConfigurarDestino(target, checkpointCode);
+
+
+
+
+    }
+
+    public void GoCheckpoint()
+    {
+        if (Vector3.Distance(_checkpointPoint.position, transform.position) < 1)
+        { 
+            transform.forward = playerPos.position;
+
+            transform.position = _checkpointPoint.position;
+
+            if(_checkpointCode.activated) return;
+
+            _checkpointCode.CreateCheckpoint();
+
+            //_checkpointPoint = null;
+            //_checkpointCode = null;
+        }
+        // FollowTarget(_checkpointPoint);
+
+        Vector3 dir = (_checkpointPoint.position - transform.position).normalized;
+
+        transform.Translate(dir * 40 * Time.deltaTime, Space.World);
+
+
+        Debug.Log("Busca checkpoint");
 
     }
 
