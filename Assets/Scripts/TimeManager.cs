@@ -2,87 +2,84 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class EnergyKick : MonoBehaviour
+public class TimeManager : MonoBehaviour
 {
-    [SerializeField] float pushForce = 10f;
-    [SerializeField] float pushDuration = 0.2f;
+    public static TimeManager Instance;
 
-    [SerializeField] GameObject _shockPrefab;
+    [Header("Configuración del Bullet Time")]
+    [Range(0f, 1f)] public float factorRalentizacion = 0.2f; // El mundo va al 20% de velocidad
+    public float duracionEfecto = 2f; // Cuánto dura en segundos reales
 
-    AudioSource audioSource;
+    private bool _efectoActivo = false;
 
     Vignette vignette;
     ChromaticAberration aberration;
     LensDistortion distortion;
 
 
-    private void Start()
-    {
-        
-        audioSource = GetComponent<AudioSource>();
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
+    private void Awake() => Instance = this;
 
-        if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
+    public void ActivarCamaraLenta()
+    {
+        if (!_efectoActivo)
         {
-            if (player.isDeath) return;
+            if (GameManager.instance.player.globalVolume.profile.TryGet<Vignette>(out var vignetteTmp))
+                vignette = vignetteTmp;
 
-            if(player.isDashing)
-            {
-                if (player.globalVolume.profile.TryGet<Vignette>(out var vignetteTmp))
-                    vignette = vignetteTmp;
+            if (GameManager.instance.player.globalVolume.profile.TryGet<ChromaticAberration>(out var aberrationTmp)) aberration = aberrationTmp;
 
-                if (player.globalVolume.profile.TryGet<ChromaticAberration>(out var aberrationTmp)) aberration = aberrationTmp;
-
-                if (player.globalVolume.profile.TryGet<LensDistortion>(out var distortionTmp)) distortion = distortionTmp;
-
-
-                StartCoroutine(CongelaFrame());
-                    return;
-            }
+            if (GameManager.instance.player.globalVolume.profile.TryGet<LensDistortion>(out var distortionTmp)) distortion = distortionTmp;
 
 
 
-            audioSource.Play();
+            StartCoroutine(BulletTimeRoutine());
 
-            Vector3 pushDirection = -other.transform.forward;
+            StartCoroutine(EffectsCongelation());
 
-            player.ApplyKnockback(pushDirection, pushForce, pushDuration);
-
-            player.CountMoves(0);
-
-            var d = Instantiate(_shockPrefab, player.transform.position, Quaternion.identity);
-
-            Destroy(d, 2);
 
         }
     }
 
-
-    IEnumerator CongelaFrame()
+    private IEnumerator BulletTimeRoutine()
     {
-        StartCoroutine(EffectsCongelation());
-        //Time.timeScale = 0.01f;
-        //yield return new WaitForSeconds(0.002f);
-        yield return new WaitForSeconds(0.2f);
-        //Time.timeScale = 1;
+        _efectoActivo = true;
 
+        // Bajamos el tiempo global
+        Time.timeScale = factorRalentizacion;
+
+        // IMPORTANTÍSIMO: Ajustamos el fixedDeltaTime en proporción 
+        // para que las físicas (fuerzas, colisiones) no se vuelvan locas o vayan a saltos
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
+        // Esperamos en "tiempo real" (ignora el timeScale actual)
+        yield return new WaitForSecondsRealtime(duracionEfecto);
+
+        // Volvemos a la normalidad progresivamente
+        while (Time.timeScale < 1f)
+        {
+            Time.timeScale += Time.unscaledDeltaTime * 2f; // Velocidad de recuperación
+            Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            yield return null;
+        }
+
+        _efectoActivo = false;
     }
+
 
     IEnumerator EffectsCongelation()
     {
         // 1. Seteamos los valores iniciales del efecto
         vignette.intensity.value = 0.2f;
-        vignette.color.value = Color.yellow;
+        vignette.color.value = Color.cyan;
         vignette.rounded.value = true;
         vignette.smoothness.value = 0.5f;
         aberration.intensity.value = 1;
         distortion.intensity.value = -0.5f;
 
         // 2. Esperamos el tiempo que el efecto está "al máximo"
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(duracionEfecto - 2);
 
         // 3. Transición suave (Fade Out)
         float duration = 1.0f; // Duración del suavizado en segundos

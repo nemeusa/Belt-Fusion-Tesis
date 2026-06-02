@@ -17,6 +17,8 @@ public class CheckpointTrigger : MonoBehaviour
 
     [SerializeField] Transform robotPosition;
 
+    [SerializeField] Animator aniController;
+
     private void Awake()
     {
         //meshPlatillo.SetActive(false);
@@ -54,6 +56,8 @@ public class CheckpointTrigger : MonoBehaviour
 
         CheckpointManager.Instance.UpdateCheckpoint(respawnPost.position);
         activated = true;
+
+        aniController.SetBool("Active", true);
 
         _meshOb.GetComponent<MeshRenderer>().material.color = Color.green;
     }

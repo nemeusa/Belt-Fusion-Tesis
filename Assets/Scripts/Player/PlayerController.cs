@@ -93,8 +93,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 _pushDirection;
 
 
-    [SerializeField] GameObject respawnEffectsPrefabs;
-    [SerializeField] Transform respawnEffectsPoint;
+    public GameObject respawnEffectsPrefabs;
+    public Transform respawnEffectsPoint;
 
     public bool isDeath = false;
 
@@ -330,8 +330,8 @@ public class PlayerController : MonoBehaviour
         _controller.enabled = true;
         isDeath = false;
         DefaultPlayer();
-        Instantiate(respawnEffectsPrefabs, respawnEffectsPoint.position, Quaternion.identity);
-
+        var c = Instantiate(respawnEffectsPrefabs, respawnEffectsPoint.position, Quaternion.identity);
+        Destroy(c, 2);
     }
 
     public void DefaultPlayer()
@@ -382,7 +382,9 @@ public class PlayerController : MonoBehaviour
         {
             //robot.meshRobot.material.color = Color.blue;
             foreach (var m in robot.meshRobot) m.material.color = UnityEngine.Random.ColorHSV();
-            //CountCrystals(-10);
+
+            TimeManager.Instance.ActivarCamaraLenta();
+            CountCrystals(-10);
         }
     }
 

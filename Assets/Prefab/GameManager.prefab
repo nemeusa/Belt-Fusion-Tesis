@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8871777293148774900}
   - component: {fileID: 6773578459310698188}
+  - component: {fileID: 6692997875092317266}
   - component: {fileID: 716874407085642866}
   - component: {fileID: 7007250304146143632}
   m_Layer: 0
@@ -50,6 +51,21 @@ MonoBehaviour:
   robot: {fileID: 0}
   BoostContainer: {fileID: 0}
   trans: {fileID: 0}
+  startAniCanvas: {fileID: 0}
+--- !u!114 &6692997875092317266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557246101903243308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822e0ac0ffac8a841a7fd73d41869fa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  factorRalentizacion: 0.5
+  duracionEfecto: 5
 --- !u!114 &716874407085642866
 MonoBehaviour:
   m_ObjectHideFlags: 0
