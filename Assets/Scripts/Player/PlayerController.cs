@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        meshFatherDefaultPos = meshFather.transform.position;
+        meshFatherDefaultPos = meshFather.transform.localPosition;
         StartCoroutine(StartGame());
         CountMoves(0);
         GameManager.instance.BoostContainer.BoostsActive(boost);
@@ -339,7 +339,8 @@ public class PlayerController : MonoBehaviour
         DefaultPlayer();
         var c = Instantiate(respawnEffectsPrefabs, respawnEffectsPoint.position, Quaternion.identity);
         Destroy(c, 2);
-        meshFather.transform.position = meshFatherDefaultPos;
+        //meshFather.transform.position = meshFatherDefaultPos;
+        meshFather.transform.localPosition = Vector3.zero;
     }
 
     public void DefaultPlayer()
