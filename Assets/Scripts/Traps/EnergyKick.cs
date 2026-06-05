@@ -50,6 +50,8 @@ public class EnergyKick : MonoBehaviour
             Vector3 pushDirection = -other.transform.forward;
 
             player.ApplyKnockback(pushDirection, pushForce, pushDuration);
+            player._fsm.ChangeState(TypeFSM.Default);
+
 
             player.CountMoves(0);
 

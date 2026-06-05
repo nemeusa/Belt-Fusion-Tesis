@@ -32,6 +32,8 @@ public class FireState : State
 
     void JumpFire()
     {
+        if (_player.dontDobleJump) return;
+
         if (_player.boost <= 0)
         {
             if (_player.jumpCount > _player.maxJumps) return;

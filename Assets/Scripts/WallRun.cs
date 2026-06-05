@@ -51,17 +51,17 @@ public class WallRun : MonoBehaviour
 
         if (playerCode.isWallRunning) DoWallRun();
 
-        else
-        {
-            if (data != null || playerCode.dontMove || playerCode._gravityValue != ogGravity)
-            {
-                data = null;
-                playerCode.dontMove = false;
-                playerCode._gravityValue = ogGravity;
+        //else
+        //{
+        //    if (data == null || playerCode.dontMovePlayer || playerCode._gravityValue != ogGravity)
+        //    {
+        //        data = null;
+        //        playerCode.dontMovePlayer = false;
+        //        playerCode._gravityValue = ogGravity;
 
-            }
+        //    }
 
-        }
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
@@ -105,7 +105,7 @@ public class WallRun : MonoBehaviour
                 playerCode.jumpCount = 0;
                 playerCode.dashCount = 0;
             }
-            playerCode.dontMove = false;
+            playerCode.dontMovePlayer = false;
             playerCode._gravityValue = ogGravity;
 
             inUse = false;
@@ -119,7 +119,7 @@ public class WallRun : MonoBehaviour
         StartCoroutine(DashEffects());
 
         playerCode.CountMoves(0);
-        playerCode.dontMove = true;
+        playerCode.dontMovePlayer = true;
         playerCode._gravityValue = 0;
 
         inUse = true;

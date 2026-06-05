@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
 
         if (deathEffect != null)
         {
-            var a = Instantiate(deathEffect, player.transform.position, Quaternion.identity);
+            var a = Instantiate(deathEffect, player.transform.position, deathEffect.transform.rotation);
             a.Play();
             Destroy(a, 3);
         }

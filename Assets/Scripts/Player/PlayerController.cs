@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public float initialSpeed;
     public int jumpCount = 0;
     public int maxJumps = 1;
-    public bool dontMove;
 
     float ogGravity;
 
@@ -56,6 +55,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource audioSource;
     public CinemachineCamera jumpCamTarget;
     public Material boostMat;
+    public GameObject meshFather;
+    public Vector3 meshFatherDefaultPos;
     private PaniniProjection panini;
 
 
@@ -68,14 +69,12 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed = 20f;
     public float dashTime = 0.2f;
     public float dashCooldown = 1f;
-    public bool invisibleInDash;
     public GameObject dashRingPar;
     public VisualEffect fbxDash;
     public VisualEffect fbxDash2;
     public TMP_Text countMovsText;
     public TMP_Text countCrystalsText;
     [HideInInspector] public int countMovs;
-    [HideInInspector] public bool isWallRunning = false;
 
 
     [HideInInspector] public int dashCount = 0;
@@ -87,18 +86,24 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 lookInput;
 
-    public bool winGame;
 
-    private bool _isBeingPushed = false;
     private Vector3 _pushDirection;
 
 
     public GameObject respawnEffectsPrefabs;
     public Transform respawnEffectsPoint;
 
+    [Header("Bool")]
     public bool isDeath = false;
-
+    public bool dontMovePlayer;
+    public bool dontDobleJump;
+    public bool dontChangeElement;
     public bool is2Dmoving = false;
+    private bool _isBeingPushed = false;
+    public bool winGame;
+    [HideInInspector] public bool isWallRunning = false;
+    public bool invisibleInDash;
+
 
     public RobotFollow robot;
 
@@ -136,6 +141,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        meshFatherDefaultPos = meshFather.transform.position;
         StartCoroutine(StartGame());
         CountMoves(0);
         GameManager.instance.BoostContainer.BoostsActive(boost);
@@ -149,6 +155,7 @@ public class PlayerController : MonoBehaviour
             panini = tmpPanini;
         }
 
+
     }
 
     void Update()
@@ -157,6 +164,7 @@ public class PlayerController : MonoBehaviour
 
         _fsm.Execute();
 
+        if (dontMovePlayer) return;
         JumpLogics(_controller.isGrounded, _playerVelocity.y < 0);
         MovePlayer();
 
@@ -165,7 +173,7 @@ public class PlayerController : MonoBehaviour
             if (winGame) animator.SetBool("Win", winGame);
             else
             {
-                if (!dontMove) animator.SetFloat("Speed", moveInput.magnitude);
+                if (!dontMovePlayer) animator.SetFloat("Speed", moveInput.magnitude);
                 animator.SetBool("IsGrounded", coyoteCounter > 0);
             }
         }
@@ -175,7 +183,7 @@ public class PlayerController : MonoBehaviour
     void MovePlayer()
     {
 
-        if (dontMove) return;
+        if (dontMovePlayer) return;
 
         Vector3 move;
 
@@ -230,7 +238,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator KnockbackRoutine(Vector3 direction, float force, float duration)
     {
         //moveInput = Vector2.zero;
-        _fsm.ChangeState(TypeFSM.Default);
 
         isDeath = true;
         _isBeingPushed = true;
@@ -332,6 +339,7 @@ public class PlayerController : MonoBehaviour
         DefaultPlayer();
         var c = Instantiate(respawnEffectsPrefabs, respawnEffectsPoint.position, Quaternion.identity);
         Destroy(c, 2);
+        meshFather.transform.position = meshFatherDefaultPos;
     }
 
     public void DefaultPlayer()
@@ -401,10 +409,10 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputValue value) { moveInput = value.Get<Vector2>(); }
     public void OnDash(InputValue value) { if (value.isPressed && !isDeath) OnDashPressed?.Invoke(); }
 
-    public void OnElement0(InputValue value) { if (value.isPressed && !isDeath) _fsm.ChangeState(TypeFSM.Default); }
-    public void OnElement1(InputValue value) { if (value.isPressed && !isDeath) _fsm.ChangeState(TypeFSM.Fire); }
-    public void OnElement2(InputValue value) { if (value.isPressed && !isDeath) _fsm.ChangeState(TypeFSM.Electricity); }
-    public void OnElement3(InputValue value) { if (value.isPressed && !isDeath) _fsm.ChangeState(TypeFSM.Ice); }
+    public void OnElement0(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement) _fsm.ChangeState(TypeFSM.Default); }
+    public void OnElement1(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement) _fsm.ChangeState(TypeFSM.Fire); }
+    public void OnElement2(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement) _fsm.ChangeState(TypeFSM.Electricity); }
+    public void OnElement3(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement) _fsm.ChangeState(TypeFSM.Ice); }
     public void OnPause(InputValue value) { if (value.isPressed) GameManager.instance.PauseGame(); }
 
     #endregion

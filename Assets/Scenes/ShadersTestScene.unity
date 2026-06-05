@@ -5099,6 +5099,26 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
+--- !u!1 &72300247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -215133836188129576, guid: e065454c6c0e820438c29618c4e1d1a0, type: 3}
+  m_PrefabInstance: {fileID: 561429936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &72300251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72300247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5b473799d1bd14db0886c1e687863f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectTime: 5
+  cooldown: 2
+  glitchMat: {fileID: -876546973899608171, guid: 0bf5c2535d1bf07499cf59d5131237d8, type: 3}
 --- !u!1001 &81366331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26499,7 +26519,7 @@ PrefabInstance:
     - target: {fileID: -395701900108105314, guid: e065454c6c0e820438c29618c4e1d1a0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: dc76630fcf8023c45bcf5f8935186944, type: 2}
+      objectReference: {fileID: 2100000, guid: 8009f028147d512419642d18eeb564a9, type: 2}
     - target: {fileID: -395701900108105314, guid: e065454c6c0e820438c29618c4e1d1a0, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -26511,7 +26531,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -215133836188129576, guid: e065454c6c0e820438c29618c4e1d1a0, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 72300251}
   m_SourcePrefab: {fileID: 100100000, guid: e065454c6c0e820438c29618c4e1d1a0, type: 3}
 --- !u!1 &573733686
 GameObject:
