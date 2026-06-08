@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HolograficPulse_Mat 1
-  m_Shader: {fileID: -6465566751694194690, guid: 5036a55167bc4504cb8521472c31f2bf, type: 3}
+  m_Name: Pulsing Glow DEBB-E
+  m_Shader: {fileID: -6465566751694194690, guid: c58656db6782e0243960b775baea6797, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -98,14 +98,16 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Fresnel_Power: 1
+    - _Fresnel: 0.394
+    - _Fresnel_Power: 0.666
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Glow_Strength: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _Pulse_Speed: 2
+    - _Pulse_Speed: 5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -119,12 +121,14 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.9339623, g: 0.083704144, b: 0.83304554, a: 1}
+    - _Color: {r: 0.8773585, g: 0.062077243, b: 0.71823275, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Emission_Color: {r: 0.9529412, g: 0.058823552, b: 0.8103899, a: 0}
+    - _Neon_Color: {r: 0.9339623, g: 0.8943129, b: 0.920932, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &2628783162304847139
+--- !u!114 &2455376010442933890
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
