@@ -65,6 +65,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8009f028147d512419642d18eeb564a9, type: 2}
+  - {fileID: 2100000, guid: 6f59f31f24882894e96215b626ec1661, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -413,6 +414,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8009f028147d512419642d18eeb564a9, type: 2}
+  - {fileID: 2100000, guid: 6f59f31f24882894e96215b626ec1661, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -565,6 +567,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8009f028147d512419642d18eeb564a9, type: 2}
+  - {fileID: 2100000, guid: 6f59f31f24882894e96215b626ec1661, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -771,6 +774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8401921920815576229}
   - component: {fileID: 7018156398483752532}
+  - component: {fileID: 4507444102485026760}
   m_Layer: 0
   m_Name: Robotito
   m_TagString: Untagged
@@ -820,6 +824,26 @@ MonoBehaviour:
   goCheckPoint: 0
   bulletCheckpointPrefab: {fileID: 8008807791407951288, guid: 3251fa2464afc504dae7860df5df4861, type: 3}
   spawnCheckpointPoint: {fileID: 7729138182687865850}
+--- !u!114 &4507444102485026760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6863423836533848574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5372104b03c9ad447b9a62a62cd6027a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeTime: 2
+  _meshRefreshRate: 0.1
+  _meshDestroyDelay: 3
+  _spawnPos: {fileID: 8401921920815576229}
+  _mat: {fileID: 2100000, guid: 95f79e468b173834da442482f6ba0ce8, type: 2}
+  _shaderVarRef: _Alpha
+  _shaderVarRate: 0.1
+  _shaderVarRefreshRate: 0.05
 --- !u!1 &7200003147668244245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1051,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8368722655750445499, guid: 237a6e60c0dd40a4ab05d91048a8d628, type: 3}
+  - {fileID: 2100000, guid: 8009f028147d512419642d18eeb564a9, type: 2}
+  - {fileID: 2100000, guid: 6f59f31f24882894e96215b626ec1661, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1114,6 +1139,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8009f028147d512419642d18eeb564a9, type: 2}
+  - {fileID: 2100000, guid: 6f59f31f24882894e96215b626ec1661, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
