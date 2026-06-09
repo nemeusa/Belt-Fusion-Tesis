@@ -192,10 +192,16 @@ public class PlayerController : MonoBehaviour
 
         else 
             move = new Vector3(moveInput.x, 0, moveInput.y);
-        _controller.Move(move * Time.deltaTime * speed);
 
-        _playerVelocity.y += _gravityValue * Time.deltaTime;
-        _controller.Move(_playerVelocity * Time.deltaTime);
+        //codigo con tiempo normal
+        //_controller.Move(move * Time.deltaTime * speed);
+        //_playerVelocity.y += _gravityValue * Time.deltaTime;
+        //_controller.Move(_playerVelocity * Time.deltaTime);
+
+        //Codigo sin tiempo
+        _controller.Move(move * Time.unscaledDeltaTime * speed);
+        _playerVelocity.y += _gravityValue * Time.unscaledDeltaTime;
+        _controller.Move(_playerVelocity * Time.unscaledDeltaTime);
 
         if (move != Vector3.zero)
         {

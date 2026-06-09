@@ -20,9 +20,16 @@ public class RobotFollow : MonoBehaviour
     Transform _checkpointPoint;
     CheckpointTrigger _checkpointCode;
 
+    public CheckpointRobotEffects _checkpointRobotEffects;
+
+    public bool estaQuieto { get; private set; }
+
+
+    [SerializeField] private float umbralQuietud = 0.05f;
 
     private void Awake()
     {
+        _checkpointRobotEffects = GetComponent<CheckpointRobotEffects>();
         //GameManager.instance.robot = this;
     }
 
@@ -40,9 +47,15 @@ public class RobotFollow : MonoBehaviour
         //laserLine.SetPosition(1, playerPos.position);
 
         if (!goCheckPoint)
+        {
             FollowTarget(playerPos);
+            _checkpointRobotEffects.ApagarBrilloCheckpoint();
+
+        }
 
         else GoCheckpoint();
+
+        estaQuieto = _velocity.magnitude < umbralQuietud;
     }
 
     public void FollowTarget(Transform target)
@@ -64,6 +77,8 @@ public class RobotFollow : MonoBehaviour
 
         Debug.Log("el robot dispara el checkpoint");
 
+        _checkpointRobotEffects.EncenderBrilloCheckpoint();
+
 
 
         _checkpointPoint = target;
@@ -81,6 +96,7 @@ public class RobotFollow : MonoBehaviour
 
     public void GoCheckpoint()
     {
+
         if (Vector3.Distance(_checkpointPoint.position, transform.position) < 1)
         { 
             transform.forward = playerPos.position;
@@ -88,6 +104,8 @@ public class RobotFollow : MonoBehaviour
             transform.position = _checkpointPoint.position;
 
             if(_checkpointCode.activated) return;
+
+
 
             _checkpointCode.CreateCheckpoint();
 

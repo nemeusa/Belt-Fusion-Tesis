@@ -22,9 +22,16 @@ public class HolograficTrail : MonoBehaviour
     private bool _isActive;
     private MeshFilter[] _meshFilters;
 
+    RobotFollow robotCode;
+
+    private void Awake()
+    {
+        robotCode = GetComponent<RobotFollow>();
+    }
+
     private void Update()
     {
-        if (Keyboard.current.fKey.wasPressedThisFrame && !_isActive)
+        if (!_isActive && !robotCode.estaQuieto)
         {
             _isActive = true;
             StartCoroutine(ActivateTrail(_activeTime));
@@ -35,7 +42,7 @@ public class HolograficTrail : MonoBehaviour
 
     IEnumerator ActivateTrail (float timeActive)
     {
-        while (timeActive > 0)
+        while (timeActive > 0 && !robotCode.estaQuieto)
         {
             timeActive -= _meshRefreshRate;
 
@@ -58,6 +65,8 @@ public class HolograficTrail : MonoBehaviour
 
                 //filter.mesh = mesh;
                 //renderer.material = _mat;
+
+                renderer.shadowCastingMode = ShadowCastingMode.Off;
 
                 filter.mesh = _meshFilters[i].sharedMesh;
                                                                 

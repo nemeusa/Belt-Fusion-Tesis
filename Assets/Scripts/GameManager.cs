@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void Death(GameObject target, float deathDuration, AudioClip deathSound, ParticleSystem deathEffect)
     {
+        Time.timeScale = 1;
         if (deathSound != null)
         PlaySound(deathSound);
 

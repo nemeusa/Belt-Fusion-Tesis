@@ -10,6 +10,8 @@ public class TimeManager : MonoBehaviour
     [Range(0f, 1f)] public float factorRalentizacion = 0.2f; // El mundo va al 20% de velocidad
     public float duracionEfecto = 2f; // Cuánto dura en segundos reales
 
+    [SerializeField] ActiveFilters activeFiltersCode;
+
     private bool _efectoActivo = false;
 
     Vignette vignette;
@@ -43,6 +45,12 @@ public class TimeManager : MonoBehaviour
 
     private IEnumerator BulletTimeRoutine()
     {
+        //cambia la velocidad del player cuando se mueve con tiempo normal
+        //GameManager.instance.player.speed *= 3;
+        //GameManager.instance.player._gravityValue *= 2;
+
+        activeFiltersCode.AlternarFiltroBlancoNegro(true);
+
         _efectoActivo = true;
 
         // Bajamos el tiempo global
@@ -55,11 +63,16 @@ public class TimeManager : MonoBehaviour
         // Esperamos en "tiempo real" (ignora el timeScale actual)
         yield return new WaitForSecondsRealtime(duracionEfecto);
 
+        activeFiltersCode.AlternarFiltroBlancoNegro(false);
         // Volvemos a la normalidad progresivamente
         while (Time.timeScale < 1f)
         {
             Time.timeScale += Time.unscaledDeltaTime * 2f; // Velocidad de recuperación
             Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
+
+            //cambia la velocidad del player cuando se mueve con tiempo normal
+            //GameManager.instance.player.speed = GameManager.instance.player.initialSpeed;
+            //GameManager.instance.player._gravityValue *= 1;
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
             yield return null;
         }
