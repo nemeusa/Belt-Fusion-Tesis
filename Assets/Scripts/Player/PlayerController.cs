@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     public Volume globalVolume;
     public AudioSource audioSource;
     public CinemachineCamera jumpCamTarget;
+    public CinemachineCamera meteoriteCamTarget;
     public Material boostMat;
     public GameObject meshFather;
     public Vector3 meshFatherDefaultPos;
@@ -72,8 +73,6 @@ public class PlayerController : MonoBehaviour
     public GameObject dashRingPar;
     public VisualEffect fbxDash;
     public VisualEffect fbxDash2;
-    public TMP_Text countMovsText;
-    public TMP_Text countCrystalsText;
     [HideInInspector] public int countMovs;
 
 
@@ -89,6 +88,11 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 _pushDirection;
 
+    [Header("Texts")]
+    public TMP_Text countMovsText;
+    public TMP_Text countCrystalsText;
+    public GameObject xButtomRepeat;
+
 
     public GameObject respawnEffectsPrefabs;
     public Transform respawnEffectsPoint;
@@ -99,6 +103,7 @@ public class PlayerController : MonoBehaviour
     public bool dontDobleJump;
     public bool dontChangeElement;
     public bool is2Dmoving = false;
+    public bool isIntoMeteorite;
     private bool _isBeingPushed = false;
     public bool winGame;
     [HideInInspector] public bool isWallRunning = false;
@@ -225,7 +230,7 @@ public class PlayerController : MonoBehaviour
             if (!isDashing) CountMoves(0);
             coyoteCounter = coyoteTime;
         }
-        else if (!is2Dmoving)jumpCamTarget.Priority = 20;
+        else if (!is2Dmoving && !isIntoMeteorite)jumpCamTarget.Priority = 20;
 
         if (!isDashing) coyoteCounter -= Time.deltaTime;
 
@@ -322,6 +327,9 @@ public class PlayerController : MonoBehaviour
 
         audioSource.PlayOneShot(changeElementAudio);
 
+        VibrarControl(0.2f, 0.4f, 0.2f);
+
+
         foreach (var a in changeElementVFX)
         {
             a.Play();
@@ -333,6 +341,7 @@ public class PlayerController : MonoBehaviour
         isDeath = true;
         isWallRunning = false;
         isDashing = false;
+        isIntoMeteorite = false;
         _controller.enabled = false;
 
         //_controller.Move(Vector3.zero);
@@ -421,6 +430,40 @@ public class PlayerController : MonoBehaviour
     public void OnElement2(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement) _fsm.ChangeState(TypeFSM.Electricity); }
     public void OnElement3(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement) _fsm.ChangeState(TypeFSM.Ice); }
     public void OnPause(InputValue value) { if (value.isPressed) GameManager.instance.PauseGame(); }
+
+
+    public void VibrarControl(float intensidadBaja, float intensidadAlta, float duracion)
+    {
+        // Conseguimos el joystick actual que está usando el jugador
+        Gamepad mandoActual = Gamepad.current;
+
+        // Validamos que haya un joystick conectado para que no tire error en PC con teclado
+        if (mandoActual != null)
+        {
+            // Activamos los motores con las intensidades (van de 0.0f a 1.0f)
+            mandoActual.SetMotorSpeeds(intensidadBaja, intensidadAlta);
+
+            // Cancelamos la vibración automáticamente después del tiempo que le digas
+            Invoke(nameof(ApagarVibracion), duracion);
+        }
+    }
+
+    private void ApagarVibracion()
+    {
+        Gamepad mandoActual = Gamepad.current;
+        if (mandoActual != null)
+        {
+            mandoActual.ResetHaptics(); // Apaga todos los motores de golpe
+        }
+    }
+
+    // Al cerrar el juego o cambiar de escena, nos aseguramos de apagar el motor 
+    // para que el joystick no se quede vibrando infinitamente arriba de la mesa
+    private void OnDisable()
+    {
+        Gamepad mandoActual = Gamepad.current;
+        if (mandoActual != null) mandoActual.ResetHaptics();
+    }
 
     #endregion
 

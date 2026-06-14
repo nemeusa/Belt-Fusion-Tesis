@@ -70,7 +70,7 @@ public class ElectricityState : State
 
         float startTime = Time.time;
 
-        while (Time.time < startTime + _player.dashTime)
+        while (Time.time < startTime + _player.dashTime && !_player.dontMovePlayer)
         {
             _player._controller.Move(dashDirection * _player.dashSpeed * Time.deltaTime);
             yield return null;
@@ -95,6 +95,10 @@ public class ElectricityState : State
             }
 
             _player.audioSource.PlayOneShot(_player.dashAudio);
+
+
+            _player.VibrarControl(1, 0.4f, 0.5f);
+
 
             _player.fbxDash.SendEvent("OnPlay");
             IniciarDash();

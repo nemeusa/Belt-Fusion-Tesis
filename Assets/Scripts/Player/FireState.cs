@@ -46,6 +46,8 @@ public class FireState : State
         _player.audioSource.PlayOneShot(_player.fireJumpAudio);
         _player.CountMoves(1);
 
+        _player.VibrarControl(0.1f, 0.7f, 0.4f);
+
         _player._playerVelocity.y = Mathf.Sqrt(_player._jumpFire * -3.0f * _player._gravityValue);
         //_player.StartCoroutine(_player.ActivateTrail(_player.fireTrail));
         _player.StartCoroutine(_player.ActivateParticleTrail(_player.fireParticleTrail));

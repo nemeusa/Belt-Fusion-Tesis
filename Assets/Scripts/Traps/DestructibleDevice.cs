@@ -45,7 +45,6 @@ public class DestructibleDevice : MonoBehaviour
                 if (other.gameObject.GetComponent<PlayerController>() != null)
                     return other.gameObject.GetComponent<PlayerController>().isDashing;
                 else return false;
-                break;
 
             default:
                 return false;

@@ -1,4 +1,6 @@
 using System.Collections;
+using Unity.Cinemachine;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class MeteoriteFire : MonoBehaviour
@@ -19,7 +21,22 @@ public class MeteoriteFire : MonoBehaviour
     [SerializeField] float pushDuration = 0.2f;
 
     [SerializeField] Transform shotPlayerPoint;
+    [SerializeField] int inputMaxPressTimes = 5;
+    int inputCurrentPressTimes;
 
+    CinemachineFollow camFollowPlayer;
+
+    [SerializeField] private MeshRenderer meshRenderer;
+
+    private Material segundoMaterial;
+
+    float countFresnel = 0;
+
+
+    private void Start()
+    {
+        segundoMaterial = meshRenderer.materials[1];
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -27,13 +44,18 @@ public class MeteoriteFire : MonoBehaviour
         {
             if (player._fsm.WhatCurrentState(TypeFSM.Fire))
             {
+                inputCurrentPressTimes = 0;
+                player.xButtomRepeat.SetActive(true);
                 player.meshFather.SetActive(false);
                 _player = player;
                 player.dontMovePlayer = true;
                 player.dontChangeElement = true;
                 player.dontDobleJump = true;
 
-                player.OnJumpPressed += ShootPlayer;
+                player.meteoriteCamTarget.Priority = 30;
+                camFollowPlayer = player.meteoriteCamTarget.GetComponent<CinemachineFollow>();
+
+                player.OnJumpPressed += CountTouchInput;
 
                 player.transform.position = shotPlayerPoint.position;
 
@@ -41,7 +63,9 @@ public class MeteoriteFire : MonoBehaviour
 
                 player.jumpCount = 0;
                 player.dashCount = 0;
+                player.isIntoMeteorite = true;
 
+                StartCoroutine(CamFar());
             }
 
             else
@@ -54,12 +78,25 @@ public class MeteoriteFire : MonoBehaviour
         }
     }
 
+    void CountTouchInput()
+    {
+        //inputCurrentPressTimes++;
+        camFollowPlayer.FollowOffset.z += 4;
+        countFresnel -= 0.5f;
+
+        //if (inputCurrentPressTimes >= inputMaxPressTimes) 
+        if (camFollowPlayer.FollowOffset.z > -2) 
+            ShootPlayer();
+    }
+
     void ShootPlayer()
     {
+        inputCurrentPressTimes = 0;
+
+        _player.xButtomRepeat.SetActive(false);
 
         GameManager.instance.PlaySound(deathAudio);
 
-        _player.OnJumpPressed -= ShootPlayer;
 
         var a = Instantiate(deathEffects, _player.transform.position, deathEffects.transform.rotation);
         a.Play();
@@ -78,7 +115,15 @@ public class MeteoriteFire : MonoBehaviour
 
         _player.ApplyKnockback(pushDirection, pushForce, pushDuration);
 
+        _player.isIntoMeteorite = false;
 
+        _player.meteoriteCamTarget.GetComponent<CinemachineFollow>().FollowOffset.z = -18.12f;
+
+        _player.meteoriteCamTarget.Priority = 5;
+
+
+
+        _player.OnJumpPressed -= CountTouchInput;
         _player = null;
 
     }
@@ -86,8 +131,41 @@ public class MeteoriteFire : MonoBehaviour
     private void LateUpdate()
     {
         if (isFlyDeath) playerMesh.position += Vector3.back * speedOutCamera * Time.deltaTime;
+
+
     }
 
+
+    IEnumerator CamFar()
+    {
+        float fres = 0;
+        while (_player.isIntoMeteorite)
+        {
+            //camFollowPlayer.FollowOffset.z += Mathf.Clamp(-4, -18.12f, 0.1f);
+            camFollowPlayer.FollowOffset.z -= 0.08f;
+
+            countFresnel += 0.02f;
+
+            fres = Mathf.Clamp(countFresnel, 0, 4);
+
+            countFresnel = fres;
+
+            segundoMaterial.SetFloat("_Fresnel_Power", countFresnel);
+
+            if (camFollowPlayer.FollowOffset.z < -60)
+            {
+                GameManager.instance.Death(_player.gameObject, deathDuration, deathAudio, deathEffects);
+                ShootPlayer();
+            }
+
+
+            //yield return new WaitForSeconds(2f);
+            yield return null;
+
+        }
+    }
+        
+    
 
     IEnumerator OutCamDeath()
     {

@@ -10241,6 +10241,7 @@ MonoBehaviour:
   globalVolume: {fileID: 0}
   audioSource: {fileID: 0}
   jumpCamTarget: {fileID: 0}
+  meteoriteCamTarget: {fileID: 0}
   boostMat: {fileID: 0}
   meshFather: {fileID: 0}
   meshFatherDefaultPos: {x: 0, y: 0, z: 0}
@@ -10253,11 +10254,12 @@ MonoBehaviour:
   dashRingPar: {fileID: 0}
   fbxDash: {fileID: 0}
   fbxDash2: {fileID: 0}
-  countMovsText: {fileID: 0}
-  countCrystalsText: {fileID: 0}
   countMovs: 0
   dashCount: 0
   lookInput: {x: 0, y: 0}
+  countMovsText: {fileID: 0}
+  countCrystalsText: {fileID: 0}
+  xButtomRepeat: {fileID: 0}
   respawnEffectsPrefabs: {fileID: 0}
   respawnEffectsPoint: {fileID: 0}
   isDeath: 1
@@ -10265,6 +10267,7 @@ MonoBehaviour:
   dontDobleJump: 0
   dontChangeElement: 0
   is2Dmoving: 0
+  isIntoMeteorite: 0
   winGame: 0
   isWallRunning: 0
   invisibleInDash: 0
@@ -146654,7 +146657,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 744398356783797585, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4554569
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 744398356783797585, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
       propertyPath: m_LocalPosition.x
