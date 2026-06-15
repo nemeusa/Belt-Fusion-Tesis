@@ -3326,6 +3326,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5425087169450947705, guid: d4a0830abf24720448834efd30f23c4c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 38.100098
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4602,6 +4606,7 @@ GameObject:
   - component: {fileID: 740318401}
   - component: {fileID: 740318403}
   - component: {fileID: 740318402}
+  - component: {fileID: 740318404}
   m_Layer: 0
   m_Name: MaskCamera
   m_TagString: Untagged
@@ -4617,7 +4622,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740318400}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4701,7 +4706,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 55
   orthographic: 0
   orthographic size: 5
   m_Depth: -3
@@ -4719,6 +4724,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &740318404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740318400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16457fc529fc507468ab6a4cf914ebfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &743209595
 GameObject:
   m_ObjectHideFlags: 0
