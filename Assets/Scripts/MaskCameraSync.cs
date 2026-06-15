@@ -1,18 +1,43 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 [ExecuteAlways]
 [RequireComponent(typeof(Camera))]
 public class MaskCameraSync : MonoBehaviour
 {
+    private Camera mainCam;
+    private Camera maskCam;
+    private CinemachineBrain brain;
+
+    void Start()
+    {
+        mainCam = transform.parent.GetComponent<Camera>();
+        maskCam = GetComponent<Camera>();
+        brain = transform.parent.GetComponent<CinemachineBrain>();
+    }
+
+    void Update()
+    {
+        if (brain != null && brain.UpdateMethod == CinemachineBrain.UpdateMethods.SmartUpdate)
+        {
+            Sync();
+        }
+    }
+
     void LateUpdate()
     {
-        transform.position = transform.parent.position;
-        transform.rotation = transform.parent.rotation;
+        Sync();
     }
 
     void OnPreRender()
     {
-        transform.position = transform.parent.position;
-        transform.rotation = transform.parent.rotation;
+        Sync();
+    }
+
+    void Sync()
+    {
+        transform.position = mainCam.transform.position;
+        transform.rotation = mainCam.transform.rotation;
+        maskCam.projectionMatrix = mainCam.projectionMatrix;
     }
 }
