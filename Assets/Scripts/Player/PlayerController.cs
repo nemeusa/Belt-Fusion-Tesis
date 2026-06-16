@@ -93,6 +93,8 @@ public class PlayerController : MonoBehaviour
     public TMP_Text countCrystalsText;
     public GameObject xButtomRepeat;
     public GameObject trianguleButtom;
+    public GameObject cristalUi;
+
 
 
     public GameObject respawnEffectsPrefabs;
@@ -309,9 +311,15 @@ public class PlayerController : MonoBehaviour
         countCrystalsText.text = "A " + mount;
 
         if (mount >= 10)
-        trianguleButtom.SetActive(true);     
+        {
+            trianguleButtom.SetActive(true);
+            cristalUi.SetActive(true);
+        }
         else
-        trianguleButtom.SetActive(false);
+        {
+            trianguleButtom.SetActive(false);
+            cristalUi.SetActive(false);
+        }
 
     }
 
