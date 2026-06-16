@@ -259,7 +259,8 @@ public class PlayerController : MonoBehaviour
 
         while (timer < duration)
         {
-            _controller.Move(direction * force * Time.deltaTime);
+            //_controller.Move(direction * force * Time.deltaTime);
+            _controller.Move(direction * force * Time.unscaledDeltaTime);
 
             timer += Time.deltaTime;
             yield return null;

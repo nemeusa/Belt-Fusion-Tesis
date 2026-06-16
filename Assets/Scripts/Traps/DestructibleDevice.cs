@@ -9,6 +9,8 @@ public class DestructibleDevice : MonoBehaviour
     [SerializeField] GameObject desObj;
     bool act;
 
+    [SerializeField] ParticleSystem spawnParticles;
+
 
     private void Update()
     {
@@ -25,10 +27,12 @@ public class DestructibleDevice : MonoBehaviour
     {
         if (ChooseElement(collision) && desObj && !act)
         {
-            DetElement(collision);
+
             desObj.SetActive(false);
+            DetElement(collision);
             act = false;
             gameObject.GetComponent<Collider>().enabled = false;
+            if (spawnParticles != null) spawnParticles.Play();
         }
     }
 

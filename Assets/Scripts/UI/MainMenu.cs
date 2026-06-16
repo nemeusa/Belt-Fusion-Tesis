@@ -22,6 +22,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
         // Buscamos el componente de la foto
         _uiModule = FindFirstObjectByType<InputSystemUIInputModule>();
