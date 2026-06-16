@@ -22,6 +22,12 @@ public class TimeManager : MonoBehaviour
 
     private void Awake() => Instance = this;
 
+    private void Start()
+    {
+        activeFiltersCode.AlternarFiltroBlancoNegro(false);
+
+    }
+
     public void ActivarCamaraLenta()
     {
         if (!_efectoActivo)
@@ -131,5 +137,10 @@ public class TimeManager : MonoBehaviour
         //vignette.intensity.value = 0f;
         //vignette.rounded.value = false;
         //vignette.smoothness.value = 1f;
+    }
+
+    private void OnDisable()
+    {
+        activeFiltersCode.AlternarFiltroBlancoNegro(false);
     }
 }

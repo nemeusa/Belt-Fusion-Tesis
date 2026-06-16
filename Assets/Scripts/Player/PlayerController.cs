@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour
     public TMP_Text countMovsText;
     public TMP_Text countCrystalsText;
     public GameObject xButtomRepeat;
+    public GameObject trianguleButtom;
 
 
     public GameObject respawnEffectsPrefabs;
@@ -306,6 +307,12 @@ public class PlayerController : MonoBehaviour
     {
         mount += cant;
         countCrystalsText.text = "A " + mount;
+
+        if (mount >= 10)
+        trianguleButtom.SetActive(true);     
+        else
+        trianguleButtom.SetActive(false);
+
     }
 
     public void CountMoves(int n)

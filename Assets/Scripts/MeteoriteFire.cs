@@ -21,7 +21,9 @@ public class MeteoriteFire : MonoBehaviour
     [SerializeField] float pushDuration = 0.2f;
 
     [SerializeField] Transform shotPlayerPoint;
-    [SerializeField] int inputMaxPressTimes = 5;
+    [SerializeField] float touchPower = 5;
+    
+    [SerializeField] float speedFarCam = 0.15f;
     int inputCurrentPressTimes;
 
     CinemachineFollow camFollowPlayer;
@@ -31,6 +33,7 @@ public class MeteoriteFire : MonoBehaviour
     private Material segundoMaterial;
 
     float countFresnel = 0;
+
 
 
     private void Start()
@@ -81,11 +84,11 @@ public class MeteoriteFire : MonoBehaviour
     void CountTouchInput()
     {
         //inputCurrentPressTimes++;
-        camFollowPlayer.FollowOffset.z += 4;
+        camFollowPlayer.FollowOffset.z += touchPower;
         countFresnel -= 0.5f;
 
         //if (inputCurrentPressTimes >= inputMaxPressTimes) 
-        if (camFollowPlayer.FollowOffset.z > -2) 
+        if (camFollowPlayer.FollowOffset.z > -3) 
             ShootPlayer();
     }
 
@@ -139,10 +142,13 @@ public class MeteoriteFire : MonoBehaviour
     IEnumerator CamFar()
     {
         float fres = 0;
-        while (_player.isIntoMeteorite)
+
+        bool puede = true;
+        //while (_player.isIntoMeteorite)
+        while (puede)
         {
             //camFollowPlayer.FollowOffset.z += Mathf.Clamp(-4, -18.12f, 0.1f);
-            camFollowPlayer.FollowOffset.z -= 0.08f;
+            camFollowPlayer.FollowOffset.z -= 0.08f * speedFarCam;
 
             countFresnel += 0.02f;
 
@@ -156,6 +162,7 @@ public class MeteoriteFire : MonoBehaviour
             {
                 GameManager.instance.Death(_player.gameObject, deathDuration, deathAudio, deathEffects);
                 ShootPlayer();
+                puede = false;
             }
 
 
