@@ -47,7 +47,14 @@ public class WallRun : MonoBehaviour
     {
         if (playerCode.isDeath) return;
 
-        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity)) if (playerCode.isWallRunning) playerCode.isWallRunning = false;
+        if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity))
+            if (playerCode.isWallRunning)
+            {
+                data = null;
+                playerCode.dontMovePlayer = false;
+                playerCode._gravityValue = ogGravity;
+                playerCode.isWallRunning = false;
+            }
 
         if (playerCode.isWallRunning) DoWallRun();
 
