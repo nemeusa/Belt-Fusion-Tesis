@@ -11,6 +11,8 @@ public class TrapAxe : MonoBehaviour
 
     AudioSource audioSourse;
 
+    private float currentSpeed;
+
     private void Awake()
     {
         audioSourse = GetComponent<AudioSource>();
@@ -18,6 +20,7 @@ public class TrapAxe : MonoBehaviour
 
     void Start()
     {
+        currentSpeed = speed;
         // Iniciamos la corrutina una sola vez
         StartCoroutine(AxeRoutine());
     }
@@ -57,7 +60,7 @@ public class TrapAxe : MonoBehaviour
                     transform.localRotation = Quaternion.RotateTowards(
                     transform.localRotation,
                     targetRotation,
-                    speed * Time.deltaTime * 50f // Ajustá el multiplicador para la velocidad
+                    currentSpeed * Time.deltaTime * 50f // Ajustá el multiplicador para la velocidad
                     );
                 }
 
@@ -72,5 +75,22 @@ public class TrapAxe : MonoBehaviour
         }
 
     
+    }
+
+    private void RalentizarTrampa(float factor) => currentSpeed = speed * factor;
+    
+    private void NormalizarTrampa() => currentSpeed = speed;
+   
+
+    private void OnEnable()
+    {
+        TimeSlow.OnTimeSlowed += RalentizarTrampa;
+        TimeSlow.OnTimeNormalized += NormalizarTrampa;
+    }
+
+    private void OnDisable()
+    {
+        TimeSlow.OnTimeSlowed -= RalentizarTrampa;
+        TimeSlow.OnTimeNormalized -= NormalizarTrampa;
     }
 }

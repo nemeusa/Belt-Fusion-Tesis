@@ -153,7 +153,8 @@ public class WallRun : MonoBehaviour
 
         Vector3 move = wallForward * wallRunSpeed;
 
-        playerCode._controller.Move(move * Time.unscaledDeltaTime);
+        //playerCode._controller.Move(move * Time.unscaledDeltaTime);
+        playerCode._controller.Move(move * Time.deltaTime);
 
         transform.forward = move;
 

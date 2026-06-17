@@ -202,14 +202,14 @@ public class PlayerController : MonoBehaviour
             move = new Vector3(moveInput.x, 0, moveInput.y);
 
         //codigo con tiempo normal
-        //_controller.Move(move * Time.deltaTime * speed);
-        //_playerVelocity.y += _gravityValue * Time.deltaTime;
-        //_controller.Move(_playerVelocity * Time.deltaTime);
+        _controller.Move(move * Time.deltaTime * speed);
+        _playerVelocity.y += _gravityValue * Time.deltaTime;
+        _controller.Move(_playerVelocity * Time.deltaTime);
 
         //Codigo sin tiempo
-        _controller.Move(move * Time.unscaledDeltaTime * speed);
-        _playerVelocity.y += _gravityValue * Time.unscaledDeltaTime;
-        _controller.Move(_playerVelocity * Time.unscaledDeltaTime);
+        //_controller.Move(move * Time.unscaledDeltaTime * speed);
+        //_playerVelocity.y += _gravityValue * Time.unscaledDeltaTime;
+        //_controller.Move(_playerVelocity * Time.unscaledDeltaTime);
 
         if (move != Vector3.zero)
         {
@@ -259,8 +259,8 @@ public class PlayerController : MonoBehaviour
 
         while (timer < duration)
         {
-            //_controller.Move(direction * force * Time.deltaTime);
-            _controller.Move(direction * force * Time.unscaledDeltaTime);
+            _controller.Move(direction * force * Time.deltaTime);
+            //_controller.Move(direction * force * Time.unscaledDeltaTime);
 
             timer += Time.deltaTime;
             yield return null;
@@ -423,7 +423,10 @@ public class PlayerController : MonoBehaviour
             //robot.meshRobot.material.color = Color.blue;
             foreach (var m in robot.meshRobot) m.material.color = UnityEngine.Random.ColorHSV();
 
-            TimeManager.Instance.ActivarCamaraLenta();
+            //TimeManager.Instance.ActivarCamaraLenta();
+
+            StartCoroutine(TimeSlow.Instance.BulletTimeRoutine());
+
             CountCrystals(-10);
         }
     }
