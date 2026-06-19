@@ -6,6 +6,13 @@ public class Crystal : MonoBehaviour
     [SerializeField] ParticleSystem collectEffects;
     [SerializeField] int points = 1;
 
+    public GameObject[] crystalsMeshes;
+
+    private void Awake()
+    {
+        crystalsMeshes[Random.Range(0, crystalsMeshes.Length + 1)].SetActive(true);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<PlayerController>(out PlayerController player))
