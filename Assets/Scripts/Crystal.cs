@@ -10,7 +10,7 @@ public class Crystal : MonoBehaviour
 
     private void Awake()
     {
-        crystalsMeshes[Random.Range(0, crystalsMeshes.Length + 1)].SetActive(true);
+        crystalsMeshes[Random.Range(0, crystalsMeshes.Length)].SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
