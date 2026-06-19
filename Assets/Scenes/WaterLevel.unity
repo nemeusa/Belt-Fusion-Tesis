@@ -660,6 +660,7 @@ MonoBehaviour:
   countCrystalsText: {fileID: 0}
   xButtomRepeat: {fileID: 0}
   trianguleButtom: {fileID: 0}
+  cristalUi: {fileID: 0}
   respawnEffectsPrefabs: {fileID: 0}
   respawnEffectsPoint: {fileID: 0}
   isDeath: 1
@@ -3114,6 +3115,7 @@ MonoBehaviour:
   trampElement: 0
   boost: 0
   desObj: {fileID: 0}
+  spawnParticles: {fileID: 0}
 --- !u!4 &560295719
 Transform:
   m_ObjectHideFlags: 0
@@ -3896,6 +3898,7 @@ MonoBehaviour:
   trampElement: 1
   boost: 0
   desObj: {fileID: 0}
+  spawnParticles: {fileID: 0}
 --- !u!4 &640416750
 Transform:
   m_ObjectHideFlags: 0
@@ -5133,6 +5136,7 @@ MonoBehaviour:
   trampElement: 0
   boost: 0
   desObj: {fileID: 0}
+  spawnParticles: {fileID: 0}
 --- !u!4 &756995982
 Transform:
   m_ObjectHideFlags: 0
@@ -5262,6 +5266,7 @@ MonoBehaviour:
   trampElement: 0
   boost: 0
   desObj: {fileID: 0}
+  spawnParticles: {fileID: 0}
 --- !u!4 &776416969
 Transform:
   m_ObjectHideFlags: 0
@@ -10951,6 +10956,7 @@ MonoBehaviour:
   trampElement: 0
   boost: 0
   desObj: {fileID: 0}
+  spawnParticles: {fileID: 0}
 --- !u!4 &1585777829
 Transform:
   m_ObjectHideFlags: 0
@@ -11488,6 +11494,7 @@ MonoBehaviour:
   trampElement: 0
   boost: 0
   desObj: {fileID: 0}
+  spawnParticles: {fileID: 0}
 --- !u!4 &1616173089
 Transform:
   m_ObjectHideFlags: 0
@@ -12228,6 +12235,7 @@ MonoBehaviour:
   trampElement: 0
   boost: 0
   desObj: {fileID: 0}
+  spawnParticles: {fileID: 0}
 --- !u!4 &1746573734
 Transform:
   m_ObjectHideFlags: 0
@@ -12813,6 +12821,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2096673787264666825, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 98c34fcb2199bc44cbe67493b44d1226, type: 2}
     - target: {fileID: 8179900478907288283, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
       propertyPath: m_Name
       value: Trap fire
@@ -13134,6 +13146,7 @@ MonoBehaviour:
   trampElement: 0
   boost: 0
   desObj: {fileID: 0}
+  spawnParticles: {fileID: 0}
 --- !u!4 &1919918359
 Transform:
   m_ObjectHideFlags: 0
