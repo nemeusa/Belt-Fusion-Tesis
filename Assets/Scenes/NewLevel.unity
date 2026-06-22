@@ -10506,7 +10506,6 @@ MonoBehaviour:
   countCrystalsText: {fileID: 0}
   xButtomRepeat: {fileID: 0}
   trianguleButtom: {fileID: 0}
-  cristalUi: {fileID: 0}
   respawnEffectsPrefabs: {fileID: 0}
   respawnEffectsPoint: {fileID: 0}
   isDeath: 1
@@ -38050,7 +38049,7 @@ Transform:
   m_GameObject: {fileID: 425649116}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -137.96738, y: 3.9146538, z: -19.430054}
+  m_LocalPosition: {x: -143.8, y: 3.9146538, z: -19.430054}
   m_LocalScale: {x: 0.023627706, y: 0.029860694, z: 0.017094862}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -38652,9 +38651,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampElement: 1
+  useAnyElements: 0
   boost: 0
   desObj: {fileID: 0}
   spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!4 &431117647 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7e9bb8b060155724c934431524b89790, type: 3}
@@ -49706,9 +49708,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampElement: 0
+  useAnyElements: 0
   boost: 0
   desObj: {fileID: 0}
   spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!4 &560295719
 Transform:
   m_ObjectHideFlags: 0
@@ -55997,9 +56002,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampElement: 1
+  useAnyElements: 0
   boost: 0
   desObj: {fileID: 0}
   spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!4 &640416750
 Transform:
   m_ObjectHideFlags: 0
@@ -66875,9 +66883,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampElement: 0
+  useAnyElements: 0
   boost: 0
   desObj: {fileID: 0}
   spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!4 &756995982
 Transform:
   m_ObjectHideFlags: 0
@@ -68527,9 +68538,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampElement: 0
+  useAnyElements: 0
   boost: 0
   desObj: {fileID: 0}
   spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!4 &776416969
 Transform:
   m_ObjectHideFlags: 0
@@ -84169,6 +84183,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 57a464b2323bcab44b052af80550c641, type: 3}
   m_PrefabInstance: {fileID: 924723961}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &926374543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 926374544}
+  - component: {fileID: 926374545}
+  m_Layer: 0
+  m_Name: Colliders (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &926374544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926374543}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -138.7, y: 3.9146538, z: -29.4}
+  m_LocalScale: {x: 0.023627706, y: 0.029860694, z: 0.004137382}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 304245132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &926374545
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926374543}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 100, y: 1000, z: 10000}
+  m_Center: {x: -630.2, y: 0, z: 0}
 --- !u!1001 &927615077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96065,6 +96132,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2a8ae914eb7afc74bb37193c527cdd5d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 425649117}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2a8ae914eb7afc74bb37193c527cdd5d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 926374544}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2a8ae914eb7afc74bb37193c527cdd5d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 29699961}
@@ -108795,11 +108865,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
---- !u!1 &1199429592 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 557246101903243308, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
-  m_PrefabInstance: {fileID: 1739393533}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1201512226 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 30af33d4c65c4b1408e22a1631ebcea6, type: 3}
@@ -141231,9 +141296,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampElement: 0
+  useAnyElements: 0
   boost: 0
   desObj: {fileID: 0}
   spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!4 &1585777829
 Transform:
   m_ObjectHideFlags: 0
@@ -143953,9 +144021,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampElement: 0
+  useAnyElements: 0
   boost: 0
   desObj: {fileID: 0}
   spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!4 &1616173089
 Transform:
   m_ObjectHideFlags: 0
@@ -154475,10 +154546,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6692997875092317266, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
-      propertyPath: activeFiltersCode
-      value: 
-      objectReference: {fileID: 832575520}
     - target: {fileID: 6773578459310698188, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
       propertyPath: robot
       value: 
@@ -154499,6 +154566,10 @@ PrefabInstance:
       propertyPath: startAniCanvas
       value: 
       objectReference: {fileID: 1227637879}
+    - target: {fileID: 7253203261662889911, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
+      propertyPath: activeFiltersCode
+      value: 
+      objectReference: {fileID: 832575520}
     - target: {fileID: 8871777293148774900, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -154539,35 +154610,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6692997875092317266, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 557246101903243308, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 1739393539}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
 --- !u!4 &1739393534 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8871777293148774900, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
   m_PrefabInstance: {fileID: 1739393533}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1739393539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1199429592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 885d42336f4c30643a5f9ba423dc0e7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  factorRalentizacion: 0.2
-  duracionEfecto: 6
-  activeFiltersCode: {fileID: 832575520}
 --- !u!1001 &1740023195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -155501,9 +155553,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampElement: 0
+  useAnyElements: 0
   boost: 0
   desObj: {fileID: 0}
   spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!4 &1746573734
 Transform:
   m_ObjectHideFlags: 0
@@ -167489,9 +167544,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampElement: 0
+  useAnyElements: 0
   boost: 0
   desObj: {fileID: 0}
   spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!4 &1919918359
 Transform:
   m_ObjectHideFlags: 0

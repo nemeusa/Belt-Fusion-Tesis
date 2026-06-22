@@ -1,6 +1,5 @@
 using System.Collections;
 using Unity.Cinemachine;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class MeteoriteFire : MonoBehaviour
@@ -18,6 +17,7 @@ public class MeteoriteFire : MonoBehaviour
     PlayerController _player;
 
     [SerializeField] float pushForce = 10f;
+    [SerializeField, Range(0, 0.2f)] float pushForceUp = 0.05f;
     [SerializeField] float pushDuration = 0.2f;
 
     [SerializeField] Transform shotPlayerPoint;
@@ -34,7 +34,7 @@ public class MeteoriteFire : MonoBehaviour
 
     float countFresnel = 0;
 
-
+    bool puede;
 
     private void Start()
     {
@@ -114,7 +114,7 @@ public class MeteoriteFire : MonoBehaviour
 
         _player.dontDobleJump = false;
 
-        Vector3 pushDirection = _player.transform.forward;
+        Vector3 pushDirection = _player.transform.forward + new Vector3(0, pushForceUp, 0);
 
         _player.ApplyKnockback(pushDirection, pushForce, pushDuration);
 
@@ -125,7 +125,7 @@ public class MeteoriteFire : MonoBehaviour
         _player.meteoriteCamTarget.Priority = 5;
 
 
-
+        puede = false;
         _player.OnJumpPressed -= CountTouchInput;
         _player = null;
 
@@ -143,7 +143,7 @@ public class MeteoriteFire : MonoBehaviour
     {
         float fres = 0;
 
-        bool puede = true;
+        puede = true;
         //while (_player.isIntoMeteorite)
         while (puede)
         {
