@@ -53,8 +53,10 @@ public class WallRun : MonoBehaviour
                 data = null;
                 playerCode.dontMovePlayer = false;
                 playerCode._gravityValue = ogGravity;
+                inUse = false;
                 playerCode.isWallRunning = false;
             }
+
 
         if (playerCode.isWallRunning) DoWallRun();
 

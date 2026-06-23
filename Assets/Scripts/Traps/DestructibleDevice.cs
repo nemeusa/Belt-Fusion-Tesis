@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DestructibleDevice : MonoBehaviour
@@ -10,7 +9,8 @@ public class DestructibleDevice : MonoBehaviour
     [SerializeField] GameObject desObj;
 
     [Header ("Extra effects")]
-    [SerializeField] ParticleSystem spawnParticles;
+    [SerializeField] ParticleSystem destoyParticles;
+    [SerializeField] Transform spawnParticles;
     [SerializeField] AudioClip destroySound;
     [SerializeField] Animator aniController;
 
@@ -19,6 +19,7 @@ public class DestructibleDevice : MonoBehaviour
     private void Start()
     {
         if (useAnyElements) trampElement = TypeFSM.Default;
+        if (spawnParticles == null) spawnParticles = transform;
 
     }
 
@@ -43,7 +44,12 @@ public class DestructibleDevice : MonoBehaviour
             DetElement(collision);
             act = false;
             gameObject.GetComponent<Collider>().enabled = false;
-            if (spawnParticles != null) spawnParticles.Play();
+            if (spawnParticles != null)
+            {
+                var p = Instantiate(destoyParticles, spawnParticles.position + Vector3.up, Quaternion.identity);
+                p.Play();
+                Destroy(p.transform, 2);
+            }
             if (destroySound != null) GameManager.instance.PlaySound(destroySound);
             if (aniController != null)
             {
