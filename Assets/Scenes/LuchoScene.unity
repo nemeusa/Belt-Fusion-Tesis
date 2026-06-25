@@ -580,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2343237751224706034, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -106.18
+      value: -245.3
       objectReference: {fileID: 0}
     - target: {fileID: 2343237751224706034, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5571,6 +5571,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 625633063}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1001 &476405548
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.099812
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.099812
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.099812
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.619537
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.64
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -267.48
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
+      propertyPath: m_Name
+      value: plano nieve
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2bdadf9f06681664e9855507f06dc222, type: 3}
 --- !u!1 &566120218
 GameObject:
   m_ObjectHideFlags: 0
@@ -30520,8 +30589,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampElement: 0
+  useAnyElements: 0
   boost: 1
   desObj: {fileID: 0}
+  destoyParticles: {fileID: 0}
+  spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!4 &873860769
 Transform:
   m_ObjectHideFlags: 0
@@ -41287,8 +41361,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampElement: 0
+  useAnyElements: 0
   boost: 1
   desObj: {fileID: 0}
+  destoyParticles: {fileID: 0}
+  spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!4 &1451984564
 Transform:
   m_ObjectHideFlags: 0
@@ -46654,8 +46733,8 @@ Transform:
   m_GameObject: {fileID: 1640427734}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.6521, y: -1.6, z: -215.7}
-  m_LocalScale: {x: 69.79982, y: 9.867663, z: 178.98218}
+  m_LocalPosition: {x: -11.6521, y: -1.6, z: -269.2}
+  m_LocalScale: {x: 69.79982, y: 9.867663, z: 95.506676}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2099140440}
@@ -46704,7 +46783,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: -1894074582267686136, guid: c1626dd61d0008940824118017957ff5, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -52490,3 +52569,4 @@ SceneRoots:
   - {fileID: 938163093}
   - {fileID: 625633063}
   - {fileID: 1885582347}
+  - {fileID: 476405548}
