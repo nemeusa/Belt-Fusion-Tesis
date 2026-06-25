@@ -5511,6 +5511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Death transition
       objectReference: {fileID: 0}
+    - target: {fileID: 4874195706324572201, guid: f0341c9198d2b3546af025a4bec8a49f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5795466520630724372, guid: f0341c9198d2b3546af025a4bec8a49f, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -13727,7 +13731,6 @@ GameObject:
   m_Component:
   - component: {fileID: 160632940}
   - component: {fileID: 160632939}
-  - component: {fileID: 160632938}
   - component: {fileID: 160632937}
   m_Layer: 0
   m_Name: TexturaDeRenderizadoCamera
@@ -13780,14 +13783,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &160632938
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 160632936}
-  m_Enabled: 1
 --- !u!20 &160632939
 Camera:
   m_ObjectHideFlags: 0
@@ -13823,7 +13818,7 @@ Camera:
   far clip plane: 10
   field of view: 60
   orthographic: 1
-  orthographic size: 28.5
+  orthographic size: 25.2
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -13847,13 +13842,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160632936}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4.1, y: 6, z: -665.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: 3.59, y: 25.78, z: -665.54}
+  m_LocalScale: {x: 0.5039943, y: 0.5039943, z: 0.5039943}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!4 &161888134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
@@ -189443,15 +189438,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 982566616029667496, guid: 5206f310426c44740832c6aa1728accd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.79
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 982566616029667496, guid: 5206f310426c44740832c6aa1728accd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.76
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 982566616029667496, guid: 5206f310426c44740832c6aa1728accd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 661.63
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 982566616029667496, guid: 5206f310426c44740832c6aa1728accd, type: 3}
       propertyPath: m_LocalRotation.w
