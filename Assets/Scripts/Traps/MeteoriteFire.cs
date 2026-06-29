@@ -66,6 +66,8 @@ public class MeteoriteFire : MonoBehaviour
 
                 player.jumpCount = 0;
                 player.dashCount = 0;
+                player._playerVelocity.y = -2f;
+
                 player.isIntoMeteorite = true;
 
                 StartCoroutine(CamFar());

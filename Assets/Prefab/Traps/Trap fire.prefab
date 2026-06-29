@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: 577ee4c1fd2482d4ba0716141b21eac0, type: 3}
+  - {fileID: 2100000, guid: 98c34fcb2199bc44cbe67493b44d1226, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10196,7 +10196,7 @@ GameObject:
   - component: {fileID: 8973669772928361152}
   - component: {fileID: 4502799334885794436}
   - component: {fileID: 6413169605082224133}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Trap fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10235,8 +10235,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampElement: 1
+  useAnyElements: 0
   boost: 1
   desObj: {fileID: 3457668431212500818}
+  destoyParticles: {fileID: 0}
+  spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!33 &8973669772928361152
 MeshFilter:
   m_ObjectHideFlags: 0
