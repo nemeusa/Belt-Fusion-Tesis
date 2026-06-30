@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public float initialSpeed;
     public int jumpCount = 0;
     public int maxJumps = 1;
-
+    public float agarreDelPiso = 15f; // 15 es fricción normal (frena rápido)
+    private Vector3 _currentMoveVelocity;
     float ogGravity;
 
 
@@ -200,15 +201,15 @@ public class PlayerController : MonoBehaviour
         else 
             move = new Vector3(moveInput.x, 0, moveInput.y);
 
-        //codigo con tiempo normal
-        _controller.Move(move * Time.deltaTime * speed);
+        _currentMoveVelocity = Vector3.Lerp(_currentMoveVelocity, move * speed, Time.deltaTime * agarreDelPiso);
+
+        // Y le pasamos esa velocidad suavizada al CharacterController en vez del 'move' directo
+        _controller.Move(_currentMoveVelocity * Time.deltaTime);
+        //_controller.Move(move * Time.deltaTime * speed);
+
+
         _playerVelocity.y += _gravityValue * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
-
-        //Codigo sin tiempo
-        //_controller.Move(move * Time.unscaledDeltaTime * speed);
-        //_playerVelocity.y += _gravityValue * Time.unscaledDeltaTime;
-        //_controller.Move(_playerVelocity * Time.unscaledDeltaTime);
 
         if (move != Vector3.zero)
         {
@@ -356,6 +357,7 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         isIntoMeteorite = false;
         _controller.enabled = false;
+        agarreDelPiso = 15;
 
         //_controller.Move(Vector3.zero);
     }

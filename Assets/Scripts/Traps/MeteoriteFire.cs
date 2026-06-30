@@ -32,6 +32,9 @@ public class MeteoriteFire : MonoBehaviour
 
     private Material segundoMaterial;
 
+    [SerializeField] GameObject shootEffects;
+    [SerializeField] Transform shootPositionEffects;
+
     float countFresnel = 0;
 
     bool puede;
@@ -96,11 +99,18 @@ public class MeteoriteFire : MonoBehaviour
 
     void ShootPlayer()
     {
+        if (shootEffects != null)
+        {
+            var p = Instantiate(shootEffects, shootPositionEffects.position, Quaternion.identity);
+            Destroy(p.transform, 2);
+        }
+      
         inputCurrentPressTimes = 0;
 
         _player.xButtomRepeat.SetActive(false);
 
         GameManager.instance.PlaySound(deathAudio);
+
 
 
         var a = Instantiate(deathEffects, _player.transform.position, deathEffects.transform.rotation);

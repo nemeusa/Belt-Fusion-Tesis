@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &53581035170909240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1362778591741196653}
+  m_Layer: 0
+  m_Name: Meteor Explosion pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1362778591741196653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53581035170909240}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.21804585, y: -0, z: -0, w: 0.9759386}
+  m_LocalPosition: {x: 0, y: 3.68, z: 4.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8029019232930219183}
+  m_LocalEulerAnglesHint: {x: 25.189, y: 0, z: 0}
 --- !u!1 &369629181030911207
 GameObject:
   m_ObjectHideFlags: 0
@@ -24332,6 +24363,7 @@ Transform:
   m_Children:
   - {fileID: 1401351063074781691}
   - {fileID: 7796415750692695373}
+  - {fileID: 1362778591741196653}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8638373809162385196
@@ -24378,6 +24410,8 @@ MonoBehaviour:
   touchPower: 4
   speedFarCam: 0.2
   meshRenderer: {fileID: 197600905223964186}
+  shootEffects: {fileID: 2734456112020819715, guid: 15933aca3b6fa084da29d070ce610dfb, type: 3}
+  shootPositionEffects: {fileID: 1362778591741196653}
 --- !u!1 &7509824857253099392
 GameObject:
   m_ObjectHideFlags: 0

@@ -101,9 +101,13 @@ public class RobotFollow : MonoBehaviour
         { 
             transform.forward = playerPos.position;
 
-            transform.position = _checkpointPoint.position;
+            //transform.position = _checkpointPoint.position;
 
-            if(_checkpointCode.activated) return;
+
+            transform.position = Vector3.SmoothDamp(transform.position, _checkpointPoint.position, ref _velocity, smoothSpeed);
+
+
+            if (_checkpointCode.activated) return;
 
 
 
