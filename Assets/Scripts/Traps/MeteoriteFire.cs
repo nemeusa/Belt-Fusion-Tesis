@@ -102,7 +102,7 @@ public class MeteoriteFire : MonoBehaviour
         if (shootEffects != null)
         {
             var p = Instantiate(shootEffects, shootPositionEffects.position, Quaternion.identity);
-            Destroy(p.transform, 2);
+            Destroy(p.gameObject, 2);
         }
       
         inputCurrentPressTimes = 0;

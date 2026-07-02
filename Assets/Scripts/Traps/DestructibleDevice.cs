@@ -44,11 +44,11 @@ public class DestructibleDevice : MonoBehaviour
             DetElement(collision);
             act = false;
             gameObject.GetComponent<Collider>().enabled = false;
-            if (spawnParticles != null)
+            if (destoyParticles != null)
             {
                 var p = Instantiate(destoyParticles, spawnParticles.position + Vector3.up, Quaternion.identity);
                 p.Play();
-                Destroy(p.transform, 2);
+                Destroy(p.gameObject, 2);
             }
             if (destroySound != null) GameManager.instance.PlaySound(destroySound);
             if (aniController != null)

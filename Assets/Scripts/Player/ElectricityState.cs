@@ -70,7 +70,7 @@ public class ElectricityState : State
 
         float startTime = Time.time;
 
-        while (Time.time < startTime + _player.dashTime && !_player.dontMovePlayer)
+        while (Time.time < startTime + _player.dashTime && !_player.dontMovePlayer && _player.isDashing)
         {
             _player._controller.Move(dashDirection * _player.dashSpeed * Time.deltaTime);
             yield return null;

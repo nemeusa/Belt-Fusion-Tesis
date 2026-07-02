@@ -16,7 +16,9 @@ public class TimeSlow : MonoBehaviour
 
     [SerializeField] ActiveFilters activeFiltersCode;
 
+    public MaskCameraSync maskCameraSync;
 
+    public bool timeIsSlowed = false;
 
     private void Awake()
     {
@@ -26,6 +28,9 @@ public class TimeSlow : MonoBehaviour
 
     public IEnumerator BulletTimeRoutine()
     {
+        timeIsSlowed = true;
+
+        maskCameraSync.maskCam.enabled = true;
 
         activeFiltersCode.AlternarFiltroBlancoNegro(true);
 
@@ -35,8 +40,12 @@ public class TimeSlow : MonoBehaviour
 
         activeFiltersCode.AlternarFiltroBlancoNegro(false);
 
+        maskCameraSync.maskCam.enabled = false;
+
+
         DesactivarHabilidadTiempo();
 
+        timeIsSlowed = false;
 
     }
 

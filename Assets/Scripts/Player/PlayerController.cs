@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     public Material boostMat;
     public GameObject meshFather;
     public Vector3 meshFatherDefaultPos;
+
     private PaniniProjection panini;
 
 
@@ -420,7 +421,7 @@ public class PlayerController : MonoBehaviour
         if (value.isPressed && !isDeath && mount >= 10)
         {
             //robot.meshRobot.material.color = Color.blue;
-            foreach (var m in robot.meshRobot) m.material.color = UnityEngine.Random.ColorHSV();
+            //foreach (var m in robot.meshRobot) m.material.color = UnityEngine.Random.ColorHSV();
 
             //TimeManager.Instance.ActivarCamaraLenta();
 

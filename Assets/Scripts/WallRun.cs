@@ -200,7 +200,7 @@ public class WallRun : MonoBehaviour
             IniciarDash();
             playerCode.fbxDash2.SendEvent("OnPlay");
 
-            Debug.Log("efecto" + createEffects);
+            //Debug.Log("efecto" + createEffects);
 
             yield return new WaitForSeconds(0.05f);
 

@@ -25,10 +25,10 @@ public class EffectGlitch : MonoBehaviour
         {
            yield return new WaitForSeconds(effectTime);
            meshRenderer.material = defaultMat;
-            Debug.Log("normal mat");
+            //Debug.Log("normal mat");
            yield return new WaitForSeconds(cooldown);
            meshRenderer.material = glitchMat;
-            Debug.Log("glitch mat");
+            //Debug.Log("glitch mat");
 
         }
     }
