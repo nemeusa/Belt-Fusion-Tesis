@@ -387,6 +387,8 @@ public class PlayerController : MonoBehaviour
     #region Inputs
     public void OnReload(InputValue value)
     {
+        if (GameManager.instance._pauseCode.juegoPausado) return;
+
         if (value.isPressed)
         {
             SceneManager.LoadScene(NextLevel._nextLevel);
@@ -397,7 +399,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        if (isDeath) return;
+        if (isDeath || GameManager.instance._pauseCode.juegoPausado) return;
 
         if (value.isPressed)
         {
@@ -418,7 +420,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDebbie(InputValue value)
     {
-        if (value.isPressed && !isDeath && mount >= 10)
+        if (value.isPressed && !isDeath && mount >= 10 && !GameManager.instance._pauseCode.juegoPausado)
         {
             //robot.meshRobot.material.color = Color.blue;
             //foreach (var m in robot.meshRobot) m.material.color = UnityEngine.Random.ColorHSV();
@@ -432,22 +434,23 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void OnBoost(InputValue value) { AddBoost(1); }
+    public void OnBoost(InputValue value) { if (!GameManager.instance._pauseCode.juegoPausado) AddBoost(1); }
 
 
     public void OnLook(InputValue value)
     {
-        lookInput = value.Get<Vector2>();
+        if (GameManager.instance._pauseCode.juegoPausado) return;
+            lookInput = value.Get<Vector2>();
         //Debug.Log(lookInput);
     }
 
-    public void OnMove(InputValue value) { moveInput = value.Get<Vector2>(); }
-    public void OnDash(InputValue value) { if (value.isPressed && !isDeath) OnDashPressed?.Invoke(); }
+    public void OnMove(InputValue value) { if (!GameManager.instance._pauseCode.juegoPausado) moveInput = value.Get<Vector2>(); }
+    public void OnDash(InputValue value) { if (value.isPressed && !isDeath && !GameManager.instance._pauseCode.juegoPausado) OnDashPressed?.Invoke(); }
 
-    public void OnElement0(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement) _fsm.ChangeState(TypeFSM.Default); }
-    public void OnElement1(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement) _fsm.ChangeState(TypeFSM.Fire); }
-    public void OnElement2(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement) _fsm.ChangeState(TypeFSM.Electricity); }
-    public void OnElement3(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement) _fsm.ChangeState(TypeFSM.Ice); }
+    public void OnElement0(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) _fsm.ChangeState(TypeFSM.Default); }
+    public void OnElement1(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) _fsm.ChangeState(TypeFSM.Fire); }
+    public void OnElement2(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) _fsm.ChangeState(TypeFSM.Electricity); }
+    public void OnElement3(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) _fsm.ChangeState(TypeFSM.Ice); }
     public void OnPause(InputValue value) { if (value.isPressed) GameManager.instance.PauseGame(); }
 
 

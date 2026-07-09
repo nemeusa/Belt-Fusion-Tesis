@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] TransitionCanvas trans;
     [SerializeField] Animator startAniCanvas;
 
+    public PauseMenu _pauseCode;
+
+
     AudioSource audioSource;
 
     private void Awake()
@@ -79,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        SceneManager.LoadScene("MainMenu");
+        _pauseCode.AlternarPausa();
+        //SceneManager.LoadScene("MainMenu");
     }
 }

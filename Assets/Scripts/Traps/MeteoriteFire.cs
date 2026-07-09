@@ -168,6 +168,7 @@ public class MeteoriteFire : MonoBehaviour
 
             countFresnel = fres;
 
+            if (segundoMaterial != null)
             segundoMaterial.SetFloat("_Fresnel_Power", countFresnel);
 
             if (camFollowPlayer.FollowOffset.z < -60)

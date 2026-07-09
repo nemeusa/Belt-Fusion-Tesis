@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
 
     bool isMuted = false;
 
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
