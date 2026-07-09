@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1288708269852212580}
   - component: {fileID: 1858276611309976873}
   - component: {fileID: 9017978174170535043}
+  - component: {fileID: 3839416754949516948}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -127,6 +128,28 @@ MonoBehaviour:
   deathDuration: 1
   speedOutCamera: 18
   _icePlayerForceWater: 0.7
+--- !u!95 &3839416754949516948
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826330079321508009}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c64eed96614eb7a4bb8a0103fa5ede9f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3380657524451097224
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +706,7 @@ MonoBehaviour:
   waterPosition: {fileID: 1049928467667290367}
   tiempoDisparando: 2
   tiempoOculto: 2
+  waterAni: {fileID: 3839416754949516948}
 --- !u!1 &9010103567731776120
 GameObject:
   m_ObjectHideFlags: 0

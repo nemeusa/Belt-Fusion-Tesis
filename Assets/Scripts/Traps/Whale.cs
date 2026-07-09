@@ -22,6 +22,8 @@ public class Whale : TimeTrap
     private Vector3 whaleNormalPos;
     private Vector3 whaleSubmergedPos;
 
+    [SerializeField] Animator waterAni;
+
     private void Start()
     {
         currentWhaleOcultTime = tiempoOculto;
@@ -53,21 +55,26 @@ public class Whale : TimeTrap
             }
             transform.position = whaleNormalPos;
 
-            while (Vector3.Distance(waterPosition.position, waterUpPos) > 0.01f)
-            {
-                waterPosition.position = Vector3.MoveTowards(waterPosition.position, waterUpPos, currentWaterSpeed * Time.deltaTime);
-                yield return null;
-            }
-            waterPosition.position = waterUpPos;
+            //while (Vector3.Distance(waterPosition.position, waterUpPos) > 0.01f)
+            //{
+            //    waterPosition.position = Vector3.MoveTowards(waterPosition.position, waterUpPos, currentWaterSpeed * Time.deltaTime);
+            //    yield return null;
+            //}
+            //waterPosition.position = waterUpPos;
+
+            waterAni.SetBool("Up", true);
+            yield return new WaitForSeconds(0.50f);
 
             yield return new WaitForSeconds(tiempoDisparando);
 
-            while (Vector3.Distance(waterPosition.position, waterDownPos) > 0.01f)
-            {
-                waterPosition.position = Vector3.MoveTowards(waterPosition.position, waterDownPos, currentWaterSpeed * Time.deltaTime);
-                yield return null;
-            }
-            waterPosition.position = waterDownPos;
+            //while (Vector3.Distance(waterPosition.position, waterDownPos) > 0.01f)
+            //{
+            //    waterPosition.position = Vector3.MoveTowards(waterPosition.position, waterDownPos, currentWaterSpeed * Time.deltaTime);
+            //    yield return null;
+            //}
+            //waterPosition.position = waterDownPos;
+            waterAni.SetBool("Up", false);
+            yield return new WaitForSeconds(0.50f);
 
             while (Vector3.Distance(transform.position, whaleSubmergedPos) > 0.01f)
             {
