@@ -5,7 +5,6 @@ using UnityEngine.VFX;
 public class CheckpointTrigger : MonoBehaviour
 {
     public bool activated = false;
-    [SerializeField] GameObject _meshOb;
     [SerializeField] Transform respawnPost;
     //[SerializeField] GameObject meshPlatillo;
     [SerializeField] Material paloCheckpointMat;
@@ -58,7 +57,5 @@ public class CheckpointTrigger : MonoBehaviour
         activated = true;
 
         aniController.SetBool("Active", true);
-
-        _meshOb.GetComponent<MeshRenderer>().material.color = Color.green;
     }
 }

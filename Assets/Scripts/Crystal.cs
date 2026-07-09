@@ -23,7 +23,7 @@ public class Crystal : MonoBehaviour
 
             p.Play();
 
-            Destroy(p, 1);
+            Destroy(p.gameObject, 1);
 
             player.CountCrystals(points);
 
