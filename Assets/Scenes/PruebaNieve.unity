@@ -227049,6 +227049,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
   m_PrefabInstance: {fileID: 1268016380}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2026606872 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1318286402270171133, guid: 2c2d7b556709b9841893e26f6578c43a, type: 3}
+  m_PrefabInstance: {fileID: 2497771234758901455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2026606880
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026606872}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 98.205734, y: 2, z: 99.99999}
+  m_Center: {x: -0.8971153, y: 1.99, z: 0}
 --- !u!4 &2026646573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
@@ -240316,6 +240342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: plano nieve
       objectReference: {fileID: 0}
+    - target: {fileID: 1318286402270171133, guid: 2c2d7b556709b9841893e26f6578c43a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1801632072565708103, guid: 2c2d7b556709b9841893e26f6578c43a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.9418726
@@ -240356,10 +240386,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5603429214457225441, guid: 2c2d7b556709b9841893e26f6578c43a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1318286402270171133, guid: 2c2d7b556709b9841893e26f6578c43a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2026606880}
   m_SourcePrefab: {fileID: 100100000, guid: 2c2d7b556709b9841893e26f6578c43a, type: 3}
 --- !u!4 &2763844627021552252
 Transform:
