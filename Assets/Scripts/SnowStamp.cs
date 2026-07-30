@@ -3,28 +3,37 @@ using UnityEngine;
 public class SnowStamp : MonoBehaviour
 {
     [Header("Referencias")]
-    public RenderTexture snowRT;       // la RenderTexture "Interactive Snow"
-    public Texture2D stampTexture;     // la textura snow_stamp (círculo)
-    public Transform snowPlane;        // el GameObject "plano nieve"
+    public Texture2D stampTexture;
 
     [Header("Ajustes")]
-    public float stampSize = 150f;     // tamaño del sello en píxeles de la RT (ajustar a ojo)
+    public float stampSize = 150f;
 
-    bool isOnSnow = false;
+    SnowZone currentZone;
     Vector3 currentWorldPos;
+    bool isOnSnow = false;
+
+    float lastLogTime = 0f;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Snow"))
-            isOnSnow = true;
+        {
+            currentZone = other.GetComponent<SnowZone>();
+            isOnSnow = currentZone != null;
+        }
     }
 
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Snow"))
         {
-            isOnSnow = true;
-            currentWorldPos = transform.position;
+            SnowZone zone = other.GetComponent<SnowZone>();
+            if (zone != null)
+            {
+                currentZone = zone;
+                isOnSnow = true;
+                currentWorldPos = transform.position;
+            }
         }
     }
 
@@ -36,7 +45,7 @@ public class SnowStamp : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!isOnSnow || snowRT == null || stampTexture == null || snowPlane == null)
+        if (!isOnSnow || currentZone == null || currentZone.runtimeRT == null || stampTexture == null)
             return;
 
         StampAt(currentWorldPos);
@@ -44,27 +53,28 @@ public class SnowStamp : MonoBehaviour
 
     void StampAt(Vector3 worldPos)
     {
-        // Convertir posición world -> espacio local del plano
-        Vector3 localPos = snowPlane.InverseTransformPoint(worldPos);
+        Vector3 localPos = currentZone.transform.InverseTransformPoint(worldPos);
+        Bounds bounds = currentZone.mesh.bounds;
 
-        MeshFilter mf = snowPlane.GetComponent<MeshFilter>();
-        if (mf == null) return;
-
-        Bounds bounds = mf.sharedMesh.bounds;
-
-        // Mapear la posición local a UV (0 a 1) según los bounds del mesh
         float u = Mathf.InverseLerp(bounds.min.x, bounds.max.x, localPos.x);
         float v = Mathf.InverseLerp(bounds.min.z, bounds.max.z, localPos.z);
 
+        if (Time.time - lastLogTime > 0.5f)
+        {
+            Debug.Log($"UV calculado: {u}, {v} | localPos: {localPos} | bounds min: {bounds.min} max: {bounds.max}");
+            lastLogTime = Time.time;
+        }
+
+        RenderTexture rt = currentZone.runtimeRT;
         RenderTexture prev = RenderTexture.active;
-        RenderTexture.active = snowRT;
+        RenderTexture.active = rt;
 
         GL.PushMatrix();
-        GL.LoadPixelMatrix(0, snowRT.width, snowRT.height, 0);
+        GL.LoadPixelMatrix(0, rt.width, rt.height, 0);
 
         Rect pixelRect = new Rect(
-            u * snowRT.width - stampSize / 2f,
-            v * snowRT.height - stampSize / 2f,
+            u * rt.width - stampSize / 2f,
+            v * rt.height - stampSize / 2f,
             stampSize,
             stampSize
         );
