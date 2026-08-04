@@ -1,8 +1,4 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
 {
@@ -19,6 +15,8 @@ public class NextLevel : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>())
         {
+            PlayerPrefs.SetInt("Nivel2Desbloqueado", 1);
+            PlayerPrefs.Save();
             GameManager.instance.WinGame();
         }
     }

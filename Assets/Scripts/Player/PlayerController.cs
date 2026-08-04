@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     public float agarreDelPiso = 15f; // 15 es fricción normal (frena rápido)
     private Vector3 _currentMoveVelocity;
     float ogGravity;
+    [SerializeField] AudioClip _audioBoost;
 
 
     [Header("Skills")]
@@ -297,6 +298,9 @@ public class PlayerController : MonoBehaviour
         else StartCoroutine(BoostAni());
 
         GameManager.instance.BoostContainer.BoostsActive(boost);
+
+        if(newBoost > 0) GameManager.instance.PlaySound(_audioBoost);
+
     }
 
     IEnumerator BoostAni()
