@@ -48,12 +48,12 @@ public class Whale : TimeTrap
         {
             yield return new WaitForSeconds(currentWhaleOcultTime);
 
-            while (Vector3.Distance(transform.position, whaleNormalPos) > 0.01f)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, whaleNormalPos, currentWhaleSpeed * Time.deltaTime);
-                yield return null;
-            }
-            transform.position = whaleNormalPos;
+            //while (Vector3.Distance(transform.position, whaleNormalPos) > 0.01f)
+            //{
+            //    transform.position = Vector3.MoveTowards(transform.position, whaleNormalPos, currentWhaleSpeed * Time.deltaTime);
+            //    yield return null;
+            //}
+            //transform.position = whaleNormalPos;
 
             //while (Vector3.Distance(waterPosition.position, waterUpPos) > 0.01f)
             //{
@@ -76,12 +76,12 @@ public class Whale : TimeTrap
             waterAni.SetBool("Up", false);
             yield return new WaitForSeconds(0.50f);
 
-            while (Vector3.Distance(transform.position, whaleSubmergedPos) > 0.01f)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, whaleSubmergedPos, currentWhaleSpeed * Time.deltaTime);
-                yield return null;
-            }
-            transform.position = whaleSubmergedPos;
+            //while (Vector3.Distance(transform.position, whaleSubmergedPos) > 0.01f)
+            //{
+            //    transform.position = Vector3.MoveTowards(transform.position, whaleSubmergedPos, currentWhaleSpeed * Time.deltaTime);
+            //    yield return null;
+            //}
+            //transform.position = whaleSubmergedPos;
         }
     }
 
