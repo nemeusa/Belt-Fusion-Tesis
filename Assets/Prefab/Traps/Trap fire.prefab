@@ -10329,6 +10329,7 @@ GameObject:
   - component: {fileID: 1303536780414299655}
   - component: {fileID: 583392601620333231}
   - component: {fileID: 6532535229935322986}
+  - component: {fileID: 1729824031039953}
   m_Layer: 15
   m_Name: coll
   m_TagString: Untagged
@@ -10419,12 +10420,27 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1729824031039953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948256272387314428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c34aaa2dd1558ba44b5b8dbc9bb50ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
+  deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
+  deathDuration: 0.2
 --- !u!1 &9058636533507510247
 GameObject:
   m_ObjectHideFlags: 0
