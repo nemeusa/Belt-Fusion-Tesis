@@ -36,7 +36,14 @@ public class ChargeAsyncScene : MonoBehaviour
             float progress = Mathf.Clamp01(_asyncOp.progress / 0.9f);
             yield return new WaitForEndOfFrame();
             _loaderImage.fillAmount = Mathf.MoveTowards(_loaderImage.fillAmount, progress, Time.deltaTime);
-            if(_loaderImage.fillAmount >= 1) _buttonLoader.SetActive(true); //Opcional de clase
+            if (_loaderImage.fillAmount >= 1)
+            {
+                yield return new WaitForSeconds(1);
+                _buttonLoader.SetActive(true); //Opcional de clase
+
+                yield return new WaitForSeconds(1f);
+                StartMyScene(true); //Opcional de clase
+            }
         }
     }
 
