@@ -19,7 +19,9 @@ public class ElectricityState : State
     {
         _player.ChangeElement(TypeFSM.Electricity);
         _player.energyAura.SetActive(true);
-        _player.meshColors.color = Color.yellow;
+        //_player.meshColors.color = Color.yellow;
+        _player.ChangeMatElement(_player.electricityMat, _player.electricityMatEye);
+
         _player.OnDashPressed += Dash;
     }
     public void OnUpdate()

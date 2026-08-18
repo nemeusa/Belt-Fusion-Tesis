@@ -16,7 +16,9 @@ public class FireState : State
         _player.ChangeElement(TypeFSM.Fire);
 
         _player.fireAura.SetActive(true);
-        _player.meshColors.color = Color.red;
+        //_player.meshColors.color = Color.red;
+        _player.ChangeMatElement(_player.fireMat, _player.fireMatEye);
+
         _player.OnJumpPressed += JumpFire;
     }
     public void OnUpdate()

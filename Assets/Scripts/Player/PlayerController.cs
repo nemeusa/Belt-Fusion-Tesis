@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] GameObject meshChildren;
+    [SerializeField] GameObject[] meshEyes;
     public Animator animator;
     public TrailRenderer fireTrail;
     public ParticleSystem fireParticleTrail;
@@ -60,6 +61,8 @@ public class PlayerController : MonoBehaviour
     public Material boostMat;
     public GameObject meshFather;
     public Vector3 meshFatherDefaultPos;
+    public Material fMat, electricityMat, fireMat, iceMat;
+    public Material fMatEye, electricityMatEye, fireMatEye, iceMatEye;
 
     private PaniniProjection panini;
 
@@ -308,6 +311,14 @@ public class PlayerController : MonoBehaviour
         boostCanvasAni.SetBool("Intro", true);
         yield return new WaitForSeconds(0.5f);
         boostCanvasAni.SetBool("Intro", false);
+    }
+
+    public void ChangeMatElement(Material newMatBody, Material newMatEye)
+    {
+        meshChildren.GetComponent<SkinnedMeshRenderer>().material = newMatBody;
+
+        foreach (var m in meshEyes)
+        m.GetComponent<SkinnedMeshRenderer>().material = newMatEye;
     }
 
 

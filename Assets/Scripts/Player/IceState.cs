@@ -15,7 +15,8 @@ public class IceState : State
     {
         _player.ChangeElement(TypeFSM.Ice);
 
-        _player.meshColors.color = Color.blue;
+        //_player.meshColors.color = Color.blue;
+        _player.ChangeMatElement(_player.iceMat, _player.iceMat);
     }
     public void OnUpdate()
     {
