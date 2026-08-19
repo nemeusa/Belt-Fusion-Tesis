@@ -61,8 +61,10 @@ public class PlayerController : MonoBehaviour
     public Material boostMat;
     public GameObject meshFather;
     public Vector3 meshFatherDefaultPos;
-    public Material fMat, electricityMat, fireMat, iceMat;
-    public Material fMatEye, electricityMatEye, fireMatEye, iceMatEye;
+    public Material[] fMat, electricityMat, fireMat, iceMat;
+    public Material[] fMatEye, electricityMatEye, fireMatEye, iceMatEye;
+
+    public GameObject[] fMatMeshes, electricityMeshes, fireMeshes, iceMeshes;
 
     private PaniniProjection panini;
 
@@ -318,8 +320,27 @@ public class PlayerController : MonoBehaviour
         meshChildren.GetComponent<SkinnedMeshRenderer>().material = newMatBody;
 
         foreach (var m in meshEyes)
-        m.GetComponent<SkinnedMeshRenderer>().material = newMatEye;
+            m.GetComponent<SkinnedMeshRenderer>().material = newMatEye;
     }
+
+    public void ChangeSkinElement(Material[] newMatBody, Material[] newMatEye, GameObject[] meshParts)
+    {
+        //limpieza de otras partes
+        foreach (var p in fMatMeshes) p.SetActive(false);
+        foreach (var p in electricityMeshes) p.SetActive(false);
+        foreach (var p in fireMeshes) p.SetActive(false);
+        foreach (var p in iceMeshes) p.SetActive(false);
+
+        //Empieza a crear la skin del nuevo elemento
+        foreach (var b in newMatBody) meshChildren.GetComponent<SkinnedMeshRenderer>().material = b;
+
+        foreach (var m in meshEyes)
+            foreach (var e in newMatEye) m.GetComponent<SkinnedMeshRenderer>().material = e;
+
+        foreach (var p in meshParts) p.SetActive(true);
+
+    }
+
 
 
     public void CountCrystals(int cant)

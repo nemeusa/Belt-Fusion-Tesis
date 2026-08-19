@@ -3295,10 +3295,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edd8474ddb488c4180c5fe1f97a0527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasOne: {fileID: 526457625}
-  canvasTwo: {fileID: 1572922842}
-  primerBoton: {fileID: 811402500}
-  primerLevelBoton: {fileID: 2055564736}
+  panels:
+  - panelID: Menu
+    panelObject: {fileID: 526457625}
+    firstSelectedButton: {fileID: 811402500}
+  - panelID: Level menu
+    panelObject: {fileID: 1572922842}
+    firstSelectedButton: {fileID: 2055564736}
+  - panelID: Instruction
+    panelObject: {fileID: 1960573527}
+    firstSelectedButton: {fileID: 0}
+  defaultPanelIndex: 0
   mixer: {fileID: 24100000, guid: c1516faf84a43224e92451f2191a1c6a, type: 2}
 --- !u!114 &610578107
 MonoBehaviour:
@@ -3719,7 +3726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &735381081
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4141,14 +4148,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 610578106}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: IrASeleccionNiveles
-        m_Mode: 1
+        m_MethodName: OpenPanelByID
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Level menu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &811402503
@@ -5360,28 +5367,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1960573527}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 610578106}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: OpenPanelByID
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 526457625}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Instruction
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1150254096

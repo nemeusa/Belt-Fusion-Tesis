@@ -16,7 +16,9 @@ public class DefaultState : State
         _player.ChangeElement(TypeFSM.Default);
 
         //_player.meshColors.color = Color.black;
-        _player.ChangeMatElement(_player.fMat, _player.fMatEye);
+        _player.ChangeMatElement(_player.fMat[0], _player.fMatEye[0]);
+        _player.ChangeSkinElement(_player.fMat, _player.fMatEye, _player.fMatMeshes);
+
     }
     public void OnUpdate()
     {
