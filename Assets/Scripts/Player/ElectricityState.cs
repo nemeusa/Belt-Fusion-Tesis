@@ -18,9 +18,10 @@ public class ElectricityState : State
     public void OnEnter()
     {
         _player.ChangeElement(TypeFSM.Electricity);
-        _player.energyAura.SetActive(true);
+        //_player.energyAura.SetActive(true);
         //_player.meshColors.color = Color.yellow;
-        _player.ChangeMatElement(_player.electricityMat, _player.electricityMatEye);
+        _player.ChangeMatElement(_player.electricityMat[0], _player.electricityMatEye[0]);
+        _player.ChangeSkinElement(_player.electricityMat, _player.electricityMatEye, _player.electricityMeshes);
 
         _player.OnDashPressed += Dash;
     }
@@ -30,7 +31,7 @@ public class ElectricityState : State
 
     public void OnExit()
     {
-        _player.energyAura.SetActive(false);
+        //_player.energyAura.SetActive(false);
         _player.OnDashPressed -= Dash;
         _player.meshColors.color = Color.yellow;
         _player.isDashing = false;

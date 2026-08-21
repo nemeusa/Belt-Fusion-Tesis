@@ -15,9 +15,10 @@ public class FireState : State
     {
         _player.ChangeElement(TypeFSM.Fire);
 
-        _player.fireAura.SetActive(true);
+        //_player.fireAura.SetActive(true);
         //_player.meshColors.color = Color.red;
-        _player.ChangeMatElement(_player.fireMat, _player.fireMatEye);
+        _player.ChangeMatElement(_player.fireMat[0], _player.fireMatEye[0]);
+        _player.ChangeSkinElement(_player.fireMat, _player.fireMatEye, _player.fireMeshes);
 
         _player.OnJumpPressed += JumpFire;
     }
@@ -28,7 +29,7 @@ public class FireState : State
 
     public void OnExit()
     {
-        _player.fireAura.SetActive(false);
+        //_player.fireAura.SetActive(false);
         _player.OnJumpPressed -= JumpFire;
     }
 

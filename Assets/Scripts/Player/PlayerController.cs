@@ -52,8 +52,8 @@ public class PlayerController : MonoBehaviour
     public GameObject fireBall;
     public Transform firePoint;
     public GameObject explosionJumpPrefab;
-    public GameObject fireAura;
-    public GameObject energyAura;
+    //public GameObject fireAura;
+    //public GameObject energyAura;
     public Volume globalVolume;
     public AudioSource audioSource;
     public CinemachineCamera jumpCamTarget;
@@ -63,8 +63,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 meshFatherDefaultPos;
     public Material[] fMat, electricityMat, fireMat, iceMat;
     public Material[] fMatEye, electricityMatEye, fireMatEye, iceMatEye;
-
     public GameObject[] fMatMeshes, electricityMeshes, fireMeshes, iceMeshes;
+
 
     private PaniniProjection panini;
 
@@ -317,10 +317,10 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeMatElement(Material newMatBody, Material newMatEye)
     {
-        meshChildren.GetComponent<SkinnedMeshRenderer>().material = newMatBody;
+        //meshChildren.GetComponent<SkinnedMeshRenderer>().material = newMatBody;
 
-        foreach (var m in meshEyes)
-            m.GetComponent<SkinnedMeshRenderer>().material = newMatEye;
+        //foreach (var m in meshEyes)
+        //    m.GetComponent<SkinnedMeshRenderer>().material = newMatEye;
     }
 
     public void ChangeSkinElement(Material[] newMatBody, Material[] newMatEye, GameObject[] meshParts)
@@ -331,11 +331,19 @@ public class PlayerController : MonoBehaviour
         foreach (var p in fireMeshes) p.SetActive(false);
         foreach (var p in iceMeshes) p.SetActive(false);
 
+        ////Empieza a crear la skin del nuevo elemento
+        //foreach (var b in newMatBody) meshChildren.GetComponent<SkinnedMeshRenderer>().material = b;
+
+        //foreach (var m in meshEyes)
+        //    foreach (var e in newMatEye) m.GetComponent<SkinnedMeshRenderer>().material = e;
+
+        //foreach (var p in meshParts) p.SetActive(true);
+
         //Empieza a crear la skin del nuevo elemento
-        foreach (var b in newMatBody) meshChildren.GetComponent<SkinnedMeshRenderer>().material = b;
+        meshChildren.GetComponent<SkinnedMeshRenderer>().materials = newMatBody;
 
         foreach (var m in meshEyes)
-            foreach (var e in newMatEye) m.GetComponent<SkinnedMeshRenderer>().material = e;
+            m.GetComponent<SkinnedMeshRenderer>().materials = newMatEye;
 
         foreach (var p in meshParts) p.SetActive(true);
 
