@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     public RobotFollow robot;
     public BoostContainer BoostContainer;
-    private bool winGame;
+    public bool winGame;
     [SerializeField] TransitionCanvas trans;
     [SerializeField] Animator startAniCanvas;
 
     public PauseMenu _pauseCode;
+
+    public string counterGame;
 
 
     AudioSource audioSource;
@@ -37,10 +39,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator EndLevel()
     {
+        winGame = true;
         startAniCanvas.SetBool("Win", true);
         yield return new WaitForSeconds(1.1f);
 
-        winGame = true;
         player.winGame = true;
         SceneManager.LoadScene(NextLevel._nextLevel);
     }

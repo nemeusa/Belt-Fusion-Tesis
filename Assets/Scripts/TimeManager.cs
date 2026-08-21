@@ -25,7 +25,6 @@ public class TimeManager : MonoBehaviour
     private void Start()
     {
         activeFiltersCode.AlternarFiltroBlancoNegro(false);
-
     }
 
     public void ActivarCamaraLenta()

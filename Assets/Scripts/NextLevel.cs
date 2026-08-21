@@ -16,6 +16,7 @@ public class NextLevel : MonoBehaviour
         if (other.GetComponent<PlayerController>())
         {
             PlayerPrefs.SetInt("Nivel2Desbloqueado", 1);
+            PlayerPrefs.SetString($"BestTime{nextLevel}", GameManager.instance.counterGame);
             PlayerPrefs.Save();
             GameManager.instance.WinGame();
         }

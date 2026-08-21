@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,14 +11,32 @@ public class SelectLevels : MonoBehaviour
     [Header("Opcional: Visuales")]
     [SerializeField] private GameObject iconoCandadoNivel2; // Icono visual de candado (opcional)
 
+    [SerializeField] TMP_Text bestTimeLevelOne;
+    [SerializeField] TMP_Text bestTimeLevelTwo;
+
     private void OnEnable()
     {
         ActualizarEstadoBotones();
+
+    }
+
+    private void Start()
+    {
+        BestTimeLevels();
+        
+    }
+    public void BestTimeLevels()
+    {
+        if (PlayerPrefs.HasKey("BestTimeLevel1"))
+        bestTimeLevelOne.text = PlayerPrefs.GetString($"BestTimeLevel1", GameManager.instance.counterGame);
+        if (PlayerPrefs.HasKey("BestTimeLevel2"))
+        bestTimeLevelTwo.text = PlayerPrefs.GetString($"BestTimeLevel2", GameManager.instance.counterGame);
+
+        //PlayerPrefs.GetString($"BestTime{currentLevel}", GameManager.instance.counterGame);
     }
 
     public void DeleteData()
     {
-
             PlayerPrefs.DeleteAll();
             Debug.Log("¡Progreso borrado para testing!");
             ActualizarEstadoBotones();

@@ -18,6 +18,8 @@ public class BoostContainer : MonoBehaviour
     public float seconds;
     [SerializeField] TMP_Text counterText;
 
+    string counter;
+
     TypeFSM oldElement = TypeFSM.Default;
 
     private void Awake()
@@ -32,6 +34,13 @@ public class BoostContainer : MonoBehaviour
 
     void TimerCount()
     {
+        if (GameManager.instance.winGame)
+        {
+            GameManager.instance.counterGame = counter;
+            return;
+
+        }
+
         seconds += Time.deltaTime;
 
         int minutos = Mathf.FloorToInt(seconds / 60);
@@ -40,8 +49,10 @@ public class BoostContainer : MonoBehaviour
         // Multiplicamos el resto decimal por 100 para obtener dos dígitos de milisegundos
         int milisegundos = Mathf.FloorToInt((seconds % 1) * 100);
 
+        counter = string.Format("{0:00}:{1:00}:{2:00}", minutos, segs, milisegundos);
+
         // Agregamos el tercer campo {2:00} al formato del string
-        counterText.text = string.Format("{0:00}:{1:00}:{2:00}", minutos, segs, milisegundos);
+        counterText.text = counter;
 
         //seconds += Time.deltaTime;
 
