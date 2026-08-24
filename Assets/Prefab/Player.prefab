@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8891737338638538564}
   - component: {fileID: 7836414982356466143}
   - component: {fileID: 4699494255561787847}
-  - component: {fileID: 1732148783477242817}
+  - component: {fileID: 1896046149900992175}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -43,6 +43,7 @@ Transform:
   - {fileID: 6048129827831880429}
   - {fileID: 1932926515493787452}
   - {fileID: 5688689617942573788}
+  - {fileID: 2256933001255816880}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3524568294306139675
@@ -123,17 +124,17 @@ MonoBehaviour:
   - {fileID: 3659618655997904151}
   - {fileID: 4315443945457394389}
   fireMeshes:
+  - {fileID: 1143952669705480009}
   - {fileID: 1509163176767855536}
   - {fileID: 4679381819286522037}
+  - {fileID: 1561741803887358343}
+  - {fileID: 3073963909260491652}
   - {fileID: 2953284895006502410}
   - {fileID: 3984991045870033299}
   - {fileID: 3640212348810255744}
   - {fileID: 5472123759501672961}
   - {fileID: 813643735991369954}
   - {fileID: 1601024107478214464}
-  - {fileID: 1561741803887358343}
-  - {fileID: 3073963909260491652}
-  - {fileID: 1143952669705480009}
   iceMeshes: []
   changeElementVFX:
   - {fileID: 1020108686180432145}
@@ -243,7 +244,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5351749662661826596, guid: c1516faf84a43224e92451f2191a1c6a, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -251,9 +252,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0.71
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 1.01
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -381,7 +382,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &1732148783477242817
+--- !u!54 &1896046149900992175
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32474,6 +32475,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bone Right Leg
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c676e87ad92f174fbc0b98fb51990c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32554,6 +32559,84 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de0bf672073a8dc4192a390349d2e5ec, type: 3}
   m_PrefabInstance: {fileID: 505288116111940442}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &524862488655011264
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2343237751224706034}
+    m_Modifications:
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.94697
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.94697
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.94697
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576273817429917657, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: stampSize
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863954888177384139, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+      propertyPath: m_Name
+      value: FeetCollider
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+--- !u!4 &2256933001255816880 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1736862493512307568, guid: aef466118431ee049a3f66b787cb8ade, type: 3}
+  m_PrefabInstance: {fileID: 524862488655011264}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &543754108821175731
 PrefabInstance:
@@ -32710,6 +32793,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skull
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3c2f5a9027ee50848bb36dd315835925, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32789,6 +32876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bone Right Arm (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 204335fbbe55ee6498a47f5a56aff90c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32867,6 +32958,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8738d6984b063e049b3306615f2d520e, type: 3}
       propertyPath: m_Name
       value: Spine & Ribs
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8738d6984b063e049b3306615f2d520e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33286,6 +33381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bone Left Leg
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b6c60edd369de943b49083c9cf58a04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33521,7 +33620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4d0e76f22153c9d4dad4728f86f9ec6f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33768,6 +33867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bone Hips
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 74d3d15a267747a4cbed14e016082c40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33849,7 +33952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f3088fe81772da3438db736ebf6616ad, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34013,6 +34116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bone Right Arm (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 204335fbbe55ee6498a47f5a56aff90c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34175,6 +34282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bone Right Arm
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 204335fbbe55ee6498a47f5a56aff90c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34253,6 +34364,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 204335fbbe55ee6498a47f5a56aff90c, type: 3}
       propertyPath: m_Name
       value: Bone Right Arm (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 204335fbbe55ee6498a47f5a56aff90c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
