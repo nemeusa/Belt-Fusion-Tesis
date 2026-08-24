@@ -11,12 +11,13 @@ public class GameManager : MonoBehaviour
     public RobotFollow robot;
     public BoostContainer BoostContainer;
     public bool winGame;
+    public string levelName;
     [SerializeField] TransitionCanvas trans;
     [SerializeField] Animator startAniCanvas;
 
     public PauseMenu _pauseCode;
 
-    public string counterGame;
+    public float counterGame;
 
 
     AudioSource audioSource;
@@ -42,7 +43,13 @@ public class GameManager : MonoBehaviour
         winGame = true;
         startAniCanvas.SetBool("Win", true);
         yield return new WaitForSeconds(1.1f);
+        if (PlayerPrefs.GetFloat($"BestTime{levelName}") > counterGame || PlayerPrefs.GetFloat($"BestTime{levelName}") == 0)
+        {
 
+            PlayerPrefs.SetFloat($"BestTime{levelName}", counterGame);
+            PlayerPrefs.Save();
+
+        }
         player.winGame = true;
         SceneManager.LoadScene(NextLevel._nextLevel);
     }

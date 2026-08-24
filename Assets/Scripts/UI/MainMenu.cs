@@ -35,6 +35,8 @@ public class MainMenu : MonoBehaviour
     bool isMuted = false;
 
 
+    Animator nextAni;
+
 
     //void Start()
     //{
@@ -149,6 +151,7 @@ public class MainMenu : MonoBehaviour
     // Abre un panel mediante su ID de texto
     public void OpenPanelByID(string id)
     {
+      
         MenuPanel targetPanel = panels.Find(p => p.panelID.Equals(id, System.StringComparison.OrdinalIgnoreCase));
         if (targetPanel != null)
         {

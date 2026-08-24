@@ -36,7 +36,7 @@ public class BoostContainer : MonoBehaviour
     {
         if (GameManager.instance.winGame)
         {
-            GameManager.instance.counterGame = counter;
+            GameManager.instance.counterGame = seconds;
             return;
 
         }

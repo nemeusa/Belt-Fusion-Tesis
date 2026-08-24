@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class SelectLevels : MonoBehaviour
 {
@@ -27,12 +28,25 @@ public class SelectLevels : MonoBehaviour
     }
     public void BestTimeLevels()
     {
+       
         if (PlayerPrefs.HasKey("BestTimeLevel1"))
-        bestTimeLevelOne.text = PlayerPrefs.GetString($"BestTimeLevel1", GameManager.instance.counterGame);
+        bestTimeLevelOne.text = $"BEST RECORD: {CreateCounter(PlayerPrefs.GetFloat($"BestTimeLevel1"))}";
         if (PlayerPrefs.HasKey("BestTimeLevel2"))
-        bestTimeLevelTwo.text = PlayerPrefs.GetString($"BestTimeLevel2", GameManager.instance.counterGame);
+        bestTimeLevelTwo.text = $"BEST RECORD: {CreateCounter(PlayerPrefs.GetFloat($"BestTimeLevel2"))}";
 
         //PlayerPrefs.GetString($"BestTime{currentLevel}", GameManager.instance.counterGame);
+    }
+
+    string CreateCounter(float seconds)
+    {
+        int minutos = Mathf.FloorToInt(seconds / 60);
+        int segs = Mathf.FloorToInt(seconds % 60);
+
+        // Multiplicamos el resto decimal por 100 para obtener dos dígitos de milisegundos
+        int milisegundos = Mathf.FloorToInt((seconds % 1) * 100);
+
+        return string.Format("{0:00}:{1:00}:{2:00}", minutos, segs, milisegundos);
+
     }
 
     public void DeleteData()

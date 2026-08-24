@@ -24606,8 +24606,6 @@ MonoBehaviour:
   fireBall: {fileID: 547887754457901202, guid: b5dcb362e78fb1c44bf124a3d4376b3b, type: 3}
   firePoint: {fileID: 1009733757}
   explosionJumpPrefab: {fileID: 0}
-  fireAura: {fileID: 0}
-  energyAura: {fileID: 0}
   globalVolume: {fileID: 0}
   audioSource: {fileID: 0}
   jumpCamTarget: {fileID: 0}
@@ -24615,14 +24613,26 @@ MonoBehaviour:
   boostMat: {fileID: 0}
   meshFather: {fileID: 0}
   meshFatherDefaultPos: {x: 0, y: 0, z: 0}
-  fMat: {fileID: 0}
-  electricityMat: {fileID: 0}
-  fireMat: {fileID: 0}
-  iceMat: {fileID: 0}
-  fMatEye: {fileID: 0}
-  electricityMatEye: {fileID: 0}
-  fireMatEye: {fileID: 0}
-  iceMatEye: {fileID: 0}
+  fMat:
+  - {fileID: 0}
+  electricityMat:
+  - {fileID: 0}
+  fireMat:
+  - {fileID: 0}
+  iceMat:
+  - {fileID: 0}
+  fMatEye:
+  - {fileID: 0}
+  electricityMatEye:
+  - {fileID: 0}
+  fireMatEye:
+  - {fileID: 0}
+  iceMatEye:
+  - {fileID: 0}
+  fMatMeshes: []
+  electricityMeshes: []
+  fireMeshes: []
+  iceMeshes: []
   changeElementVFX: []
   meshColors: {fileID: 0}
   isDashing: 0
@@ -414422,6 +414432,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1906817196}
+    - target: {fileID: 6773578459310698188, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
+      propertyPath: levelName
+      value: Level2
+      objectReference: {fileID: 0}
     - target: {fileID: 6773578459310698188, guid: 7a82e46db91fbaf4b88c19574828a19c, type: 3}
       propertyPath: _pauseCode
       value: 
