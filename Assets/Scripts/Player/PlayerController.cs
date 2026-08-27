@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public FSM<TypeFSM> _fsm;
 
     [HideInInspector] public CharacterController _controller;
-    [HideInInspector] public Vector2 moveInput;
+     public Vector2 moveInput;
     [HideInInspector] public Vector3 _playerVelocity;
 
     [Header("Move")]
@@ -65,11 +65,15 @@ public class PlayerController : MonoBehaviour
     public Material[] fMatEye, electricityMatEye, fireMatEye, iceMatEye;
     public GameObject[] fMatMeshes, electricityMeshes, fireMeshes, iceMeshes;
 
+    [Header("Controls")]
+    [SerializeField, Range(0f, 1f)] float driftMagnitude = 0.5f; 
+
 
     private PaniniProjection panini;
 
-
+    [Header("ElementVisuals")]
     public List<ParticleSystem> changeElementVFX = new List<ParticleSystem>();
+
 
     [HideInInspector] public Material meshColors;
 
@@ -188,7 +192,11 @@ public class PlayerController : MonoBehaviour
             if (winGame) animator.SetBool("Win", winGame);
             else
             {
-                if (!dontMovePlayer) animator.SetFloat("Speed", moveInput.magnitude);
+                if (!dontMovePlayer)
+                {
+                    if (moveInput.magnitude > driftMagnitude) animator.SetFloat("Speed", moveInput.magnitude);
+                    else animator.SetFloat("Speed", 0);
+                }
                 animator.SetBool("IsGrounded", coyoteCounter > 0);
             }
         }
@@ -211,14 +219,14 @@ public class PlayerController : MonoBehaviour
         _currentMoveVelocity = Vector3.Lerp(_currentMoveVelocity, move * speed, Time.deltaTime * agarreDelPiso);
 
         // Y le pasamos esa velocidad suavizada al CharacterController en vez del 'move' directo
-        _controller.Move(_currentMoveVelocity * Time.deltaTime);
+        if (moveInput.magnitude > driftMagnitude) _controller.Move(_currentMoveVelocity * Time.deltaTime);
         //_controller.Move(move * Time.deltaTime * speed);
 
 
         _playerVelocity.y += _gravityValue * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
 
-        if (move != Vector3.zero)
+        if (move != Vector3.zero && moveInput.magnitude > driftMagnitude)
         {
             transform.forward = move;
         }
