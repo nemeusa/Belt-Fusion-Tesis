@@ -52,8 +52,7 @@ public class ElectricityState : State
         if (!_player.isDashing)
         {
             _player.StartCoroutine(ExecuteDash());
-            //_player.StartCoroutine(_player.ActivateTrail(_player.ElectricityTrail));
-            _player.StartCoroutine(_player.ActivateParticleTrail(_player.electricityParticleTrail));
+            _player.StartCoroutine(_player.CamEffects());
             _player.dashCount++;
         }
     }
@@ -132,7 +131,7 @@ public class ElectricityState : State
             _direccionDash = _player.transform.forward;
         }
 
-        var d = GameObject.Instantiate(_player.dashRingPar, _player.ElectricityTrail.transform.position, Quaternion.identity);
+        var d = GameObject.Instantiate(_player.dashRingPar, _player.transform.position, Quaternion.identity);
         d.transform.forward = _direccionDash;
         GameObject.Destroy(d, 2);
     }

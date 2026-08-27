@@ -41,6 +41,7 @@ public class MeteoriteFire : MonoBehaviour
 
     private void Start()
     {
+        if (meshRenderer.materials[1] != null)
         segundoMaterial = meshRenderer.materials[1];
     }
 

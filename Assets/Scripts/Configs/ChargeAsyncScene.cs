@@ -11,6 +11,11 @@ public class ChargeAsyncScene : MonoBehaviour
 
     AsyncOperation _asyncOp;
 
+    [SerializeField] Animator _ani;
+    [SerializeField] GameObject ActivebackgroundRosa;
+
+    bool isLoading;
+
     private void Start()
     {
         _loaderImage.fillAmount = 0;
@@ -21,28 +26,35 @@ public class ChargeAsyncScene : MonoBehaviour
 
     IEnumerator ChangingMyScene(string sceneName)
     {
-        //_asyncOp = SceneManager.LoadSceneAsync(sceneName,LoadSceneMode.Single);
-        _asyncOp = SceneManager.LoadSceneAsync(sceneName);
-        _loaderPanel.SetActive(true);
-        StartMyScene(false); //Opcional de clase
-
-        //Application.backgroundLoadingPriority = ThreadPriority.High; //Mas prioridad a carga asincrona que al juego.
-        //Application.backgroundLoadingPriority = ThreadPriority.Normal; 
-        //Application.backgroundLoadingPriority = ThreadPriority.BelowNormal; 
-        Application.backgroundLoadingPriority = ThreadPriority.Low; //Mas prioridad al juego que a la carga asincrona.
-
-        while (!_asyncOp.isDone)
+        if (!isLoading)
         {
-            float progress = Mathf.Clamp01(_asyncOp.progress / 0.9f);
-            yield return new WaitForEndOfFrame();
-            _loaderImage.fillAmount = Mathf.MoveTowards(_loaderImage.fillAmount, progress, Time.deltaTime);
-            if (_loaderImage.fillAmount >= 1)
-            {
-                yield return new WaitForSeconds(1);
-                _buttonLoader.SetActive(true); //Opcional de clase
 
-                yield return new WaitForSeconds(1f);
-                StartMyScene(true); //Opcional de clase
+            isLoading = true;
+            //_asyncOp = SceneManager.LoadSceneAsync(sceneName,LoadSceneMode.Single);
+            _asyncOp = SceneManager.LoadSceneAsync(sceneName);
+            _loaderPanel.SetActive(true);
+            StartMyScene(false); //Opcional de clase
+
+            //Application.backgroundLoadingPriority = ThreadPriority.High; //Mas prioridad a carga asincrona que al juego.
+            //Application.backgroundLoadingPriority = ThreadPriority.Normal; 
+            //Application.backgroundLoadingPriority = ThreadPriority.BelowNormal; 
+            Application.backgroundLoadingPriority = ThreadPriority.Low; //Mas prioridad al juego que a la carga asincrona.
+
+            while (!_asyncOp.isDone)
+            {
+                float progress = Mathf.Clamp01(_asyncOp.progress / 0.9f);
+                yield return new WaitForEndOfFrame();
+                _loaderImage.fillAmount = Mathf.MoveTowards(_loaderImage.fillAmount, progress, Time.deltaTime);
+                if (_loaderImage.fillAmount >= 1)
+                {
+                    yield return new WaitForSeconds(1);
+                    _buttonLoader.SetActive(true); //Opcional de clase
+
+                    _ani.SetBool("Next", true);
+                    ActivebackgroundRosa.SetActive(true);
+                    yield return new WaitForSeconds(1f);
+                    StartMyScene(true); //Opcional de clase
+                }
             }
         }
     }

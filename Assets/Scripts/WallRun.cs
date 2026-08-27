@@ -226,7 +226,7 @@ public class WallRun : MonoBehaviour
             _direccionDash = playerCode.transform.forward;
         }
 
-        var d = GameObject.Instantiate(playerCode.dashRingPar, playerCode.ElectricityTrail.transform.position, Quaternion.identity);
+        var d = GameObject.Instantiate(playerCode.dashRingPar, playerCode.transform.position, Quaternion.identity);
         d.transform.forward = _direccionDash;
         GameObject.Destroy(d, 2);
     }

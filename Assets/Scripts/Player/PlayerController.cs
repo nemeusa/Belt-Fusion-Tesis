@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public FSM<TypeFSM> _fsm;
 
     [HideInInspector] public CharacterController _controller;
-     public Vector2 moveInput;
+    [HideInInspector] public Vector2 moveInput;
     [HideInInspector] public Vector3 _playerVelocity;
 
     [Header("Move")]
@@ -45,26 +45,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject meshChildren;
     [SerializeField] GameObject[] meshEyes;
     public Animator animator;
-    public TrailRenderer fireTrail;
-    public ParticleSystem fireParticleTrail;
-    public TrailRenderer ElectricityTrail;
-    public ParticleSystem electricityParticleTrail;
-    public GameObject fireBall;
-    public Transform firePoint;
-    public GameObject explosionJumpPrefab;
     //public GameObject fireAura;
     //public GameObject energyAura;
     public Volume globalVolume;
     public AudioSource audioSource;
     public CinemachineCamera jumpCamTarget;
     public CinemachineCamera meteoriteCamTarget;
-    public Material boostMat;
     public GameObject meshFather;
     public Vector3 meshFatherDefaultPos;
-    public Material[] fMat, electricityMat, fireMat, iceMat;
-    public Material[] fMatEye, electricityMatEye, fireMatEye, iceMatEye;
-    public GameObject[] fMatMeshes, electricityMeshes, fireMeshes, iceMeshes;
-
     [Header("Controls")]
     [SerializeField, Range(0f, 1f)] float driftMagnitude = 0.5f; 
 
@@ -73,11 +61,18 @@ public class PlayerController : MonoBehaviour
 
     [Header("ElementVisuals")]
     public List<ParticleSystem> changeElementVFX = new List<ParticleSystem>();
+    public Material[] fMat, electricityMat, fireMat, iceMat;
+    public Material[] fMatEye, electricityMatEye, fireMatEye, iceMatEye;
+    public GameObject[] fMatMeshes, electricityMeshes, fireMeshes, iceMeshes;
+
 
 
     [HideInInspector] public Material meshColors;
 
-    [Header("Dash")]
+    [Header("Element Skills")]
+    public GameObject fireBall;
+    public Transform firePoint;
+    public GameObject explosionJumpPrefab;
     public bool isDashing;
     public float dashSpeed = 20f;
     public float dashTime = 0.2f;
@@ -120,8 +115,9 @@ public class PlayerController : MonoBehaviour
     public bool isIntoMeteorite;
     private bool _isBeingPushed = false;
     public bool winGame;
-    [HideInInspector] public bool isWallRunning = false;
     public bool invisibleInDash;
+    public bool canChangeIceElement;
+    [HideInInspector] public bool isWallRunning = false;
 
 
     public RobotFollow robot;
@@ -502,7 +498,7 @@ public class PlayerController : MonoBehaviour
     public void OnElement0(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) _fsm.ChangeState(TypeFSM.Default); }
     public void OnElement1(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) _fsm.ChangeState(TypeFSM.Fire); }
     public void OnElement2(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) _fsm.ChangeState(TypeFSM.Electricity); }
-    public void OnElement3(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) _fsm.ChangeState(TypeFSM.Ice); }
+    public void OnElement3(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) if (canChangeIceElement) _fsm.ChangeState(TypeFSM.Ice); }
     public void OnPause(InputValue value) { if (value.isPressed) GameManager.instance.PauseGame(); }
 
 
@@ -562,12 +558,10 @@ public class PlayerController : MonoBehaviour
 
 
 
-    public IEnumerator ActivateParticleTrail(ParticleSystem trail)
+    public IEnumerator CamEffects()
     {
         ChangePaniniSmooth(0.3f, 0.5f);
-        trail.Play();
         yield return new WaitForSeconds(0.4f);
-        trail.Stop();
         ChangePaniniSmooth(0, 0.5f);
 
     }
