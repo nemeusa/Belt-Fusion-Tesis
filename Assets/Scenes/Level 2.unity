@@ -24599,20 +24599,14 @@ MonoBehaviour:
   meshChildren: {fileID: 0}
   meshEyes: []
   animator: {fileID: 0}
-  fireTrail: {fileID: 1280683269}
-  fireParticleTrail: {fileID: 0}
-  ElectricityTrail: {fileID: 480480681}
-  electricityParticleTrail: {fileID: 0}
-  fireBall: {fileID: 547887754457901202, guid: b5dcb362e78fb1c44bf124a3d4376b3b, type: 3}
-  firePoint: {fileID: 1009733757}
-  explosionJumpPrefab: {fileID: 0}
   globalVolume: {fileID: 0}
   audioSource: {fileID: 0}
   jumpCamTarget: {fileID: 0}
   meteoriteCamTarget: {fileID: 0}
-  boostMat: {fileID: 0}
   meshFather: {fileID: 0}
   meshFatherDefaultPos: {x: 0, y: 0, z: 0}
+  driftMagnitude: 0.5
+  changeElementVFX: []
   fMat:
   - {fileID: 0}
   electricityMat:
@@ -24633,8 +24627,10 @@ MonoBehaviour:
   electricityMeshes: []
   fireMeshes: []
   iceMeshes: []
-  changeElementVFX: []
   meshColors: {fileID: 0}
+  fireBall: {fileID: 547887754457901202, guid: b5dcb362e78fb1c44bf124a3d4376b3b, type: 3}
+  firePoint: {fileID: 1009733757}
+  explosionJumpPrefab: {fileID: 0}
   isDashing: 0
   dashSpeed: 20
   dashTime: 0.5
@@ -24658,8 +24654,9 @@ MonoBehaviour:
   is2Dmoving: 0
   isIntoMeteorite: 0
   winGame: 0
-  isWallRunning: 0
   invisibleInDash: 0
+  canChangeIceElement: 0
+  isWallRunning: 0
   robot: {fileID: 0}
   boostCanvasAni: {fileID: 0}
   fireJumpAudio: {fileID: 0}
@@ -110703,11 +110700,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480124944}
   m_Mesh: {fileID: -3224908482610314343, guid: ab85c772794290f46a7c23650c645445, type: 3}
---- !u!96 &480480681 stripped
-TrailRenderer:
-  m_CorrespondingSourceObject: {fileID: 3425449879707212861, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
-  m_PrefabInstance: {fileID: 1972434724}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &480645586
 GameObject:
   m_ObjectHideFlags: 0
@@ -306800,11 +306792,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279883254}
   m_Mesh: {fileID: -3224908482610314343, guid: ab85c772794290f46a7c23650c645445, type: 3}
---- !u!96 &1280683269 stripped
-TrailRenderer:
-  m_CorrespondingSourceObject: {fileID: 7017334041639105417, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
-  m_PrefabInstance: {fileID: 1972434724}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1281483479
 GameObject:
   m_ObjectHideFlags: 0
@@ -421028,6 +421015,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754923791}
   m_Mesh: {fileID: -3224908482610314343, guid: ab85c772794290f46a7c23650c645445, type: 3}
+--- !u!1 &1756323646 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2380525121509737951, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+  m_PrefabInstance: {fileID: 1972434724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1756897334
 GameObject:
   m_ObjectHideFlags: 0
@@ -465142,6 +465134,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2380525121509737951, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: globalVolume
       value: 
@@ -465176,7 +465172,7 @@ PrefabInstance:
       objectReference: {fileID: 1611291746}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: fireMeshes.Array.size
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: 'fireMeshes.Array.data[10]'
@@ -465194,6 +465190,10 @@ PrefabInstance:
       propertyPath: 'fireMeshes.Array.data[13]'
       value: 
       objectReference: {fileID: 783767078}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: 'fireMeshes.Array.data[14]'
+      value: 
+      objectReference: {fileID: 1756323646}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
