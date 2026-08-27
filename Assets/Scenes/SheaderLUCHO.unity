@@ -10523,27 +10523,35 @@ MonoBehaviour:
   jumpCount: 0
   maxJumps: 0
   agarreDelPiso: 15
+  _audioBoost: {fileID: 0}
   maxBoost: 3
   meshChildren: {fileID: 0}
+  meshEyes: []
   animator: {fileID: 0}
-  fireTrail: {fileID: 1280683269}
-  fireParticleTrail: {fileID: 0}
-  ElectricityTrail: {fileID: 480480681}
-  electricityParticleTrail: {fileID: 0}
-  fireBall: {fileID: 547887754457901202, guid: b5dcb362e78fb1c44bf124a3d4376b3b, type: 3}
-  firePoint: {fileID: 1009733757}
-  explosionJumpPrefab: {fileID: 0}
-  fireAura: {fileID: 0}
-  energyAura: {fileID: 0}
   globalVolume: {fileID: 0}
   audioSource: {fileID: 0}
   jumpCamTarget: {fileID: 0}
   meteoriteCamTarget: {fileID: 0}
-  boostMat: {fileID: 0}
   meshFather: {fileID: 0}
   meshFatherDefaultPos: {x: 0, y: 0, z: 0}
+  driftMagnitude: 0.5
   changeElementVFX: []
+  fMat: []
+  electricityMat: []
+  fireMat: []
+  iceMat: []
+  fMatEye: []
+  electricityMatEye: []
+  fireMatEye: []
+  iceMatEye: []
+  fMatMeshes: []
+  electricityMeshes: []
+  fireMeshes: []
+  iceMeshes: []
   meshColors: {fileID: 0}
+  fireBall: {fileID: 547887754457901202, guid: b5dcb362e78fb1c44bf124a3d4376b3b, type: 3}
+  firePoint: {fileID: 1009733757}
+  explosionJumpPrefab: {fileID: 0}
   isDashing: 0
   dashSpeed: 20
   dashTime: 0.5
@@ -10567,8 +10575,9 @@ MonoBehaviour:
   is2Dmoving: 0
   isIntoMeteorite: 0
   winGame: 0
-  isWallRunning: 0
   invisibleInDash: 0
+  canChangeIceElement: 0
+  isWallRunning: 0
   robot: {fileID: 0}
   boostCanvasAni: {fileID: 0}
   fireJumpAudio: {fileID: 0}
@@ -43168,11 +43177,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
   m_PrefabInstance: {fileID: 1737050857}
-  m_PrefabAsset: {fileID: 0}
---- !u!96 &480480681 stripped
-TrailRenderer:
-  m_CorrespondingSourceObject: {fileID: 3425449879707212861, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
-  m_PrefabInstance: {fileID: 1972434724}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &481164310
 PrefabInstance:
@@ -116200,11 +116204,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
   m_PrefabInstance: {fileID: 1192115407}
-  m_PrefabAsset: {fileID: 0}
---- !u!96 &1280683269 stripped
-TrailRenderer:
-  m_CorrespondingSourceObject: {fileID: 7017334041639105417, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
-  m_PrefabInstance: {fileID: 1972434724}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1282259167
 PrefabInstance:
