@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
+using Unity.Mathematics;
 
 public class MainMenu : MonoBehaviour
 {
@@ -36,6 +38,8 @@ public class MainMenu : MonoBehaviour
 
 
     Animator nextAni;
+
+    public Slider slideMusic;
 
 
     //void Start()
@@ -138,6 +142,9 @@ public class MainMenu : MonoBehaviour
         {
             GoBack();
         }
+
+        //mixer.SetFloat("MusicVol", slideMusic.value);
+
     }
 
     // Abre un panel mediante su número de índice en la lista del Inspector
@@ -225,6 +232,13 @@ public class MainMenu : MonoBehaviour
 
         else
             offIcon.SetActive(false);
+    }
+
+    public void LevelMusic(float level)
+    {
+       
+        mixer.SetFloat("MusicVol", slideMusic.value);
+
     }
 
 }

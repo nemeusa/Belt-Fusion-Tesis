@@ -87,6 +87,7 @@ public class Whale : TimeTrap
 
     protected override void SlowdownTrap(float factor)
     {
+        waterAni.speed = 1 * factor;
         currentWaterSpeed = velocidadWaterSubeBaja * factor;
         currentWhaleSpeed = velocidadWhaleSubeBaja * factor;
         //currentWhaleOcultTime = tiempoOculto * factor;
@@ -94,6 +95,7 @@ public class Whale : TimeTrap
 
     protected override void NormalizeTrap()
     {
+        waterAni.speed = 1;
         currentWaterSpeed = velocidadWaterSubeBaja;
         currentWhaleSpeed = velocidadWhaleSubeBaja;
         //currentWhaleOcultTime = tiempoOculto;
