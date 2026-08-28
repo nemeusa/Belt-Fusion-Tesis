@@ -143,8 +143,6 @@ MonoBehaviour:
   - {fileID: 1601024107478214464}
   - {fileID: 1143952669705480009}
   - {fileID: 8717719794185548143}
-  - {fileID: 5791633932809263109}
-  - {fileID: 8271837841371774624}
   - {fileID: 2380525121509737951}
   iceMeshes: []
   meshColors: {fileID: 0}
@@ -635,7 +633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1745134750185082605
 Transform:
   m_ObjectHideFlags: 0
@@ -730,7 +728,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518748218080475043}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -10575,7 +10573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9089626750141230155
 Transform:
   m_ObjectHideFlags: 0
@@ -10670,7 +10668,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394080310839574415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -10817,7 +10815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2239629160981947007
 Transform:
   m_ObjectHideFlags: 0
@@ -10912,7 +10910,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690277125306215932}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -11031,7 +11029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3972966949039593161
 Transform:
   m_ObjectHideFlags: 0
@@ -11126,7 +11124,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880957865454995711}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -16515,7 +16513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6101880910114722067
 Transform:
   m_ObjectHideFlags: 0
@@ -16610,7 +16608,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3500612929016735854}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -21680,7 +21678,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49b681813a8463944b0f5370e25b916e, type: 2}
+  - {fileID: 2100000, guid: 64f6bcfd6768b2847a19ebf2dc33bc96, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28277,11 +28275,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2320308145912102845, guid: 5141f7ed260f2c142b12a76462731c73, type: 3}
   m_PrefabInstance: {fileID: 237857102174653340}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5791633932809263109 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5993461687064023961, guid: 5141f7ed260f2c142b12a76462731c73, type: 3}
-  m_PrefabInstance: {fileID: 237857102174653340}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &524862488655011264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28444,33 +28437,73 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8428710426847045769, guid: 483f0929e777aa24895ca25319709867, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8428710426847045769, guid: 483f0929e777aa24895ca25319709867, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e8c1917443bf3f64aa65c010b9c8a456, type: 2}
+    - target: {fileID: -8428710426847045769, guid: 483f0929e777aa24895ca25319709867, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
+    - target: {fileID: -5813965723423316136, guid: 483f0929e777aa24895ca25319709867, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -5813965723423316136, guid: 483f0929e777aa24895ca25319709867, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e8c1917443bf3f64aa65c010b9c8a456, type: 2}
+    - target: {fileID: -5813965723423316136, guid: 483f0929e777aa24895ca25319709867, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
+    - target: {fileID: -1175735960452582489, guid: 483f0929e777aa24895ca25319709867, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -1175735960452582489, guid: 483f0929e777aa24895ca25319709867, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e8c1917443bf3f64aa65c010b9c8a456, type: 2}
+    - target: {fileID: -1175735960452582489, guid: 483f0929e777aa24895ca25319709867, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
+    - target: {fileID: 356735774792118519, guid: 483f0929e777aa24895ca25319709867, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 356735774792118519, guid: 483f0929e777aa24895ca25319709867, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e8c1917443bf3f64aa65c010b9c8a456, type: 2}
+    - target: {fileID: 356735774792118519, guid: 483f0929e777aa24895ca25319709867, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     - target: {fileID: 919132149155446097, guid: 483f0929e777aa24895ca25319709867, type: 3}
       propertyPath: m_Name
       value: Rock Back
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 483f0929e777aa24895ca25319709867, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609277631914509261, guid: 483f0929e777aa24895ca25319709867, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2609277631914509261, guid: 483f0929e777aa24895ca25319709867, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e8c1917443bf3f64aa65c010b9c8a456, type: 2}
+    - target: {fileID: 2609277631914509261, guid: 483f0929e777aa24895ca25319709867, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28988,9 +29021,17 @@ PrefabInstance:
       value: 190.694
       objectReference: {fileID: 0}
     - target: {fileID: -7699420489884258335, guid: 6b58826af64443040a55ca75552afb40, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7699420489884258335, guid: 6b58826af64443040a55ca75552afb40, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ce3a2e7c2ab0f5b48acbbd201aed7e45, type: 2}
+    - target: {fileID: -7699420489884258335, guid: 6b58826af64443040a55ca75552afb40, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     - target: {fileID: -6485883738929072686, guid: 6b58826af64443040a55ca75552afb40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.00502
@@ -29016,20 +29057,36 @@ PrefabInstance:
       value: -0.00286
       objectReference: {fileID: 0}
     - target: {fileID: -4036514027543606287, guid: 6b58826af64443040a55ca75552afb40, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4036514027543606287, guid: 6b58826af64443040a55ca75552afb40, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ce3a2e7c2ab0f5b48acbbd201aed7e45, type: 2}
+    - target: {fileID: -4036514027543606287, guid: 6b58826af64443040a55ca75552afb40, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
+    - target: {fileID: -1327401139111824907, guid: 6b58826af64443040a55ca75552afb40, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -1327401139111824907, guid: 6b58826af64443040a55ca75552afb40, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ce3a2e7c2ab0f5b48acbbd201aed7e45, type: 2}
+    - target: {fileID: -1327401139111824907, guid: 6b58826af64443040a55ca75552afb40, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     - target: {fileID: 919132149155446097, guid: 6b58826af64443040a55ca75552afb40, type: 3}
       propertyPath: m_Name
       value: Rock Left Leg Top
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6b58826af64443040a55ca75552afb40, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29107,25 +29164,49 @@ PrefabInstance:
       value: 0.00005
       objectReference: {fileID: 0}
     - target: {fileID: -4198164106664981536, guid: 906f69c6b6d28a64ca16d96c9ff0beca, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4198164106664981536, guid: 906f69c6b6d28a64ca16d96c9ff0beca, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 79f60a39f77bc6746a6167adc7e11fb9, type: 2}
+    - target: {fileID: -4198164106664981536, guid: 906f69c6b6d28a64ca16d96c9ff0beca, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
+    - target: {fileID: -2226866534959541740, guid: 906f69c6b6d28a64ca16d96c9ff0beca, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -2226866534959541740, guid: 906f69c6b6d28a64ca16d96c9ff0beca, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 79f60a39f77bc6746a6167adc7e11fb9, type: 2}
+    - target: {fileID: -2226866534959541740, guid: 906f69c6b6d28a64ca16d96c9ff0beca, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     - target: {fileID: 919132149155446097, guid: 906f69c6b6d28a64ca16d96c9ff0beca, type: 3}
       propertyPath: m_Name
       value: Rock Right Leg Top
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 906f69c6b6d28a64ca16d96c9ff0beca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374634229141182167, guid: 906f69c6b6d28a64ca16d96c9ff0beca, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4374634229141182167, guid: 906f69c6b6d28a64ca16d96c9ff0beca, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 79f60a39f77bc6746a6167adc7e11fb9, type: 2}
+    - target: {fileID: 4374634229141182167, guid: 906f69c6b6d28a64ca16d96c9ff0beca, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     - target: {fileID: 4649232501706798528, guid: 906f69c6b6d28a64ca16d96c9ff0beca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00556
@@ -29202,21 +29283,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3769215038540460520, guid: c924bc73c72f5b04dac4f1c32b724b6b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3769215038540460520, guid: c924bc73c72f5b04dac4f1c32b724b6b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 91e3f16a70bb18e42a98fb860f966ff0, type: 2}
+    - target: {fileID: -3769215038540460520, guid: c924bc73c72f5b04dac4f1c32b724b6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     - target: {fileID: 919132149155446097, guid: c924bc73c72f5b04dac4f1c32b724b6b, type: 3}
       propertyPath: m_Name
       value: Rock Chest
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c924bc73c72f5b04dac4f1c32b724b6b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774033468184659688, guid: c924bc73c72f5b04dac4f1c32b724b6b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4774033468184659688, guid: c924bc73c72f5b04dac4f1c32b724b6b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 91e3f16a70bb18e42a98fb860f966ff0, type: 2}
+    - target: {fileID: 4774033468184659688, guid: c924bc73c72f5b04dac4f1c32b724b6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29492,11 +29589,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2320308145912102845, guid: 5141f7ed260f2c142b12a76462731c73, type: 3}
   m_PrefabInstance: {fileID: 2442768587908476217}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8271837841371774624 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5993461687064023961, guid: 5141f7ed260f2c142b12a76462731c73, type: 3}
-  m_PrefabInstance: {fileID: 2442768587908476217}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2530705536399818271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29669,21 +29761,37 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -2564977565084298175, guid: 454699baf51f789409907b35b5589b4a, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2564977565084298175, guid: 454699baf51f789409907b35b5589b4a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 39359baff30fc0541b17acb35188e893, type: 2}
+    - target: {fileID: -2564977565084298175, guid: 454699baf51f789409907b35b5589b4a, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     - target: {fileID: 919132149155446097, guid: 454699baf51f789409907b35b5589b4a, type: 3}
       propertyPath: m_Name
       value: Rock Left Arm
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 454699baf51f789409907b35b5589b4a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2598368490199692185, guid: 454699baf51f789409907b35b5589b4a, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2598368490199692185, guid: 454699baf51f789409907b35b5589b4a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 39359baff30fc0541b17acb35188e893, type: 2}
+    - target: {fileID: 2598368490199692185, guid: 454699baf51f789409907b35b5589b4a, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29748,24 +29856,48 @@ PrefabInstance:
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -7827722851161221612, guid: 59572690fade0294c84fe0f85dcb4888, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7827722851161221612, guid: 59572690fade0294c84fe0f85dcb4888, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 19f04714e38282841bab642368e4b546, type: 2}
+    - target: {fileID: -7827722851161221612, guid: 59572690fade0294c84fe0f85dcb4888, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
+    - target: {fileID: -3215661348177563629, guid: 59572690fade0294c84fe0f85dcb4888, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -3215661348177563629, guid: 59572690fade0294c84fe0f85dcb4888, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 19f04714e38282841bab642368e4b546, type: 2}
+    - target: {fileID: -3215661348177563629, guid: 59572690fade0294c84fe0f85dcb4888, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
+    - target: {fileID: 57982399392399152, guid: 59572690fade0294c84fe0f85dcb4888, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 57982399392399152, guid: 59572690fade0294c84fe0f85dcb4888, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 19f04714e38282841bab642368e4b546, type: 2}
+    - target: {fileID: 57982399392399152, guid: 59572690fade0294c84fe0f85dcb4888, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     - target: {fileID: 919132149155446097, guid: 59572690fade0294c84fe0f85dcb4888, type: 3}
       propertyPath: m_Name
       value: Rock Right Leg Bottom
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59572690fade0294c84fe0f85dcb4888, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30544,7 +30676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4c17ffe25c54aa84391aafbf942358a6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30761,21 +30893,37 @@ PrefabInstance:
       value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -3477635349871156652, guid: 8df5c178822373b499cb8a36db3a0e30, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3477635349871156652, guid: 8df5c178822373b499cb8a36db3a0e30, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 12b760065f0df2148831e43b34c39647, type: 2}
+    - target: {fileID: -3477635349871156652, guid: 8df5c178822373b499cb8a36db3a0e30, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     - target: {fileID: 919132149155446097, guid: 8df5c178822373b499cb8a36db3a0e30, type: 3}
       propertyPath: m_Name
       value: Rock Right Arm
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8df5c178822373b499cb8a36db3a0e30, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264095541766261847, guid: 8df5c178822373b499cb8a36db3a0e30, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4264095541766261847, guid: 8df5c178822373b499cb8a36db3a0e30, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 12b760065f0df2148831e43b34c39647, type: 2}
+    - target: {fileID: 4264095541766261847, guid: 8df5c178822373b499cb8a36db3a0e30, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31000,7 +31148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1b476ea76fc420646821ceba11d8cab3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5898544001358613053, guid: 1b476ea76fc420646821ceba11d8cab3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -31169,25 +31317,49 @@ PrefabInstance:
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -6550434645976882224, guid: 3e6d0a23eb066ce489883d68dd04d378, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6550434645976882224, guid: 3e6d0a23eb066ce489883d68dd04d378, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 71287166d02b5b24abef53971004145a, type: 2}
+    - target: {fileID: -6550434645976882224, guid: 3e6d0a23eb066ce489883d68dd04d378, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
+    - target: {fileID: -3460144165816925549, guid: 3e6d0a23eb066ce489883d68dd04d378, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -3460144165816925549, guid: 3e6d0a23eb066ce489883d68dd04d378, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 71287166d02b5b24abef53971004145a, type: 2}
+    - target: {fileID: -3460144165816925549, guid: 3e6d0a23eb066ce489883d68dd04d378, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     - target: {fileID: 919132149155446097, guid: 3e6d0a23eb066ce489883d68dd04d378, type: 3}
       propertyPath: m_Name
       value: Rock Left Leg Bottom
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3e6d0a23eb066ce489883d68dd04d378, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2450082381664556535, guid: 3e6d0a23eb066ce489883d68dd04d378, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2450082381664556535, guid: 3e6d0a23eb066ce489883d68dd04d378, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 71287166d02b5b24abef53971004145a, type: 2}
+    - target: {fileID: 2450082381664556535, guid: 3e6d0a23eb066ce489883d68dd04d378, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31983,20 +32155,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -668522973886649487, guid: aaf4a07c845c25049a053df3e90cf706, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -668522973886649487, guid: aaf4a07c845c25049a053df3e90cf706, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: cecfc4567ba31d14092077beb38789dd, type: 2}
+    - target: {fileID: -668522973886649487, guid: aaf4a07c845c25049a053df3e90cf706, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
+    - target: {fileID: 327709425235285740, guid: aaf4a07c845c25049a053df3e90cf706, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 327709425235285740, guid: aaf4a07c845c25049a053df3e90cf706, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: cecfc4567ba31d14092077beb38789dd, type: 2}
+    - target: {fileID: 327709425235285740, guid: aaf4a07c845c25049a053df3e90cf706, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99727e37b5c210d49af9b3fea7d53375, type: 2}
     - target: {fileID: 919132149155446097, guid: aaf4a07c845c25049a053df3e90cf706, type: 3}
       propertyPath: m_Name
       value: Rock Butt
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aaf4a07c845c25049a053df3e90cf706, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -280719,11 +280719,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11d22d4d970879549841ce21cfcf8e0c, type: 3}
---- !u!1 &1182274884 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5791633932809263109, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
-  m_PrefabInstance: {fileID: 1972434724}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1182596170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -465167,12 +465162,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 974124218}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: fireMat.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: meteoriteCamTarget
       value: 
       objectReference: {fileID: 1611291746}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: fireMeshes.Array.size
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: 'fireMeshes.Array.data[10]'
@@ -465185,7 +465184,7 @@ PrefabInstance:
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: 'fireMeshes.Array.data[12]'
       value: 
-      objectReference: {fileID: 1182274884}
+      objectReference: {fileID: 1756323646}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: 'fireMeshes.Array.data[13]'
       value: 
