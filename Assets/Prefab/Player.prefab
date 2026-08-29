@@ -159,9 +159,11 @@ MonoBehaviour:
   dashSpeed: 20
   dashTime: 0.5
   dashCooldown: 1
-  dashRingPar: {fileID: 5971447275720972995, guid: c82eb4badb3a92e4fa3b775b71bcbc5a, type: 3}
-  fbxDash: {fileID: 6722189782409971690}
-  fbxDash2: {fileID: 171567912243803650}
+  dashParticules:
+  - {fileID: 5971447275720972995, guid: c82eb4badb3a92e4fa3b775b71bcbc5a, type: 3}
+  fbxDashList:
+  - {fileID: 6722189782409971690}
+  - {fileID: 171567912243803650}
   countMovs: 0
   dashCount: 0
   lookInput: {x: 0, y: 0}

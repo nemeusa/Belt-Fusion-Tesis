@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WallRun : MonoBehaviour
 {
@@ -196,16 +197,15 @@ public class WallRun : MonoBehaviour
             createEffects++;
             playerCode.audioSource.PlayOneShot(playerCode.dashAudio);
 
-            playerCode.fbxDash.SendEvent("OnPlay");
+            foreach (var d in playerCode.fbxDashList) d.SendEvent("OnPlay");
             IniciarDash();
-            playerCode.fbxDash2.SendEvent("OnPlay");
 
             //Debug.Log("efecto" + createEffects);
 
             yield return new WaitForSeconds(0.05f);
 
-            playerCode.fbxDash.SendEvent("OnStop");
-            playerCode.fbxDash2.SendEvent("OnStop");
+            foreach (var d in playerCode.fbxDashList) d.SendEvent("OnStop");
+
 
             yield return null;
 
@@ -226,9 +226,13 @@ public class WallRun : MonoBehaviour
             _direccionDash = playerCode.transform.forward;
         }
 
-        var d = GameObject.Instantiate(playerCode.dashRingPar, playerCode.transform.position, Quaternion.identity);
-        d.transform.forward = _direccionDash;
-        GameObject.Destroy(d, 2);
+        foreach (var p in playerCode.dashParticules)
+        {
+
+            var d = GameObject.Instantiate(p, playerCode.transform.position, Quaternion.identity);
+            d.transform.forward = _direccionDash;
+            GameObject.Destroy(d, 2);
+        }
     }
 
     //private void OnDrawGizmos()

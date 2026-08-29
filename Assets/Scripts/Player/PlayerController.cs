@@ -77,9 +77,8 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed = 20f;
     public float dashTime = 0.2f;
     public float dashCooldown = 1f;
-    public GameObject dashRingPar;
-    public VisualEffect fbxDash;
-    public VisualEffect fbxDash2;
+    public List<GameObject> dashParticules;
+    public List<VisualEffect> fbxDashList;
     [HideInInspector] public int countMovs;
 
 

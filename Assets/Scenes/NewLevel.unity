@@ -15113,15 +15113,10 @@ MonoBehaviour:
   meshChildren: {fileID: 0}
   meshEyes: []
   animator: {fileID: 0}
-  fireParticleTrail: {fileID: 0}
-  fireBall: {fileID: 547887754457901202, guid: b5dcb362e78fb1c44bf124a3d4376b3b, type: 3}
-  firePoint: {fileID: 1009733757}
-  explosionJumpPrefab: {fileID: 0}
   globalVolume: {fileID: 0}
   audioSource: {fileID: 0}
   jumpCamTarget: {fileID: 0}
   meteoriteCamTarget: {fileID: 0}
-  boostMat: {fileID: 0}
   meshFather: {fileID: 0}
   meshFatherDefaultPos: {x: 0, y: 0, z: 0}
   driftMagnitude: 0.5
@@ -15139,13 +15134,15 @@ MonoBehaviour:
   fireMeshes: []
   iceMeshes: []
   meshColors: {fileID: 0}
+  fireBall: {fileID: 547887754457901202, guid: b5dcb362e78fb1c44bf124a3d4376b3b, type: 3}
+  firePoint: {fileID: 1009733757}
+  explosionJumpPrefab: {fileID: 0}
   isDashing: 0
   dashSpeed: 20
   dashTime: 0.5
   dashCooldown: 1
-  dashRingPar: {fileID: 0}
-  fbxDash: {fileID: 0}
-  fbxDash2: {fileID: 0}
+  dashParticules: []
+  fbxDashList: []
   countMovs: 0
   dashCount: 0
   lookInput: {x: 0, y: 0}
@@ -15162,8 +15159,9 @@ MonoBehaviour:
   is2Dmoving: 0
   isIntoMeteorite: 0
   winGame: 0
-  isWallRunning: 0
   invisibleInDash: 0
+  canChangeIceElement: 0
+  isWallRunning: 0
   robot: {fileID: 0}
   boostCanvasAni: {fileID: 0}
   fireJumpAudio: {fileID: 0}

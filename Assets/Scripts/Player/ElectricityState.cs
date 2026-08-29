@@ -101,10 +101,8 @@ public class ElectricityState : State
 
             _player.VibrarControl(1, 0.4f, 0.5f);
 
-
-            _player.fbxDash.SendEvent("OnPlay");
+            foreach (var d in _player.fbxDashList) d.SendEvent("OnPlay");
             IniciarDash();
-            _player.fbxDash2.SendEvent("OnPlay");
         }
 
         else
@@ -112,8 +110,7 @@ public class ElectricityState : State
             if (_player.invisibleInDash)
             _player.meshColors.color = Color.yellow;
 
-            _player.fbxDash.SendEvent("OnStop");
-            _player.fbxDash2.SendEvent("OnStop");
+            foreach (var d in _player.fbxDashList) d.SendEvent("OnStop");
         }
 
     }
@@ -131,8 +128,12 @@ public class ElectricityState : State
             _direccionDash = _player.transform.forward;
         }
 
-        var d = GameObject.Instantiate(_player.dashRingPar, _player.transform.position, Quaternion.identity);
-        d.transform.forward = _direccionDash;
-        GameObject.Destroy(d, 2);
+        foreach (var p in _player.dashParticules)
+        {
+
+            var d = GameObject.Instantiate(p, _player.transform.position, Quaternion.identity);
+            d.transform.forward = _direccionDash;
+            GameObject.Destroy(d, 2);
+        }
     }
 }
