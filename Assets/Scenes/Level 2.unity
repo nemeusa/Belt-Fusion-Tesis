@@ -24635,9 +24635,8 @@ MonoBehaviour:
   dashSpeed: 20
   dashTime: 0.5
   dashCooldown: 1
-  dashRingPar: {fileID: 0}
-  fbxDash: {fileID: 0}
-  fbxDash2: {fileID: 0}
+  dashParticules: []
+  fbxDashList: []
   countMovs: 0
   dashCount: 0
   lookInput: {x: 0, y: 0}
@@ -465194,12 +465193,16 @@ PrefabInstance:
       objectReference: {fileID: 974124218}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: fireMat.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: meteoriteCamTarget
       value: 
       objectReference: {fileID: 1611291746}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: 'fireMat.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0968f9d3a423b2f42b97be1563003afc, type: 2}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: fireMeshes.Array.size
       value: 17
