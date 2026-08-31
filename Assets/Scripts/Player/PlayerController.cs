@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
     private bool _isBeingPushed = false;
     public bool winGame;
     public bool invisibleInDash;
-    public bool canChangeIceElement;
+    public bool canIceElement, canFireElemen, canElectricityElemen;
     [HideInInspector] public bool isWallRunning = false;
 
 
@@ -495,9 +495,9 @@ public class PlayerController : MonoBehaviour
     public void OnDash(InputValue value) { if (value.isPressed && !isDeath && !GameManager.instance._pauseCode.juegoPausado) OnDashPressed?.Invoke(); }
 
     public void OnElement0(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) _fsm.ChangeState(TypeFSM.Default); }
-    public void OnElement1(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) _fsm.ChangeState(TypeFSM.Fire); }
-    public void OnElement2(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) _fsm.ChangeState(TypeFSM.Electricity); }
-    public void OnElement3(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) if (canChangeIceElement) _fsm.ChangeState(TypeFSM.Ice); }
+    public void OnElement1(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) if (canFireElemen) _fsm.ChangeState(TypeFSM.Fire); }
+    public void OnElement2(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) if (canElectricityElemen) _fsm.ChangeState(TypeFSM.Electricity); }
+    public void OnElement3(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) if (canIceElement) _fsm.ChangeState(TypeFSM.Ice); }
     public void OnPause(InputValue value) { if (value.isPressed) GameManager.instance.PauseGame(); }
 
 
