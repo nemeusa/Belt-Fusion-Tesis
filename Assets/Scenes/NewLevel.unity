@@ -113247,6 +113247,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
+--- !u!1 &837734211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6796873334321296404, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+  m_PrefabInstance: {fileID: 1972434724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &837933063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1311476237095501668, guid: 29b19bec497a974499182bec21285647, type: 3}
@@ -257869,6 +257874,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 779970950164047933, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2343237751224706034, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.43
@@ -257909,6 +257918,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3324844897551727222, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324844897551727222, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: globalVolume
       value: 
@@ -257947,6 +257964,66 @@ PrefabInstance:
       objectReference: {fileID: 1611291746}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: canElectricityElemen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: dashParticules.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: 'dashParticules.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7738035731605499305, guid: c51430a6c6686064a88de975459e4693, type: 3}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: 'dashParticules.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2715687063643266360, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: 'dashParticules.Array.data[3]'
+      value: 
+      objectReference: {fileID: 4053813668738790573, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: 'dashParticules.Array.data[4]'
+      value: 
+      objectReference: {fileID: 837734211}
+    - target: {fileID: 3734368581660103021, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3755994105214314825, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3755994105214314825, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139623958453176944, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5149436954163780861, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5891286906198061416, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394519668125718221, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394519668125718221, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570491629058266033, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9047557500143246058, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
