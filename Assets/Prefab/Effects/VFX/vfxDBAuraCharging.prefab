@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 7738035731605499305}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48,15 +48,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7740697619079460162, guid: e26fbab6979f2c141a78b23bbc85b035, type: 3}
       propertyPath: m_LocalScale.x
-      value: 13.7675705
+      value: 17.03814
       objectReference: {fileID: 0}
     - target: {fileID: 7740697619079460162, guid: e26fbab6979f2c141a78b23bbc85b035, type: 3}
       propertyPath: m_LocalScale.y
-      value: 37.53073
+      value: 46.44638
       objectReference: {fileID: 0}
     - target: {fileID: 7740697619079460162, guid: e26fbab6979f2c141a78b23bbc85b035, type: 3}
       propertyPath: m_LocalScale.z
-      value: 20.022644
+      value: 24.77914
       objectReference: {fileID: 0}
     - target: {fileID: 7740697619079460162, guid: e26fbab6979f2c141a78b23bbc85b035, type: 3}
       propertyPath: m_LocalPosition.x
@@ -64,11 +64,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7740697619079460162, guid: e26fbab6979f2c141a78b23bbc85b035, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 7740697619079460162, guid: e26fbab6979f2c141a78b23bbc85b035, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.030741
+      value: -1.2751
       objectReference: {fileID: 0}
     - target: {fileID: 7740697619079460162, guid: e26fbab6979f2c141a78b23bbc85b035, type: 3}
       propertyPath: m_LocalRotation.w
@@ -98,6 +98,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8454780449067450166, guid: e26fbab6979f2c141a78b23bbc85b035, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454780449067450166, guid: e26fbab6979f2c141a78b23bbc85b035, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454780449067450166, guid: e26fbab6979f2c141a78b23bbc85b035, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454780449067450166, guid: e26fbab6979f2c141a78b23bbc85b035, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454780449067450166, guid: e26fbab6979f2c141a78b23bbc85b035, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -122,15 +142,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4164208016154066278, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7.71441
+      value: 9.547013
       objectReference: {fileID: 0}
     - target: {fileID: 4164208016154066278, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
       propertyPath: m_LocalScale.y
-      value: 14.690704
+      value: 18.180569
       objectReference: {fileID: 0}
     - target: {fileID: 4164208016154066278, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
       propertyPath: m_LocalScale.z
-      value: 14.69071
+      value: 18.180574
       objectReference: {fileID: 0}
     - target: {fileID: 4164208016154066278, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
       propertyPath: m_LocalPosition.x
@@ -138,11 +158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4164208016154066278, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 4164208016154066278, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.04838
+      value: -1.373
       objectReference: {fileID: 0}
     - target: {fileID: 4164208016154066278, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
       propertyPath: m_LocalRotation.w
@@ -172,6 +192,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7500028490406816248, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500028490406816248, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500028490406816248, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500028490406816248, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500028490406816248, guid: 848b1ef6dcf75d8488ab82668d150080, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -196,15 +236,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5208168180029631819, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
       propertyPath: m_LocalScale.x
-      value: 15.382037
+      value: 19.03613
       objectReference: {fileID: 0}
     - target: {fileID: 5208168180029631819, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
       propertyPath: m_LocalScale.y
-      value: 30.110052
+      value: 37.262875
       objectReference: {fileID: 0}
     - target: {fileID: 5208168180029631819, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
       propertyPath: m_LocalScale.z
-      value: 30.110052
+      value: 37.262875
       objectReference: {fileID: 0}
     - target: {fileID: 5208168180029631819, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
       propertyPath: m_LocalPosition.x
@@ -212,11 +252,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5208168180029631819, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 5208168180029631819, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.030741
+      value: -1.2751
       objectReference: {fileID: 0}
     - target: {fileID: 5208168180029631819, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
       propertyPath: m_LocalRotation.w
@@ -245,6 +285,26 @@ PrefabInstance:
     - target: {fileID: 5208168180029631819, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511328175643639594, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511328175643639594, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511328175643639594, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511328175643639594, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511328175643639594, guid: 1bd85431f1681814ab452eb9d4e32556, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

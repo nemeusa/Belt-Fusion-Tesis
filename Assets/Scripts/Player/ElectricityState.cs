@@ -131,7 +131,7 @@ public class ElectricityState : State
         foreach (var p in _player.dashParticules)
         {
 
-            var d = GameObject.Instantiate(p, _player.transform.position, Quaternion.identity);
+            var d = GameObject.Instantiate(p, _player.transform.position, Quaternion.identity, _player.transform);
             d.transform.forward = _direccionDash;
             GameObject.Destroy(d, 2);
         }
