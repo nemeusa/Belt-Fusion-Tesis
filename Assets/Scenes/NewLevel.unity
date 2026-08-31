@@ -80542,6 +80542,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
   m_PrefabInstance: {fileID: 81408456}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &595682001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595682002}
+  m_Layer: 0
+  m_Name: Falling Snow Boxes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &595682002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595682001}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.613302, y: -3.3563752, z: -835.7876}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 829757013}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &596162238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
@@ -106795,7 +106826,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4296189451216387930, guid: 98543b778494c4f41a35162fc170cf1e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1649379930}
   m_SourcePrefab: {fileID: 100100000, guid: 98543b778494c4f41a35162fc170cf1e, type: 3}
 --- !u!1001 &786417591
 PrefabInstance:
@@ -111758,6 +111792,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 595682002}
   - {fileID: 1528733811}
   - {fileID: 1668263875}
   - {fileID: 82528019}
@@ -217258,6 +217293,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
+--- !u!1 &1649379925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4296189451216387930, guid: 98543b778494c4f41a35162fc170cf1e, type: 3}
+  m_PrefabInstance: {fileID: 786081956}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1649379930
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649379925}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4127149160579885356, guid: e065454c6c0e820438c29618c4e1d1a0, type: 3}
 --- !u!4 &1649520159 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfd752c5787d6ef47b9478a0fc8fb533, type: 3}
@@ -230739,8 +230801,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 829757013}
     m_Modifications:
     - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
+      propertyPath: lengthInSec
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 30.9
+      value: 200.5
       objectReference: {fileID: 0}
     - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
       propertyPath: ShapeModule.m_Scale.y
@@ -230751,6 +230817,14 @@ PrefabInstance:
       value: 33.9
       objectReference: {fileID: 0}
     - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
+      propertyPath: RotationModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
       propertyPath: VelocityModule.y.scalar
       value: -3
       objectReference: {fileID: 0}
@@ -230759,8 +230833,40 @@ PrefabInstance:
       value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 30
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 6.283185
+      objectReference: {fileID: 0}
+    - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
+      propertyPath: InitialModule.startRotation.minScalar
+      value: -6.283185
+      objectReference: {fileID: 0}
+    - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
+      propertyPath: InitialModule.startRotation.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 412145715561961211, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2479905285625123309, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
       propertyPath: m_Name
@@ -230813,7 +230919,7 @@ PrefabInstance:
     - target: {fileID: 7303100440123764105, guid: af4204c8a0bdf55469a1cbf427624bac, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 1802143145144a5458e219a37fd7c398, type: 2}
+      objectReference: {fileID: 2100000, guid: adc3e38cab9c5f042a1cfd9da44ef6c3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
