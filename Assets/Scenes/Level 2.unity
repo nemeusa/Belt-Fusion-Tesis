@@ -24654,7 +24654,9 @@ MonoBehaviour:
   isIntoMeteorite: 0
   winGame: 0
   invisibleInDash: 0
-  canChangeIceElement: 0
+  canIceElement: 0
+  canFireElemen: 0
+  canElectricityElemen: 0
   isWallRunning: 0
   robot: {fileID: 0}
   boostCanvasAni: {fileID: 0}
@@ -465168,6 +465170,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 832575518}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: canFireElemen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: countMovsText
       value: 
       objectReference: {fileID: 1327178073}
@@ -465203,6 +465209,10 @@ PrefabInstance:
       propertyPath: meteoriteCamTarget
       value: 
       objectReference: {fileID: 1611291746}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: canElectricityElemen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: 'fireMat.Array.data[1]'
       value: 
