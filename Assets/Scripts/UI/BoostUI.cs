@@ -5,14 +5,17 @@ public class BoostUI : MonoBehaviour
 {
     private Image _boostImg;
     [SerializeField] bool _isTurnOn;
+    private Animator _animator;
 
     private void Awake()
     {
         _boostImg = GetComponent<Image>();
+        _animator = GetComponent<Animator>();
     }
     public void ActiveBoost()
     {
         _boostImg.enabled = true;
+        _animator.SetTrigger("IsActive");
         _isTurnOn = true;
     }
 
