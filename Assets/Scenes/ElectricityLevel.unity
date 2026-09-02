@@ -6668,6 +6668,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb84777bdaf4e34aae168ff746a8403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1906817197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068707681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce3b32acab4f4fc4590ddf68100517bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pieIzquierdo: {fileID: 0}
+  pieDerecho: {fileID: 0}
+  particulasTierra: {fileID: 0}
+  particulasHielo: {fileID: 0}
+  particulasPiedra: {fileID: 0}
+  particulasDefault: {fileID: 0}
+  distanciaRaycast: 0.5
+  capaSuelo:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &1909742339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4045929410589563387, guid: 052c7124e6c721b4e8d1a26a0a92c472, type: 3}
@@ -6992,7 +7014,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 74009314133705182, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1906817197}
   m_SourcePrefab: {fileID: 100100000, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
 --- !u!1 &1977996160
 GameObject:

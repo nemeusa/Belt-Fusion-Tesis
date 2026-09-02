@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     public GameObject meshFather;
     public Vector3 meshFatherDefaultPos;
     [Header("Controls")]
-    [SerializeField, Range(0f, 1f)] float driftMagnitude = 0.5f; 
+    [SerializeField, Range(0f, 1f)] public float driftMagnitude = 0.5f; 
 
 
     private PaniniProjection panini;
