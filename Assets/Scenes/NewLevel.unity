@@ -265740,6 +265740,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1185491462867667166, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185491462867667166, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605868817819701207, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605868817819701207, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[4].m_Name
+      value: AngleX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605868817819701207, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[4].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2343237751224706034, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.43
@@ -265778,6 +265798,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2343237751224706034, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641725223386865131, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3324844897551727222, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
@@ -265838,8 +265862,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: dashParticules.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: 'fbxDashList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1972434725}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: 'dashParticules.Array.data[1]'
       value: 
@@ -265872,6 +265900,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5149170164405013014, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_InitialEventName
+      value: OnStop
+      objectReference: {fileID: 0}
+    - target: {fileID: 5149170164405013014, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_InitialEventNameOverriden
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5149436954163780861, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: playOnAwake
       value: 1
@@ -265892,6 +265928,10 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8308467835315042666, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9047557500143246058, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: playOnAwake
       value: 1
@@ -265910,6 +265950,11 @@ PrefabInstance:
       addedObject: {fileID: 151992037}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+--- !u!2083052967 &1972434725 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 1605868817819701207, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+  m_PrefabInstance: {fileID: 1972434724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1973436532
 PrefabInstance:
   m_ObjectHideFlags: 0
