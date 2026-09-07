@@ -3350,6 +3350,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b049725d1d6628044ae3acf63a1359c3, type: 3}
+--- !u!2083052967 &797818237 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 1605868817819701207, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+  m_PrefabInstance: {fileID: 1972434724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &824374463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8972,6 +8977,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1605868817819701207, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Overridden
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2343237751224706034, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.7
@@ -9010,6 +9019,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2343237751224706034, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641725223386865131, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
@@ -9060,6 +9073,30 @@ PrefabInstance:
       propertyPath: 'iceMatEye.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 6b15174c5d68abd42a7848b044d896ba, type: 2}
+    - target: {fileID: 3524568294306139675, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: 'fbxDashList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 797818237}
+    - target: {fileID: 7501472510308360732, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.191182
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501472510308360732, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.191182
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501472510308360732, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -4.191182
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501472510308360732, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308467835315042666, guid: 7434baa4bb672114d96891f9b1764683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
