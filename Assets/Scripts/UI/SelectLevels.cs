@@ -13,6 +13,8 @@ public class SelectLevels : MonoBehaviour
 
     [SerializeField] TMP_Text bestTimeLevelOne;
     [SerializeField] TMP_Text bestTimeLevelTwo;
+    [SerializeField] TMP_Text bestTimeLevelThree;
+    [SerializeField] TMP_Text bestTimeLevelFour;
 
     private void OnEnable()
     {
@@ -32,6 +34,10 @@ public class SelectLevels : MonoBehaviour
         bestTimeLevelOne.text = $"BEST RECORD: {CreateCounter(PlayerPrefs.GetFloat($"BestTimeLevel1"))}";
         if (PlayerPrefs.HasKey("BestTimeLevel2"))
         bestTimeLevelTwo.text = $"BEST RECORD: {CreateCounter(PlayerPrefs.GetFloat($"BestTimeLevel2"))}";
+        if (PlayerPrefs.HasKey("BestTimeElectricityLevel"))
+            bestTimeLevelThree.text = $"BEST RECORD: {CreateCounter(PlayerPrefs.GetFloat($"BestTimeElectricityLevel"))}";
+        if (PlayerPrefs.HasKey("BestTimeFireLevel"))
+            bestTimeLevelFour.text = $"BEST RECORD: {CreateCounter(PlayerPrefs.GetFloat($"BestTimeFireLevel"))}";
 
         //PlayerPrefs.GetString($"BestTime{currentLevel}", GameManager.instance.counterGame);
     }

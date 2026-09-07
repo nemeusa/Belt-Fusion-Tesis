@@ -7,6 +7,7 @@ public class TrapAxe : TimeTrap
     [SerializeField] float speed = 2f;
     [SerializeField] float angleLimit = 90f;
     [SerializeField] float pauseDuration = 1f;
+    [SerializeField] bool invertMove;
 
     AudioSource audioSourse;
 
@@ -25,12 +26,14 @@ public class TrapAxe : TimeTrap
     {
         while (true)
         {
-            yield return StartCoroutine(RotateToAngle(angleLimit));
+            if (!invertMove) yield return StartCoroutine(RotateToAngle(angleLimit));
+            else yield return StartCoroutine(RotateToAngle(-angleLimit));
 
 
             yield return new WaitForSeconds(currentPause);
 
-            yield return StartCoroutine(RotateToAngle(-angleLimit));
+            if (!invertMove) yield return StartCoroutine(RotateToAngle(-angleLimit));
+            else yield return StartCoroutine(RotateToAngle(angleLimit));
 
             yield return new WaitForSeconds(currentPause);
         }
