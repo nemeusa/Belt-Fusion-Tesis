@@ -1787,6 +1787,8 @@ MonoBehaviour:
   _offFireSimbol: {fileID: 4169613449522726331}
   _offEnergySimbol: {fileID: 8904699339972859208}
   _offIceSimbol: {fileID: 3398708785302533800}
+  diferentSizeTextCounter: 0.05
+  spaceCharacterTextCounter: 1.5
   seconds: 0
   counterText: {fileID: 3267395439765449614}
 --- !u!223 &1291233300209878521
@@ -4679,16 +4681,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5552244930961919100}
-  m_LocalRotation: {x: -0, y: -0, z: 0.6152728, w: 0.7883142}
+  m_LocalRotation: {x: 0, y: 0, z: 0.63675135, w: 0.7710692}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.46202248, y: 3.3734298, z: 3.3734298}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3902844260819887877}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 75.943}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 79.1}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -254, y: -179.4}
+  m_AnchoredPosition: {x: -254, y: -165.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3770261425170813712
@@ -4698,7 +4700,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5552244930961919100}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!114 &6995914467086253111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4713,9 +4715,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5774,13 +5776,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6629311643197981974}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.008464695, w: 0.9999642}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0628104, y: 1.0628104, z: 1.0628104}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3902844260819887877}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.97}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -340, y: -109}
@@ -5841,8 +5843,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 63
+  m_fontSizeBase: 63
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
