@@ -4518,6 +4518,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 439133688591494428, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
+      propertyPath: m_Name
+      value: Volcan
+      objectReference: {fileID: 0}
     - target: {fileID: 744398356783797585, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.3
@@ -4558,6 +4562,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2096673787264666825, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5924b054d3ad76a498eb827785ee1f3a, type: 2}
     - target: {fileID: 8179900478907288283, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
       propertyPath: m_Name
       value: Trap fire (2)
@@ -5179,6 +5187,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 439133688591494428, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
+      propertyPath: m_Name
+      value: Volcan
+      objectReference: {fileID: 0}
     - target: {fileID: 744398356783797585, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.7
@@ -5219,6 +5231,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2096673787264666825, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5924b054d3ad76a498eb827785ee1f3a, type: 2}
     - target: {fileID: 8179900478907288283, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
       propertyPath: m_Name
       value: Trap fire (1)
@@ -7411,6 +7427,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 439133688591494428, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
+      propertyPath: m_Name
+      value: Volcan
+      objectReference: {fileID: 0}
     - target: {fileID: 744398356783797585, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.7
@@ -7451,6 +7471,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2096673787264666825, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5924b054d3ad76a498eb827785ee1f3a, type: 2}
     - target: {fileID: 8179900478907288283, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
       propertyPath: m_Name
       value: Trap fire
@@ -8526,7 +8550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fa840e86ad2770642b42c68469993c80, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.4
+      value: -9.400002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fa840e86ad2770642b42c68469993c80, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8538,7 +8562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fa840e86ad2770642b42c68469993c80, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fa840e86ad2770642b42c68469993c80, type: 3}
       propertyPath: m_LocalRotation.y
@@ -8575,8 +8599,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa840e86ad2770642b42c68469993c80, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1556727753}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa840e86ad2770642b42c68469993c80, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1556727754}
   m_SourcePrefab: {fileID: 100100000, guid: fa840e86ad2770642b42c68469993c80, type: 3}
+--- !u!1 &1422559908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa840e86ad2770642b42c68469993c80, type: 3}
+  m_PrefabInstance: {fileID: 1422559907}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1425405275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9917,6 +9952,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a67866ce8e9ae44ca9b0e9ad1691587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1556727753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422559908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c34aaa2dd1558ba44b5b8dbc9bb50ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
+  deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
+  deathDuration: 0.2
+--- !u!65 &1556727754
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422559908}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.9999999, y: 0.00000008742277, z: 1.9999999}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1571468743
 GameObject:
   m_ObjectHideFlags: 0
@@ -13475,6 +13546,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 439133688591494428, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
+      propertyPath: m_Name
+      value: Volcan
+      objectReference: {fileID: 0}
     - target: {fileID: 744398356783797585, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.5
@@ -13515,6 +13590,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2096673787264666825, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5924b054d3ad76a498eb827785ee1f3a, type: 2}
     - target: {fileID: 8179900478907288283, guid: 1cdecd64016474a43b60ddbb40201fc9, type: 3}
       propertyPath: m_Name
       value: Trap fire (3)
