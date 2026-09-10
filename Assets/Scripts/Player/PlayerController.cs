@@ -45,14 +45,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject meshChildren;
     [SerializeField] GameObject[] meshEyes;
     public Animator animator;
-    //public GameObject fireAura;
-    //public GameObject energyAura;
     public Volume globalVolume;
     public AudioSource audioSource;
     public CinemachineCamera jumpCamTarget;
     public CinemachineCamera meteoriteCamTarget;
     public GameObject meshFather;
     public Vector3 meshFatherDefaultPos;
+    public GameObject windWalk;
+
     [Header("Controls")]
     [SerializeField, Range(0f, 1f)] public float driftMagnitude = 0.5f; 
 
@@ -189,8 +189,17 @@ public class PlayerController : MonoBehaviour
             {
                 if (!dontMovePlayer)
                 {
-                    if (moveInput.magnitude > driftMagnitude) animator.SetFloat("Speed", moveInput.magnitude);
-                    else animator.SetFloat("Speed", 0);
+                    if (moveInput.magnitude > driftMagnitude)
+                    {
+                        animator.SetFloat("Speed", moveInput.magnitude);
+                        windWalk.SetActive(true);
+                    }
+                    else
+                    {
+                        animator.SetFloat("Speed", 0);
+                        windWalk.SetActive(false);
+
+                    }
                 }
                 animator.SetBool("IsGrounded", coyoteCounter > 0);
             }

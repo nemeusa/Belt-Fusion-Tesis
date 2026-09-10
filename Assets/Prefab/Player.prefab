@@ -82,6 +82,7 @@ MonoBehaviour:
   meteoriteCamTarget: {fileID: 0}
   meshFather: {fileID: 426939555889131708}
   meshFatherDefaultPos: {x: 0, y: 0, z: 0}
+  windWalk: {fileID: 6485436945015220579}
   driftMagnitude: 0.271
   changeElementVFX:
   - {fileID: 1020108686180432145}
@@ -150,8 +151,8 @@ MonoBehaviour:
   - {fileID: 5472123759501672961}
   - {fileID: 813643735991369954}
   - {fileID: 1601024107478214464}
-  - {fileID: 1143952669705480009}
   - {fileID: 8717719794185548143}
+  - {fileID: 1143952669705480009}
   - {fileID: 2380525121509737951}
   - {fileID: 4809110871167649600}
   - {fileID: 6909172104114600945}
@@ -171,7 +172,7 @@ MonoBehaviour:
   fbxDashList:
   - {fileID: 6722189782409971690}
   - {fileID: 171567912243803650}
-  - {fileID: 0}
+  - {fileID: 1605868817819701207}
   countMovs: 0
   dashCount: 0
   lookInput: {x: 0, y: 0}
@@ -11460,7 +11461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6335093591266446255
 Transform:
   m_ObjectHideFlags: 0
@@ -52521,6 +52522,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4560223208496343697, guid: f5442c2b1e7723d41a1295266b021d6f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.191182
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560223208496343697, guid: f5442c2b1e7723d41a1295266b021d6f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.19118
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560223208496343697, guid: f5442c2b1e7723d41a1295266b021d6f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -4.19118
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560223208496343697, guid: f5442c2b1e7723d41a1295266b021d6f, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4576223879605820622, guid: f5442c2b1e7723d41a1295266b021d6f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.04321241
@@ -52547,6 +52564,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691218600418477914, guid: f5442c2b1e7723d41a1295266b021d6f, type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[8].m_Overridden
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691218600418477914, guid: f5442c2b1e7723d41a1295266b021d6f, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.x
+      value: 0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691218600418477914, guid: f5442c2b1e7723d41a1295266b021d6f, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Overridden
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5470920811654060729, guid: f5442c2b1e7723d41a1295266b021d6f, type: 3}
@@ -52609,6 +52634,11 @@ PrefabInstance:
 --- !u!2083052967 &171567912243803650 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 6139030004228865679, guid: f5442c2b1e7723d41a1295266b021d6f, type: 3}
+  m_PrefabInstance: {fileID: 6292583490045282445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &1605868817819701207 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 4691218600418477914, guid: f5442c2b1e7723d41a1295266b021d6f, type: 3}
   m_PrefabInstance: {fileID: 6292583490045282445}
   m_PrefabAsset: {fileID: 0}
 --- !u!2083052967 &6722189782409971690 stripped
