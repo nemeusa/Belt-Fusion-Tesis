@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
     public Material[] fMat, electricityMat, fireMat, iceMat;
     public Material[] fMatEye, electricityMatEye, fireMatEye, iceMatEye;
     public GameObject[] fMatMeshes, electricityMeshes, fireMeshes, iceMeshes;
+    public GameObject energyPowerEffects;
 
 
 
@@ -74,6 +75,7 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
     public GameObject explosionJumpPrefab;
     public bool isDashing;
+    public bool energyPower; //energia para conectarse a wallruns y romper cosas electricas
     public float dashSpeed = 20f;
     public float dashTime = 0.2f;
     public float dashCooldown = 1f;

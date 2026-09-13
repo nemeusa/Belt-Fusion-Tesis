@@ -77,7 +77,7 @@ public class WallRun : MonoBehaviour
     {
         if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity) || !canDetect || playerCode.isDeath) return;
 
-        if (!playerCode.isDashing) return;
+        if (!playerCode.energyPower) return;
 
         if (other.TryGetComponent<WallData>(out WallData wall))
         {
@@ -92,7 +92,7 @@ public class WallRun : MonoBehaviour
     {
         if (!playerCode._fsm.WhatCurrentState(TypeFSM.Electricity) || inUse || !canDetect || playerCode.isDeath) return;
 
-        if (!playerCode.isDashing) return;
+        if (!playerCode.energyPower) return;
 
         if (other.TryGetComponent<WallData>(out WallData wall))
         {

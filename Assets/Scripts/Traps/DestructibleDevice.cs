@@ -72,7 +72,7 @@ public class DestructibleDevice : MonoBehaviour
 
             case TypeFSM.Electricity:
                 if (other.gameObject.GetComponent<PlayerController>() != null)
-                    return other.gameObject.GetComponent<PlayerController>().isDashing;
+                    return other.gameObject.GetComponent<PlayerController>().energyPower;
                 else return false;
 
             default:
@@ -86,7 +86,7 @@ public class DestructibleDevice : MonoBehaviour
 
         if (other.GetComponent<FireBall>() != null) return true;
 
-        else if (other.gameObject.GetComponent<PlayerController>() != null) return other.gameObject.GetComponent<PlayerController>().isDashing;
+        else if (other.gameObject.GetComponent<PlayerController>() != null) return other.gameObject.GetComponent<PlayerController>().energyPower;
 
         else return false;
     }

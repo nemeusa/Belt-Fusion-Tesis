@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class ElectricityState : State
@@ -32,6 +31,7 @@ public class ElectricityState : State
     public void OnExit()
     {
         //_player.energyAura.SetActive(false);
+        _player.energyPower = false;
         _player.OnDashPressed -= Dash;
         _player.meshColors.color = Color.yellow;
         _player.isDashing = false;
@@ -60,6 +60,7 @@ public class ElectricityState : State
 
     IEnumerator ExecuteDash()
     {
+        _player.StartCoroutine(EnergyPower());
         _player.isDashing = true;
         _player.CountMoves(1);
 
@@ -108,7 +109,7 @@ public class ElectricityState : State
         else
         {
             if (_player.invisibleInDash)
-            _player.meshColors.color = Color.yellow;
+                _player.meshColors.color = Color.yellow;
 
             foreach (var d in _player.fbxDashList) d.SendEvent("OnStop");
         }
@@ -135,5 +136,19 @@ public class ElectricityState : State
             d.transform.forward = _direccionDash;
             GameObject.Destroy(d, 2);
         }
+    }
+
+    IEnumerator EnergyPower()
+    {
+        _player.energyPower = true;
+        _player.energyPowerEffects.SetActive(true);
+        yield return new WaitForSeconds(_player.dashTime + 0.3f);
+        if (!_player.isDashing)
+        {
+            _player.energyPowerEffects.SetActive(false);
+            _player.energyPower = false;
+
+        }
+
     }
 }

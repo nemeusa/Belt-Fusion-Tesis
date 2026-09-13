@@ -29,7 +29,7 @@ public class EnergyKick : MonoBehaviour
         {
             if (player.isDeath) return;
 
-            if(player.isDashing)
+            if(player.energyPower)
             {
                 if (player.globalVolume.profile.TryGet<Vignette>(out var vignetteTmp))
                     vignette = vignetteTmp;
