@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     [Header("UI del Menú")]
     public GameObject panelPausaUI;
     public GameObject primerBotonPausa; // El botón "Reanudar"
+    [SerializeField] Canvas canvasConfirmation;
 
     public bool juegoPausado = false;
     [SerializeField] PlayerController player;
@@ -88,6 +89,7 @@ public class PauseMenu : MonoBehaviour
     {
         juegoPausado = false;
         panelPausaUI.SetActive(false);
+        canvasConfirmation.enabled = false;
 
         // Devolvemos el tiempo a la normalidad
         Time.timeScale = 1f;

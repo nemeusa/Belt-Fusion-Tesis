@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 3800267643722025407}
   - component: {fileID: 9189371446676258319}
   - component: {fileID: 7690112717674927004}
+  - component: {fileID: 7713741074533580372}
   m_Layer: 5
   m_Name: Menu Button
   m_TagString: Untagged
@@ -392,10 +393,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2836167074087504910}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: NextScene
-        m_Mode: 5
+      - m_Target: {fileID: 7713741074533580372}
+        m_TargetAssemblyTypeName: ActivePopup, Assembly-CSharp
+        m_MethodName: ShowConfirmation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -404,6 +405,25 @@ MonoBehaviour:
           m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7713741074533580372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104453166880039049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e193151303daed4992fe0268425e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: seguro que quieres hacer esto?
+  message: Volver al menu principal?
+  details: Despues de una fuerte tormenta flin y debbie van en busca del nuevo elemento
+  nextSceneName: MainMenu
+  selectLastButton: {fileID: 1104453166880039049}
+  selectFirstButton: {fileID: 0}
+  exitGame: 0
 --- !u!1 &1575836949163334377
 GameObject:
   m_ObjectHideFlags: 0
