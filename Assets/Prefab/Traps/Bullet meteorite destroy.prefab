@@ -112,9 +112,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235262168709307762}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00000021193, y: 0.000002967, z: 0.000013563}
-  m_LocalScale: {x: 1.6503, y: 4.3733, z: 0.61698}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000013563369}
+  m_LocalScale: {x: 1.6503, y: 1.2725506, z: 0.61698}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6649099618670599745}
@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: -7652894454800598114}
   - component: {fileID: 3939272049206903563}
   - component: {fileID: 7231045261729168766}
+  - component: {fileID: -4911438942930820453}
   m_Layer: 0
   m_Name: Bullet meteorite destroy
   m_TagString: Untagged
@@ -282,11 +283,23 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.6270025, y: 4.5501413, z: 1}
-  m_Center: {x: 0.0176541, y: -0.096914925, z: 0}
+  m_Size: {x: 1.36, y: 0.91, z: 1}
+  m_Center: {x: 0.0176541, y: 0.04, z: 0}
+--- !u!114 &-4911438942930820453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428292339670564431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b01d3995f93c9e498c6ad7ad0dedea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

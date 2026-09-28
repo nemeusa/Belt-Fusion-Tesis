@@ -16,6 +16,8 @@ public class MeteoriteTrap : MonoBehaviour
     private float nextTimeToFire = 0f;
     private bool useTypeA = true;      // Controla la alternancia
 
+    private bool playerIsNear;
+
     void Update()
     {
         // Dispara automáticamente según el fireRate
@@ -28,7 +30,7 @@ public class MeteoriteTrap : MonoBehaviour
 
     void Shoot()
     {
-        if (spawnPoint == null) return;
+        if (spawnPoint == null || playerIsNear) return;
 
         int countBullets = 0;
 
@@ -59,5 +61,22 @@ public class MeteoriteTrap : MonoBehaviour
         }
         // 4. Alternar el estado para el próximo disparo
         useTypeA = !useTypeA;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<PlayerController>() != null) playerIsNear = true;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<PlayerController>() != null) playerIsNear = true;
+        else playerIsNear = false;
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<PlayerController>() != null) playerIsNear = false;
     }
 }
