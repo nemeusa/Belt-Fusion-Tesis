@@ -82,6 +82,9 @@
             "m_Id": "a5a39aa0005a435aab4e6081911dc91c"
         },
         {
+            "m_Id": "2f631e5d8eb04b5699d359133001e101"
+        },
+        {
             "m_Id": "150445d3386f4c5094c7ed767b3323a7"
         },
         {
@@ -110,9 +113,6 @@
         },
         {
             "m_Id": "eda6464030fd4fbbac98816c17ed6047"
-        },
-        {
-            "m_Id": "d56a292e7844423899f595b4d94379ce"
         }
     ],
     "m_GroupDatas": [
@@ -436,6 +436,9 @@
                 "m_Id": "a5a39aa0005a435aab4e6081911dc91c"
             },
             {
+                "m_Id": "2f631e5d8eb04b5699d359133001e101"
+            },
+            {
                 "m_Id": "7a637c46df9c46fcbbc47251739de64d"
             },
             {
@@ -449,9 +452,6 @@
             },
             {
                 "m_Id": "e0302002cd2a4e45b7637ced2fb99ac0"
-            },
-            {
-                "m_Id": "d56a292e7844423899f595b4d94379ce"
             }
         ]
     },
@@ -940,6 +940,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "24a4a05a7f5c4f5597438343e8937559",
+    "m_Id": 0,
+    "m_DisplayName": "Alpha Clip Threshold",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "AlphaClipThreshold",
+    "m_StageCapability": 2,
+    "m_Value": 0.5,
+    "m_DefaultValue": 0.5,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.MultiplyNode",
     "m_ObjectId": "292e833d64a44667b69b89130b869047",
     "m_Group": {
@@ -996,6 +1011,40 @@
     "m_Labels": [
         "Y"
     ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "2f631e5d8eb04b5699d359133001e101",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.AlphaClipThreshold",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "24a4a05a7f5c4f5597438343e8937559"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.AlphaClipThreshold"
 }
 
 {
@@ -2064,21 +2113,6 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "a6fc70cded0b44c49b7b6d85fe6f7542",
-    "m_Id": 0,
-    "m_DisplayName": "Alpha Clip Threshold",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "AlphaClipThreshold",
-    "m_StageCapability": 2,
-    "m_Value": 0.5,
-    "m_DefaultValue": 0.5,
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "af78c365780f406ca45dcecf9fe3770b",
     "m_Id": 0,
     "m_DisplayName": "Alpha",
@@ -2552,45 +2586,11 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
-    "m_ObjectId": "d56a292e7844423899f595b4d94379ce",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "SurfaceDescription.AlphaClipThreshold",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 0.0,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "a6fc70cded0b44c49b7b6d85fe6f7542"
-        }
-    ],
-    "synonyms": [],
-    "m_Precision": 0,
-    "m_PreviewExpanded": true,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_SerializedDescriptor": "SurfaceDescription.AlphaClipThreshold"
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.GroupData",
     "m_ObjectId": "d5bed3802b174e42af7a2e6646c2e34c",
     "m_Title": "Pixel Cutoff",
     "m_Position": {
-        "x": -1645.9998779296875,
+        "x": -1646.0,
         "y": 984.0
     }
 }
