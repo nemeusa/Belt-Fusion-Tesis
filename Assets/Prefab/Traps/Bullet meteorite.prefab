@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34aaa2dd1558ba44b5b8dbc9bb50ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathAudio: {fileID: 0}
-  deathEffects: {fileID: 0}
+  deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
+  deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
   deathDuration: 0.2
 --- !u!114 &-1212012888556754913
 MonoBehaviour:
@@ -230,7 +230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5236003114750143238
 Transform:
   m_ObjectHideFlags: 0
@@ -359,10 +359,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6906352945116191130, guid: 909a9bb954a3c7540a258e6bd2e6232c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2cec6495b7024634c985aa3070bbda66, type: 2}
     - target: {fileID: 919132149155446097, guid: 909a9bb954a3c7540a258e6bd2e6232c, type: 3}
       propertyPath: m_Name
       value: Bala Meteorito
       objectReference: {fileID: 0}
+    - target: {fileID: 1751954315047328951, guid: 909a9bb954a3c7540a258e6bd2e6232c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 03f60274b975abd4ea7b62987b995bc0, type: 2}
+    - target: {fileID: 7402665292349001251, guid: 909a9bb954a3c7540a258e6bd2e6232c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 03f60274b975abd4ea7b62987b995bc0, type: 2}
+    - target: {fileID: 8332054467077294377, guid: 909a9bb954a3c7540a258e6bd2e6232c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 03f60274b975abd4ea7b62987b995bc0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
