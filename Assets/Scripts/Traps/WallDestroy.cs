@@ -2,7 +2,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallDestroy : MonoBehaviour
+public class WallDestroy : MonoBehaviour, DashInteract
 {
 
     [SerializeField] List<Transform> piedras = new List<Transform>();
@@ -54,6 +54,20 @@ public class WallDestroy : MonoBehaviour
         }
     }
 
+    public void ExcuteAction(Collider target)
+    {
+        if (paredRompida) return;
+
+
+        if (lavaObj != null) lavaObj.SetActive(false);
+
+        Vector3 direccionEmpuje = target.transform.forward;
+        RomperPared(direccionEmpuje);
+
+        act = false;
+
+    }
+
     private void IniciarTemblorPiedras()
     {
         DetenerTemblor();
@@ -71,20 +85,20 @@ public class WallDestroy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (paredRompida) return;
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (paredRompida) return;
 
-        if (other.GetComponent<PlayerController>() != null)
-        {
-            if (lavaObj != null) lavaObj.SetActive(false);
+    //    if (other.GetComponent<PlayerController>() != null)
+    //    {
+    //        if (lavaObj != null) lavaObj.SetActive(false);
 
-            Vector3 direccionEmpuje = other.transform.forward;
-            RomperPared(direccionEmpuje);
+    //        Vector3 direccionEmpuje = other.transform.forward;
+    //        RomperPared(direccionEmpuje);
 
-            act = false;
-        }
-    }
+    //        act = false;
+    //    }
+    //}
 
     public void RomperPared(Vector3 direccionEmpuje)
     {

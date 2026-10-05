@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3060639976250848968}
   - component: {fileID: 7627344394936111188}
   - component: {fileID: 2213522416365272497}
+  - component: {fileID: -7533438196750840070}
   m_Layer: 0
   m_Name: Wall lava destroy
   m_TagString: Untagged
@@ -174,6 +175,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1642.49, y: 1266.1, z: 238.67}
   m_Center: {x: 0, y: 0, z: -19.2}
+--- !u!114 &-7533438196750840070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764026856404360443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0cf6d3d6368ea45a69757d8a7fb99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trampElement: 0
+  useAnyElements: 0
+  boost: 1
+  desObj: {fileID: 3547154662903421510}
+  destoyParticles: {fileID: 0}
+  spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!1 &2743870748692139510
 GameObject:
   m_ObjectHideFlags: 0

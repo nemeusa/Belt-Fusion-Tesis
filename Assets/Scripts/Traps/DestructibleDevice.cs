@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class DestructibleDevice : MonoBehaviour
 {
-    [Header ("General")]
+    [Header("General")]
     public TypeFSM trampElement;
     [SerializeField] bool useAnyElements;
     [SerializeField] int boost = 1;
     [SerializeField] GameObject desObj;
 
-    [Header ("Extra effects")]
+    [Header("Extra effects")]
     [SerializeField] ParticleSystem destoyParticles;
     [SerializeField] Transform spawnParticles;
     [SerializeField] AudioClip destroySound;
@@ -20,6 +20,8 @@ public class DestructibleDevice : MonoBehaviour
     {
         if (useAnyElements) trampElement = TypeFSM.Default;
         if (spawnParticles == null) spawnParticles = transform;
+
+
 
     }
 
@@ -41,9 +43,22 @@ public class DestructibleDevice : MonoBehaviour
         {
 
             desObj.SetActive(false);
-            DetElement(collision);
+            if (gameObject.TryGetComponent<DashInteract>(out var d))
+            {
+                d.ExcuteAction(collision);
+
+            }
+            else
+            {
+                Debug.Log("no funciono :(");
+
+            }
             act = false;
             gameObject.GetComponent<Collider>().enabled = false;
+
+
+
+            //EXTRA
             if (destoyParticles != null)
             {
                 var p = Instantiate(destoyParticles, spawnParticles.position + Vector3.up, Quaternion.identity);
@@ -56,10 +71,33 @@ public class DestructibleDevice : MonoBehaviour
                 aniController.SetBool("Destroy", true);
                 Debug.Log("hizo la animacion");
             }
+            DetElement(collision);
         }
+        else if (collision.GetComponent<PlayerController>() != null)
+        {
+            if (gameObject.TryGetComponent<DashInteract>(out var d))
+            {
+                d.DontExecute(collision);
+
+            }
+            else
+            {
+                Debug.Log("no funciono :(");
+
+            }
+        }
+        else
+        {
+
+            //if (TryGetComponent<DestroyWhitCollision>(out var des))
+            //{
+            //    des.ActiveDestroy(collision);
+            //}
+        }
+
     }
 
-    
+
 
     private bool ChooseElement(Collider other)
     {
@@ -97,7 +135,7 @@ public class DestructibleDevice : MonoBehaviour
         {
             case TypeFSM.Fire:
                 other.gameObject.GetComponent<FireBall>().player.AddBoost(boost);
-                break;  
+                break;
 
             case TypeFSM.Electricity:
                 other.gameObject.GetComponent<PlayerController>().AddBoost(boost);
