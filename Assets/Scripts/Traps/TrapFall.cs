@@ -22,6 +22,10 @@ public class TrapFall : MonoBehaviour
         {
             transform.Translate(Vector3.down * speedFall * Time.deltaTime);
         }
+
+        if (CheckpointManager.Instance.respawn)
+            ResetPlatform();
+
     }
 
     public IEnumerator DownFall()
@@ -39,7 +43,7 @@ public class TrapFall : MonoBehaviour
         falling = true;
 
         yield return new WaitForSeconds(respawnTime);
-        ResetPlatform();
+        //ResetPlatform();
     }
 
     void ResetPlatform()
