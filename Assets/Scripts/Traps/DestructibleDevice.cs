@@ -42,7 +42,7 @@ public class DestructibleDevice : MonoBehaviour
         if ((ChooseElement(collision) || SearchAllElements(collision)) && desObj && !act)
         {
 
-            desObj.SetActive(false);
+                desObj.SetActive(false);
             if (gameObject.TryGetComponent<DashInteract>(out var d))
             {
                 d.ExcuteAction(collision);
@@ -50,8 +50,6 @@ public class DestructibleDevice : MonoBehaviour
             }
             else
             {
-                Debug.Log("no funciono :(");
-
             }
             act = false;
             gameObject.GetComponent<Collider>().enabled = false;

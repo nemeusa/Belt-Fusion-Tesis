@@ -136,11 +136,11 @@ Transform:
   m_GameObject: {fileID: 759519146251751709}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7199999, y: 0.7099991, z: -5.870014}
-  m_LocalScale: {x: 3.5279002, y: 3.5279, z: 3.5279002}
+  m_LocalPosition: {x: 0.72000766, y: 0.7099991, z: -26.070024}
+  m_LocalScale: {x: 3.5279005, y: 3.5279, z: 3.5279005}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2567612187214776460}
+  m_Father: {fileID: 3033049596577538085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3877592594201079606
 MeshFilter:
@@ -334,8 +334,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2426502584304637266}
   - component: {fileID: 4318276171509423946}
-  - component: {fileID: 4101651936520850942}
-  - component: {fileID: 4318563745751152352}
   m_Layer: 3
   m_Name: Meteorito trampa
   m_TagString: Untagged
@@ -379,47 +377,39 @@ MonoBehaviour:
   bulletForce: 40
   bulletTypeA: {fileID: 7737331244065559208, guid: c18808592a88827489016c4063165581, type: 3}
   bulletTypeB: {fileID: 1428292339670564431, guid: ea0795e6563105144bc6979720756384, type: 3}
---- !u!65 &4101651936520850942
-BoxCollider:
+--- !u!1 &1110968456753946816
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925472507861852618}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 25.8509, y: 10.055183, z: 7.8989677}
-  m_Center: {x: 0.46288776, y: 1.6132164, z: -3.4495533}
---- !u!114 &4318563745751152352
-MonoBehaviour:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1487829269434660241}
+  m_Layer: 3
+  m_Name: Meteorito 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1487829269434660241
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925472507861852618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef0cf6d3d6368ea45a69757d8a7fb99d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trampElement: 2
-  useAnyElements: 0
-  boost: 0
-  desObj: {fileID: 8257882797351806646}
-  destoyParticles: {fileID: 0}
-  spawnParticles: {fileID: 0}
-  destroySound: {fileID: 0}
-  aniController: {fileID: 0}
+  m_GameObject: {fileID: 1110968456753946816}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7479938484638995747}
+  - {fileID: 2534510693986402074}
+  m_Father: {fileID: 2567612187214776460}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1318115148720175879
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +529,9 @@ GameObject:
   - component: {fileID: 4677551769232128419}
   - component: {fileID: 8340825150666222436}
   - component: {fileID: 9179497547876517772}
-  m_Layer: 0
+  - component: {fileID: 1483438191389979662}
+  - component: {fileID: 8544292698517783042}
+  m_Layer: 3
   m_Name: Meteorito trampa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,12 +546,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759092387207695271}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.551855, y: 0.19843447, z: 0.1371775, w: 0.79828703}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.755073, y: 7.755072, z: 7.755073}
+  m_LocalRotation: {x: -0.551855, y: 0.19843446, z: 0.1371775, w: 0.79828703}
+  m_LocalPosition: {x: 0.37, y: 0.48, z: -23.02}
+  m_LocalScale: {x: 4.3491535, y: 4.3491526, z: 4.3491535}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2567612187214776460}
+  m_Father: {fileID: 3033049596577538085}
   m_LocalEulerAnglesHint: {x: -69.312, y: 27.919, z: 0}
 --- !u!33 &8340825150666222436
 MeshFilter:
@@ -615,6 +607,47 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1483438191389979662
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759092387207695271}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.57, y: 2.1225176, z: 1.7459333}
+  m_Center: {x: 0.13, y: 0.028778676, z: 0.034277}
+--- !u!114 &8544292698517783042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759092387207695271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0cf6d3d6368ea45a69757d8a7fb99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trampElement: 2
+  useAnyElements: 0
+  boost: 0
+  desObj: {fileID: 2546257662867419539}
+  destoyParticles: {fileID: 0}
+  spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!1 &1986111529626986949
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +672,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986111529626986949}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.4310658, y: 20.42073, z: -660}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -901,6 +934,39 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 300.51, y: 867.65247, z: 2964.2207}
   m_Center: {x: 2.5758896, y: 23.264664, z: -26.867981}
+--- !u!1 &2546257662867419539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3033049596577538085}
+  m_Layer: 3
+  m_Name: Meteorite 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3033049596577538085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2546257662867419539}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4677551769232128419}
+  - {fileID: 7982859321095027123}
+  m_Father: {fileID: 2567612187214776460}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2766978653618933746
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,10 +996,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.218986, y: 0.7099991, z: -5.6215305}
-  m_LocalScale: {x: 3.5279005, y: 3.5279, z: 3.5279005}
+  m_LocalScale: {x: 3.5279007, y: 3.5279, z: 3.5279007}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2567612187214776460}
+  m_Father: {fileID: 3189525489146702071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5062424101437519040
 MeshFilter:
@@ -2023,7 +2089,9 @@ GameObject:
   - component: {fileID: 7479938484638995747}
   - component: {fileID: 5141848562043033347}
   - component: {fileID: 5915406135468031653}
-  m_Layer: 0
+  - component: {fileID: 755022785776563111}
+  - component: {fileID: 3253102840192751942}
+  m_Layer: 3
   m_Name: Meteorito trampa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2038,12 +2106,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5573933338769373009}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.551855, y: 0.19843446, z: 0.1371775, w: 0.79828703}
-  m_LocalPosition: {x: 6.3524904, y: 0, z: -0.22756398}
-  m_LocalScale: {x: 7.755072, y: 7.755072, z: 7.755073}
+  m_LocalRotation: {x: -0.551855, y: 0.19843444, z: 0.1371775, w: 0.79828703}
+  m_LocalPosition: {x: 6.7, y: 0.14384, z: -2.8}
+  m_LocalScale: {x: 4.3491526, y: 4.3491526, z: 4.3491535}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2567612187214776460}
+  m_Father: {fileID: 1487829269434660241}
   m_LocalEulerAnglesHint: {x: -69.312, y: 27.919, z: 0}
 --- !u!33 &5141848562043033347
 MeshFilter:
@@ -2099,6 +2167,47 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &755022785776563111
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573933338769373009}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.57, y: 2.1225176, z: 1.7459333}
+  m_Center: {x: 0.13, y: 0.028763415, z: 0.03426937}
+--- !u!114 &3253102840192751942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573933338769373009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0cf6d3d6368ea45a69757d8a7fb99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trampElement: 2
+  useAnyElements: 0
+  boost: 0
+  desObj: {fileID: 1110968456753946816}
+  destoyParticles: {fileID: 0}
+  spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!1 &5755718187105284596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2480,7 +2589,9 @@ GameObject:
   - component: {fileID: 1747199268091370300}
   - component: {fileID: 1049506531052916284}
   - component: {fileID: 5107726571166861530}
-  m_Layer: 0
+  - component: {fileID: 9127115455094101983}
+  - component: {fileID: 1963631831499380856}
+  m_Layer: 3
   m_Name: Meteorito trampa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2495,12 +2606,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7000896262546100654}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.551855, y: 0.19843446, z: 0.1371775, w: 0.79828703}
-  m_LocalPosition: {x: -6.9389863, y: 0, z: 0.24848405}
-  m_LocalScale: {x: 7.755072, y: 7.755072, z: 7.755073}
+  m_LocalRotation: {x: -0.551855, y: 0.19843444, z: 0.1371775, w: 0.79828703}
+  m_LocalPosition: {x: -6.7099953, y: 0.14384, z: -2.7100372}
+  m_LocalScale: {x: 4.3491526, y: 4.3491526, z: 4.3491535}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2567612187214776460}
+  m_Father: {fileID: 3189525489146702071}
   m_LocalEulerAnglesHint: {x: -69.312, y: 27.919, z: 0}
 --- !u!33 &1049506531052916284
 MeshFilter:
@@ -2556,6 +2667,47 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9127115455094101983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000896262546100654}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.57, y: 2.1225176, z: 1.7459333}
+  m_Center: {x: 0.13, y: 0.028771045, z: 0.034265555}
+--- !u!114 &1963631831499380856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000896262546100654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0cf6d3d6368ea45a69757d8a7fb99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trampElement: 2
+  useAnyElements: 0
+  boost: 0
+  desObj: {fileID: 8116664182055845817}
+  destoyParticles: {fileID: 0}
+  spawnParticles: {fileID: 0}
+  destroySound: {fileID: 0}
+  aniController: {fileID: 0}
 --- !u!1 &7339792898300340471
 GameObject:
   m_ObjectHideFlags: 0
@@ -2585,10 +2737,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.0724907, y: 0.7099991, z: -6.0975785}
-  m_LocalScale: {x: 3.5279005, y: 3.5279, z: 3.5279005}
+  m_LocalScale: {x: 3.5279007, y: 3.5279, z: 3.5279007}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2567612187214776460}
+  m_Father: {fileID: 1487829269434660241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4526817722112855110
 MeshFilter:
@@ -2664,6 +2816,39 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0.0000038146973, y: 0, z: 0}
+--- !u!1 &8116664182055845817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3189525489146702071}
+  m_Layer: 3
+  m_Name: Meteorite 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3189525489146702071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8116664182055845817}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1747199268091370300}
+  - {fileID: 3670259081499660527}
+  m_Father: {fileID: 2567612187214776460}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8257882797351806646
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,12 +2880,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7479938484638995747}
-  - {fileID: 2534510693986402074}
-  - {fileID: 1747199268091370300}
-  - {fileID: 3670259081499660527}
-  - {fileID: 4677551769232128419}
-  - {fileID: 7982859321095027123}
+  - {fileID: 1487829269434660241}
+  - {fileID: 3189525489146702071}
+  - {fileID: 3033049596577538085}
   m_Father: {fileID: 2426502584304637266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1074080485786591998
@@ -2740,7 +2922,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 30.49, y: 12.56, z: 55.14521}
   m_Center: {x: 0.26106268, y: 3.4122353, z: -27.073397}

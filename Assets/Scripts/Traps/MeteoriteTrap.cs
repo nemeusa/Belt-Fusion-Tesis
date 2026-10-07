@@ -46,16 +46,21 @@ public class MeteoriteTrap : MonoBehaviour
 
             if (probBullet == countBullets)
                 selectedBulletPrefab = bulletTypeB;
-            else 
+            else
                 selectedBulletPrefab = bulletTypeA;
+
+
+            if (s.gameObject.activeSelf)
+            {
 
                 GameObject bullet = Instantiate(selectedBulletPrefab, s.position, s.rotation);
 
-            // 3. Aplicar fuerza hacia adelante (Eje Z local del spawnPoint)
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.AddForce(-s.forward * bulletForce, ForceMode.Impulse);
+                // 3. Aplicar fuerza hacia adelante (Eje Z local del spawnPoint)
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.AddForce(-s.forward * bulletForce, ForceMode.Impulse);
+                }
             }
 
         }
@@ -72,7 +77,7 @@ public class MeteoriteTrap : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null) playerIsNear = true;
         else playerIsNear = false;
-        
+
     }
 
     private void OnTriggerExit(Collider other)
