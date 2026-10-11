@@ -13,6 +13,8 @@ public class MainMenu : MonoBehaviour
     private InputSystemUIInputModule _uiModule;
     private InputAction _cancelAction;
 
+    public bool inputLocked;
+
     //public GameObject canvasOne;
     //public GameObject canvasTwo;
 
@@ -127,6 +129,7 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
+        if (inputLocked) return;
         // 1. Recuperar el foco del mando si se pierde al hacer clic en zonas vacías
         if (EventSystem.current.currentSelectedGameObject == null && _panelHistory.Count > 0)
         {
@@ -164,6 +167,14 @@ public class MainMenu : MonoBehaviour
         {
             ActivatePanel(targetPanel);
         }
+    }
+    public void OpenPanelKeepingPrevious(int index)
+    {
+        if (index < 0 || index >= panels.Count) return;
+        MenuPanel p = panels[index];
+        p.panelObject.SetActive(true);
+        _panelHistory.Push(p);
+        EventSystem.current.SetSelectedGameObject(p.firstSelectedButton);
     }
 
     private void ActivatePanel(MenuPanel newPanel)
