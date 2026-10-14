@@ -110,6 +110,8 @@ public class MenuIntroTransition : MonoBehaviour
         // Final: registramos el panel en el historial y devolvemos el control
         seq.OnComplete(() =>
         {
+            mainPortalRoot.SetParent(worldRoot, true);          // el portal viaja con el Menú
+            mainMenu.panels[0].panelObject.SetActive(false);    // apagamos el panel Título
             mainMenu.OpenPanelKeepingPrevious(menuPanelIndex);
             mainMenu.inputLocked = false;
         });

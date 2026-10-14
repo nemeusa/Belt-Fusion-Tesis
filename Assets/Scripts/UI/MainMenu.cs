@@ -15,6 +15,8 @@ public class MainMenu : MonoBehaviour
 
     public bool inputLocked;
 
+    public MenuTransitioner transitioner;
+
     //public GameObject canvasOne;
     //public GameObject canvasTwo;
 
@@ -177,40 +179,86 @@ public class MainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(p.firstSelectedButton);
     }
 
+    //private void ActivatePanel(MenuPanel newPanel)
+    //{
+    //    // Ocultar panel anterior si hay alguno activo
+    //    if (_panelHistory.Count > 0)
+    //    {
+    //        _panelHistory.Peek().panelObject.SetActive(false);
+    //    }
+
+    //    // Mostrar nuevo panel y registrarlo en el historial
+    //    newPanel.panelObject.SetActive(true);
+    //    _panelHistory.Push(newPanel);
+
+    //    // Forzar selección del botón principal
+    //    EventSystem.current.SetSelectedGameObject(newPanel.firstSelectedButton);
+    //}
+
     private void ActivatePanel(MenuPanel newPanel)
     {
-        // Ocultar panel anterior si hay alguno activo
-        if (_panelHistory.Count > 0)
+        if (transitioner != null && transitioner.IsBusy) return;
+
+        if (transitioner != null && _panelHistory.Count > 0)
         {
-            _panelHistory.Peek().panelObject.SetActive(false);
+            var from = _panelHistory.Peek().panelObject.GetComponent<PortalPanel>();
+            var to = newPanel.panelObject.GetComponent<PortalPanel>();
+            if (from != null && to != null)
+            {
+                _panelHistory.Push(newPanel);
+                transitioner.Go(from, to, false, newPanel.firstSelectedButton);
+                return;
+            }
         }
 
-        // Mostrar nuevo panel y registrarlo en el historial
+        // Comportamiento original
+        if (_panelHistory.Count > 0)
+            _panelHistory.Peek().panelObject.SetActive(false);
+
         newPanel.panelObject.SetActive(true);
         _panelHistory.Push(newPanel);
-
-        // Forzar selección del botón principal
         EventSystem.current.SetSelectedGameObject(newPanel.firstSelectedButton);
     }
 
     // Vuelve al panel anterior desapilando el menú actual
+    //public void GoBack()
+    //{
+    //    // Si estamos en el panel principal (raíz), no hace nada al presionar volver
+    //    if (_panelHistory.Count <= 1) return;
+
+    //    // Desactivar el panel actual
+    //    MenuPanel currentPanel = _panelHistory.Pop();
+    //    currentPanel.panelObject.SetActive(false);
+
+    //    // Reactivar el panel anterior en el historial
+    //    MenuPanel previousPanel = _panelHistory.Peek();
+    //    previousPanel.panelObject.SetActive(true);
+
+    //    // Restablecer foco del mando
+    //    EventSystem.current.SetSelectedGameObject(previousPanel.firstSelectedButton);
+    //}
+
     public void GoBack()
     {
-        // Si estamos en el panel principal (raíz), no hace nada al presionar volver
-        if (_panelHistory.Count <= 1) return;
+        // El Título ya no se vuelve a mostrar: la raíz efectiva es el panel Menú
+        if (_panelHistory.Count <= 2) return;
+        if (transitioner != null && transitioner.IsBusy) return;
 
-        // Desactivar el panel actual
-        MenuPanel currentPanel = _panelHistory.Pop();
-        currentPanel.panelObject.SetActive(false);
+        MenuPanel current = _panelHistory.Pop();
+        MenuPanel previous = _panelHistory.Peek();
+        var from = current.panelObject.GetComponent<PortalPanel>();
+        var to = previous.panelObject.GetComponent<PortalPanel>();
 
-        // Reactivar el panel anterior en el historial
-        MenuPanel previousPanel = _panelHistory.Peek();
-        previousPanel.panelObject.SetActive(true);
+        if (transitioner != null && from != null && to != null)
+        {
+            transitioner.Go(from, to, true, previous.firstSelectedButton);
+            return;
+        }
 
-        // Restablecer foco del mando
-        EventSystem.current.SetSelectedGameObject(previousPanel.firstSelectedButton);
+        current.panelObject.SetActive(false);
+        previous.panelObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(previous.firstSelectedButton);
     }
-
     public void GoToScene(string name)
     {
         SceneManager.LoadScene(name);
