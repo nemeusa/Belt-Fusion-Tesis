@@ -104,6 +104,7 @@ public class MenuTransitioner : MonoBehaviour
         Sequence outSeq = DOTween.Sequence();
         outSeq.SetUpdate(UpdateType.Late);
         if (from.ui != null) outSeq.Insert(0f, from.ui.DOFade(0f, uiFade));
+        if (from.elements != null) outSeq.Insert(0f, from.elements.PlayOut());
 
         outSeq.Insert(0f, DOVirtual.Float(0f, 1f, st.diveDuration, t =>
         {
@@ -137,6 +138,7 @@ public class MenuTransitioner : MonoBehaviour
         if (from.ui != null) from.ui.alpha = 1f;
 
         to.gameObject.SetActive(true);
+        if (to.elements != null) to.elements.HideInstant();
         Vector3 axis = to.Axis;
         Vector3 toCam = cam.transform.position - to.portal.position;
         float along = Mathf.Max(Vector3.Dot(toCam, axis), 5f);
@@ -150,6 +152,7 @@ public class MenuTransitioner : MonoBehaviour
         inSeq.Insert(0f, to.worldRoot.DOMove(to.restPos, st.emergeDuration).SetEase(st.emergeEase));
         inSeq.Insert(0f, flash.DOFade(0f, st.emergeDuration * 0.5f));
         if (to.ui != null) inSeq.Insert(st.emergeDuration * 0.5f, to.ui.DOFade(1f, uiFade * 2f));
+        if (to.elements != null) inSeq.Insert(st.emergeDuration * 0.5f, to.elements.PlayIn());   // NUEVO
         inSeq.OnComplete(() =>
         {
             IsBusy = false;

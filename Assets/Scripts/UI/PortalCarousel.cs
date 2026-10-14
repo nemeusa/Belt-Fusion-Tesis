@@ -28,9 +28,14 @@ public class PortalCarousel : MonoBehaviour
 
     int _index;
     float _yaw;
+    float _yawVisual;
     Vector3[] _baseScale;
     Tween _rot;
     InputAction _left, _right, _submit;
+    bool _shaking;
+
+    [SerializeField] int vibration;
+    [SerializeField] float elasticity;
 
     void Awake()
     {
@@ -41,6 +46,7 @@ public class PortalCarousel : MonoBehaviour
         toPivot.y = 0f;
         pivot.rotation = Quaternion.LookRotation(toPivot);
         _yaw = pivot.localEulerAngles.y;
+        _yawVisual = _yaw;
 
         _baseScale = new Vector3[worlds.Length];
         float step = 360f / worlds.Length;
@@ -114,8 +120,12 @@ public class PortalCarousel : MonoBehaviour
         _yaw += dir * (360f / worlds.Length);
 
         _rot?.Kill();
-        _rot = pivot.DOLocalRotate(new Vector3(0f, _yaw, 0f), rotateDuration, RotateMode.FastBeyond360)
-                    .SetEase(Ease.OutCubic);
+        _rot = DOTween.To(() => _yawVisual, v =>
+            {
+                _yawVisual = v;
+                pivot.localRotation = Quaternion.Euler(0f, v, 0f);
+            }, _yaw, rotateDuration)
+            .SetEase(Ease.OutCubic);
 
         panel.portal = worlds[_index].portal;   // el que se va a atravesar
         ApplyScales(false);
@@ -139,10 +149,26 @@ public class PortalCarousel : MonoBehaviour
         WorldEntry w = worlds[_index];
         if (w.locked || string.IsNullOrEmpty(w.panelID))
         {
-            w.portal.DOPunchScale(Vector3.one * -0.1f, 0.3f);   // "no se puede"
+            ShakeLocked(w.portal);
             return;
         }
         mainMenu.OpenPanelByID(w.panelID);
+    }
+    void ShakeLocked(Transform portal)
+    {
+        _shaking = true;
+
+        // "Derecha" de la cámara, aplanada, en espacio mundo
+        Vector3 right = cam.transform.right;
+        right.y = 0f;
+        right.Normalize();
+
+        // DOPunchPosition trabaja en espacio local: convertimos al del padre (el pivot)
+        Vector3 localRight = portal.parent.InverseTransformDirection(right);
+
+        portal.DOPunchPosition(localRight * 0.6f, 0.4f, vibrato: vibration, elasticity: elasticity)
+              .OnComplete(() => _shaking = false)
+              .OnKill(() => _shaking = false);
     }
 
     // Para ver el círculo en el editor sin darle play

@@ -6,6 +6,8 @@ public class PortalPanel : MonoBehaviour
     public Transform worldRoot;   // lo que se mueve (portal + decorado 3D). NO el canvas
     public Transform portal;      // el portal que se atraviesa al salir de este panel
     public CanvasGroup ui;        // canvas con botones (opcional)
+    public PanelElementsAnimator elements;
+    public Material backgroundMaterial;   // vacío = usa el fondo original
 
     [HideInInspector] public Vector3 restPos;
     bool _saved;
