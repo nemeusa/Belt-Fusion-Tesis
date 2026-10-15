@@ -13,8 +13,12 @@ public class SelectLevels : MonoBehaviour
 
     [SerializeField] TMP_Text bestTimeLevelOne;
     [SerializeField] TMP_Text bestTimeLevelTwo;
-    [SerializeField] TMP_Text bestTimeLevelThree;
-    [SerializeField] TMP_Text bestTimeLevelFour;
+    [SerializeField] TMP_Text bestTimeLevelFire;
+
+
+    [SerializeField] TMP_Text deathsCounterLevelOne;
+    [SerializeField] TMP_Text deathsCounterLevelTwo;
+    [SerializeField] TMP_Text deathsCounterLevelFire;
 
     private void OnEnable()
     {
@@ -25,21 +29,30 @@ public class SelectLevels : MonoBehaviour
     private void Start()
     {
         BestTimeLevels();
-        
+        DeathsCounterLevels();
     }
     public void BestTimeLevels()
     {
        
         if (PlayerPrefs.HasKey("BestTimeLevel1"))
-        bestTimeLevelOne.text = $"BEST RECORD: {CreateCounter(PlayerPrefs.GetFloat($"BestTimeLevel1"))}";
+        bestTimeLevelOne.text = CreateCounter(PlayerPrefs.GetFloat($"BestTimeLevel1"));
         if (PlayerPrefs.HasKey("BestTimeLevel2"))
-        bestTimeLevelTwo.text = $"BEST RECORD: {CreateCounter(PlayerPrefs.GetFloat($"BestTimeLevel2"))}";
-        if (PlayerPrefs.HasKey("BestTimeElectricityLevel"))
-            bestTimeLevelThree.text = $"BEST RECORD: {CreateCounter(PlayerPrefs.GetFloat($"BestTimeElectricityLevel"))}";
+        bestTimeLevelTwo.text = CreateCounter(PlayerPrefs.GetFloat($"BestTimeLevel2"));
         if (PlayerPrefs.HasKey("BestTimeFireLevel"))
-            bestTimeLevelFour.text = $"BEST RECORD: {CreateCounter(PlayerPrefs.GetFloat($"BestTimeFireLevel"))}";
+            bestTimeLevelFire.text = CreateCounter(PlayerPrefs.GetFloat($"BestTimeFireLevel"));
 
         //PlayerPrefs.GetString($"BestTime{currentLevel}", GameManager.instance.counterGame);
+    }
+
+    public void DeathsCounterLevels()
+    {
+
+        if (PlayerPrefs.HasKey("DeathsCounterLevel1"))
+            deathsCounterLevelOne.text = string.Concat(CreateCounter(PlayerPrefs.GetInt($"DeathsCounterLevel1")));
+        if (PlayerPrefs.HasKey("DeathsCounterLevel2"))
+            deathsCounterLevelTwo.text = string.Concat(CreateCounter(PlayerPrefs.GetInt($"DeathsCounterLevel2")));
+        if (PlayerPrefs.HasKey("DeathsCounterFireLevel"))
+            deathsCounterLevelFire.text = string.Concat(PlayerPrefs.GetInt($"DeathsCounterFireLevel"));
     }
 
     string CreateCounter(float seconds)
@@ -50,7 +63,8 @@ public class SelectLevels : MonoBehaviour
         // Multiplicamos el resto decimal por 100 para obtener dos dígitos de milisegundos
         int milisegundos = Mathf.FloorToInt((seconds % 1) * 100);
 
-        return string.Format("{0:00}:{1:00}:{2:00}", minutos, segs, milisegundos);
+        //return $"BEST RECORD: {string.Format("{0:00}:{1:00}:{2:00}", minutos, segs, milisegundos)}";
+        return $"{string.Format("{0:00}:{1:00}:{2:00}", minutos, segs, milisegundos)}";
 
     }
 

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     public float counterGame;
 
+    private int deathsCounter;
 
     AudioSource audioSource;
 
@@ -50,6 +51,13 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.Save();
 
         }
+        if (PlayerPrefs.GetInt($"DeathsCounter{levelName}") > deathsCounter || PlayerPrefs.GetInt($"DeathsCounter{levelName}") == 0)
+        {
+
+            PlayerPrefs.SetInt($"DeathsCounter{levelName}", deathsCounter);
+            PlayerPrefs.Save();
+
+        }
         player.winGame = true;
         SceneManager.LoadScene(NextLevel._nextLevel);
     }
@@ -62,6 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void Death(GameObject target, float deathDuration, AudioClip deathSound, ParticleSystem deathEffect)
     {
+        deathsCounter++;
         Time.timeScale = 1;
         if (deathSound != null)
         PlaySound(deathSound);
