@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class PortalCarousel : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PortalCarousel : MonoBehaviour
         public string panelID;     // panel de niveles a abrir (vacío si está bloqueado)
         public bool locked;
     }
+
+    
 
     public MainMenu mainMenu;
     public MenuTransitioner transitioner;
@@ -56,6 +59,9 @@ public class PortalCarousel : MonoBehaviour
             _baseScale[i] = p.localScale;
             float a = i * step * Mathf.Deg2Rad;
             p.localPosition = new Vector3(Mathf.Sin(a) * radius, 0f, -Mathf.Cos(a) * radius);
+
+            
+            //
         }
 
         _left = new InputAction("CarouselLeft", InputActionType.Button);
