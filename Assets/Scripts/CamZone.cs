@@ -8,12 +8,24 @@ public class CamZone : MonoBehaviour
     public int highPriority = 20;
     public int lowPriority = 5;
 
+    [SerializeField] bool cam2D;
+
+    private void Update()
+    {
+        if (CheckpointManager.Instance.respawn)
+        {
+            if (cam2D) GameManager.instance.player.is2Dmoving = false;
+            // Al bajar la prioridad, vuelve a la cámara anterior
+            vCamTarget.Priority = lowPriority;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<PlayerController>(out PlayerController player))
         {
             // Al darle más prioridad, Cinemachine hace el "blend" (transición) sola
-            player.is2Dmoving = true;
+            if(cam2D) player.is2Dmoving = true;
             vCamTarget.Priority = highPriority;
         }
     }
@@ -22,7 +34,7 @@ public class CamZone : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>())
         {
-            other.GetComponent<PlayerController>().is2Dmoving = false;
+            if (cam2D) other.GetComponent<PlayerController>().is2Dmoving = false;
             // Al bajar la prioridad, vuelve a la cámara anterior
             vCamTarget.Priority = lowPriority;
         }

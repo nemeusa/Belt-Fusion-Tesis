@@ -33,6 +33,9 @@ public class WallDestroy : MonoBehaviour, DashInteract
     [SerializeField] private float tiempoVuelo = 1f;
     [SerializeField] private Ease curvaVuelo = Ease.OutQuad;
 
+    [SerializeField] bool noRespawn;
+
+
     private void Start()
     {
         // Guardamos posicion, rotacion y escala originales de cada piedra
@@ -48,7 +51,7 @@ public class WallDestroy : MonoBehaviour, DashInteract
 
     private void Update()
     {
-        if (CheckpointManager.Instance.respawn)
+        if (CheckpointManager.Instance.respawn && !noRespawn)
         {
             ResetPared();
         }

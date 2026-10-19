@@ -115,7 +115,9 @@ public class PauseMenu : MonoBehaviour
     public void RetryLevel()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(GameManager.instance.levelName);
+        //SceneManager.LoadScene(GameManager.instance.levelName);
+        Scene current = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(current.buildIndex);
 
     }
 }

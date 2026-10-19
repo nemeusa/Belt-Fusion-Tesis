@@ -14,6 +14,8 @@ public class DestructibleDevice : MonoBehaviour
     [SerializeField] AudioClip destroySound;
     [SerializeField] Animator aniController;
 
+    [SerializeField] bool noRespawn;
+
     bool act;
 
     private void Start()
@@ -27,7 +29,7 @@ public class DestructibleDevice : MonoBehaviour
 
     private void Update()
     {
-        if (CheckpointManager.Instance.respawn)
+        if (CheckpointManager.Instance.respawn && !noRespawn)
         {
             desObj.SetActive(true);
             //act = true;
