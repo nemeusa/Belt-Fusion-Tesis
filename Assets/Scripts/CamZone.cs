@@ -10,15 +10,14 @@ public class CamZone : MonoBehaviour
 
     [SerializeField] bool cam2D;
 
-    private void Update()
-    {
-        if (CheckpointManager.Instance.respawn)
-        {
-            if (cam2D) GameManager.instance.player.is2Dmoving = false;
-            // Al bajar la prioridad, vuelve a la cámara anterior
-            vCamTarget.Priority = lowPriority;
-        }
-    }
+    //private void Update()
+    //{
+    //    if (CheckpointManager.Instance.respawn)
+    //    {
+    //        if (cam2D) GameManager.instance.player.is2Dmoving = false;
+    //        vCamTarget.Priority = lowPriority;
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {

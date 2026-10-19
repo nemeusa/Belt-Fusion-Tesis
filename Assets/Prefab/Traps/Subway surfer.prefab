@@ -402,7 +402,7 @@ Transform:
   m_GameObject: {fileID: 1110968456753946816}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.1999924, y: 0, z: -7.5999866}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -531,6 +531,7 @@ GameObject:
   - component: {fileID: 9179497547876517772}
   - component: {fileID: 1483438191389979662}
   - component: {fileID: 8544292698517783042}
+  - component: {fileID: 3005112672453627801}
   m_Layer: 3
   m_Name: Meteorito trampa
   m_TagString: Untagged
@@ -643,11 +644,28 @@ MonoBehaviour:
   trampElement: 2
   useAnyElements: 0
   boost: 0
-  desObj: {fileID: 2546257662867419539}
+  desObj: {fileID: 759519146251751709}
   destoyParticles: {fileID: 0}
   spawnParticles: {fileID: 0}
   destroySound: {fileID: 0}
   aniController: {fileID: 0}
+  noRespawn: 0
+--- !u!114 &3005112672453627801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759092387207695271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da2a22058a964445aab5b80ab2c0d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanciaVuelo: 67
+  alturaArco: 4.58
+  tiempoVuelo: 1.3
+  curvaVuelo: 6
 --- !u!1 &1986111529626986949
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +977,7 @@ Transform:
   m_GameObject: {fileID: 2546257662867419539}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.03, y: 0, z: 1.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -995,7 +1013,7 @@ Transform:
   m_GameObject: {fileID: 2766978653618933746}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.218986, y: 0.7099991, z: -5.6215305}
+  m_LocalPosition: {x: -6.091483, y: 0.7099991, z: -11.623934}
   m_LocalScale: {x: 3.5279007, y: 3.5279, z: 3.5279007}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2091,6 +2109,7 @@ GameObject:
   - component: {fileID: 5915406135468031653}
   - component: {fileID: 755022785776563111}
   - component: {fileID: 3253102840192751942}
+  - component: {fileID: 1537467122291579299}
   m_Layer: 3
   m_Name: Meteorito trampa
   m_TagString: Untagged
@@ -2203,11 +2222,28 @@ MonoBehaviour:
   trampElement: 2
   useAnyElements: 0
   boost: 0
-  desObj: {fileID: 1110968456753946816}
+  desObj: {fileID: 7339792898300340471}
   destoyParticles: {fileID: 0}
   spawnParticles: {fileID: 0}
   destroySound: {fileID: 0}
   aniController: {fileID: 0}
+  noRespawn: 0
+--- !u!114 &1537467122291579299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573933338769373009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da2a22058a964445aab5b80ab2c0d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanciaVuelo: 67
+  alturaArco: 4.58
+  tiempoVuelo: 1.3
+  curvaVuelo: 6
 --- !u!1 &5755718187105284596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,8 +2377,8 @@ Transform:
   m_GameObject: {fileID: 6378158802707970103}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.0000019073, z: 19}
+  m_LocalScale: {x: 1, y: 1, z: 0.97528}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3379758996565163131}
@@ -2591,6 +2627,7 @@ GameObject:
   - component: {fileID: 5107726571166861530}
   - component: {fileID: 9127115455094101983}
   - component: {fileID: 1963631831499380856}
+  - component: {fileID: 7843715723547889198}
   m_Layer: 3
   m_Name: Meteorito trampa
   m_TagString: Untagged
@@ -2703,11 +2740,28 @@ MonoBehaviour:
   trampElement: 2
   useAnyElements: 0
   boost: 0
-  desObj: {fileID: 8116664182055845817}
+  desObj: {fileID: 2766978653618933746}
   destoyParticles: {fileID: 0}
   spawnParticles: {fileID: 0}
   destroySound: {fileID: 0}
   aniController: {fileID: 0}
+  noRespawn: 0
+--- !u!114 &7843715723547889198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000896262546100654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da2a22058a964445aab5b80ab2c0d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanciaVuelo: 67
+  alturaArco: 4.58
+  tiempoVuelo: 1.3
+  curvaVuelo: 6
 --- !u!1 &7339792898300340471
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,7 +2790,7 @@ Transform:
   m_GameObject: {fileID: 7339792898300340471}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.0724907, y: 0.7099991, z: -6.0975785}
+  m_LocalPosition: {x: 7.2, y: 0.7099991, z: -12.1}
   m_LocalScale: {x: 3.5279007, y: 3.5279, z: 3.5279007}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2841,7 +2895,7 @@ Transform:
   m_GameObject: {fileID: 8116664182055845817}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2, y: 0, z: -7.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2860,6 +2914,8 @@ GameObject:
   - component: {fileID: 2567612187214776460}
   - component: {fileID: 1074080485786591998}
   - component: {fileID: 8907549633236483109}
+  - component: {fileID: 4248665666009333994}
+  - component: {fileID: 2124570253521297015}
   m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
@@ -2922,10 +2978,39 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 30.49, y: 12.56, z: 55.14521}
   m_Center: {x: 0.26106268, y: 3.4122353, z: -27.073397}
+--- !u!114 &4248665666009333994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257882797351806646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292626610d3748142a1e6ccf0e60501e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallTime: 0
+  speedFall: 45.5
+  respawnTime: 3
+  falling: 0
+--- !u!114 &2124570253521297015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257882797351806646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42fd2770671ca754c92315d6e09c4dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 4248665666009333994}
 --- !u!1 &8486271722914933426
 GameObject:
   m_ObjectHideFlags: 0
