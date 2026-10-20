@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public int dashCount = 0;
 
     public event Action OnDashPressed;
+    public event Action OnAttackPressed;
     public event Action OnJumpPressed;
 
     private Coroutine transitionCoroutine;
@@ -132,6 +133,26 @@ public class PlayerController : MonoBehaviour
     public AudioClip dashAudio;
     public AudioClip walkAudio;
     public AudioClip changeElementAudio;
+
+    [Header("Ice Glide")]
+    public GameObject iceBoard;          
+    public float glideFallSpeed = 2f;    
+    public float glideBrake = 30f;       
+    public float glideSpeed = 9f;        
+    public float glideMaxTime = 0f;      
+    public AudioClip iceGlideAudio;
+    public bool isGliding;
+    [HideInInspector] public bool jumpHeld;
+
+    [Header("Ice Slam")]
+    public float slamSpeed = 30f;        
+    public float slamWindup = 0.12f;     
+    public float slamAirSpeed = 0f;      
+    public float slamRadius = 3f;        
+    public LayerMask slamMask = ~0;      
+    public GameObject slamImpactPrefab;
+    public AudioClip slamAudio;
+    public bool isSlamming;
 
     #endregion
 
@@ -457,6 +478,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
+        jumpHeld = value.isPressed;
         if (isDeath || GameManager.instance._pauseCode.juegoPausado) return;
 
         if (value.isPressed)
@@ -504,6 +526,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputValue value) { if (!GameManager.instance._pauseCode.juegoPausado) moveInput = value.Get<Vector2>(); }
     public void OnDash(InputValue value) { if (value.isPressed && !isDeath && !GameManager.instance._pauseCode.juegoPausado) OnDashPressed?.Invoke(); }
+    //public void OnAttack(InputValue value) { if (value.isPressed && !isDeath && !GameManager.instance._pauseCode.juegoPausado) OnAttackPressed?.Invoke(); }
+
+    public void OnAttack(InputValue value) { if (value.isPressed) OnAttackPressed?.Invoke(); }
 
     public void OnElement0(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) _fsm.ChangeState(TypeFSM.Default); }
     public void OnElement1(InputValue value) { if (value.isPressed && !isDeath && !dontChangeElement && !GameManager.instance._pauseCode.juegoPausado) if (canFireElemen) _fsm.ChangeState(TypeFSM.Fire); }
