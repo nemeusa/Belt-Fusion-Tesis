@@ -40,6 +40,11 @@ public class PortalCarousel : MonoBehaviour
     [SerializeField] int vibration;
     [SerializeField] float elasticity;
 
+    [Header("Efecto de transición")]
+    public Volume transitionVolume;
+    [Range(0f, 1f)] public float effectPeak = 1f;
+    Tween _fx;
+
     void Awake()
     {
         if (cam == null) cam = Camera.main;
@@ -135,6 +140,7 @@ public class PortalCarousel : MonoBehaviour
 
         panel.portal = worlds[_index].portal;   // el que se va a atravesar
         ApplyScales(false);
+        PlayTransitionFX();
     }
 
     void ApplyScales(bool instant)
@@ -197,5 +203,19 @@ public class PortalCarousel : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawLine(pivot.position, c.transform.position);
         }
+    }
+
+    void PlayTransitionFX()
+    {
+        if (transitionVolume == null) return;
+
+        _fx?.Kill();
+        transitionVolume.weight = 0f;
+
+        _fx = DOTween.Sequence()
+            .Append(DOTween.To(() => transitionVolume.weight, w => transitionVolume.weight = w,
+                               effectPeak, rotateDuration * 0.35f).SetEase(Ease.OutQuad))
+            .Append(DOTween.To(() => transitionVolume.weight, w => transitionVolume.weight = w,
+                               0f, rotateDuration * 0.65f).SetEase(Ease.InQuad));
     }
 }
