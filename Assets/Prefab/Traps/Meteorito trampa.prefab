@@ -132,7 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a4bb6a185462845a5dca02aec92f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 7245772576230970704}
+  spawnPoint:
+  - {fileID: 0}
   fireRate: 0.6
   bulletForce: 40
   bulletTypeA: {fileID: 7737331244065559208, guid: c18808592a88827489016c4063165581, type: 3}
@@ -198,7 +199,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 43679c218a46d21448784a6ee6475d20, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 43679c218a46d21448784a6ee6475d20, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2aeae3f70d2d43b4f9344a94cd2bb65d, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 43679c218a46d21448784a6ee6475d20, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 2aeae3f70d2d43b4f9344a94cd2bb65d, type: 2}
     - target: {fileID: 919132149155446097, guid: 43679c218a46d21448784a6ee6475d20, type: 3}
