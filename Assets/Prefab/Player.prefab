@@ -5055,6 +5055,7 @@ MonoBehaviour:
   glideMaxTime: 0
   iceGlideAudio: {fileID: 8300000, guid: 584b0332b7a423e41b9941f2dd4a76a8, type: 3}
   isGliding: 0
+  tablaIceCode: {fileID: 5264807512087899810}
   jumpHeld: 0
   slamSpeed: 30
   slamWindup: 0.12
@@ -35014,13 +35015,14 @@ GameObject:
   - component: {fileID: 5573105799756147579}
   - component: {fileID: 7957793966180614947}
   - component: {fileID: 5037018458669176813}
+  - component: {fileID: 5264807512087899810}
   m_Layer: 10
   m_Name: surf tabla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5573105799756147579
 Transform:
   m_ObjectHideFlags: 0
@@ -35033,7 +35035,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -1.137, z: 0}
   m_LocalScale: {x: 1.1326, y: 0.31393403, z: 1.7196265}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8814029339031879027}
   m_Father: {fileID: 2343237751224706034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7957793966180614947
@@ -35089,6 +35092,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5264807512087899810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562522390456954949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97efb1ebabf0c854c9e61bd2741a051e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeTime: 1.33
+  _meshRefreshRate: 1.78
+  _meshDestroyDelay: 3
+  _spawnPos: {fileID: 8814029339031879027}
+  _mat: {fileID: 2100000, guid: 310868e611da4804dbc6a7e3c4690269, type: 2}
+  _shaderVarRef: 
+  _shaderVarRate: 1
+  _shaderVarRefreshRate: 0.05
+  _isActive: 0
 --- !u!1 &1686679101839140222
 GameObject:
   m_ObjectHideFlags: 0
@@ -134503,6 +134527,37 @@ Transform:
   m_Children:
   - {fileID: 5128989669420472391}
   m_Father: {fileID: 6894118137939440398}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7950823864455037170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8814029339031879027}
+  m_Layer: 10
+  m_Name: spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8814029339031879027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7950823864455037170}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.428}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5573105799756147579}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8057136403267960843
 GameObject:

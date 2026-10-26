@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using static UnityEditor.PlayerSettings;
 
 public class IceState : State
 {
@@ -74,6 +75,7 @@ public class IceState : State
 
     public void OnExit()
     {
+        _player.tablaIceCode._isActive = false;
         _player.OnJumpPressed -= TryStartGlide;
         StopGlide(true);
         _player.OnAttackPressed -= TryStartSlam;
@@ -103,6 +105,9 @@ public class IceState : State
 
         StopGlide(false); // si venía planeando, se deshace la tabla
 
+
+
+
         _player.isSlamming = true;
         _slamWindupTimer = _player.slamWindup;
         _player.speed = _player.slamAirSpeed;
@@ -122,6 +127,8 @@ public class IceState : State
             EndSlam();
             return;
         }
+        Vector3 pos = _player.transform.position;
+        var fx = GameObject.Instantiate(_player.slamImpactPrefab, pos, Quaternion.identity);
 
         // Pausa corta en el aire antes de caer, para que se sienta el golpe
         if (_slamWindupTimer > 0f)
@@ -133,7 +140,7 @@ public class IceState : State
 
         if (_player._controller.isGrounded)
         {
-            SlamImpact();
+            SlamImpact(fx);
             EndSlam();
             return;
         }
@@ -142,8 +149,10 @@ public class IceState : State
         _player._playerVelocity.y = -_player.slamSpeed;
     }
 
-    void SlamImpact()
+    void SlamImpact(GameObject target)
     {
+        GameObject.Destroy(target, 2f);
+
         Vector3 pos = _player.transform.position;
 
         if (_player.slamImpactPrefab != null)

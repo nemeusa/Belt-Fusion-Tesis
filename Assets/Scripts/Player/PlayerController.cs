@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour
     public float glideMaxTime = 0f;      
     public AudioClip iceGlideAudio;
     public bool isGliding;
+    public TrailTablaIce tablaIceCode;
     [HideInInspector] public bool jumpHeld;
 
     [Header("Ice Slam")]
@@ -150,6 +151,7 @@ public class PlayerController : MonoBehaviour
     public float slamAirSpeed = 0f;      
     public float slamRadius = 3f;        
     public LayerMask slamMask = ~0;      
+    public GameObject slamFallingPrefab;
     public GameObject slamImpactPrefab;
     public AudioClip slamAudio;
     public bool isSlamming;
