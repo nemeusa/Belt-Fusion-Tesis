@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using static UnityEditor.PlayerSettings;
 
 public class IceState : State
 {
@@ -11,6 +12,7 @@ public class IceState : State
     float _glideTimer;
     Vector3 _boardBaseScale;
     Coroutine _boardRoutine;
+    GameObject fx;
 
 
     public IceState(FSM<TypeFSM> fsm, PlayerController player)
@@ -88,6 +90,10 @@ public class IceState : State
         // En el piso (o en coyote time) el salto es el normal, el planeo solo arranca en el aire
         if (_player._controller.isGrounded || _player.coyoteCounter > 0f) return;
 
+        Vector3 pos = _player.transform.position;
+
+        fx = GameObject.Instantiate(_player.slamImpactPrefab, pos, Quaternion.identity);
+
         StartGlide();
 
     }
@@ -126,8 +132,6 @@ public class IceState : State
             EndSlam();
             return;
         }
-        Vector3 pos = _player.transform.position;
-        var fx = GameObject.Instantiate(_player.slamImpactPrefab, pos, Quaternion.identity);
 
         // Pausa corta en el aire antes de caer, para que se sienta el golpe
         if (_slamWindupTimer > 0f)
