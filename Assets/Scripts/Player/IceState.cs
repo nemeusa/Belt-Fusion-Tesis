@@ -76,6 +76,8 @@ public class IceState : State
 
     public void OnExit()
     {
+        GameObject.Destroy(fx);
+
         _player.tablaIceCode._isActive = false;
         _player.OnJumpPressed -= TryStartGlide;
         StopGlide(true);
@@ -89,10 +91,6 @@ public class IceState : State
 
         // En el piso (o en coyote time) el salto es el normal, el planeo solo arranca en el aire
         if (_player._controller.isGrounded || _player.coyoteCounter > 0f) return;
-
-        Vector3 pos = _player.transform.position;
-
-        fx = GameObject.Instantiate(_player.slamImpactPrefab, pos, Quaternion.identity);
 
         StartGlide();
 
@@ -111,7 +109,11 @@ public class IceState : State
         StopGlide(false); // si venía planeando, se deshace la tabla
 
 
+        Vector3 pos = _player.transform.position;
 
+        fx = GameObject.Instantiate(_player.slamFallingPrefab, pos, Quaternion.identity);
+
+        fx.transform.SetParent(_player.transform);
 
         _player.isSlamming = true;
         _slamWindupTimer = _player.slamWindup;
@@ -154,7 +156,7 @@ public class IceState : State
 
     void SlamImpact(GameObject target)
     {
-        GameObject.Destroy(target, 2f);
+        GameObject.Destroy(target);
 
         Vector3 pos = _player.transform.position;
 
