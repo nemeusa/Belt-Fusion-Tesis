@@ -4,7 +4,6 @@ using UnityEngine;
 public class ShotWaterBallena : MonoBehaviour
 {
 
-
     [SerializeField] AudioClip deathAudio;
     [SerializeField] float deathDuration = 0.2f;
 
@@ -12,17 +11,27 @@ public class ShotWaterBallena : MonoBehaviour
 
     [SerializeField, Range(0, 1)] float _icePlayerForceWater = 1;
 
+    [Header("Impulso al activarse")]
+    [SerializeField] float launchSpeed = 12f;     // velocidad vertical del impulso
+    [SerializeField] float launchWindow = 0.5f;   // tiempo que espera al player después de activarse
+
     bool isFlyDeath;
+    float launchTimer;
 
     Transform playerMesh;
+
+    // Lo llama el géiser cuando empieza el chorro
+    public void Launch() => launchTimer = launchWindow;
 
     private void LateUpdate()
     {
         if (isFlyDeath) playerMesh.position += Vector3.up * speedOutCamera * Time.deltaTime;
-
     }
 
-
+    private void Update()
+    {
+        if (launchTimer > 0) launchTimer -= Time.deltaTime;
+    }
 
     private void OnTriggerStay(Collider collision)
     {
@@ -35,11 +44,18 @@ public class ShotWaterBallena : MonoBehaviour
                 StartCoroutine(OutCamDeath());
 
                 GameManager.instance.Death(collision.gameObject, deathDuration, deathAudio, null);
-
             }
-
-            else player._playerVelocity.y += _icePlayerForceWater;
-
+            else if (launchTimer > 0)
+            {
+                // impulso único, aunque esté en el suelo
+                player._playerVelocity.y = Mathf.Max(player._playerVelocity.y, launchSpeed);
+                
+                launchTimer = 0;
+            }
+            else
+            {
+                player._playerVelocity.y += _icePlayerForceWater;
+            }
         }
     }
 
@@ -53,6 +69,5 @@ public class ShotWaterBallena : MonoBehaviour
 
         playerMesh = null;
     }
-
 
 }

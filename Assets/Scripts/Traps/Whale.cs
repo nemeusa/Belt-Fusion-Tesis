@@ -1,103 +1,64 @@
 using System.Collections;
 using UnityEngine;
 
-public class Whale : TimeTrap
+public class Whale : TimeTrap, ISlamReactive
 {
-    [SerializeField] private float alturaMaxima = 5f; 
-    [SerializeField] private float velocidadWhaleSubeBaja = 3;
-    [SerializeField] private float velocidadWaterSubeBaja = 8;
-
-    [SerializeField] Transform waterPosition;
-
-    private Vector3 waterDownPos;
-    private Vector3 waterUpPos;
-
-    [SerializeField] private float tiempoDisparando = 2f; 
-    [SerializeField] private float tiempoOculto = 3f;
-
-    private float currentWaterSpeed;
-    private float currentWhaleSpeed;
-    private float currentWhaleOcultTime;
-
-    private Vector3 whaleNormalPos;
-    private Vector3 whaleSubmergedPos;
+    [SerializeField] private float tiempoDisparando = 2f;
+    [SerializeField] private float cooldown = 1f;
+    [SerializeField] private float launchSpeed = 12f;
 
     [SerializeField] Animator waterAni;
+    [SerializeField] ParticleSystem waterParticles;
 
-    private void Start()
+    private bool isBusy;
+    private bool isShooting;
+    private float speedFactor = 1f;
+
+    // Lo llama el IceState cuando el panzazo impacta cerca del géiser
+    public void OnSlam(PlayerController player)
     {
-        currentWhaleOcultTime = tiempoOculto;
-        currentWaterSpeed = velocidadWaterSubeBaja;
-        currentWhaleSpeed = velocidadWhaleSubeBaja;
+        bool started = TryActivate();
+        if (!started && !isShooting) return; // en cooldown no hay agua, no lo lanza
 
-        waterDownPos = waterPosition.position;
-
-        waterUpPos = waterDownPos + new Vector3(0, alturaMaxima, 0);
-
-        whaleNormalPos = transform.position;
-        whaleSubmergedPos = whaleNormalPos - new Vector3(0, 3, 0);
-
-        StartCoroutine(CicloDelAgua());
-
+        player._playerVelocity.y = Mathf.Max(player._playerVelocity.y, launchSpeed);
+        player.ForceGlide();
     }
 
-
-    private IEnumerator CicloDelAgua()
+    public bool TryActivate()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(currentWhaleOcultTime);
-
-            //while (Vector3.Distance(transform.position, whaleNormalPos) > 0.01f)
-            //{
-            //    transform.position = Vector3.MoveTowards(transform.position, whaleNormalPos, currentWhaleSpeed * Time.deltaTime);
-            //    yield return null;
-            //}
-            //transform.position = whaleNormalPos;
-
-            //while (Vector3.Distance(waterPosition.position, waterUpPos) > 0.01f)
-            //{
-            //    waterPosition.position = Vector3.MoveTowards(waterPosition.position, waterUpPos, currentWaterSpeed * Time.deltaTime);
-            //    yield return null;
-            //}
-            //waterPosition.position = waterUpPos;
-
-            waterAni.SetBool("Up", true);
-            yield return new WaitForSeconds(0.50f);
-
-            yield return new WaitForSeconds(tiempoDisparando);
-
-            //while (Vector3.Distance(waterPosition.position, waterDownPos) > 0.01f)
-            //{
-            //    waterPosition.position = Vector3.MoveTowards(waterPosition.position, waterDownPos, currentWaterSpeed * Time.deltaTime);
-            //    yield return null;
-            //}
-            //waterPosition.position = waterDownPos;
-            waterAni.SetBool("Up", false);
-            yield return new WaitForSeconds(0.50f);
-
-            //while (Vector3.Distance(transform.position, whaleSubmergedPos) > 0.01f)
-            //{
-            //    transform.position = Vector3.MoveTowards(transform.position, whaleSubmergedPos, currentWhaleSpeed * Time.deltaTime);
-            //    yield return null;
-            //}
-            //transform.position = whaleSubmergedPos;
-        }
+        if (isBusy) return false;
+        StartCoroutine(ShootRoutine());
+        return true;
     }
+
+    private IEnumerator ShootRoutine()
+    {
+        isBusy = true;
+        isShooting = true;
+
+        waterParticles.Play();
+        waterAni.SetBool("Up", true);
+        yield return Wait(0.5f + tiempoDisparando);
+
+        waterAni.SetBool("Up", false);
+        waterParticles.Stop();
+        isShooting = false;
+        yield return Wait(0.5f + cooldown);
+
+        isBusy = false;
+    }
+
+    private WaitForSeconds Wait(float t) => new WaitForSeconds(t / Mathf.Max(speedFactor, 0.01f));
 
     protected override void SlowdownTrap(float factor)
     {
-        waterAni.speed = 1 * factor;
-        currentWaterSpeed = velocidadWaterSubeBaja * factor;
-        currentWhaleSpeed = velocidadWhaleSubeBaja * factor;
-        //currentWhaleOcultTime = tiempoOculto * factor;
+        speedFactor = factor;
+        waterAni.speed = factor;
     }
 
     protected override void NormalizeTrap()
     {
-        waterAni.speed = 1;
-        currentWaterSpeed = velocidadWaterSubeBaja;
-        currentWhaleSpeed = velocidadWhaleSubeBaja;
-        //currentWhaleOcultTime = tiempoOculto;
+        speedFactor = 1f;
+        waterAni.speed = 1f;
     }
 }

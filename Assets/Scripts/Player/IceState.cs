@@ -12,7 +12,9 @@ public class IceState : State
     Vector3 _boardBaseScale;
     Coroutine _boardRoutine;
     GameObject fx;
-
+    bool _pendingForcedGlide;
+    bool _forcedGlide;
+    float _forcedGlideGrace;
 
     public IceState(FSM<TypeFSM> fsm, PlayerController player)
     {
@@ -31,21 +33,33 @@ public class IceState : State
         _player.OnJumpPressed += TryStartGlide;
         _player.OnAttackPressed += TryStartSlam;
 
+        _player.OnForceGlide += RequestForcedGlide;
+
+
     }
 
     public void OnUpdate()
     {
+        if (_pendingForcedGlide && !_player.isSlamming)
+        {
+            _pendingForcedGlide = false;
+            if (!_player.isGliding) StartGlide();
+            _forcedGlide = true;
+            _forcedGlideGrace = 0.3f;
+        }
+
         if (_player.isSlamming)
         {
             UpdateSlam();
             return;
         }
 
-        if (!_player.isGliding) return;
+        // if (!_player.isGliding) return;
+        if (_forcedGlideGrace > 0f) _forcedGlideGrace -= Time.deltaTime;
+        if (_forcedGlide && _player.jumpHeld) _forcedGlide = false; // si aprieta salto, pasa a planeo normal
 
-        // Cortes del planeo: tocar piso, soltar el botón, perder control, wallrun o se acabó el tiempo
-        bool shouldStop = _player._controller.isGrounded
-                          || !_player.jumpHeld
+        bool shouldStop = (_player._controller.isGrounded && _forcedGlideGrace <= 0f)
+                          || (!_player.jumpHeld && !_forcedGlide)
                           || _player.dontMovePlayer
                           || _player.isWallRunning;
 
@@ -82,6 +96,15 @@ public class IceState : State
         StopGlide(true);
         _player.OnAttackPressed -= TryStartSlam;
         EndSlam();
+
+        _player.OnForceGlide -= RequestForcedGlide;
+        _pendingForcedGlide = false;
+    }
+
+    void RequestForcedGlide()
+    {
+        if (_player.isDeath || _player.dontMovePlayer) return;
+        _pendingForcedGlide = true;
     }
 
     void TryStartGlide()

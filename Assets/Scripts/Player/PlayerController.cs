@@ -90,6 +90,9 @@ public class PlayerController : MonoBehaviour
     public event Action OnAttackPressed;
     public event Action OnJumpPressed;
 
+    public event Action OnForceGlide;
+    public void ForceGlide() => OnForceGlide?.Invoke();
+
     private Coroutine transitionCoroutine;
 
     public Vector2 lookInput;
@@ -260,6 +263,7 @@ public class PlayerController : MonoBehaviour
             transform.forward = move;
         }
     }
+
 
     public void JumpLogics(bool condition, bool conditionTwo)
     {
