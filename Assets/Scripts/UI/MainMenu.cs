@@ -10,6 +10,7 @@ using Unity.Mathematics;
 
 public class MainMenu : MonoBehaviour
 {
+    public static MainMenu instance;
     private InputSystemUIInputModule _uiModule;
     private InputAction _cancelAction;
 
@@ -106,6 +107,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        instance = this;
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
 
@@ -132,6 +134,8 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         if (inputLocked) return;
+
+
         // 1. Recuperar el foco del mando si se pierde al hacer clic en zonas vacías
         if (EventSystem.current.currentSelectedGameObject == null && _panelHistory.Count > 0)
         {
