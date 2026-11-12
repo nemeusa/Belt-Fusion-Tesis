@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WallRun : MonoBehaviour
 {
@@ -116,8 +117,7 @@ public class WallRun : MonoBehaviour
             {
 
                 playerCode.coyoteCounter = playerCode.coyoteTime * 2;
-                playerCode.jumpCount = 0;
-                playerCode.dashCount = 0;
+                playerCode.ResetMovements();
             }
             playerCode.dontMovePlayer = false;
             playerCode._gravityValue = ogGravity;
@@ -167,8 +167,7 @@ public class WallRun : MonoBehaviour
 
 
         playerCode.coyoteCounter = playerCode.coyoteTime * 2;
-        playerCode.jumpCount = 0;
-        playerCode.dashCount = 0;
+        playerCode.ResetMovements();
 
     }
 

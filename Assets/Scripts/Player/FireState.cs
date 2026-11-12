@@ -24,7 +24,6 @@ public class FireState : State
     }
     public void OnUpdate()
     {
-        if (_player._controller.isGrounded) _player.speed = _player.initialSpeed;
     }
 
     public void OnExit()

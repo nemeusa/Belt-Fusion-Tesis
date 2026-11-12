@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class TrailTablaIce : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class TrailTablaIce : MonoBehaviour
     [SerializeField] float _shaderVarRefreshRate = 0.05f;
 
 
-    public bool _isActive;
+    private bool _isActive;
     [SerializeField] MeshFilter _meshFilters;
 
     void Update()
@@ -74,6 +75,12 @@ public class TrailTablaIce : MonoBehaviour
         _isActive = false;
     }
 
+
+    private void OnDisable()
+    {
+        _isActive = false;
+
+    }
 
     IEnumerator MatFade(Material mat, float goal, float rate, float refreshRate)
     {

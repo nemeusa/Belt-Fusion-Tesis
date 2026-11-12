@@ -9,6 +9,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -270,6 +271,7 @@ public class PlayerController : MonoBehaviour
 
         if (condition)
         {
+            if (initialSpeed != speed) speed = initialSpeed;
             if (conditionTwo)
             {
                 _playerVelocity.y = -2f;
@@ -287,6 +289,13 @@ public class PlayerController : MonoBehaviour
 
         if (coyoteCounter > 0f) dashCount = 0;
     }
+
+    public void ResetMovements()
+    {
+        jumpCount = 0;
+        dashCount = 0;
+    }
+
 
     public void ApplyKnockback(Vector3 direction, float force, float duration)
     {

@@ -1,6 +1,6 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class IceState : State
 {
@@ -75,15 +75,19 @@ public class IceState : State
             return;
         }
 
-        // Caída lenta: si cae más rápido que la velocidad de planeo, frena de forma suave.
-        // (Si todavía está subiendo no se toca, así no se come el final del salto.)
-        float targetFall = -_player.glideFallSpeed;
-        if (_player._playerVelocity.y < targetFall)
+        if (_player.isGliding)
         {
-            _player._playerVelocity.y = Mathf.MoveTowards(
-                _player._playerVelocity.y,
-                targetFall,
-                _player.glideBrake * Time.deltaTime);
+
+            // Caída lenta: si cae más rápido que la velocidad de planeo, frena de forma suave.
+            // (Si todavía está subiendo no se toca, así no se come el final del salto.)
+            float targetFall = -_player.glideFallSpeed;
+            if (_player._playerVelocity.y < targetFall)
+            {
+                _player._playerVelocity.y = Mathf.MoveTowards(
+                    _player._playerVelocity.y,
+                    targetFall,
+                    _player.glideBrake * Time.deltaTime);
+            }
         }
     }
 
@@ -91,7 +95,6 @@ public class IceState : State
     {
         GameObject.Destroy(fx);
 
-        _player.tablaIceCode._isActive = false;
         _player.OnJumpPressed -= TryStartGlide;
         StopGlide(true);
         _player.OnAttackPressed -= TryStartSlam;
@@ -188,6 +191,8 @@ public class IceState : State
             GameObject.Destroy(fx, 2f);
         }
 
+        _player.ResetMovements();
+
         _player.VibrarControl(0.6f, 1f, 0.35f);
 
         var reactives = new HashSet<ISlamReactive>();
@@ -254,6 +259,7 @@ public class IceState : State
         {
             board.transform.localScale = _boardBaseScale;
             board.SetActive(show);
+
             return;
         }
 
@@ -269,6 +275,7 @@ public class IceState : State
         if (show)
         {
             board.SetActive(true);
+
             t.localScale = Vector3.zero;
         }
 
@@ -284,7 +291,11 @@ public class IceState : State
         }
 
         t.localScale = to;
-        if (!show) board.SetActive(false);
+        if (!show)
+        {
+            board.SetActive(false);
+
+        }
     }
 }
 

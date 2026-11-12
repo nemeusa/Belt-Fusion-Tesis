@@ -68,8 +68,7 @@ public class MeteoriteFire : MonoBehaviour
 
                 player.transform.forward = Vector3.forward;
 
-                player.jumpCount = 0;
-                player.dashCount = 0;
+                player.ResetMovements();
                 player._playerVelocity.y = -2f;
 
                 player.isIntoMeteorite = true;
