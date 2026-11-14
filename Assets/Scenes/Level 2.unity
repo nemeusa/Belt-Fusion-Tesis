@@ -1955,6 +1955,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143761897}
     m_Modifications:
+    - target: {fileID: 262628821227777269, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: 1002296095587749265, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
       propertyPath: m_Name
       value: Barril (1)
@@ -3995,7 +3999,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9b4b8c990ce5ac44a976e5bd440a2230, type: 2}
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -15922,6 +15926,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
   deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
   deathDuration: 0.2
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!1 &87532009
 GameObject:
   m_ObjectHideFlags: 0
@@ -20009,6 +20016,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 52153765}
     m_Modifications:
+    - target: {fileID: 262628821227777269, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: 1002296095587749265, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
       propertyPath: m_Name
       value: Barril (1)
@@ -28500,6 +28511,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
   deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
   deathDuration: 0.2
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!65 &154605886
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32555,7 +32569,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c45aee19f92a4004e9e73a1c65b6f0bc, type: 2}
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     - target: {fileID: 919132149155446097, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: m_Name
       value: escudo 1
@@ -33845,7 +33859,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9b4b8c990ce5ac44a976e5bd440a2230, type: 2}
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -53447,7 +53461,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 265e1e5a0df4377458ad20828a8502c4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c45aee19f92a4004e9e73a1c65b6f0bc, type: 2}
+      objectReference: {fileID: 2100000, guid: 43cd1179a4d2a4e4fbd951a7c358ff7f, type: 2}
     - target: {fileID: 919132149155446097, guid: 265e1e5a0df4377458ad20828a8502c4, type: 3}
       propertyPath: m_Name
       value: Espada
@@ -67995,15 +68009,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 265e1e5a0df4377458ad20828a8502c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.966019
+      value: -11.079
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 265e1e5a0df4377458ad20828a8502c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.241001
+      value: 9.928
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 265e1e5a0df4377458ad20828a8502c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -189.21924
+      value: -189.356
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 265e1e5a0df4377458ad20828a8502c4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -107188,6 +107202,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 52153765}
     m_Modifications:
+    - target: {fileID: 262628821227777269, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: 1002296095587749265, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
       propertyPath: m_Name
       value: Barril (5)
@@ -123334,7 +123352,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9b4b8c990ce5ac44a976e5bd440a2230, type: 2}
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -125611,6 +125629,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: 426c7010a64ed784c915b04bc238b426, type: 3}
   deathEffects: {fileID: 6592592166600229073, guid: 0aae3643728142d4a94a39be055c174a, type: 3}
   deathDuration: 1
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!65 &647750433
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -137422,6 +137443,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 52153765}
     m_Modifications:
+    - target: {fileID: 262628821227777269, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: 1002296095587749265, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
       propertyPath: m_Name
       value: Barril
@@ -137804,7 +137829,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c45aee19f92a4004e9e73a1c65b6f0bc, type: 2}
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     - target: {fileID: 919132149155446097, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: m_Name
       value: escudo 1 (2)
@@ -146398,6 +146423,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
   deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
   deathDuration: 0.2
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!65 &747951171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -151575,6 +151603,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
   deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
   deathDuration: 0.2
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!1 &776195122
 GameObject:
   m_ObjectHideFlags: 0
@@ -154312,6 +154343,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7839336505231977082, guid: 29b19bec497a974499182bec21285647, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     - target: {fileID: 7845593217769361223, guid: 29b19bec497a974499182bec21285647, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -154340,6 +154375,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8638424182414438034, guid: 29b19bec497a974499182bec21285647, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -192639,7 +192678,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9b4b8c990ce5ac44a976e5bd440a2230, type: 2}
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -195368,6 +195407,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: 65cdc9c118d69ce408e9eaeb4aaecfc8, type: 3}
   deathEffects: {fileID: 8175858367051513401, guid: 8a54e65579350a943b0fcd3aae05dbc1, type: 3}
   deathDuration: 1
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!65 &974733009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -199335,7 +199377,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c45aee19f92a4004e9e73a1c65b6f0bc, type: 2}
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     - target: {fileID: 919132149155446097, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: m_Name
       value: escudo 1 (1)
@@ -220461,7 +220503,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c45aee19f92a4004e9e73a1c65b6f0bc, type: 2}
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     - target: {fileID: 919132149155446097, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: m_Name
       value: escudo 1 (2)
@@ -231322,7 +231364,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9b4b8c990ce5ac44a976e5bd440a2230, type: 2}
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -232133,6 +232175,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
   deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
   deathDuration: 0.2
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!65 &1152946835
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -250464,6 +250509,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
   deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
   deathDuration: 0.2
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!65 &1240365797
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -252617,15 +252665,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80defeb7d40b20847a8d89a4cdecb1ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.907469
+      value: 16.959
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80defeb7d40b20847a8d89a4cdecb1ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 37.621708
+      value: 37.242
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80defeb7d40b20847a8d89a4cdecb1ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 172.48364
+      value: 172.344
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80defeb7d40b20847a8d89a4cdecb1ee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -272617,6 +272665,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
   deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
   deathDuration: 0.2
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!1001 &1344407883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280605,7 +280656,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c45aee19f92a4004e9e73a1c65b6f0bc, type: 2}
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     - target: {fileID: 919132149155446097, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: m_Name
       value: escudo 1 (3)
@@ -303531,6 +303582,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 52153765}
     m_Modifications:
+    - target: {fileID: 262628821227777269, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: 1002296095587749265, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
       propertyPath: m_Name
       value: Barril (7)
@@ -317142,6 +317197,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 52153765}
     m_Modifications:
+    - target: {fileID: 262628821227777269, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: 1002296095587749265, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
       propertyPath: m_Name
       value: Barril (6)
@@ -321682,6 +321741,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause and confirmation
       objectReference: {fileID: 0}
+    - target: {fileID: 5536101533161722790, guid: f6ac734ec8eecd943b87b57d0a4d2b9a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536101533161722790, guid: f6ac734ec8eecd943b87b57d0a4d2b9a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536101533161722790, guid: f6ac734ec8eecd943b87b57d0a4d2b9a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536101533161722790, guid: f6ac734ec8eecd943b87b57d0a4d2b9a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6026560962677435534, guid: f6ac734ec8eecd943b87b57d0a4d2b9a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -321695,6 +321770,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6026560962677435534, guid: f6ac734ec8eecd943b87b57d0a4d2b9a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6631430350705459026, guid: f6ac734ec8eecd943b87b57d0a4d2b9a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6631430350705459026, guid: f6ac734ec8eecd943b87b57d0a4d2b9a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6631430350705459026, guid: f6ac734ec8eecd943b87b57d0a4d2b9a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6631430350705459026, guid: f6ac734ec8eecd943b87b57d0a4d2b9a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -327299,6 +327390,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
   deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
   deathDuration: 0.2
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!1 &1607513273
 GameObject:
   m_ObjectHideFlags: 0
@@ -327538,7 +327632,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9b4b8c990ce5ac44a976e5bd440a2230, type: 2}
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -340012,7 +340106,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c45aee19f92a4004e9e73a1c65b6f0bc, type: 2}
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     - target: {fileID: 919132149155446097, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: m_Name
       value: escudo 1 (3)
@@ -340614,6 +340708,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: 426c7010a64ed784c915b04bc238b426, type: 3}
   deathEffects: {fileID: 6592592166600229073, guid: 0aae3643728142d4a94a39be055c174a, type: 3}
   deathDuration: 1
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!1 &1668506066
 GameObject:
   m_ObjectHideFlags: 0
@@ -365806,6 +365903,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
   deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
   deathDuration: 0.2
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!1 &1788408027
 GameObject:
   m_ObjectHideFlags: 0
@@ -369942,6 +370042,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 52153765}
     m_Modifications:
+    - target: {fileID: 262628821227777269, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: 1002296095587749265, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
       propertyPath: m_Name
       value: Barril (4)
@@ -385494,6 +385598,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7839336505231977082, guid: 29b19bec497a974499182bec21285647, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     - target: {fileID: 7845593217769361223, guid: 29b19bec497a974499182bec21285647, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -385522,6 +385630,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8638424182414438034, guid: 29b19bec497a974499182bec21285647, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -387654,6 +387766,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 52153765}
     m_Modifications:
+    - target: {fileID: 262628821227777269, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: 1002296095587749265, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
       propertyPath: m_Name
       value: Barril (3)
@@ -394637,6 +394753,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 52153765}
     m_Modifications:
+    - target: {fileID: 262628821227777269, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: 1002296095587749265, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
       propertyPath: m_Name
       value: Barril (2)
@@ -395305,7 +395425,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c45aee19f92a4004e9e73a1c65b6f0bc, type: 2}
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     - target: {fileID: 919132149155446097, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: m_Name
       value: escudo 1 (2)
@@ -395417,6 +395537,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: 65cdc9c118d69ce408e9eaeb4aaecfc8, type: 3}
   deathEffects: {fileID: 8175858367051513401, guid: 8a54e65579350a943b0fcd3aae05dbc1, type: 3}
   deathDuration: 1
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!1 &1947836342
 GameObject:
   m_ObjectHideFlags: 0
@@ -406856,7 +406979,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c45aee19f92a4004e9e73a1c65b6f0bc, type: 2}
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     - target: {fileID: 919132149155446097, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: m_Name
       value: escudo 1 (3)
@@ -416271,7 +416394,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c45aee19f92a4004e9e73a1c65b6f0bc, type: 2}
+      objectReference: {fileID: 2100000, guid: a165b81a708e6c24facd7265b4d60418, type: 2}
     - target: {fileID: 919132149155446097, guid: 01e8ef6a622bfec40a034d3ab5b729ae, type: 3}
       propertyPath: m_Name
       value: escudo 1 (3)
@@ -423760,7 +423883,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9b4b8c990ce5ac44a976e5bd440a2230, type: 2}
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: -7511558181221131132, guid: 15211bcaa644ee541849bb5983f39916, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -431249,6 +431372,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143761897}
     m_Modifications:
+    - target: {fileID: 262628821227777269, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35caaf321409f6846bf5b96e7a1906d6, type: 2}
     - target: {fileID: 1002296095587749265, guid: a79810d97e95bc84fbfcff1e7f863578, type: 3}
       propertyPath: m_Name
       value: Barril
