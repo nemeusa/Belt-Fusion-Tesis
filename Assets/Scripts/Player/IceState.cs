@@ -44,6 +44,7 @@ public class IceState : State
         {
             _pendingForcedGlide = false;
             if (!_player.isGliding) StartGlide();
+            _player.speed = _player.glideSpeed;
             _forcedGlide = true;
             _forcedGlideGrace = 0.3f;
         }
