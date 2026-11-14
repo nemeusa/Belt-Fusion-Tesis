@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public enum PortalElement { Neutral, Fire, Ice }
+public enum PortalElement { Neutral, Fire, Ice, Slime }
 
 [Serializable]
 public class ElementStyle
