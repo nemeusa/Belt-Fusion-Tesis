@@ -160,6 +160,10 @@ public class PlayerController : MonoBehaviour
     public AudioClip slamAudio;
     public bool isSlamming;
 
+
+    [Header("Slime trap")]
+    [HideInInspector] public float speedMultiplier = 1f;
+    [HideInInspector] public SlimeTrap currentSlime;
     #endregion
 
     private void Awake()
@@ -249,7 +253,11 @@ public class PlayerController : MonoBehaviour
         else 
             move = new Vector3(moveInput.x, 0, moveInput.y);
 
-        _currentMoveVelocity = Vector3.Lerp(_currentMoveVelocity, move * speed, Time.deltaTime * agarreDelPiso);
+        //og
+       // _currentMoveVelocity = Vector3.Lerp(_currentMoveVelocity, move * speed, Time.deltaTime * agarreDelPiso);
+
+        //linea para la trampa slime
+        _currentMoveVelocity = Vector3.Lerp(_currentMoveVelocity, move * speed * speedMultiplier, Time.deltaTime * agarreDelPiso);
 
         // Y le pasamos esa velocidad suavizada al CharacterController en vez del 'move' directo
         if (moveInput.magnitude > driftMagnitude) _controller.Move(_currentMoveVelocity * Time.deltaTime);
@@ -476,6 +484,18 @@ public class PlayerController : MonoBehaviour
         winGame = false;
     }
 
+    public void StickToSlime(SlimeTrap slime, float multiplier)
+    {
+        currentSlime = slime;
+        speedMultiplier = multiplier;
+    }
+
+    public void ReleaseFromSlime()
+    {
+        currentSlime = null;
+        speedMultiplier = 1f;
+    }
+
     #endregion
 
     #region Inputs
@@ -495,6 +515,12 @@ public class PlayerController : MonoBehaviour
     {
         jumpHeld = value.isPressed;
         if (isDeath || GameManager.instance._pauseCode.juegoPausado) return;
+
+        if (value.isPressed && currentSlime != null)
+        {
+            currentSlime.Struggle(this);
+            return; // no salta ni dispara OnJumpPressed (planeo, doble salto, etc.)
+        }
 
         if (value.isPressed)
         {
@@ -540,7 +566,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnMove(InputValue value) { if (!GameManager.instance._pauseCode.juegoPausado) moveInput = value.Get<Vector2>(); }
-    public void OnDash(InputValue value) { if (value.isPressed && !isDeath && !GameManager.instance._pauseCode.juegoPausado) OnDashPressed?.Invoke(); }
+    public void OnDash(InputValue value) { if (value.isPressed && !isDeath && currentSlime == null && !GameManager.instance._pauseCode.juegoPausado) OnDashPressed?.Invoke(); }
     //public void OnAttack(InputValue value) { if (value.isPressed && !isDeath && !GameManager.instance._pauseCode.juegoPausado) OnAttackPressed?.Invoke(); }
 
     public void OnAttack(InputValue value) { if (value.isPressed) OnAttackPressed?.Invoke(); }
