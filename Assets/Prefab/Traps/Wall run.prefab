@@ -772,7 +772,6 @@ GameObject:
   - component: {fileID: 5063134704871227109}
   - component: {fileID: 5085784949170858077}
   - component: {fileID: 5266281382608179519}
-  - component: {fileID: 6958170337375175715}
   m_Layer: 0
   m_Name: Running_Wall
   m_TagString: Untagged
@@ -828,6 +827,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: c45aee19f92a4004e9e73a1c65b6f0bc, type: 2}
   - {fileID: 2100000, guid: 497144179b66e544d940bdcce8092df9, type: 2}
+  - {fileID: 2100000, guid: 0a4b3b6571b6b2343aa62db9e4f97de1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -849,18 +849,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6958170337375175715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8664147121426217780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd5b473799d1bd14db0886c1e687863f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectTime: 2
-  cooldown: 5
-  glitchMat: {fileID: -876546973899608171, guid: 0bf5c2535d1bf07499cf59d5131237d8, type: 3}

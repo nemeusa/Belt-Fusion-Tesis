@@ -14572,7 +14572,6 @@ GameObject:
   - component: {fileID: 5547973518388786770}
   - component: {fileID: 2307464693236268427}
   - component: {fileID: 197600905223964186}
-  - component: {fileID: 8674149774738300710}
   m_Layer: 0
   m_Name: meteorito
   m_TagString: Untagged
@@ -14628,6 +14627,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 98c34fcb2199bc44cbe67493b44d1226, type: 2}
   - {fileID: 2100000, guid: f3fcb6c68e0095f47a442d3d48bc71d0, type: 2}
+  - {fileID: 2100000, guid: c476ef231f9e3bf4a957b66a81266f74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14649,21 +14649,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8674149774738300710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3844646280895002826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd5b473799d1bd14db0886c1e687863f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectTime: 2
-  cooldown: 5
-  glitchMat: {fileID: 2100000, guid: dc76630fcf8023c45bcf5f8935186944, type: 2}
 --- !u!1 &3995114674949667958
 GameObject:
   m_ObjectHideFlags: 0

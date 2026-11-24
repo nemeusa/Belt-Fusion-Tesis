@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 960337025537898406}
   - component: {fileID: 4250297413506988035}
   - component: {fileID: 2096673787264666825}
-  - component: {fileID: 8497007315381175050}
   m_Layer: 0
   m_Name: Volcano
   m_TagString: Untagged
@@ -66,6 +65,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 5924b054d3ad76a498eb827785ee1f3a, type: 2}
+  - {fileID: 2100000, guid: 76c217c5d9294ed469bf14573641acc5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,21 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8497007315381175050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439133688591494428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd5b473799d1bd14db0886c1e687863f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectTime: 2
-  cooldown: 5
-  glitchMat: {fileID: -876546973899608171, guid: 0bf5c2535d1bf07499cf59d5131237d8, type: 3}
 --- !u!1 &1029806242556468769
 GameObject:
   m_ObjectHideFlags: 0
@@ -10011,6 +9996,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
   deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
   deathDuration: 0.2
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!1 &6131123679445188354
 GameObject:
   m_ObjectHideFlags: 0
@@ -10243,6 +10231,7 @@ MonoBehaviour:
   spawnParticles: {fileID: 0}
   destroySound: {fileID: 0}
   aniController: {fileID: 0}
+  noRespawn: 0
 --- !u!33 &8973669772928361152
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10441,6 +10430,9 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: b0db3da5d7342dc46bfc2ba00503978e, type: 3}
   deathEffects: {fileID: 9067817983875688925, guid: a8c8743bb29db6a45ac42ac83e7a76bf, type: 3}
   deathDuration: 0.2
+  fallDeath: 0
+  direction: 0
+  speedOutCamera: 10
 --- !u!1 &9058636533507510247
 GameObject:
   m_ObjectHideFlags: 0
