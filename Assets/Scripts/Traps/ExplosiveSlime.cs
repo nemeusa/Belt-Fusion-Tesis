@@ -15,6 +15,7 @@ public class ExplosiveSlime : MonoBehaviour
     [Header("Explosión")]
     [SerializeField] Transform explosionCenter;  // si lo dejás vacío usa este objeto
     [SerializeField] float explosionRadius = 4f;
+    [SerializeField] float explosionTimeAfterParticle;
     [SerializeField] LayerMask hitMask = ~0;
     [SerializeField] GameObject explosionParticles; // acá van tus 2 partículas
     [SerializeField] float destroyDelay = 3f;             // tiempo para que terminen las partículas
@@ -81,14 +82,18 @@ public class ExplosiveSlime : MonoBehaviour
             yield return null;
         }
 
+        Instantiate(explosionParticles, transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(explosionTimeAfterParticle);
+
         _fuseRoutine = null;
         Explode();
     }
 
     void Explode()
     {
-        Instantiate(explosionParticles, transform.position, Quaternion.identity);
 
+        //Instantiate(explosionParticles, transform.position, Quaternion.identity);
         // Área de explosión: si el jugador está adentro, muere
         Vector3 center = explosionCenter != null ? explosionCenter.position : transform.position;
         var hits = Physics.OverlapSphere(center, explosionRadius, hitMask, QueryTriggerInteraction.Ignore);

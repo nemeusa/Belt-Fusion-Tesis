@@ -162,10 +162,11 @@ MonoBehaviour:
   armedPulseSpeed: 12
   explosionCenter: {fileID: 5940968985511536026}
   explosionRadius: 7
+  explosionTimeAfterParticle: 0.05
   hitMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  explosionParticles: {fileID: 1532083756636882228}
+  explosionParticles: {fileID: 7571198413288093731, guid: c1207aa15716f784da690bc28c5cc26f, type: 3}
   destroyDelay: 2
   deathAudio: {fileID: 0}
   deathEffects: {fileID: 0}
@@ -452,11 +453,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1207aa15716f784da690bc28c5cc26f, type: 3}
---- !u!1 &1532083756636882228 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7571198413288093731, guid: c1207aa15716f784da690bc28c5cc26f, type: 3}
-  m_PrefabInstance: {fileID: 8958014633532554519}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6692748537742122095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2355428291341918584, guid: c1207aa15716f784da690bc28c5cc26f, type: 3}
