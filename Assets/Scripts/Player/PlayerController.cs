@@ -9,7 +9,6 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
