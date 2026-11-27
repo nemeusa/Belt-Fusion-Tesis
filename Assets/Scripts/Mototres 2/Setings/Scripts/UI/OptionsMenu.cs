@@ -82,12 +82,16 @@ namespace GameOptions
 
         public void Close()
         {
+            if (!panel.activeSelf) return;
+
             panel.SetActive(false);
             VisibilityChanged?.Invoke(false);
         }
 
         private void ApplyChanges(InputAction.CallbackContext _)
         {
+            if (!panel.activeSelf) return;
+
             GameSettings chosen = SettingsManager.Instance.Current.Clone();
 
             foreach (ISettingsSection section in _sections)
@@ -101,6 +105,8 @@ namespace GameOptions
 
         private void LoadIntoSections(GameSettings settings)
         {
+            if (!panel.activeSelf) return;
+
             foreach (ISettingsSection section in _sections)
                 section.Load(settings);
         }
